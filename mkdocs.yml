@@ -1,6 +1,7 @@
 site_name: EchoMAV Documentation
 theme:
   name: material
+  logo: assets/echomav-small-black-bg.png
   features:
     - navigation.tabs
     - navigation.sections
@@ -14,10 +15,11 @@ theme:
   language: en
   palette:
     - scheme: slate     
-      primary: blue
-      accent: green
+      primary: black
+      accent: blue
 
 extra:
+  homepage: https://echomav.com
   social:
     - icon: fontawesome/brands/github-alt
       link: https://github.com/echomav
