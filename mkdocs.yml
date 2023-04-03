@@ -1,4 +1,4 @@
-site_name: EchoMAV Documentation
+site_name: Documentation
 theme:
   name: material
   logo: assets/echomav-small-black-bg.png
@@ -13,11 +13,9 @@ theme:
     - content.code.annotation
     - content.code.copy
   language: en
-  palette:
-    - scheme: slate     
+  palette:    
       primary: black
       accent: blue
-
 extra:
   homepage: https://echomav.com
   social:
