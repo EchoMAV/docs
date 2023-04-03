@@ -21,6 +21,16 @@ extra:
   social:
     - icon: fontawesome/brands/github-alt
       link: https://github.com/echomav
+  alternate:
+    - name: English
+      link: /en/ 
+      lang: en
+    - name: Greek
+      link: /el/
+      lang: el
+    - name: Ukrainian
+      link: /uk/
+      lang: uk
 
 
 markdown_extensions:
