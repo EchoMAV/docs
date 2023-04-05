@@ -1,4 +1,7 @@
 site_name: Documentation
+nav:
+    - Home: index.md
+    - EchoPilot AI: echopilot_ai.md
 theme:
   name: material
   logo: assets/echomav-small-black-bg.png
