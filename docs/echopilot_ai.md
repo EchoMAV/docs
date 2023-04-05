@@ -1,11 +1,10 @@
 # EchoPilot AI Documentation
 
-## Mechanical
-TBD
+## Quickstart Guide
 
 ## Wiring and Pinouts
 
-## Quickstart Guide
+## Mechanical
 
 ## Building Code for the FMU
 
