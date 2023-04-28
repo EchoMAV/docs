@@ -7,11 +7,11 @@ theme:
   logo: assets/echomav-small-black-bg.png
   features:
     - navigation.tabs
+    - navigation.tabs.sticky
     - navigation.sections
     - navigation.tracking
     - navigation.instant
-    - navigation.expand
-    - toc.integrate
+#    - toc.integrate
     - navigation.top
     - search.suggest
     - search.highlight
