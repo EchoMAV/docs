@@ -1,4 +1,7 @@
 site_name: EchoMAV Documentation
+repo_url: https://github.com/EchoMAV/docs
+edit_uri: edit/master/docs/
+repo_name: echomav/docs
 nav:
     - Home: index.md
     - EchoPilot AI: echopilot_ai.md
@@ -19,10 +22,14 @@ theme:
     - content.code.annotation
     - content.code.copy
     - toc.follow
+    - content.action.edit
+    - content.action.view
+    - content.code.copy    
   language: en
   palette:    
       primary: black
       accent: blue
+  
 extra:
   homepage: https://echomav.com
   social:

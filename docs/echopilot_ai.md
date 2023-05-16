@@ -11,9 +11,9 @@ The hardware is configured into a two board stack. The upper board is the EchoPi
 This design philosophy achieves multiple goals:
 
 1. For integrated vehicle solutions, it is often desired to design a custom carrier board to add additional components, minimize cables/wiring, integrate power distribution. In this case, our design allows you to design a carrier board (using the provided Carrier Board as a reference design) and in production products use only the EchoPilot AI board.
-2. A stacked solution minimizes X-Y size in exchance for moving into the Z axis, which is an acceptable compromise for most uncrewed vehicles.
+2. A stacked solution minimizes X-Y size in exchange for moving into the Z axis, which is an acceptable compromise for most uncrewed vehicles.
 3. Moving the switching power regulators to the Carrier board reduced noise near the sensitive sensors on EchoPilot AI board.
-4. A stacked design is more future proof, as periperals can often be added to the Carrier Board without a re-design of the EchoPilot AI main board.
+4. A stacked design is more future proof, as peripherals can often be added to the Carrier Board without a re-design of the EchoPilot AI main board.
 
 ## Quickstart Guide
 
@@ -32,8 +32,8 @@ These instructions assume you have a Jetson module that is already flashed. If y
 >**On Windows:** We recommend [Putty](https://www.putty.org/) or [TeraTerm](https://osdn.net/projects/ttssh2/releases/).  
 >**On Linux:** We recommend Picocom. Install with ```sudo apt-get install picocom```. Use with ```picocom /dev/ttyUSB? -b 115200```. To exit picocom, use ```Ctrl-a Ctrl-x```.
 6. Power the Carrier Board with 7-56VDC source capable of supplying up to 4A.
-7. You should now see the boot messages in your console, and once complete you will see a login prompt.
-> The default username is **echopilot** and the default password is **echopilot**
+7. You should now see the boot messages in your console, and once boot is complete, you will see a login prompt.
+> **IMPORTANT!:** The default username is **echopilot** and the default password is **echopilot**
 8. At this point you are logged into the Jetson and can begin configuring the network, installing applications, etc.
  
 ### Connecting to the FMU via the USB connector
@@ -97,7 +97,7 @@ PIN 5        | O            | +3.3V          | IOMCU SWCLK
 PIN 6        | Pwr           | GND          | Gnd
 
 #### Jetson Debug (J25)
-This connector is used to flash new firmward to the Jetson SOM.
+This connector is used to flash new firmware to the Jetson SOM.
 
 Connector: J25, Part Number: SM04B-GHS-TB(LF)(SN)
 Mating Connector: GHR-04V-S
@@ -136,10 +136,10 @@ TBD
 As of PX4 1.13.3, the EchoPilot AI hardware definition files are not yet pulled into the [PX4 repository](https://github.com/PX4/PX4-Autopilot). Therefore, if you wish to use PX4 firmware on the EchoPilot AI, you will need to follow the steps below and build PX4 from source. Fortunately the process is straightforward:
 
 ### Prerequisites
-These instructions were tested on Ubuntu 20.04 LTS. They are not guranteed to work on any other flavor of Linux, within a vitual machine or under WSL 1 or 2. We recommend a **physical machine** running Ubuntu 20.04 LTS for the most pain-free experience.
+These instructions were tested on Ubuntu 20.04 LTS. They are not guaranteed to work on any other flavor of Linux, within a virtual machine or under WSL 1 or 2. We recommend a **physical machine** running Ubuntu 20.04 LTS for the most pain-free experience.
 
 ### Download PX4 
-These instructions will install PX4 in ```~/PX4-Autopilot```. If you wish to use a diffent location, please adjust the directory below and thoughout these instructions. If you are a novice, we recommend proceeding exactly as described below.
+These instructions will install PX4 in ```~/PX4-Autopilot```. If you wish to use a different location, please adjust the directory below and throughout these instructions. If you are a novice, we recommend proceeding exactly as described below.
 ```
 cd ~
 git clone https://github.com/PX4/PX4-Autopilot.git --recursive
@@ -151,7 +151,7 @@ Note if you have built PX4 before, you can likely skip this step. Also remove th
 bash ./Tools/setup/ubuntu.sh --no-sim-tools
 ```
 ### Checkout a release
-You can identify a version you wish to build by looking at the release history https://github.com/PX4/PX4-Autopilot/releases. In the example below, we will demonstrate checking out release 1.13  
+You can identify a version you wish to build by looking at the release history [https://github.com/PX4/PX4-Autopilot/releases](https://github.com/PX4/PX4-Autopilot/releases). In the example below, we will demonstrate checking out release 1.13  
 > **_NOTE:_**  You can reuse an existing repo rather than cloning a new one if this isn't your first PX4 rodeo. In this case, clean the build environment before proceeding:
 > ```
 > make clean
@@ -201,7 +201,7 @@ When the build completes, the system will wait for a USB connection from the Ech
 
 The EchoPilot AI hardware is nearly identical to an Nvidia developer kit, meaning it is possible to load firmware using NVidia's [SDK Manager](https://developer.nvidia.com/sdk-manager) using one of the standard configurations (e.g. see this [link](https://docs.nvidia.com/jetson/archives/r34.1/DeveloperGuide/text/IN/QuickStart.html#jetson-modules-and-configurations) for Xavier NX and Orin). The one caveat is that the EchoPilot AI is headless and does not have a HDMI controller chip. Because of this, when using a standard build with a device tree designed for the developer kit, you may get occasional error messages output to the serial console.  
 
-To flash firmware using NVidia's SDK Manager:  
+To flash firmware using Nvidia's SDK Manager:  
 
 1. Ensure the EchoPilot AI is powered off.  
 2. Attach a JST-GH to USB adapter (Rev0, included with the EchoPilot AI) or common USB to USB Micro-b cable (Rev1+) to the Jetson Debug port ([J25](#jetson-debug-j25)) and plug in the USB to your host computer.  
