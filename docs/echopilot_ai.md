@@ -36,7 +36,12 @@ These instructions assume you have a Jetson module that is already flashed. If y
 > The default username is **echopilot** and the default password is **echopilot**
 8. At this point you are logged into the Jetson and can begin configuring the network, installing applications, etc.
  
-### Connecting to the FMU via the USB connection
+### Connecting to the FMU via the USB connector
+
+1. Attach a USB cable between the host computer and the **FMU USB** connector (J7).
+2. Start a ground control application on the host computer such as [QGroundControl](https://docs.qgroundcontrol.com/master/en/getting_started/download_and_install.html) or [Mission Planner](https://ardupilot.org/planner/docs/mission-planner-installation.html).
+> **QGroundControl:** Will automatically connect.  
+> **Mission Planner:** Select the appropriate COM port at the top right, 115200, then click CONNECT.
 
 ## Board Components and Connectors
 
