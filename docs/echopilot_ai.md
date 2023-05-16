@@ -20,7 +20,10 @@ This design philosophy achieves multiple goals:
 ### Accessing the Jetson via the console
 
 These instructions assume you have a Jetson module that is already flashed. If you have a new Jetson module that is not flashed, please see [Flashing a Jetson](#flashing-a-jetson-module-using-the-echopilot-ai) instructions.
-> **WARNING**: Do not run the Jetson SOM without a heatsink. The module may be damaged or performance throttled. See connecttech.com for recommended active and passive heatsinks.
+
+!!! WARNING
+
+    Do not run the Jetson SOM without a heatsink. The module may be damaged or performance throttled. See connecttech.com for recommended active and passive heatsinks.
 
 1. Assemble the EchoPilot AI board with a Carrier Board, using 8mm standoffs between the two boards.
 2. If a Jetson Module is not already installed in the EchoPilot AI, install the module now.
@@ -172,18 +175,31 @@ make px4_sitl
 ```
 If the build completes without errors, congrats! If there are errors, you will need to resolve them before proceeding.
 ### Build PX4 for the EchoPilot AI
-First obtain the hardware board files:
-> **Note:** If you are using a Rev. 0 board, use the instructions below. For later revisions, replace **rev0** in the filenames below with the appropriate board revision (e.g., rev1). The revision number is shown on the top side of the board near the FAN connector.
+First obtain the hardware board files. Select the tab below based on your board version and download/extract the board files. The revision number can be found on the top side of the EchoPilot AI board near the fan connector:
 
-```
-cd /tmp
-wget https://echomav.com/px4/echopilot_px4_rev0.tar.gz
-```
-Extract files from the archive into the ```~/PX4-Autopilot/boards``` folder
-```
-tar -xvf echopilot_px4.rev0.tar.gz -C ~/PX4-Autopilot/boards/
-cd ~/PX4-Autopilot
-```
+=== "Rev 0"
+
+    ```
+    cd /tmp
+    wget https://echomav.com/px4/echopilot_px4_rev0.tar.gz
+    ```
+    Extract files from the archive into the ```~/PX4-Autopilot/boards``` folder
+    ```
+    tar -xvf echopilot_px4.rev0.tar.gz -C ~/PX4-Autopilot/boards/
+    cd ~/PX4-Autopilot
+    ```
+
+=== "Rev 1"
+
+    ```
+    cd /tmp
+    wget https://echomav.com/px4/echopilot_px4_rev1.tar.gz
+    ```
+    Extract files from the archive into the ```~/PX4-Autopilot/boards``` folder
+    ```
+    tar -xvf echopilot_px4.rev1.tar.gz -C ~/PX4-Autopilot/boards/
+    cd ~/PX4-Autopilot
+    ```
 
 At this point, you should have the hardware files located in ```~/Px4-Autopilot/boards/echomav/echopilot-ai/```. To build firmware targeting this board, use the command:
 ```
