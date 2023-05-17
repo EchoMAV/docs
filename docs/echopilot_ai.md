@@ -2,7 +2,9 @@
 
 ## Overview
 
-The EchoPilot AI is a highly integrated vehicle control and edge computing system designed to power next-generation uncrewed systems. The EchoPilot AI supports computer vision, machine learning, autonomy, artificial intelligence and other advanced edge computing needs. The EchoPilot AI leverages the popular Ardupilot and PX4 projects, and uses Pixhawk open-hardware standards. The power of  an advanced autopilot is seamlessly combined with high-performance computing, IP networking, cloud connectivity and flexible low-latency hardware accelerated video encoding.
+The EchoPilot AI is a highly integrated vehicle control and edge computing system designed to power next-generation uncrewed systems. The EchoPilot AI supports computer vision, machine learning, autonomy, artificial intelligence and other advanced edge computing needs. The EchoPilot AI implements a STM32H7-based autopilot compatible with the popular Ardupilot and PX4 projects, and uses Pixhawk [open-hardware connectivity standards](https://github.com/pixhawk/Pixhawk-Standards/blob/master/DS-009%20Pixhawk%20Connector%20Standard.pdf). 
+
+The power of  an advanced autopilot is seamlessly combined with high-performance computing (including AI and machine learning), IP networking, cloud connectivity and flexible low-latency hardware accelerated video encoding.
 
 ![EchoPilot AI](assets/echopilot_ai_stack.jpg)
 
@@ -10,12 +12,12 @@ The hardware is configured into a two board stack. The upper board is the EchoPi
 
 This design philosophy achieves multiple goals:
 
-1. For integrated vehicle solutions, it is often desired to design a custom carrier board to add additional components, minimize cables/wiring, integrate power distribution. In this case, our design allows you to design a carrier board (using the provided Carrier Board as a reference design) and in production products use only the EchoPilot AI board.
+1. For integrated vehicle solutions, it is often desired to design a custom carrier board to add additional components, minimize cables/wiring and integrate power distribution. The EchoPilot AI's design allows you to optionally design a custom carrier board (using the provided Carrier Board as a [reference design](https://github.com/EchoMAV/echopilot_ai_carrier)).
 2. A stacked solution minimizes X-Y size in exchange for moving into the Z axis, which is an acceptable compromise for most uncrewed vehicles.
-3. Moving the switching power regulators to the Carrier board reduced noise near the sensitive sensors on EchoPilot AI board.
+3. Moving the switching power regulators to the Carrier board reduces noise near the sensitive sensors on EchoPilot AI board and reduces the thermal load of the EchoPilot AI mainboard.
 4. A stacked design is more future proof, as peripherals can often be added to the Carrier Board without a re-design of the EchoPilot AI main board.
 
-## Quickstart Guide
+## Quick Start Guide
 
 ### Accessing the Jetson via the console
 
@@ -23,7 +25,7 @@ These instructions assume you have a Jetson module that is already flashed. If y
 
 !!! WARNING
 
-    Do not run the Jetson SOM without a heatsink. The module may be damaged or performance throttled. See connecttech.com for recommended active and passive heatsinks.
+    Do not run the Jetson SOM without a heatsink. The module may be damaged or performance throttled. See [connecttech.com](http://connecttech.com) for recommended active and passive heatsinks.
 
 1. Assemble the EchoPilot AI board with a Carrier Board, using 8mm standoffs between the two boards.
 2. If a Jetson Module is not already installed in the EchoPilot AI, install the module now.
@@ -207,15 +209,28 @@ make echomav_echopilot-ai
 ```
 The .px4 file will be located in the ```~/PX4-Autopilot/build/echomav_echopilot-ai_default/``` folder. The firmware is now ready to be loaded on the board.  
 > **_NOTE:_** If the EchoPilot AI is plugged in to your host computer, unplug it before proceeding. The board should be totally powered off before proceeding.
+
 ```
 make echomav_echopilot-ai upload
 ```
 When the build completes, the system will wait for a USB connection from the EchoPilot AI's bootloader. You should see a message indicating ```waiting for the bootloader...```. At this point, plug in a USB-A to USB-C cable between the host computer and the **FMU** USB connection on the EchoPilot AI. The board should be recognized and the firmware will be uploaded automatically.
 > Optionally, you can use [QGroundControl](https://docs.qgroundcontrol.com/master/en/getting_started/download_and_install.html) to upload the ```~/PX4-Autopilot/build/echomav_echopilot-ai_default/echomav_echopilot-ai_default.px4``` file created previously. This is especially useful if you wish to send a firmware update to a customer as they can do it without terminal access. Follow the steps here to upload **Custom Firmware** using QGroundControl: [https://docs.px4.io/main/en/config/firmware.html](https://docs.px4.io/main/en/config/firmware.html)
 
+## Interfacing the Jetson to the Autopilot
+
+The autopilot has a high-speed serial interface between the STM32H7 and the Jetson SOM. The Jetson UART1 (pins 203, 205) are connected to the autopilot's USART3 (Typically Telem2). To enable [MAVLink](https://mavlink.io/en/) data, you will need to check and/or modify PX4/Ardupilot parameters to ensure that Telem2 is set to MAVLink and set the baud rate to the desired value. A typical baud rate is 500,000 but you can use any baud rate you wish as long as the application receiving MAVLink on the Jetson is configured to match. 
+
+On the Jetson side, UART1 is typically ```/dev/ttyTHS2```.
+
+There are many options available for MAVLink routing and handling. One typical application is routing the MAVLink data over a network - and [MAVLink Router](https://github.com/mavlink-router/mavlink-router) is a popular open-source solution. To use MAVLink Router to route MAVLink packets from UART1 (/dev/ttyTHS2) to a UDP endpoint (192.168.1.10:14550) on the network, use the following command:
+
+```
+$ mavlink-routerd -e 192.168.1.10:14550 /dev/ttyTHS2:5000000
+```
+
 ## Flashing a Jetson Module using the EchoPilot AI
 
-The EchoPilot AI hardware is nearly identical to an Nvidia developer kit, meaning it is possible to load firmware using NVidia's [SDK Manager](https://developer.nvidia.com/sdk-manager) using one of the standard configurations (e.g. see this [link](https://docs.nvidia.com/jetson/archives/r34.1/DeveloperGuide/text/IN/QuickStart.html#jetson-modules-and-configurations) for Xavier NX and Orin). The one caveat is that the EchoPilot AI is headless and does not have a HDMI controller chip. Because of this, when using a standard build with a device tree designed for the developer kit, you may get occasional error messages output to the serial console.  
+The EchoPilot AI hardware is nearly identical to an Nvidia developer kit, meaning it is possible to load firmware using NVidia's [SDK Manager](https://developer.nvidia.com/sdk-manager) using one of the standard configurations (e.g. see this [link](https://docs.nvidia.com/jetson/archives/r34.1/DeveloperGuide/text/IN/QuickStart.html#jetson-modules-and-configurations) for Xavier NX and Orin). The two caveats are that the EchoPilot AI is headless and does not have a HDMI controller chip, and the deverlopment kit does not contain an SD Card (SDMMC3). Because of this, when using a standard build with a device tree designed for the developer kit, you may get occasional error messages output to the serial console and the Jetson's SD card will not function.  
 
 To flash firmware using Nvidia's SDK Manager:  
 
@@ -226,7 +241,7 @@ To flash firmware using Nvidia's SDK Manager:
 
 ### Advanced Jetson Flashing
 
-As mentioned above, flashing a standard image may cause HDMI errors in the serial console. To remove these warnings, it is necessary to build Linux4Tegra (L4T) from source and update the dts files to disable the hdmi subsystem. The instructions for doing so are below:
+As mentioned above, flashing a standard image will keep the SD Card from working and may cause console errors related to the HDMI subsystem. To remove these warnings and enable the SD Card, it is necessary to build Linux4Tegra (L4T) from source and update the dts files to disable the hdmi subsystem. The instructions for doing so are below:
 
 ```
 Instructions Coming Soon
