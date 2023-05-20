@@ -6,9 +6,11 @@ nav:
     - Home: index.md
     - EchoPilot AI: 
         - Hardware Overview: echopilot_ai.md
-        - Build PX4: build_px4.md
-        - Build ArduPilot: build_ardupilot.md
-        - Build Linux for Tegra: compile_l4t.md
+        - EchoPilot AI Pinout: echopilot_ai_pinout.md
+        - EchoPilot Carrier Pinout: echopilot_carrier_pinout.md
+        - Building PX4: build_px4.md
+        - Building ArduPilot: build_ardupilot.md
+        - Building L4T (Xavier NX): compile_l4t.md
 theme:
   name: material
   logo: assets/echomav-small-black-bg.png

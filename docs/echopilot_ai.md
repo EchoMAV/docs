@@ -8,6 +8,30 @@ The power of  an advanced autopilot is seamlessly combined with high-performance
 
 ![EchoPilot AI](assets/echopilot_ai_stack.jpg)
 
+Autopilot Sensors
+=== "Rev 0"
+
+    Function   | Part Number
+    ------------ | ------------- 
+    IMU 1        | ICM42688P            
+    IMU 2        | ICM42688P            
+    IMU 3        | ICM42688P      
+    Barometer 1        | MS5611                  
+    Magentometer        | PNI RM3100    
+    Add-On INS      | VectorNAV VN-X00 (optional)        
+
+=== "Rev 1"
+
+     Function   | Part Number
+    ------------ | ------------- 
+    IMU 1        | ICM42688P            
+    IMU 2        | ICM42688P            
+    IMU 3        | ICM42688P      
+    Barometer 1        | ICP-20100                  
+    Barometer 2        | ICP-20100 
+    Magentometer        | PNI RM3100    
+    Add-On INS      | VectorNAV VN-X00 (optional)        
+
 The hardware is configured into a two board stack. The upper board is the EchoPilot AI board, and it contains the flight management unit, peripherals, sensors and Nvidia Jetson interface. The lower board is the Carrier Board, and it handles power regulation and connectors. Two high-density FX23L-80S-0.5SV 80-pin board-to-board connectors are used between the two boards.
 
 This design philosophy achieves multiple goals:
@@ -58,77 +82,45 @@ These instructions assume you have a Jetson module that is already flashed. If y
 
 ![Bottom Side Components](assets/bottom-side-labels.png)
 
-### Pinouts EchoPilot AI
+### EchoPilot AI Pinouts
 
-#### Debug Power In (J8)
-This connector is **not normally used**. It exists only to power the EchoPilot AI without a carrier board attached.
-
-Connector: J8, Part Number: B2B-XH-A(LF)(SN)  
-Mating Connector: XHP-2
-
-Pin Number   | Direction     | Voltage       | Pin Description
------------- | ------------- | ------------  | ------------
-PIN 1        | Pwr            | GND           | Ground
-PIN 2        | Pwr            | +5.2V          | Debug Power Input
-
-#### FMU Debug (J12)
-This connector is **not normally used** by the customer. It is primarily used during board setup to load bootloader firmware on the FMU. It is however possible to use the UART7 lines for other purposes.
-
-Connector: J12, Part Number: SM06B-SRSS-TB(LF)(SN)  
-Mating Connector: SHR-06V-S-B
-
-Pin Number   | Direction     | Voltage       | Pin Description
------------- | ------------- | ------------  | ------------
-PIN 1        | Pwr            | +3.3V           | 3.3V Power
-PIN 2        | O            | +3.3V          | FMU UART7 TX
-PIN 3        | I            | +3.3V          | FMU UART7 RX
-PIN 4        | IO            | +3.3V         | FMU SWDIO
-PIN 5        | O            | +3.3V          | FMU SWCLK
-PIN 6        | Pwr           | GND          | Gnd
-
-#### IO Debug (J13)
-This connector is **not normally used** by the customer. It is used during board setup to load bootloader firmware on the IOMCU.
-
-Connector: J13, Part Number: SM06B-SRSS-TB(LF)(SN)  
-Mating Connector: SHR-06V-S-B
-
-Pin Number   | Direction     | Voltage       | Pin Description
------------- | ------------- | ------------  | ------------
-PIN 1        | Pwr            | +3.3V           | 3.3V Power
-PIN 2        | O            | +3.3V          | IOMCU UART1 TX
-PIN 3        | I            | +3.3V          | IOMCU UART1 RX
-PIN 4        | IO            | +3.3V         | IOMCU SWDIO
-PIN 5        | O            | +3.3V          | IOMCU SWCLK
-PIN 6        | Pwr           | GND          | Gnd
-
-#### Jetson Debug (J25)
-This connector is used to flash new firmware to the Jetson SOM.
-
-Connector: J25, Part Number: SM04B-GHS-TB(LF)(SN)
-Mating Connector: GHR-04V-S
-
-Pin Number   | Direction     | Voltage       | Pin Description
------------- | ------------- | ------------  | ------------
-PIN 1        | Pwr            | +5.0V           | VBus Detect
-PIN 2        | D-            | Diff Signal          | USB D-
-PIN 3        | D+            | Diff Signal          | USB D+
-PIN 4        | Pwr            | GND         | Gnd
-
+For EchoPilot AI Pinouts, refer to the [EchoPilot AI Pinout Page](echopilot_ai_pinout.md).
 
 ### Top Side Carrier Board
 
+TBD
+
 ### Bottom Side Carrier Board
 
-### Pinouts Carrier Board
+TBD
 
-## Mechanical
+### Carrier Board Pinouts
 
-TBD Step Files
-TBD Location of Screw Holes
+For Carrier Board Pinouts, refer to the [Carrier Board Pinout Page](echopilot_carrier_pinout.md).
+
+## Mechanical STEP Files
+
+[EchoPilot AI 3D Model (STEP) File Download](https://echomav.com/mechanical/echopilot_ai_r0.step)
+
+[EchoPilot AI Universal Carrier Board 3D model (STEP) File Download](https://echomav.com/mechanical/echopilot_ai_carrier_r0.step)
 
 ## Notes on Vibration Isolation
 
-TBD
+Many commercial autopilots use foam vibration isolation on a daughterboard containing the IMUs. You'll notice the EchoPilot AI does not use this type of design and the IMUs are mounted directly to the circuit board. The reason for this is that we feel better vibration isolation can be achieved (if required) by leveraging the mass of the entire EchoPilot system (carrier board, main board and Jetson SOM) rather than the very small mass of an IMU daugterboard. For the types of vibrations encountered by large-prop multi-rotors and piston-based engines (50-90 Hz), the total mass of the EchoPilot system mounted on vibration silicone isolators or wire rope isolators are very effective. This design has the added benefits of protecting critical electronics from exposure to continuous vibrations.  
+
+> Note that for small and medium multi-rotors and electric planes, electric quadplanes and other vehicle types, vibration isolation is very rarely needed. 
+
+## Using the SD Card
+
+The SD card supports hot-plugging. When connected, `/dev/mmcblk1p1` should be found by the operating system. To mount this drive to a directory (e.g., `/sdcard`) use the following command:
+```
+mkdir /sdcard
+sudo mount /dev/mmcblk1p1 /sdcard
+```
+To unmount it:
+```
+sudo umount /dev/mmcblk1p1 /sdcard
+```
 
 ## Interfacing the Jetson to the Autopilot
 
