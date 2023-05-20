@@ -4,7 +4,11 @@ edit_uri: edit/master/docs/
 repo_name: echomav/docs
 nav:
     - Home: index.md
-    - EchoPilot AI: echopilot_ai.md
+    - EchoPilot AI: 
+        - Hardware Overview: echopilot_ai.md
+        - Build PX4: build_px4.md
+        - Build ArduPilot: build_ardupilot.md
+        - Build Linux for Tegra: compile_l4t.md
 theme:
   name: material
   logo: assets/echomav-small-black-bg.png
