@@ -141,20 +141,20 @@ Mating Connector: FX23L-80P-0.5SV8 (8mm standoff, also available in 10 and 12mm)
 | 55         |   NA        |   NA      |  NC                 |
 | 56         |   Pwr        |   GND      |  GND                 |
 | 57         |   Pwr        |   5V      |  VBUS5                 |
-| 58         |    IO       |  Diff Signal       |  USB5 D+                 |
-| 59         |   IO        |  Diff Signal       |  USB5 D-                 |
+| 58         |    IO       |  Diff Signal       |  USB_4 D+                 |
+| 59         |   IO        |  Diff Signal       |  USB_4 D-                 |
 | 60         |   Pwr        |   GND      |  GND                 |
 | 61         |   Pwr        |    5V     |  VBUS4                 |
-| 62         |    IO       |   Diff Signal      |  USB4 D+                 |
-| 63         |    IO       |   Diff Signal      |  USB4 D-                 |
+| 62         |    IO       |   Diff Signal      |  USB_3 D+                 |
+| 63         |    IO       |   Diff Signal      |  USB_3 D-                 |
 | 64         |    Pwr       |    GND     |  GND                 |
 | 65         |    Pwr       |     5V    |  VBUS3                 |
-| 66         |    IO       |   Diff Signal      |  USB3 D+                 |
-| 67         |    IO       |   Diff Signal      |  USB3 D-                 |
+| 66         |    IO       |   Diff Signal      |  USB_2 D+                 |
+| 67         |    IO       |   Diff Signal      |  USB_2 D-                 |
 | 68         |    Pwr       |   GND      |  GND                 |
 | 69         |    Pwr OUT       |   5V      |  VBUS2                 |
-| 70         |    IO      |   Diff Signal      |  USB2 D+            |
-| 71         |    IO       |  Diff Signal       |  USB2 D-                 |
+| 70         |    IO      |   Diff Signal      |  USB_1 D+            |
+| 71         |    IO       |  Diff Signal       |  USB_1 D-                 |
 | 72         |    Pwr       |   GND      |  GND                 |
 | 73         |    I       |   3.3V      |  IRIDIUM NA                 |
 | 74         |    I       |   3.3V      |  IRIDIUM RING                 |

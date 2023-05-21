@@ -39,33 +39,20 @@ make px4_sitl
 ```
 If the build completes without errors, congrats! If there are errors, you will need to resolve them before proceeding.
 ### Build PX4 for the EchoPilot AI
-First obtain the hardware board files. Select the tab below based on your board version and download/extract the board files. The revision number can be found on the top side of the EchoPilot AI board near the fan connector:
+First obtain the hardware board files from the [EchoPilot AI BSP](https://github.com/EchoMAV/echopilot_ai_bsp) repo and checkout the appropriate branch matching the hardware revision of you EchoPilot AI. The HW Revision is marked on the board silkscreen near the FAN connector:
 
-=== "Rev 0"
+```
+git clone https://github.com/EchoMAV/echopilot_ai_bsp
+cd echopilot_ai_bsp
+git checkout board_revision_0
+```
+> Be sure you checked out the appropriate branch matching your EchoPilot AI hardware revision!
 
-    ```
-    cd /tmp
-    wget https://echomav.com/px4/echopilot_px4_rev0.tar.gz
-    ```
-    Extract files from the archive into the ```~/PX4-Autopilot/boards``` folder
-    ```
-    tar -xvf echopilot_px4.rev0.tar.gz -C ~/PX4-Autopilot/boards/
-    cd ~/PX4-Autopilot
-    ```
-
-=== "Rev 1"
-
-    ```
-    cd /tmp
-    wget https://echomav.com/px4/echopilot_px4_rev1.tar.gz
-    ```
-    Extract files from the archive into the ```~/PX4-Autopilot/boards``` folder
-    ```
-    tar -xvf echopilot_px4.rev1.tar.gz -C ~/PX4-Autopilot/boards/
-    cd ~/PX4-Autopilot
-    ```
-
-At this point, you should have the hardware files located in ```~/Px4-Autopilot/boards/echomav/echopilot-ai/```. To build firmware targeting this board, use the command:
+Install the PX4 board definition files into the correct folder using the provided `install_px4.sh` script:
+```
+./install_px4.sh ~/PX4-Autopilot
+```
+At this point, you should have the hardware files located in ```~/PX4-Autopilot/boards/echomav/echopilot-ai/```. To build firmware targeting this board, use the command:
 ```
 make echomav_echopilot-ai
 ```
