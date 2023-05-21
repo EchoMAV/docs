@@ -268,38 +268,253 @@ Mating Connector: FX23L-80S-0.5SV
 | 83         |  Pwr         |   GND      |    GND               |
 | 84         |  Pwr         |   GND      |    GND               |
 
-#### +5V Out
+#### +5V Out (J11)
+This connector provides a spare regulated +5V output. It is protected by a reverse polarity diode and a self-resetting fuse (060#L100SLYR)  
 
-#### +VBattery
+Connector: J11, Part Number: SM02B-GHS-TB(LF)(SN)  
+Mating Connector: GHR-02V-S   
 
-#### GPS/Compass
+Pin Number   | Direction     | Voltage       | Pin Description
+------------ | ------------- | ------------  | ------------
+1        | Pwr            | +5V          | +5V Out
+2        | Pwr            | GND         | GND
 
-#### Radio In
+#### +VBattery (J12)
+This connector provides a spare raw battery voltage output (what is input to J27, XT30 power in). It is protected by a reverse polarity diode.
 
-#### Power In
+Connector: J12, Part Number: SM02B-GHS-TB(LF)(SN)  
+Mating Connector: GHR-02V-S   
+
+Pin Number   | Direction     | Voltage       | Pin Description
+------------ | ------------- | ------------  | ------------
+1        | Pwr            | +VBATT          | +VBATT Out
+2        | Pwr            | +VBATT         | +VBATT Out
+3        | Pwr            | GND          | GND
+4        | Pwr            | GND         | GND
+
+#### GPS/Compass (J20)
+This connector provides a [Pixhawk standard](https://github.com/pixhawk/Pixhawk-Standards/blob/master/DS-009%20Pixhawk%20Connector%20Standard.pdf) GPS/Compass connection.
+
+Connector: J20, Part Number: SM10B-GHS-TB(LF)(SN)  
+Mating Connector: GHR-10V-S   
+
+Pin Number   | Direction     | Voltage       | Pin Description
+------------ | ------------- | ------------  | ------------
+1        | Pwr            | +5V          | +5V Out (Protected)
+2        | O            | +3.3V         | GPS TX
+3        | I            | +3.3V          | GPS Rx
+4        | O            | +3.3V         | I2C 1 SCL
+5        | IO            | +3.3V          | I2C 1 SDA
+6        | I            | +3.3V         | Safety Switch In
+7        | O            | +3.3V          | Safety Switch LED Out
+8        | Pwr            | +3.3V         | Safey VDD 3.3V
+9        | Pwr            | +5V          | Buzzer Out
+10        | Pwr            | GND         | GND
+
+#### Radio In (J16)
+This connector provides a optional radio input in to the autopilot. A wide range of radio protocols are supported. Please see [here](https://ardupilot.org/copter/docs/common-rc-systems.html) for example.
+
+Connector: J16, Part Number: SM03B-GHS-TB(LF)(SN)   
+Mating Connector: GHR-03V-S   
+
+Pin Number   | Direction     | Voltage       | Pin Description
+------------ | ------------- | ------------  | ------------
+1        | Pwr            | +3.3V          | RC In
+2        | I            | +5V         | +5V Out (Protected)
+3        | Pwr            | GND         | GND
+
+#### Power In (J27)
+This connector provides power input to the system. The power supply should be between 7-56 VDC and should be capable of supply up to 4A.
+
+Connector: J27, Part Number: XT30PW-M  
+Mating Connector: XT30U-F  
+
+Pin Number   | Direction     | Voltage       | Pin Description
+------------ | ------------- | ------------  | ------------
+1        | Pwr            | GND          | GND
+2        | Pwr            | +7-56VDC         | +V Input
 
 ### Bottom Side Carrier Board
 
 ![Bottom Side Components](assets/bottom-side-labels-carrier-board.png)
 
-#### MIPI Cam 2
+#### MIPI Cam 2 (J14)
+This connector provides a CSI/MIPI Camera connection, following the Raspberry Pi 15-pin 1mm spacing FFC standard.
 
-#### MIPI Cam 1
+Connector: J14, Part Number: 1-84952-5
+Mating Connector: FFC Cable, 15 pos, 1mm pin spacing   
 
-#### CAN 2 (FMU)
+Pin Number   | Direction     | Voltage       | Pin Description
+------------ | ------------- | ------------  | ------------
+1        | Pwr            | GND          | GND
+2        | IO            | Diff Signal        | CAM1_D0-
+3        | IO            | Diff Signal          | CAM1_D0+
+4        | Pwr            | GND         | GND
+5        | IO            | Diff Signal          | CAM1_D1-
+6        | IO            | Diff Signal         | CAM1_D1+
+7        | Pwr            | GND          | GND
+8        | O            | Diff Signal         | CAM1_CLK-
+9        | O            | Diff Signal          | CAM1_CLK+
+10        | Pwr            | GND         | GND
+11        | IO            | +3.3V          | CAM1_GPIO
+12       | O            | +3.3V         | CAM1_MCLK
+13        | O            | +3.3V          | CAM1_SCL0
+14        | IO            | +3.3V         | CAM1_SDAO
+15        | Pwr            | +3.3V          | +3.3V
 
-#### Telem1
 
-#### I2C 2 (FMU)
+#### MIPI Cam 1 (J8)
+This connector provides a CSI/MIPI Camera connection, following the Raspberry Pi 15-pin 1mm spacing FFC standard.
+
+Connector: J8, Part Number: 1-84952-5
+Mating Connector: FFC Cable, 15 pos, 1mm pin spacing   
+
+Pin Number   | Direction     | Voltage       | Pin Description
+------------ | ------------- | ------------  | ------------
+1        | Pwr            | GND          | GND
+2        | IO            | Diff Signal        | CAM0_D0-
+3        | IO            | Diff Signal          | CAM0_D0+
+4        | Pwr            | GND         | GND
+5        | IO            | Diff Signal          | CAM0_D1-
+6        | IO            | Diff Signal         | CAM0_D1+
+7        | Pwr            | GND          | GND
+8        | O            | Diff Signal         | CAM0_CLK-
+9        | O            | Diff Signal          | CAM0_CLK+
+10        | Pwr            | GND         | GND
+11        | IO            | +3.3V          | CAM0_GPIO
+12       | O            | +3.3V         | CAM0_MCLK
+13        | O            | +3.3V          | CAM0_SCL0
+14        | IO            | +3.3V         | CAM0_SDAO
+15        | Pwr            | +3.3V          | +3.3V
+
+#### Jetson Console (J7)
+This is a USB-C connector following USB 2.0 specifications. An FTDI USB to UART IC ((FT231XQ-R) is used to provide UART access to the Jetson. The FTDI chip is powered by the USB bus.
+
+Connector: J7, Part Number: 12401610E4#2A  
+Mating Connector: Standard USB-C cable. Does not need to be USB 3 compliant.
+
+#### CAN 2 (FMU) (J17)
+This connector provides a [Pixhawk standard](https://github.com/pixhawk/Pixhawk-Standards/blob/master/DS-009%20Pixhawk%20Connector%20Standard.pdf) CAN connection from the FMU (CAN 2).
+
+Connector: J7, Part Number: SM04B-GHS-TB(LF)(SN)  
+Mating Connector: GHR-04V-S     
+
+Pin Number   | Direction     | Voltage       | Pin Description
+------------ | ------------- | ------------  | ------------
+1        | Pwr            | +5V          | +5V Out (Protected)
+2        | IO            | Diff Signal        | CAN_2+ (FMU)
+3        | IO            | Diff Signal          | CAN_2- (FMU)
+4        | Pwr            | GND         | GND
+
+
+#### Telem1 (J18)
+This connector provides a [Pixhawk standard](https://github.com/pixhawk/Pixhawk-Standards/blob/master/DS-009%20Pixhawk%20Connector%20Standard.pdf) TELEM connection from the FMU (TELEM1).
+
+Connector: J18, Part Number: SM06B-GHS-TB(LF)(SN)  
+Mating Connector: GHR-06V-S     
+
+Pin Number   | Direction     | Voltage       | Pin Description
+------------ | ------------- | ------------  | ------------
+1        | Pwr            | +5V          | +5V Out (Protected)
+2        | O            | +3.3V        | Telem1 TX
+3        | I            | +3.3V          | Telem1 RX
+4        | O            | +3.3V        | Telem1 CTS
+5        | I            | +3.3V          | Telem1 RTS
+6        | Pwr            | GND         | GND
+
+#### I2C 2 (FMU) (J25)
+This connector provides a [Pixhawk standard](https://github.com/pixhawk/Pixhawk-Standards/blob/master/DS-009%20Pixhawk%20Connector%20Standard.pdf) I2C connection from the FMU (I2C 2).
+
+Connector: J25, Part Number: SM04B-GHS-TB(LF)(SN)  
+Mating Connector: GHR-04V-S     
+
+Pin Number   | Direction     | Voltage       | Pin Description
+------------ | ------------- | ------------  | ------------
+1        | Pwr            | +5V          | +5V Out (Protected)
+2        | O            | +3.3V        | I2C_2 SCL (FMU)
+3        | IO            | +3.3V          | I2C_2 SDA (FMU)
+4        | Pwr            | GND         | GND
 
 #### V/I Sense
+This connector provides voltage and current sense input, for use with an off-board current sensor monitor. These signals should be scaled to 0-3.3V or damage may occur. Your autopilot firmware will allow you to enter scaling factors for proper display of voltage/current on a GCS system. 
 
-#### CAN 1 (FMU)
+Connector: J13, Part Number: SM03B-GHS-TB(LF)(SN)  
+Mating Connector: GHR-03V-S     
 
-#### USB4
+Pin Number   | Direction     | Voltage       | Pin Description
+------------ | ------------- | ------------  | ------------
+1        | I            | +3.3V          | Voltage Sense
+2        | I            | +3.3V        | Current Sense
+3        | Pwr            | GND         | GND
 
-#### USB3
+#### CAN 1 (FMU) (J19)
+This connector provides a [Pixhawk standard](https://github.com/pixhawk/Pixhawk-Standards/blob/master/DS-009%20Pixhawk%20Connector%20Standard.pdf) CAN connection from the FMU (CAN 1).
 
-#### USB2
+Connector: J19, Part Number: SM04B-GHS-TB(LF)(SN)  
+Mating Connector: GHR-04V-S     
 
-#### USB1
+Pin Number   | Direction     | Voltage       | Pin Description
+------------ | ------------- | ------------  | ------------
+1        | Pwr            | +5V          | +5V Out (Protected)
+2        | IO            | Diff Signal        | CAN_1+ (Jetson)
+3        | IO            | Diff Signal          | CAN_1- (Jetson)
+4        | Pwr            | GND         | GND
+
+
+#### USB4 (J24)
+This connector provides USB 2.0 connectivity from the Jetson SOM.
+
+Connector: J24, Part Number: SM04B-GHS-TB(LF)(SN)  
+Mating Connector: GHR-04V-S     
+
+Pin Number   | Direction     | Voltage       | Pin Description
+------------ | ------------- | ------------  | ------------
+1        | Pwr            | +5V          | +5V VBUS (Protected)
+2        | IO            | Diff Signal        | USB4_D- (Jetson)
+3        | IO            | Diff Signal          | USB4_D+ (Jetson)
+4        | Pwr            | GND         | GND
+
+#### USB3 (J23)
+This connector provides USB 2.0 connectivity from the Jetson SOM.
+
+Connector: J23, Part Number: SM04B-GHS-TB(LF)(SN)  
+Mating Connector: GHR-04V-S     
+
+Pin Number   | Direction     | Voltage       | Pin Description
+------------ | ------------- | ------------  | ------------
+1        | Pwr            | +5V          | +5V VBUS (Protected)
+2        | IO            | Diff Signal        | USB3_D- (Jetson)
+3        | IO            | Diff Signal          | USB3_D+ (Jetson)
+4        | Pwr            | GND         | GND
+
+#### USB2 (J22)
+This connector provides USB 2.0 connectivity from the Jetson SOM.
+
+Connector: J22, Part Number: SM04B-GHS-TB(LF)(SN)  
+Mating Connector: GHR-04V-S     
+
+Pin Number   | Direction     | Voltage       | Pin Description
+------------ | ------------- | ------------  | ------------
+1        | Pwr            | +5V          | +5V VBUS (Protected)
+2        | IO            | Diff Signal        | USB2_D- (Jetson)
+3        | IO            | Diff Signal          | USB2_D+ (Jetson)
+4        | Pwr            | GND         | GND
+
+#### USB1 (J21)
+This connector provides USB 2.0 connectivity from the Jetson SOM.
+
+Connector: J21, Part Number: SM04B-GHS-TB(LF)(SN)  
+Mating Connector: GHR-04V-S     
+
+Pin Number   | Direction     | Voltage       | Pin Description
+------------ | ------------- | ------------  | ------------
+1        | Pwr            | +5V          | +5V VBUS (Protected)
+2        | IO            | Diff Signal        | USB1_D- (Jetson)
+3        | IO            | Diff Signal          | USB1_D+ (Jetson)
+4        | Pwr            | GND         | GND
+
+#### Jetson Console (J29)
+This is a USB-C connector following USB 2.0 specifications. An FTDI USB to UART IC (FT231XQ-R) is used to provide UART access to the optional VectorNav INS. The FTDI chip is powered by the USB bus.
+
+Connector: J29, Part Number: 12401610E4#2A  
+Mating Connector: Standard USB-C cable. Does not need to be USB 3 compliant.

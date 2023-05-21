@@ -58,6 +58,18 @@ PIN 2        | Pwr            | +5V          | Fan Power
 PIN 3        | I           | +5V          | Fan Tachometer Signal
 PIN 4        | O            | +5V         | Fan PWM Signal
 
+#### FMU USB (J7)
+This is a USB-C connector following USB 2.0 specifications. It provides access to the autopilot (FMU) via the main STM32H7 processor. Connect to this port for configuation of the autopilot or autopilot firmware updates.
+
+Connector: J7, Part Number: 12401610E4#2A  
+Mating Connector: Standard USB-C cable. Does not need to be USB 3 compliant.
+
+#### Jetson USB 3.1 SS (J31)
+This is a USB-C connector following USB 3.1 SS specifications. This provides a high-speed USB connection to the Jetson SOM. We recommended using this connector for 4G/5G modems, USB drives or other peripherals needing high speed access. For lower-speed peripherals, 4 USB 2.0 ports are available on the Carrier Board.
+
+Connector: J31, Part Number: 12401610E4#2A  
+Mating Connector: USB-C 3.1 compliant cable.
+
 ### Bottom Side EchoPilot AI
 
 ![Bottom Side Components](assets/bottom-side-labels.png)
