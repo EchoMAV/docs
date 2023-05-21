@@ -54,6 +54,9 @@ These instructions assume you have a Jetson module that is already flashed. If y
 1. Assemble the EchoPilot AI board with a Carrier Board, using 8mm standoffs between the two boards.
 2. If a Jetson Module is not already installed in the EchoPilot AI, install the module now.
 3. Attached a USB cable between your host computer and J7 (Console) on the Carrier Board
+
+![Console USB Connection](assets/usb-to-echopilot-carrier.png)
+
 4. In step 3, your host computer should have enumerated a virtual comm port. You will now need to find the name of the port.
 > **On Windows:** Open Device Manager (Start → Control Panel → Hardware and Sound → Device Manager) Look in the Device Manager list, open the category "Ports", and note the COM port added **USB Serial Port (COM?)** (e.g., COM10).  
 > **On Linux:** Run ```dmesg -w``` and then plug in unplug and replug in the USB cable. You should see the name of the device added, typically ```FTDI USB Serial device converter now attached to ttyUSB?``` (e.g., ttyUSB0). 
@@ -63,7 +66,7 @@ These instructions assume you have a Jetson module that is already flashed. If y
 6. Power the Carrier Board with 7-56VDC source capable of supplying up to 4A.
 7. You should now see the boot messages in your console, and once boot is complete, you will see a login prompt.
 > **IMPORTANT!:** The default username is **echopilot** and the default password is **echopilot**
-8. At this point you are logged into the Jetson and can begin configuring the network, installing applications, etc.
+8. At this point you are logged into the Jetson and can begin [configuring the network](#configure-the-network), installing applications, etc.
  
 ### Connecting to the FMU via the USB connector
 
@@ -74,27 +77,22 @@ These instructions assume you have a Jetson module that is already flashed. If y
 
 ## Board Components and Connectors
 
-### Top Side EchoPilot AI
+### EchoPilot AI
 
 ![Top Side Components](assets/top-side-labels.png)
 
-### Bottom Side EchoPilot AI
-
 ![Bottom Side Components](assets/bottom-side-labels.png)
 
-### EchoPilot AI Pinouts
 
-For EchoPilot AI Pinouts, refer to the [EchoPilot AI Pinout Page](echopilot_ai_pinout.md).
+### Carrier Board
 
-### Top Side Carrier Board
+![Top Side Components](assets/top-side-labels-carrier-board.png)
 
-TBD
+![Bottom Side Components](assets/bottom-side-labels-carrier-board.png)
 
-### Bottom Side Carrier Board
+### Pinouts
 
-TBD
-
-### Carrier Board Pinouts
+For EchoPilot AI Pinouts, refer to the [EchoPilot AI Pinout Page](echopilot_ai_pinout.md).  
 
 For Carrier Board Pinouts, refer to the [Carrier Board Pinout Page](echopilot_carrier_pinout.md).
 
@@ -122,6 +120,63 @@ To unmount it:
 sudo umount /dev/mmcblk1p1 /sdcard
 ```
 
+## Configure the Network
+
+Linux for Tegra uses networkmanager (`nmcli`) for its network interfaces. Below you will find a few commands for common network tasks.
+
+Show connections:    
+```nmcli con show```
+
+Delete the default connection ("Wired connection 1") and set up a static connection called `static-eth0` with an IP of 172.20.1.100, a netmask of 255.255.0.0 and a gateway of 172.20.2.100:    
+```
+sudo nmcli c delete "Wired connection 1"
+sudo nmcli c add con-name static-eth0 ifname eth0 type ethernet ip4 172.20.1.20/16 gw4 172.20.2.100
+sudo nmcli c up static-eth0
+```
+
+Change IP address of `static-eth0` connection to `192.168.1.4/16`:    
+```
+sudo nmcli con mod static-eth0 ipv4.address 192.168.1.1/16
+```
+
+Change gateway of `static-eth0` connection to `192.168.1.1`:    
+```
+sudo nmcli con mod static-eth0 ipv4.gateway 192.168.1.1
+```
+
+Change dns of `static-eth0` connection to `8.8.8.8`:       
+```
+sudo nmcli con mod static-eth0 ipv4.dns "8.8.8.8"
+```
+
+Take down/up of `static-eth0`:      
+```
+sudo nmcli con down static-eth0
+sudo nmcli con up static-eth0
+```
+Delete `static-eth0` connection:    
+```
+sudo nmcli c delete "static-eth0"
+```
+
+Add new connection called `static-eth0` with IP `172.20.2.22/16` and gateway `172.20.2.100`:    
+```
+sudo nmcli c add con-name static-eth0 ifname eth0 type ethernet ip4 172.20.2.22/16 gw4 172.20.2.100
+```
+
+Add a persistent route so that multicast traffic to 224.x.x.x goes to the `static-eth0` connection:  
+```
+sudo nmcli con mod static-eth0 +ipv4.routes "224.0.0.0/8"
+```
+
+Change eth0 to enable remove static IP and enable DHCP (In this case, it would make more sense to delete the connection since it is named `static-eth0` and call it something else, but for edification:
+```
+sudo nmcli con mod static-eth0 ipv4.address ""
+sudo nmcli con mod static-eth0 ipv4.method auto
+sudo nmcli con down static-eth0
+sudo nmcli con up static-eth0
+```
+
 ## Interfacing the Jetson to the Autopilot
 
 The autopilot has a high-speed serial interface between the STM32H7 and the Jetson SOM. The Jetson UART1 (pins 203, 205) are connected to the autopilot's USART3 (Typically Telem2). To enable [MAVLink](https://mavlink.io/en/) data, you will need to check and/or modify PX4/Ardupilot parameters to ensure that Telem2 is set to MAVLink and set the baud rate to the desired value. A typical baud rate is 500,000 but you can use any baud rate you wish as long as the application receiving MAVLink on the Jetson is configured to match. 
@@ -133,3 +188,12 @@ There are many options available for MAVLink routing and handling. One typical a
 ```
 $ mavlink-routerd -e 192.168.1.10:14550 /dev/ttyTHS2:5000000
 ```
+
+If you have issues accessing /dev/ttyTHSX, please disable `nvgetty` and ensure you are a memeber of the `dialout` group:
+```
+sudo systemctl stop nvgetty
+sudo systemctl disable nvgetty
+sudo usermod -aG dialout $USER
+```
+Reboot to apply changes.
+

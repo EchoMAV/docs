@@ -4,10 +4,6 @@
 
 ![Top Side Components](assets/top-side-labels.png)
 
-### Bottom Side EchoPilot AI
-
-![Bottom Side Components](assets/bottom-side-labels.png)
-
 #### Debug Power In (J8)
 This connector is **not normally used**. It exists only to power the EchoPilot AI without a carrier board attached.
 
@@ -34,35 +30,7 @@ PIN 4        | IO            | +3.3V         | FMU SWDIO
 PIN 5        | O            | +3.3V          | FMU SWCLK
 PIN 6        | Pwr           | GND          | Gnd
 
-#### IO Debug (J13)
-This connector is **not normally used** by the customer. It is used during board setup to load bootloader firmware on the IOMCU.
-
-Connector: J13, Part Number: SM06B-SRSS-TB(LF)(SN)  
-Mating Connector: SHR-06V-S-B
-
-Pin Number   | Direction     | Voltage       | Pin Description
------------- | ------------- | ------------  | ------------
-PIN 1        | Pwr            | +3.3V           | 3.3V Power
-PIN 2        | O            | +3.3V          | IOMCU UART1 TX
-PIN 3        | I            | +3.3V          | IOMCU UART1 RX
-PIN 4        | IO            | +3.3V         | IOMCU SWDIO
-PIN 5        | O            | +3.3V          | IOMCU SWCLK
-PIN 6        | Pwr           | GND          | Gnd
-
-#### Jetson Debug (J25)
-This connector is used to flash new firmware to the Jetson SOM.
-
-Connector: J25, Part Number: SM04B-GHS-TB(LF)(SN)  
-Mating Connector: GHR-04V-S
-
-Pin Number   | Direction     | Voltage       | Pin Description
------------- | ------------- | ------------  | ------------
-PIN 1        | Pwr            | +5.0V           | VBus Detect
-PIN 2        | IO            | Diff Signal          | USB D-
-PIN 3        | IO            | Diff Signal          | USB D+
-PIN 4        | Pwr            | GND         | Gnd
-
-#### ESO32 (Remote ID) Program/Debug (J11)
+#### ESP32 (Remote ID) Program/Debug (J11)
 This connector is used to flash new firmware to the ESP32 for the RemoteID subsystem.
 
 Connector: J11, Part Number: NA  
@@ -89,6 +57,10 @@ PIN 1        | Pwr            | GND          | Gnd
 PIN 2        | Pwr            | +5V          | Fan Power
 PIN 3        | I           | +5V          | Fan Tachometer Signal
 PIN 4        | O            | +5V         | Fan PWM Signal
+
+### Bottom Side EchoPilot AI
+
+![Bottom Side Components](assets/bottom-side-labels.png)
 
 #### Board to Board Jetson (J5)
 This connector handles the Jetson-related board to board signals between the EchoPilot AI and a carrier board.
@@ -140,10 +112,10 @@ Mating Connector: FX23L-80P-0.5SV8 (8mm standoff, also available in 10 and 12mm)
 | 38         | IO          |  1.8V       | GPIO10                  |
 | 39         |   Pwr        |  GND       | GND                  |
 | 40         |   O        |   3.3V      | IRIDIUM RX UART                  |
-| 41         |   IO        |  Diff Signal       |  ETH0 TX-                 |
-| 42         |   IO        |   Diff Signal      |  ETH0 TX+                 |
-| 43         |   IO        |   Diff Signal      |  ETH0 RX-                 |
-| 44         |   IO        |   Diff Signal      |  ETH0 RX+                 |
+| 41         |   IO        |  Diff Signal       |  ETH1 TX-                 |
+| 42         |   IO        |   Diff Signal      |  ETH1 TX+                 |
+| 43         |   IO        |   Diff Signal      |  ETH1 RX-                 |
+| 44         |   IO        |   Diff Signal      |  ETH1 RX+                 |
 | 45         |   Pwr        |   GND      |  GND                 |
 | 46         |   IO        |   Diff Signal      |  ETH2 RX+                 |
 | 47         |   IO        |   Diff Signal      |  ETH2 RX-                 |
@@ -280,3 +252,30 @@ Mating Connector: FX23L-80P-0.5SV8 (8mm standoff, also available in 10 and 12mm)
 | 83         |  Pwr         |   GND      |    GND               |
 | 84         |  Pwr         |   GND      |    GND               |
 
+#### IO Debug (J13)
+This connector is **not normally used** by the customer. It is used during board setup to load bootloader firmware on the IOMCU.
+
+Connector: J13, Part Number: SM06B-SRSS-TB(LF)(SN)  
+Mating Connector: SHR-06V-S-B
+
+Pin Number   | Direction     | Voltage       | Pin Description
+------------ | ------------- | ------------  | ------------
+PIN 1        | Pwr            | +3.3V           | 3.3V Power
+PIN 2        | O            | +3.3V          | IOMCU UART1 TX
+PIN 3        | I            | +3.3V          | IOMCU UART1 RX
+PIN 4        | IO            | +3.3V         | IOMCU SWDIO
+PIN 5        | O            | +3.3V          | IOMCU SWCLK
+PIN 6        | Pwr           | GND          | Gnd
+
+#### Jetson Debug (J25)
+This connector is used to flash new firmware to the Jetson SOM.
+
+Connector: J25, Part Number: SM04B-GHS-TB(LF)(SN)  
+Mating Connector: GHR-04V-S
+
+Pin Number   | Direction     | Voltage       | Pin Description
+------------ | ------------- | ------------  | ------------
+PIN 1        | Pwr            | +5.0V           | VBus Detect
+PIN 2        | IO            | Diff Signal          | USB D-
+PIN 3        | IO            | Diff Signal          | USB D+
+PIN 4        | Pwr            | GND         | Gnd
