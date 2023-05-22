@@ -200,5 +200,19 @@ sudo systemctl stop nvgetty
 sudo systemctl disable nvgetty
 sudo usermod -aG dialout $USER
 ```
-Reboot to apply changes.
+!!! note
+    Reboot to apply changes.
 
+## Remote ID Subsystem
+
+The Remote ID system is based on an ESP32-C3 and is designed to work with the [ArduRemoteID](https://github.com/ArduPilot/ArduRemoteID) project and Open Drone ID standards.
+
+ArduRemoteID is is an implementation of a MAVLink and DroneCAN OpenDroneID transmitter. It aims to provide a transmitter solution for the FAA standard RemoteID requirement, meeting the transmitter component of the ASTM F3586-22 Means of Compliance. It also aims to be compliant with the RemoteID regulation in the EU.
+
+It is the responsibility of the user to configure the ArduRemoteID firmware in a way that it is compliant with the local RemoteID regulation. For instance, in the USA it is mandatory that UAV manufacturers submit a DoC (Declaration of Conformance) to the FAA where they state that their product is compliant with the RemoteID regulation.
+
+To flash ArduRemote ID to the ESPS32-C3, you will need a TC2030-USB-NL cable from [tag-connect.com](https://www.tag-connect.com) and follow the flashing instructions from the [AruRemoteID](https://github.com/ArduPilot/ArduRemoteID#flashing) project.
+
+To configure the Remote ID system, parameters can be accessed from DroneCAN (via Mission Planner or DroneCAN GUI) or with MAVLink. To use DroneCAN, [SLCAN will need to be enabled](https://ardupilot.org/copter/docs/common-slcan-f7h7.html#common-slcan-f7h7) to allow the autopilot to connect to the CANBUS through USB.  
+
+For making changes to DroneCAN devices, see the instructions [here].(https://ardupilot.org/copter/docs/common-slcan-f7h7.html#making-changes-to-dronecan-devices)
