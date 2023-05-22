@@ -54,26 +54,29 @@ These instructions assume you have a Jetson module that is already flashed. If y
 1. Assemble the EchoPilot AI board with a Carrier Board, using 8mm standoffs between the two boards.
 2. If a Jetson Module is not already installed in the EchoPilot AI, install the module now.
 3. Attached a USB cable between your host computer and J7 (Console) on the Carrier Board
-
 ![Console USB Connection](assets/usb-to-echopilot-carrier.png)
-
 4. In step 3, your host computer should have enumerated a virtual comm port. You will now need to find the name of the port.
-> **On Windows:** Open Device Manager (Start → Control Panel → Hardware and Sound → Device Manager) Look in the Device Manager list, open the category "Ports", and note the COM port added **USB Serial Port (COM?)** (e.g., COM10).  
-> **On Linux:** Run ```dmesg -w``` and then plug in unplug and replug in the USB cable. You should see the name of the device added, typically ```FTDI USB Serial device converter now attached to ttyUSB?``` (e.g., ttyUSB0). 
-5. Use a terminal program to connect to the Jetson's console at 115200 baud, 8N1. 
->**On Windows:** We recommend [Putty](https://www.putty.org/) or [TeraTerm](https://osdn.net/projects/ttssh2/releases/).  
->**On Linux:** We recommend Picocom. Install with ```sudo apt-get install picocom```. Use with ```picocom /dev/ttyUSB? -b 115200```. To exit picocom, use ```Ctrl-a Ctrl-x```.
-6. Power the Carrier Board with 7-56VDC source capable of supplying up to 4A.
-7. You should now see the boot messages in your console, and once boot is complete, you will see a login prompt.
-> **IMPORTANT!:** The default username is **echopilot** and the default password is **echopilot**
-8. At this point you are logged into the Jetson and can begin [configuring the network](#configure-the-network), installing applications, etc.
+!!! info
+    **On Windows:** Open Device Manager (Start → Control Panel → Hardware and Sound → Device Manager) Look in the Device Manager list, open the category "Ports", and note the COM port added **USB Serial Port (COM?)** (e.g., COM10).  
+    **On Linux:** Run ```dmesg -w``` and then plug in unplug and replug in the USB cable. You should see the name of the device added, typically ```FTDI USB Serial device converter now attached to ttyUSB?``` (e.g., ttyUSB0). 
+Use a terminal program to connect to the Jetson's console at 115200 baud, 8N1. 
+!!! info
+    **On Windows:** We recommend [Putty](https://www.putty.org/) or [TeraTerm](https://osdn.net/projects/ttssh2/releases/).  
+    **On Linux:** We recommend Picocom. Install with ```sudo apt-get install picocom```. Use with ```picocom /dev/ttyUSB? -b 115200```. To exit picocom, use ```Ctrl-a Ctrl-x```.
+Power the Carrier Board with 7-56VDC source capable of supplying up to 4A.
+You should now see the boot messages in your console, and once boot is complete, you will see a login prompt.
+!!! note
+    The default username is **echopilot** and the default password is **echopilot**
+!!! success
+    At this point you are logged into the Jetson and can begin [configuring the network](#configure-the-network), installing applications, etc.
  
 ### Connecting to the FMU via the USB connector
 
 1. Attach a USB cable between the host computer and the **FMU USB** connector (J7).
 2. Start a ground control application on the host computer such as [QGroundControl](https://docs.qgroundcontrol.com/master/en/getting_started/download_and_install.html) or [Mission Planner](https://ardupilot.org/planner/docs/mission-planner-installation.html).
-> **QGroundControl:** Will automatically connect.  
-> **Mission Planner:** Select the appropriate COM port at the top right, 115200, then click CONNECT.
+!!! info
+    **QGroundControl:** Will automatically connect.  
+    **Mission Planner:** Select the appropriate COM port at the top right, 115200, then click CONNECT.
 
 ## Board Components and Connectors
 
@@ -82,7 +85,6 @@ These instructions assume you have a Jetson module that is already flashed. If y
 ![Top Side Components](assets/top-side-labels.png)
 
 ![Bottom Side Components](assets/bottom-side-labels.png)
-
 
 ### Carrier Board
 
@@ -102,11 +104,14 @@ For Carrier Board Pinouts, refer to the [Carrier Board Pinout Page](echopilot_ca
 
 [EchoPilot AI Universal Carrier Board 3D model (STEP) File Download](https://echomav.com/mechanical/echopilot_ai_carrier_r0.step)
 
+[EchoPilot AI PWM Breakout Board 3D model (STEP) File Download](https://echomav.com/mechanical/echopilot_pwm_breakout.step)
+
 ## Notes on Vibration Isolation
 
 Many commercial autopilots use foam vibration isolation on a daughterboard containing the IMUs. You'll notice the EchoPilot AI does not use this type of design and the IMUs are mounted directly to the circuit board. The reason for this is that we feel better vibration isolation can be achieved (if required) by leveraging the mass of the entire EchoPilot system (carrier board, main board and Jetson SOM) rather than the very small mass of an IMU daugterboard. For the types of vibrations encountered by large-prop multi-rotors and piston-based engines (50-90 Hz), the total mass of the EchoPilot system mounted on vibration silicone isolators or wire rope isolators are very effective. This design has the added benefits of protecting critical electronics from exposure to continuous vibrations.  
 
-> Note that for small and medium multi-rotors and electric planes, electric quadplanes and other vehicle types, vibration isolation is very rarely needed. 
+!!! note
+    Note that for small and medium multi-rotors and electric planes, electric quadplanes and other vehicle types, vibration isolation is very rarely needed. 
 
 ## Using the SD Card
 

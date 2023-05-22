@@ -19,11 +19,13 @@ bash ./Tools/setup/ubuntu.sh --no-sim-tools
 ```
 ### Checkout a release
 You can identify a version you wish to build by looking at the release history [https://github.com/PX4/PX4-Autopilot/releases](https://github.com/PX4/PX4-Autopilot/releases). In the example below, we will demonstrate checking out release 1.13  
-> **_NOTE:_**  You can reuse an existing repo rather than cloning a new one if this isn't your first PX4 rodeo. In this case, clean the build environment before proceeding:
-> ```
-> make clean
-> make distclean
-> ```
+!!! info
+    You can reuse an existing repo rather than cloning a new one if this isn't your first PX4 rodeo. In this case, clean the build environment before proceeding:
+    ```
+    make clean
+    make distclean
+    ```
+
 ```
 git fetch origin release/1.13
 git checkout release/1.13
@@ -44,11 +46,12 @@ First obtain the hardware board files from the [EchoPilot AI BSP](https://github
 ```
 git clone https://github.com/EchoMAV/echopilot_ai_bsp
 cd echopilot_ai_bsp
-git checkout board_revision_0
+git checkout board_revision_0   # Change per your hardware
 ```
-> Be sure you checked out the appropriate branch matching your EchoPilot AI hardware revision!
+!!! warning
+    Be sure you checked out the appropriate branch matching your EchoPilot AI hardware revision!
 
-Install the PX4 board definition files into the correct folder using the provided `install_px4.sh` script:
+Use the provided install script `install_px4.sh` to place the PX4 board definition files into the correct folder:
 ```
 ./install_px4.sh ~/PX4-Autopilot
 ```
@@ -57,7 +60,9 @@ At this point, you should have the hardware files located in ```~/PX4-Autopilot/
 make echomav_echopilot-ai
 ```
 The .px4 file will be located in the ```~/PX4-Autopilot/build/echomav_echopilot-ai_default/``` folder. The firmware is now ready to be loaded on the board.  
-> **_NOTE:_** If the EchoPilot AI is plugged in to your host computer, unplug it before proceeding. The board should be totally powered off before proceeding.
+
+!!! info
+    If the EchoPilot AI is plugged in to your host computer, unplug it before proceeding. The board should be totally powered off before proceeding.
 
 ```
 make echomav_echopilot-ai upload
