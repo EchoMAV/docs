@@ -194,7 +194,7 @@ There are many options available for MAVLink routing and handling. One typical a
 $ mavlink-routerd -e 192.168.1.10:14550 /dev/ttyTHS2:5000000
 ```
 
-If you have issues accessing /dev/ttyTHSX, please disable `nvgetty` and ensure you are a memeber of the `dialout` group:
+If you have issues accessing `/dev/ttyTHSX`, please disable `nvgetty` and ensure you are a member of the `dialout` group:
 ```
 sudo systemctl stop nvgetty
 sudo systemctl disable nvgetty
