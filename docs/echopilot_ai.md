@@ -45,7 +45,7 @@ This design philosophy achieves multiple goals:
 
 ### Accessing the Jetson via the console
 
-These instructions assume you have a Jetson module that is already flashed. If you have a new Jetson module that is not flashed, please see [Flashing a Jetson](#flashing-a-jetson-module-using-the-echopilot-ai) instructions.
+These instructions assume you have a Jetson module that is already flashed. If you have a new Jetson module that is not flashed, please see [Building and Flashing a Jetson with L4T](/compile_l4t) instructions.
 
 !!! WARNING
 
