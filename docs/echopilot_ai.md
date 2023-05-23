@@ -63,7 +63,9 @@ Use a terminal program to connect to the Jetson's console at 115200 baud, 8N1.
 !!! info
     **On Windows:** We recommend [Putty](https://www.putty.org/) or [TeraTerm](https://osdn.net/projects/ttssh2/releases/).  
     **On Linux:** We recommend Picocom. Install with ```sudo apt-get install picocom```. Use with ```picocom /dev/ttyUSB? -b 115200```. To exit picocom, use ```Ctrl-a Ctrl-x```.
-Power the Carrier Board with 7-56VDC source capable of supplying up to 4A.
+Power the Carrier Board with 7-56VDC source capable of supplying up to **4A**.
+!!! warning
+    If using a bench supply with over-current protection, we recommend turning it **OFF**. The boot process requires short bursts of high current and over-current protection on some supplies will result in a failed boot.
 You should now see the boot messages in your console, and once boot is complete, you will see a login prompt.
 !!! note
     The default username is **echopilot** and the default password is **echopilot**
