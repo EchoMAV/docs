@@ -31,7 +31,7 @@ git submodule update --init --recursive
 ```
 !!! WARNING
 
-    We have observed a failure to identify I2C compasses on ArduPilot 4.3 releases. If your design relies on the RM3100 compass onboard the EchoPilot AI, we recommend avoiding version 4.3/ This problem appears to have been fixed in 4.4+ releases. We recommend using version 4.2.4 or earlier, or 4.4+.
+    We have observed a failure to identify I2C compasses on ArduPilot 4.3 releases. If your design relies on the RM3100 compass onboard the EchoPilot AI, we recommend avoiding version 4.3.x. This problem appears to have been fixed in 4.4+ releases. We recommend using version 4.2.4 or earlier, or 4.4+.
 
 ### Do a test build
 Before we build firmware for the EchoPilot AI board, it is wise to first build a native target to verify that your toolchain and environment is setup and working. Build the sitl (software in the loop simulator) target first:
@@ -74,7 +74,7 @@ cd ~/ardupilot
 
 
 The arducopter.apj and arducopter.bin file will be located in the ```~/ardupilot/build/EchoPilotAI/bin/``` folder. The firmware is now ready to be loaded on the board. This can be done by adding the upload argument, or with a ground control station. 
-    
+
 !!! info
     If the EchoPilot AI is plugged in to your host computer, unplug it before proceeding. The board should be totally powered off before proceeding.
 
