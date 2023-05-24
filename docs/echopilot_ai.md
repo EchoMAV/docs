@@ -136,7 +136,20 @@ PIN 230        | O         |  +5V  | Fan PWM   |  GP_PWM6       | PM3_PWM3
 PIN 127        | I         |  +5V  | Fan Tach  |   GPIO3_PQ.02     | GPIO3_PI.01
 
 
-## Mechanical STEP Files
+## Mechanical Drawings and STEP Files
+
+
+![XY Dimensions](assets/echopilot_ai_xy_dimensions.png)
+
+<figure markdown>
+  ![Z Dimensions (without Carrier Board)](assets/echopilot_ai_z_dimensions.png){ width="600" }
+  <figcaption>With Carrier Board Attached</figcaption>
+</figure>
+
+<figure markdown>
+  ![Z Dimensions (with Carrier Board)](assets/echopilot_ai_z_only_dimensions.png){ width="600" }
+  <figcaption>EchoPilot AI without a Carrier Board Attached</figcaption>
+</figure>
 
 [EchoPilot AI 3D Model (STEP) File Download](https://echomav.com/mechanical/echopilot_ai_r0.step) (right click, save link as)
 
