@@ -45,40 +45,48 @@ mkdir -p ~/XavierNX
 tar -xf ~/Downloads/Jetson_Linux_R35.3.1_aarch64.tbz2 -C ~/XavierNX
 ```
 #### Extract kernel sources (Driver Package (BSP) Sources)
-In the public_sources.tbz2 (BSP sources) zip file, there will be many other zipped files inside, but we are only interested in kernel_src.tbz2. Extract this file into a folder to named `source` within the `Linux_for_Tegra` folder. The steps are:
+In the public_sources.tbz2 (BSP sources) zip file, there will be many other zipped files inside, but we are only interested in kernel_src.tbz2. Extract this file into a folder to named `sources` within the `Linux_for_Tegra` folder. The steps are:
 ```
 mkdir ~/Downloads/temp
 tar -xf ~/Downloads/public_sources.tbz2 -C ~/Downloads/temp
-mkdir ~/XavierNX/Linux_for_Tegra/source && tar -xf ~/Downloads/temp/Linux_for_Tegra/source/public/kernel_src.tbz2 -C ~/XavierNX/Linux_for_Tegra/source
+mkdir ~/XavierNX/Linux_for_Tegra/sources
+sudo tar -xf ~/Downloads/temp/Linux_for_Tegra/source/public/kernel_src.tbz2 -C ~/XavierNX/Linux_for_Tegra/sources
+cd ~/Nano/Linux_for_Tegra
+sudo ./source_sync.sh -t tegra-l4t-r35.3.1   # Change the tag to the same version you are building
 ```
 #### Extract sample Root File System  (Sample Root Filesystem)
 Extract contents into Linux_for_Tegra/rootfs/. Note the filename below will be different if you downloaded a different version.
 ```
 mkdir ~/XavierNX/Linux_for_Tegra/rootfs
-tar -xf ~/Downloads/Tegra_Linux_Sample-Root-Filesystem_R35.3.1_aarch64.tbz2 -C ~/XavierNX/Linux_for_Tegra/rootfs/
+sudo tar -xf ~/Downloads/Tegra_Linux_Sample-Root-Filesystem_R35.3.1_aarch64.tbz2 -C ~/XavierNX/Linux_for_Tegra/rootfs/
+sudo ./apply_binaries.sh
 ```
-
+!!! note
+    Before “apply_binaries.sh” is run, the content in “Linux_for_Tegra/rootfs/” is purely Ubuntu. After “apply_binaries.sh” the “rootfs/” will contain NVIDIA content, e.g, drivers for the GPU and some firmware.
+    
 ### Get the EchoPilot .dtb, .cfg and extlinux.conf files
 
-The files you will need to replace include the device tree binary (.dtb), pinmux configuration (.cfg) and extlinux.conf files. These files can be obtained from the echopilot_dtb_pinmux repository [https://github.com/EchoMAV/echopilot_dtb_pinmux](https://github.com/EchoMAV/echopilot_dtb_pinmux). Use the steps below to clone and install these files:
+The files you will need to replace include the device tree binary (.dtb), pinmux configuration (.cfg) and extlinux.conf files. These files can be obtained from the echopilot_dtb_pinmux repository [https://github.com/EchoMAV/echopilot_ai_bsp](https://github.com/EchoMAV/echopilot_ai_bsp). Use the steps below to clone and install these files:
 
 Clone the files:
 ```
 cd ~
-git clone https://github.com/EchoMAV/echopilot_dtb_pinmux
-cd echopilot_dtb_pinmux
+git clone https://github.com/EchoMAV/echopilot_ai_bsp
+cd echopilot_ai_bsp
 ```
-Checkout the appropriate branch using the naming convention rev_[x]_[jetson_som]. For example, EchoPilot AI rev0 hardware and the Xavier NX SOM would be branch `rev_0_xavier_nx`.
+Checkout the appropriate branch for your EchoPilot AI board revision. For example, EchoPilot AI rev0 hardware:
 ```
-git checkout rev_0_xavier_nx
+git checkout board_revision_0
 ```
-Run the install script to copy the cfg, dtb and extlinux.conf files into your Linux_for_Tegra folder. The usage is `./install.sh [Path to Linux_for_Tegra]`, e.g.:
+Run the install script to copy the cfg, dtb and extlinux.conf files into your Linux_for_Tegra folder. The usage is `./install_l4t_xavier_nx.sh [Path to Linux_for_Tegra]`, e.g.:
 ```
-./install.sh ~/XavierNX
+./install_l4t_xavier_nx.sh ~/XavierNX/Linux_for_Tegra/
 ```
 Ensure this script completes with no errors before proceeding with flashing.
 
 ### Flash device
+!!! important
+    While not shown in the images below. The EchoPilot AI should be plugged into a Carrier Board for these steps, as that is how the Jetson module is powered. 
 1. Plug in a usb cable (this will require a JST-GH to micro usb female adapter for Rev0 boards) to the Jetson Debug port (J25) on the EchoPilot AI. Rev 0 is shown below to help you locate this connector. Note: future versions of hardware may use a USB micro connector for J25 rather than a JST-GH connector.
 ![Bottom Side Components](assets/bottom-side-labels.png)
 2. Hold the recovery button down. (see image below for location of the recovery button).
@@ -87,7 +95,7 @@ Ensure this script completes with no errors before proceeding with flashing.
 4. Flash device:
 
 ```
-cd ~/XavierNX/Linux_for_Tegra/
+cd ~/Nano/Linux_for_Tegra/
 sudo ./flash.sh jetson-xavier-nx-devkit-emmc mmcblk0p1
 ```
 

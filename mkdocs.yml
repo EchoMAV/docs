@@ -12,6 +12,7 @@ nav:
         - Building PX4: build_px4.md
         - Building ArduPilot: build_ardupilot.md
         - Building L4T (Xavier NX): compile_l4t.md
+        - Building L4T (Nano): compile_l4t_nano.md
 theme:
   name: material
   logo: assets/echomav-small-black-bg.png
