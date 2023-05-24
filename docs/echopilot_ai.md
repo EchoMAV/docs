@@ -102,7 +102,7 @@ For Carrier Board Pinouts, refer to the [Carrier Board Pinout Page](echopilot_ca
 
 ## Jetson IO Availability
 
-The following Jetson IO pins are brought out to the B2B connector J5 and is available for customer use:
+The following Jetson IO pins are brought out to the B2B connector J5 and are available for customer use:
 !!! note
     *Changes to the direction and functionality of these pins may be possible based on the Jetson pinmux configuration.
 
@@ -117,7 +117,7 @@ PIN 206        | I     |  73     | +3.3V*     | Iridium NA   | GPIO3_PR.00      
 !!! note
     *Pins 126 and 206 are level-shifted from 1.8V to 3.3V prior to the B2B (J5) connector via a TXS0108ERGYR level translator.
 
-The following Jetson IO is used internally on the EchoPilot AI:
+The following Jetson IO is used internally by the EchoPilot AI:
 !!! warning
     *Changes to the pinmux affecting these pins may break functionality.
 
@@ -128,7 +128,7 @@ PIN 128        | O         | +1.8V    | SD Card Enable   |  GPIO3_PCC.02    | GP
 PIN 130        | O         | +1.8V    | Camera Mux       |  GPIO3_PCC.03    | GPIO3_PI.00
 PIN 208        | I         | +1.8V    | SD Card Detect   |   GPIO3_PQ.02    | GPIO3_PZ.02
 
-The following Jetson IO pins are brought out to the FAN connector:
+The following Jetson IO pins are brought out to the FAN (J38) connector:
 
 Jetson Pin   | Direction     | Voltage      | Use         | Pin Description (Xavier) | Pin Description (Nano)
 ------------ | ------------- | ------------ | ------------| ------------  | ------------
@@ -266,4 +266,4 @@ To flash ArduRemote ID to the ESPS32-C3, you will need a TC2030-USB-NL cable fro
 
 To configure the Remote ID system, parameters can be accessed from DroneCAN (via Mission Planner or DroneCAN GUI) or with MAVLink. To use DroneCAN, [SLCAN will need to be enabled](https://ardupilot.org/copter/docs/common-slcan-f7h7.html#common-slcan-f7h7) to allow the autopilot to connect to the CANBUS through USB.  
 
-For making changes to DroneCAN devices, see the instructions [here].(https://ardupilot.org/copter/docs/common-slcan-f7h7.html#making-changes-to-dronecan-devices)
+For making changes to DroneCAN devices, see the instructions [here](https://ardupilot.org/copter/docs/common-slcan-f7h7.html#making-changes-to-dronecan-devices).
