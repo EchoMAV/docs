@@ -120,7 +120,7 @@ Mating Connector: FX23L-80P-0.5SV8 (8mm standoff, also available in 10 and 12mm)
 | 34         |  IO         |  1.8V       | I2SO_FS                  |
 | 35         |  IO         |  1.8V       | I2SO_SCLK                  |
 | 36         |  IO         |  1.8V       | AUDIO_MCLK                 |
-| 36         |  IO         |  1.8V       | GPIO12                  |
+| 37         |  IO         |  1.8V       | GPIO12                  |
 | 38         | IO          |  1.8V       | GPIO10                  |
 | 39         |   Pwr        |  GND       | GND                  |
 | 40         |   O        |   3.3V      | IRIDIUM RX UART                  |
