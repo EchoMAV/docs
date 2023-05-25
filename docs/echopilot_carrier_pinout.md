@@ -157,7 +157,7 @@ Mating Connector: FX23L-80S-0.5SV
 #### PWM Output from FMU (J28)
 This connector provides the PWM outputs from the FMU. The EchoPilot AI's autopilot hardware consist of a main processor (FMU) and an IO processor. The IO processor provides 8 PWM outputs (labeled IO CHX below) and the FMU provides 4 PWM outputs. An important distinction between the two is that **only the FMU outputs are D-Shot compatible**.  
 
-The +VServo Sense input is optional and is used by the FMU to detect a drop in the VServo rail. This is an input only, the Carrier board does **not** provide power to the servo voltage rail. 
+The +VServo Sense input is optional and is used by the FMU to detect a drop in the VServo rail. The EchoPilot AI has a 2:1 voltage divider onboard to protect input of up to 6.6V (3.3V * 2). This is an input only, the Carrier board does **not** provide power to the servo voltage rail. 
 
 > The EchoPilot AI comes with a PWM Breakout board which allows users to use standard Futaba-style (3 pin, 0.1" spacing) servo connectors. The PWM Breakout Board is plugged into this connector with the supplied cable. 
 
@@ -447,11 +447,11 @@ This connector provides voltage and current sense input, for use with an off-boa
 Connector: J13, Part Number: SM03B-GHS-TB(LF)(SN)  
 Mating Connector: GHR-03V-S     
 
-Pin Number   | Direction     | Voltage       | Pin Description
------------- | ------------- | ------------  | ------------
-1        | I            | +3.3V          | Voltage Sense
-2        | I            | +3.3V        | Current Sense
-3        | Pwr            | GND         | GND
+Pin Number   | Direction     | Voltage       | Pin Description | STM32 Pin
+------------ | ------------- | ------------  | ------------ | ------------
+1        | I            | +3.3V          | Voltage Sense | PA0
+2        | I            | +3.3V        | Current Sense |  PA1
+3        | Pwr            | GND         | GND | NA
 
 #### CAN 1 (FMU) (J19)
 This connector provides a [Pixhawk standard](https://github.com/pixhawk/Pixhawk-Standards/blob/master/DS-009%20Pixhawk%20Connector%20Standard.pdf) CAN connection from the FMU (CAN 1).
