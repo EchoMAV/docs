@@ -48,9 +48,10 @@ git clone https://github.com/EchoMAV/echopilot_ai_bsp
 cd echopilot_ai_bsp
 git checkout board_revision_0     # Select the appropriate revision
 ```
-> Be sure you checked out the appropriate branch matching your EchoPilot AI hardware revision!
+!!! warning
+    Be sure you checked out the appropriate branch matching your EchoPilot AI hardware revision!
 
-Install the ArduPilot board definition files into the correct folder using the provided `install_ardupilot.sh` script:
+Install the ArduPilot board definition files into the correct folder using the provided `install_ardupilot.sh` script. The first argument is the path to where you have the ardupilot repo on your system, e.g. `~/ardupilot`.
 ```
 ./install_ardupilot.sh ~/ardupilot
 ```
@@ -71,7 +72,6 @@ cd ~/ardupilot
     ./waf rover                             # Ground-based rovers and surface boats
     ./waf sub                               # ROV and other submarines
     ```
-
 
 The arducopter.apj and arducopter.bin file will be located in the ```~/ardupilot/build/EchoPilotAI/bin/``` folder. The firmware is now ready to be loaded on the board. This can be done by adding the upload argument, or with a ground control station. 
 

@@ -51,7 +51,7 @@ git checkout board_revision_0   # Change per your hardware
 !!! warning
     Be sure you checked out the appropriate branch matching your EchoPilot AI hardware revision!
 
-Use the provided install script `install_px4.sh` to place the PX4 board definition files into the correct folder:
+Use the provided install script `install_px4.sh` to place the PX4 board definition files into the correct folder. The first argument is the path to where you have the ardupilot repo on your system, e.g. `~/PX4-Autopilot`:
 ```
 ./install_px4.sh ~/PX4-Autopilot
 ```
