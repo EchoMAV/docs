@@ -1,4 +1,4 @@
-The Carrier Board is open-source, please visit the [echopilot_ai_carrier](https://github.com/EchoMAV/echopilot_ai_carrier) repository. While you may refer to the pinout information below, also feel free to examine the [pdf schematic](https://github.com/EchoMAV/echopilot_ai_carrier/blob/master/echopilot_ai_carrier_schematic.pdf) or the [full design](https://github.com/EchoMAV/echopilot_ai_carrier) in Kicad 6.0+.  
+The Carrier Board is open-source, please visit the [echopilot_ai_carrier](https://github.com/EchoMAV/echopilot_ai_carrier) repository. While you may refer to the pinout information below, also feel free to examine the [pdf schematic](https://github.com/EchoMAV/echopilot_ai_carrier/blob/master/echopilot_ai_carrier_schematic.pdf) or the [full design](https://github.com/EchoMAV/echopilot_ai_carrier) in [Kicad 6.0+](https://www.kicad.org/).  
 
 ### Carrier Board Schematic
 
@@ -10,7 +10,7 @@ A full schematic of the carrier board is available: [PDF schematic](https://gith
 
 #### Iridium Rockblock 9603 (J10)
 
-This connector is for connection to a [Rockblock Iridium 9603 modem](https://www.groundcontrol.com/us/product/rockblock-9603-compact-plug-and-play-satellite-transmitter/).
+This connector is for connection to a [Rockblock Iridium 9603 modem](https://www.groundcontrol.com/us/product/rockblock-9603-compact-plug-and-play-satellite-transmitter/). A straight-through cable with Molex 0510211000 connectors may be used. 
 
 Connector: J10, Part Number: 0532617010  
 Mating Connector:  0510211000
@@ -28,8 +28,12 @@ Mating Connector:  0510211000
 | 9          |  NA         |   NA      | NC                  |
 | 10         |  O         |  3.3V       | RX (from modem's perspective)    
 
+!!! note
+    Custom software is required to implement Iridium SBD communications. Pinmux modifications may be required pending how a software implementation leverages the Iridium modem IO.
 #### Ethernet 2 (J9)
-This connector is used for Ethernet (100 Mbps to the Jetson).
+This connector is used for Ethernet (100 Mbps to the Jetson). This is connected to a KSZ8795CLXIC 4-port ethernet switch onboard the EchoPilot AI.
+!!! note
+    The magnetics for Ethernet 2 are onboard the Carrier Board.
 
 Connector: J9, Part Number: SM04B-GHS-TB(LF)(SN)  
 Mating Connector: GHR-04V-S
@@ -42,7 +46,9 @@ Pin Number   | Direction     | Voltage       | Pin Description
 4        | IO            | Diff Signal         | Tx-       
 
 #### Ethernet 1 (J15)
-This connector is used for Ethernet (100 Mbps to the Jetson).
+This connector is used for Ethernet (100 Mbps to the Jetson). This is connected to a KSZ8795CLXIC 4-port ethernet switch onboard the EchoPilot AI.
+!!! note
+    The magnetics for Ethernet 1 are onboard the Carrier Board.
 
 Connector: J15, Part Number: SM04B-GHS-TB(LF)(SN)  
 Mating Connector: GHR-04V-S
