@@ -189,12 +189,12 @@ Mating Connector: FX23L-80S-0.5SV
 
 | Pin Number | Direction | Voltage | Pin Desription    |
 |------------|-----------|---------|-------------------|
-| 1          | 0         | 3.3V    | FMW PWM CH6 |
-| 2          | O         | 3.3V    | FMW PWM CH5 |
-| 3          | O       | 3.3V     | FMW PWM CH4              |
-| 4          | O        | 3.3V    | FMW PWM CH3        |
-| 5          | O           |   3.3V      | FMW PWM CH2          |
-| 6          | O          |   3.3V      | FMW PWM CH1                  |
+| 1          | 0         | 3.3V    | FMU PWM CH6 |
+| 2          | O         | 3.3V    | FMU PWM CH5 |
+| 3          | O       | 3.3V     | FMU PWM CH4              |
+| 4          | O        | 3.3V    | FMU PWM CH3        |
+| 5          | O           |   3.3V      | FMU PWM CH2          |
+| 6          | O          |   3.3V      | FMU PWM CH1                  |
 | 7          | O          |   3.3V      | IO PWM CH1                  |
 | 8          | O          |   3.3V      | IO PWM CH2                   |
 | 9          |  O         |   3.3V      | IO PWM CH3                   |
@@ -441,7 +441,7 @@ Pin Number   | Direction     | Voltage       | Pin Description
 3        | IO            | +3.3V          | I2C_2 SDA (FMU)
 4        | Pwr            | GND         | GND
 
-#### V/I Sense
+#### V/I Sense (J13)
 This connector provides voltage and current sense input, for use with an off-board current sensor monitor. These signals should be scaled to 0-3.3V or damage may occur. Your autopilot firmware will allow you to enter scaling factors for proper display of voltage/current on a GCS system. 
 
 Connector: J13, Part Number: SM03B-GHS-TB(LF)(SN)  
