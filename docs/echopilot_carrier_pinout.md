@@ -441,6 +441,18 @@ Pin Number   | Direction     | Voltage       | Pin Description
 3        | IO            | +3.3V          | I2C_2 SDA (FMU)
 4        | Pwr            | GND         | GND
 
+#### S.Bus Out/RSSI In (J26)
+This connector can be used for either S.BUS Output or RSSI Input.
+
+Connector: J26, Part Number: SM03B-GHS-TB(LF)(SN)  
+Mating Connector: GHR-03V-S     
+
+Pin Number   | Direction     | Voltage       | Pin Description
+------------ | ------------- | ------------  | ------------ 
+1        | I            | +3.3V          | S.Bus Out / RSSI In
+2        | Pwr            | +5V        | +5V (Protected) 
+3        | Pwr            | GND         | GND 
+
 #### V/I Sense (J13)
 This connector provides voltage and current sense input, for use with an off-board current sensor monitor. These signals should be scaled to 0-3.3V or damage may occur. Your autopilot firmware will allow you to enter scaling factors for proper display of voltage/current on a GCS system. 
 
