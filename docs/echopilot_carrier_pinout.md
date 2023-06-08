@@ -19,7 +19,7 @@ Mating Connector:  0510211000
 |------------|-----------|---------|-------------------|
 | 1          | Pwr         | GND    | GND |
 | 2          | NA         | NA    | NC |
-| 3          | Pwr       | +5V     | +5V              |
+| 3          | Pwr       | +5V     | +5V (unprotected)              |
 | 4          | O        | 3.3V    | Iridium On/Off         |
 | 5          | I           |   3.3V      | TX (from modem's perspective)          |
 | 6          | I          |   3.3V      | Iridium Ring                 |
@@ -205,19 +205,19 @@ Mating Connector: FX23L-80S-0.5SV
 | 14         |  O         |   3.3V      | IO PWM CH8                   |
 | 15         |  Pwr         |   GND      | GND                  |
 | 16         |  Pwr         |   GND      | GND                  |
-| 17         |  Pwr OUT         |   +5V      | +5V OUT  (PROTECTED)                |
+| 17         |  Pwr OUT         |   +5V      | +5V OUT_1[^1]                |
 | 18         | O        | 3.3V    | FMU I2C_2 SCL         |
 | 19         | IO           |   3.3V      |    FMU I2C_2 SDA       |
 | 20         | Pwr          |    GND     |    GND               |
-| 21         | Pwr OUT         |    +5V     |   +5V OUT (PROTECTED)                |
+| 21         | Pwr OUT         |    +5V     |   +5V OUT_1[^1]                |
 | 22         | IO          |    Diff Signal     | CAN 2+                   |
 | 23         | IO          |   Diff Signal      | CAN 2-                  |
 | 24         | Pwr          |  GND       | GND                   |
-| 25         |  Pwr OUT         |    +5V     | +5V OUT (PROTECTED)                 |
+| 25         |  Pwr OUT         |    +5V     | +5V OUT_1[^1]                |
 | 26         |  IO         |    Diff Signal     |  CAN 1+                 |
 | 27         |  IO         |   Diff Signal      |  CAN 1-                  |
 | 28         |  Pwr         |   GND      | GND                  |
-| 29         |  Pwr OUT         |  +5V       | +5V OUT (PROTECTED)                  |
+| 29         |  Pwr OUT         |  +5V       | +5V OUT_1[^1]                  |
 | 30         |  O         |  +3.3V       | TELEM1_RTS                  |
 | 31         |  I         |   +3.3V      | TELEM1_CTS                 |
 | 32         |  I         |  +3.3V      | TELEM1_RX                |
@@ -229,14 +229,14 @@ Mating Connector: FX23L-80S-0.5SV
 | 38         |  I          |  +3.3V       | +VSERVO SENSE                  |
 | 39         |   Pwr        |  GND       | GND                  |
 | 40         |   NA        |   NA      | NC   |
-| 41         |   Pwr OUT        |  Pwr       |  +5V OUT (PROTECTED)                 |
+| 41         |   Pwr OUT        |  Pwr       |  +5V OUT_1[^1]                 |
 | 42         |   O        |   +3.3V      |  SPI5 SCLK                 |
 | 43         |   I        |   +3.3V     |  SPI5 MISO                 |
 | 44         |   I        |   Diff Signal      |  SPI5_MOSI                |
 | 45         |   O        |   +3.3V      |  SPI5 CS1  (PI4)               |
 | 46         |   O        |   +3.3V      |  SPI5 CS2 (PI10)                |
 | 47         |   Pwr        |   GND      |  GND                 |
-| 48         |   Pwr OUT       |   +5V      |  +5V OUT (PROTECTED)                 |
+| 48         |   Pwr OUT       |   +5V      |  5V OUT_1[^1]                |
 | 49         |   O        |   +3.3V      |  GPS1 TX                 |
 | 50         |    I       |    +3.3V     |  GPS1 RX                 |
 | 51         |    O       |    3.3V     |  FMU I2C_1 SCL                 |
@@ -244,10 +244,10 @@ Mating Connector: FX23L-80S-0.5SV
 | 53         |   Pwr        |   GND      |  GND                |
 | 54         |   I        |   +3.3V      |  SAFETY SWITCH IN                 |
 | 55         |   O        |   +3.3V      |  SAFETY SWITCH LED OUT                 |
-| 56         |   Pwr OUT       |   +3.3V      |  +3.3V OUT (SAFETY)                 |
+| 56         |   Pwr OUT       |   +3.3V      |  +3.3V OUT                 |
 | 57         |   O        |   +5V      |  BUZZER OUT                 |
 | 58         |    Pwr       |  GND       |  GND                |
-| 59         |   Pwr OUT        |  +5V       |  +5 VOUT (PROTECTED)                 |
+| 59         |   Pwr OUT        |  +5V       |  +5V OUT_2[^2]                |
 | 60         |   I        |   +3.3V      |  RC INPUT                 |
 | 61         |   Pwr        |   GND     |  GND                 |
 | 62         |    Pwr IN      |   +5.4V      |  +5.4V IN FMU                 |
@@ -274,6 +274,9 @@ Mating Connector: FX23L-80S-0.5SV
 | 83         |  Pwr         |   GND      |    GND               |
 | 84         |  Pwr         |   GND      |    GND               |
 
+[^1]: 5V_OUT1 bus is limited to a total of 500mA. 
+[^2]: 5V_OUT2 bus is limited to a total of 500mA.
+
 #### +5V Out (J11)
 This connector provides a spare regulated +5V output. It is protected by a reverse polarity diode and a self-resetting fuse (060#L100SLYR)  
 
@@ -282,7 +285,7 @@ Mating Connector: GHR-02V-S
 
 Pin Number   | Direction     | Voltage       | Pin Description
 ------------ | ------------- | ------------  | ------------
-1        | Pwr            | +5V          | +5V Out
+1        | Pwr            | +5V          | +5V Out (Fused at 1A)
 2        | Pwr            | GND         | GND
 
 #### +VBattery (J12)
@@ -293,8 +296,8 @@ Mating Connector: GHR-02V-S
 
 Pin Number   | Direction     | Voltage       | Pin Description
 ------------ | ------------- | ------------  | ------------
-1        | Pwr            | +VBATT          | +VBATT Out
-2        | Pwr            | +VBATT         | +VBATT Out
+1        | Pwr            | +VBATT          | +VBATT Out (unprotected)
+2        | Pwr            | +VBATT         | +VBATT Out (unprotected)
 3        | Pwr            | GND          | GND
 4        | Pwr            | GND         | GND
 
@@ -306,7 +309,7 @@ Mating Connector: GHR-10V-S
 
 Pin Number   | Direction     | Voltage       | Pin Description
 ------------ | ------------- | ------------  | ------------
-1        | Pwr            | +5V          | +5V Out (Protected)
+1        | Pwr            | +5V          | +5V OUT_1[^1]  
 2        | O            | +3.3V         | GPS TX
 3        | I            | +3.3V          | GPS Rx
 4        | O            | +3.3V         | I2C 1 SCL
@@ -326,7 +329,7 @@ Mating Connector: GHR-03V-S
 Pin Number   | Direction     | Voltage       | Pin Description
 ------------ | ------------- | ------------  | ------------
 1        | Pwr            | +3.3V          | RC In
-2        | I            | +5V         | +5V Out (Protected)
+2        | I            | +5V         | +5V OUT_2[^2]  
 3        | Pwr            | GND         | GND
 
 #### Power In (J27)
@@ -407,7 +410,7 @@ Mating Connector: GHR-04V-S
 
 Pin Number   | Direction     | Voltage       | Pin Description
 ------------ | ------------- | ------------  | ------------
-1        | Pwr            | +5V          | +5V Out (Protected)
+1        | Pwr            | +5V          | +5V OUT_1 [^1]  
 2        | IO            | Diff Signal        | CAN_2+ (FMU)
 3        | IO            | Diff Signal          | CAN_2- (FMU)
 4        | Pwr            | GND         | GND
@@ -421,7 +424,7 @@ Mating Connector: GHR-06V-S
 
 Pin Number   | Direction     | Voltage       | Pin Description
 ------------ | ------------- | ------------  | ------------
-1        | Pwr            | +5V          | +5V Out (Protected)
+1        | Pwr            | +5V          | +5V OUT_1 [^1]  
 2        | O            | +3.3V        | Telem1 TX
 3        | I            | +3.3V          | Telem1 RX
 4        | O            | +3.3V        | Telem1 CTS
@@ -436,7 +439,7 @@ Mating Connector: GHR-04V-S
 
 Pin Number   | Direction     | Voltage       | Pin Description
 ------------ | ------------- | ------------  | ------------
-1        | Pwr            | +5V          | +5V Out (Protected)
+1        | Pwr            | +5V          | +5V OUT_1 [^1]  
 2        | O            | +3.3V        | I2C_2 SCL (FMU)
 3        | IO            | +3.3V          | I2C_2 SDA (FMU)
 4        | Pwr            | GND         | GND
@@ -450,7 +453,7 @@ Mating Connector: GHR-03V-S
 Pin Number   | Direction     | Voltage       | Pin Description
 ------------ | ------------- | ------------  | ------------ 
 1        | I            | +3.3V          | S.Bus Out / RSSI In
-2        | Pwr            | +5V        | +5V (Protected) 
+2        | Pwr            | +5V        | +5V OUT_1 [^1]  
 3        | Pwr            | GND         | GND 
 
 #### V/I Sense (J13)
@@ -473,7 +476,7 @@ Mating Connector: GHR-04V-S
 
 Pin Number   | Direction     | Voltage       | Pin Description
 ------------ | ------------- | ------------  | ------------
-1        | Pwr            | +5V          | +5V Out (Protected)
+1        | Pwr            | +5V          | +5V OUT_1 [^1]  
 2        | IO            | Diff Signal        | CAN_1+ (Jetson)
 3        | IO            | Diff Signal          | CAN_1- (Jetson)
 4        | Pwr            | GND         | GND
@@ -487,7 +490,7 @@ Mating Connector: GHR-04V-S
 
 Pin Number   | Direction     | Voltage       | Pin Description
 ------------ | ------------- | ------------  | ------------
-1        | Pwr            | +5V          | +5V VBUS (Protected)
+1        | Pwr            | +5V          | +5V VBUS (Protected 500mA)
 2        | IO            | Diff Signal        | USB4_D- (Jetson)
 3        | IO            | Diff Signal          | USB4_D+ (Jetson)
 4        | Pwr            | GND         | GND
@@ -500,7 +503,7 @@ Mating Connector: GHR-04V-S
 
 Pin Number   | Direction     | Voltage       | Pin Description
 ------------ | ------------- | ------------  | ------------
-1        | Pwr            | +5V          | +5V VBUS (Protected)
+1        | Pwr            | +5V          | +5V VBUS (Protected 500mA)
 2        | IO            | Diff Signal        | USB3_D- (Jetson)
 3        | IO            | Diff Signal          | USB3_D+ (Jetson)
 4        | Pwr            | GND         | GND
@@ -513,7 +516,7 @@ Mating Connector: GHR-04V-S
 
 Pin Number   | Direction     | Voltage       | Pin Description
 ------------ | ------------- | ------------  | ------------
-1        | Pwr            | +5V          | +5V VBUS (Protected)
+1        | Pwr            | +5V          | +5V VBUS (Protected 500mA)
 2        | IO            | Diff Signal        | USB2_D- (Jetson)
 3        | IO            | Diff Signal          | USB2_D+ (Jetson)
 4        | Pwr            | GND         | GND
@@ -526,7 +529,7 @@ Mating Connector: GHR-04V-S
 
 Pin Number   | Direction     | Voltage       | Pin Description
 ------------ | ------------- | ------------  | ------------
-1        | Pwr            | +5V          | +5V VBUS (Protected)
+1        | Pwr            | +5V          | +5V VBUS (Protected 500mA)
 2        | IO            | Diff Signal        | USB1_D- (Jetson)
 3        | IO            | Diff Signal          | USB1_D+ (Jetson)
 4        | Pwr            | GND         | GND
