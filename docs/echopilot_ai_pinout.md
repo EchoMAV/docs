@@ -13,7 +13,7 @@ Mating Connector: XHP-2
 Pin Number   | Direction     | Voltage       | Pin Description
 ------------ | ------------- | ------------  | ------------
 PIN 1        | Pwr            | GND           | Ground
-PIN 2        | Pwr            | +5.2V          | Debug Power Input
+PIN 2        | Pwr IN         | +5.2V          | Debug Power
 
 #### FMU Debug (J12)
 This connector is **not normally used** by the customer. It is primarily used during board setup to load bootloader firmware on the FMU. It is however possible to use the UART7 lines for other purposes.
@@ -23,7 +23,7 @@ Mating Connector: SHR-06V-S-B
 
 Pin Number   | Direction     | Voltage       | Pin Description
 ------------ | ------------- | ------------  | ------------
-PIN 1        | Pwr            | +3.3V           | 3.3V Power
+PIN 1        | Pwr OUT           | +3.3V           | 3.3V Power
 PIN 2        | O            | +3.3V          | FMU UART7 TX
 PIN 3        | I            | +3.3V          | FMU UART7 RX
 PIN 4        | IO            | +3.3V         | FMU SWDIO
@@ -54,7 +54,7 @@ Mating Connector: 0510210400
 Pin Number   | Direction     | Voltage       | Pin Description
 ------------ | ------------- | ------------  | ------------
 PIN 1        | Pwr            | GND          | Gnd
-PIN 2        | Pwr            | +5V          | Fan Power
+PIN 2        | Pwr OUT         | +5V          | Fan Power
 PIN 3        | I           | +5V          | Fan Tachometer Signal
 PIN 4        | O            | +5V         | Fan PWM Signal
 
@@ -272,7 +272,7 @@ Mating Connector: SHR-06V-S-B
 
 Pin Number   | Direction     | Voltage       | Pin Description
 ------------ | ------------- | ------------  | ------------
-PIN 1        | Pwr            | +3.3V           | 3.3V Power
+PIN 1        | Pwr Out           | +3.3V           | 3.3V Power
 PIN 2        | O            | +3.3V          | IOMCU UART1 TX
 PIN 3        | I            | +3.3V          | IOMCU UART1 RX
 PIN 4        | IO            | +3.3V         | IOMCU SWDIO
@@ -287,7 +287,7 @@ Mating Connector: GHR-04V-S
 
 Pin Number   | Direction     | Voltage       | Pin Description
 ------------ | ------------- | ------------  | ------------
-PIN 1        | Pwr            | +5.0V           | VBus Detect
+PIN 1        | Pwr In            | +5.0V           | VBus
 PIN 2        | IO            | Diff Signal          | USB D-
 PIN 3        | IO            | Diff Signal          | USB D+
 PIN 4        | Pwr            | GND         | Gnd
