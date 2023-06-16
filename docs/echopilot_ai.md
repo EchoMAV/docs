@@ -254,6 +254,19 @@ sudo usermod -aG dialout $USER
 !!! note
     Reboot to apply changes.
 
+## CAN Termination
+
+The 2 CAN connections from the FMU (CAN1 and CAN2) and the 1 from the Jetson are driven by LTC2875 transceivers and contain termination resistors at the drivers. Should you desire to remove these termination resistors (e.g., you want to place the EchoPilot AI in the middle of a CAN chain rather than at the end), refer to the following:  
+
+CAN   | Resistor Label     | Notes      
+------------ | ------------- | ------------ 
+FMU CAN1       | R19 and R156         |  Near U4 and U45, size 0402, see important info below
+FMU CAN2        | R9         |  Near U3, size 0402
+JETSON CAN1 | R95         |  Near U32 (Rev1+ only), size 0402  
+
+!!! note
+    FMU CAN1 default configuration provides connectivity between the FMU and the RemoteID system. Therefore, two CAN transceivers with termination resistors are installed by default. If you wish to use CAN1 with the EchoPilot at the END of the chain, remove R156. If you wish to use the EchoPilot in the MIDDLE of a chain, remove both R19 and R156. 
+
 ## Remote ID Subsystem
 
 The Remote ID system is based on an ESP32-C3 and is designed to work with the [ArduRemoteID](https://github.com/ArduPilot/ArduRemoteID) project and Open Drone ID standards.
@@ -266,4 +279,4 @@ To flash ArduRemote ID to the ESPS32-C3, you will need a TC2030-USB-NL cable fro
 
 To configure the Remote ID system, parameters can be accessed from DroneCAN (via Mission Planner or DroneCAN GUI) or with MAVLink. To use DroneCAN, [SLCAN will need to be enabled](https://ardupilot.org/copter/docs/common-slcan-f7h7.html#common-slcan-f7h7) to allow the autopilot to connect to the CANBUS through USB.  
 
-For making changes to DroneCAN devices, see the instructions [here](https://ardupilot.org/copter/docs/common-slcan-f7h7.html#making-changes-to-dronecan-devices).
+For making changes to DroneCAN devices, see the instructions [here](https://ardupilot.org/copter/docs/common-slcan-f7h7.html#making-changes-to-dronecan-devices). The FMU is connected to the ESP32-C3 via CAN1, with the default configuration providing termination resistors at both the FMU side and ESP32 side.
