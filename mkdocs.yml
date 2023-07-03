@@ -41,6 +41,7 @@ theme:
 extra:
   homepage: https://echomav.com
   version:
+    provider: mike
     default: rev0 
   social:
     - icon: fontawesome/brands/github-alt
