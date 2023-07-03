@@ -40,9 +40,13 @@ theme:
   
 extra:
   homepage: https://echomav.com
+  extra:
+  version:
+    default: stable 
   social:
     - icon: fontawesome/brands/github-alt
       link: https://github.com/echomav
+
 
 extra_css:
   - stylesheets/extra.css
