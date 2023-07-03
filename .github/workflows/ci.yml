@@ -2,7 +2,8 @@ name: ci
 on:
   push:
     branches:
-      - master 
+      - master
+      - Rev0 
       - main
 permissions:
   contents: write
