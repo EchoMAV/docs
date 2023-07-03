@@ -43,7 +43,7 @@ extra:
   homepage: https://echomav.com
   version:
     provider: mike
-    default: Rev1
+    default: latest
   social:
     - icon: fontawesome/brands/github-alt
       link: https://github.com/echomav
