@@ -26,5 +26,5 @@ jobs:
       - run: git config user.name ci-bot
       - run: git config user.email ci-bot@example.com
       - run: git fetch origin gh-pages --depth=1
-      - run: mike delete --all
-      - run: mike deploy --push --update-aliases Rev0 latest
+      - run: mike deploy --push --update-aliases Rev1 latest
+      - run: mike set-default --push latest
