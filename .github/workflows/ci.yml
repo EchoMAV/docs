@@ -2,9 +2,10 @@ name: ci
 on:
   push:
     branches:
-      - master
-      - Rev0 
+      - master 
       - main
+      - Rev0
+      - Rev1
 permissions:
   contents: write
 jobs:
@@ -27,4 +28,5 @@ jobs:
       - run: git config user.name ci-bot
       - run: git config user.email ci-bot@example.com
       - run: git fetch origin gh-pages --depth=1
-      - run: mike deploy --push Rev0
+      - run: mike deploy --push --update-aliases Rev1 latest
+      - run: mike set-default --push latest
