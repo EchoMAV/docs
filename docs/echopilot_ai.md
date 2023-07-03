@@ -9,29 +9,16 @@ The power of  an advanced autopilot is seamlessly combined with high-performance
 ![EchoPilot AI](assets/echopilot_ai_stack.jpg)
 
 Autopilot Sensors
-=== "Rev 0"
 
-    Function   | Part Number
-    ------------ | ------------- 
-    IMU 1        | ICM42688P            
-    IMU 2        | ICM42688P            
-    IMU 3        | ICM42688P      
-    Barometer 1        | MS5611                  
-    Magentometer        | PNI RM3100    
-    Add-On INS      | VectorNAV VN-X00 (optional)        
-
-=== "Rev 1"
-
-     Function   | Part Number
-    ------------ | ------------- 
-    IMU 1        | ICM42688P            
-    IMU 2        | ICM42688P            
-    IMU 3        | ICM42688P      
-    Barometer 1        | ICP-20100                  
-    Barometer 2        | ICP-20100 
-    Magentometer        | PNI RM3100    
-    Add-On INS      | VectorNAV VN-X00 (optional)        
-
+Function   | Part Number
+------------ | ------------- 
+IMU 1        | ICM42688P            
+IMU 2        | ICM42688P            
+IMU 3        | ICM42688P      
+Barometer 1        | MS5611                  
+Magentometer        | PNI RM3100    
+Add-On INS      | VectorNAV VN-X00 (optional)        
+    
 The hardware is configured into a two board stack. The upper board is the EchoPilot AI board, and it contains the flight management unit, peripherals, sensors and Nvidia Jetson interface. The lower board is the Carrier Board, and it handles power regulation and connectors. Two high-density FX23L-80S-0.5SV 80-pin board-to-board connectors are used between the two boards.
 
 This design philosophy achieves multiple goals:
