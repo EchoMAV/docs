@@ -98,7 +98,7 @@ Ensure this script completes with no errors before proceeding with flashing.
 4. Flash device:
 
 ```
-cd ~/XavierNX/Linux_for_Tegra/
+cd ~/Nano/Linux_for_Tegra/
 sudo ./flash.sh jetson-nano-emmc mmcblk0p1
 ```
 
