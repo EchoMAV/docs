@@ -1,6 +1,6 @@
 # EchoMAV Documentation
 
-Welcome to the EchoMav Technical Library. Please find the quick links below to get started:
+Welcome to the EchoPilot AI Technical Library. Please find the quick links below to get started:
 
 **[EchoPilot AI Hardware Overview](echopilot_ai.md)**  
 
