@@ -94,16 +94,16 @@ The following Jetson IO pins are brought out to the B2B connector J5 and are ava
 !!! note
     *Changes to the direction and functionality of these pins may be possible based on the Jetson pinmux configuration.
 
-Jetson Pin   | Direction     | B2B (J5)      | Voltage   | Default Use  |  Pin Description (Xavier) | Pin Description (Nano)
+Jetson Pin   | Direction     | B2B (J5)      | Voltage   | Default Use  |  GPIO (Xavier) | GPIO (Nano)
 ------------ | ------------- | ------------  | ------------ | ------------ | ------------ | ------------
 PIN 211        | O     |  36     | +1.8V     | Audio MCLK      | AUDIO_MCLK    | AUDIO_MCLK
-PIN 212        | IO     |  38     | +1.8V     | Spare IO        | GPIO3_PQ.01   | GPIO3_PV.01 
-PIN 218        | IO     |  37     | +1.8V     | Spare IO        | GPIO3_PCC.04  | GPIO3_PY.02 
-PIN 126        | I     |  74     | +3.3V*     | Iridium Ring     | GPIO3_PCC.00       | GPIO3_PI.02  
-PIN 206        | I     |  73     | +3.3V*     | Iridium NA   | GPIO3_PR.00      | GPIO3_PV.00
+PIN 124        | IO     |  37     | +1.8V     | GPIO O2        | GPIO3_PQ.03  | GPIO3_PH.06
+PIN 218        | IO     |  37     | +3.3V*     | Iridium Ring         | GPIO3_PCC.04  | GPIO3_PY.02 
+PIN 126        | I     |  74     | +3.3V*     | Iridium On/Off     | GPIO3_PCC.00       | GPIO3_PI.02  
+PIN 206        | I     |  73     | +3.3V*     | Iridium Network Available   | GPIO3_PR.00      | GPIO3_PV.00
 
 !!! note
-    *Pins 126 and 206 are level-shifted from 1.8V to 3.3V prior to the B2B (J5) connector via a TXS0108ERGYR level translator.
+    *Pins 126, 206 abd 130 are level-shifted from 1.8V to 3.3V prior to the B2B (J5) connector via a TXS0108ERGYR level translator.
 
 The following Jetson IO is used internally by the EchoPilot AI:
 !!! warning
@@ -111,17 +111,17 @@ The following Jetson IO is used internally by the EchoPilot AI:
 
 Jetson Pin   | Direction   | Voltage | Use | Pin Description (Xavier) | Pin Description (Nano)
 ------------ | ------------- | ------------ | ------------  | ------------ | ------------
-PIN 87         | Pwr       | 5V       | Vbus Detect      | USB_VBUS_EN0   | USB_VBUS_EN0
-PIN 128        | O         | +1.8V    | SD Card Enable   |  GPIO3_PCC.02    | GPIO3_PH.07
+PIN 87         | I       | +1.8V       | Vbus Detect      | USB_VBUS_EN0   | USB_VBUS_EN0
 PIN 130        | O         | +1.8V    | Camera Mux       |  GPIO3_PCC.03    | GPIO3_PI.00
-PIN 208        | I         | +1.8V    | SD Card Detect   |   GPIO3_PQ.02    | GPIO3_PZ.02
+PIN 212        | I         | +1.8V    | M2 Alert       |   GPIO3_PQ.01   | GPIO3_PV.01
+
 
 The following Jetson IO pins are brought out to the FAN (J38) connector:
 
 Jetson Pin   | Direction     | Voltage      | Use         | Pin Description (Xavier) | Pin Description (Nano)
 ------------ | ------------- | ------------ | ------------| ------------  | ------------
-PIN 230        | O         |  +5V  | Fan PWM   |  GP_PWM6       | PM3_PWM3
-PIN 127        | I         |  +5V  | Fan Tach  |   GPIO3_PQ.02     | GPIO3_PI.01
+PIN 230        | O         |  +5V  | Fan PWM   |  GPIO3_PH.01       | GPIO3_PE.07
+PIN 208        | I         |  +5V  | Fan Tachometer  |   GPIO3_PQ.02     | GPIO3_PZ.02
 
 
 ## Mechanical Drawings and STEP Files
@@ -139,11 +139,13 @@ PIN 127        | I         |  +5V  | Fan Tach  |   GPIO3_PQ.02     | GPIO3_PI.01
   <figcaption>EchoPilot AI without a Carrier Board Attached</figcaption>
 </figure>
 
-[EchoPilot AI 3D Model (STEP) File Download](https://echomav.com/mechanical/echopilot_ai_r0.step) (right click, save link as)
+[EchoPilot AI 3D Model (STEP) File Download](https://echomav.com/mechanical/echopilot_ai_r1a.step) (right click, save link as)
 
-[EchoPilot AI Universal Carrier Board 3D model (STEP) File Download](https://echomav.com/mechanical/echopilot_ai_carrier_r0.step) (right click, save link as)
+[EchoPilot AI Universal Carrier Board 3D model (STEP) File Download](https://echomav.com/mechanical/echopilot_ai_carrier_r1.step) (right click, save link as)
 
 [EchoPilot AI PWM Breakout Board 3D model (STEP) File Download](https://echomav.com/mechanical/echopilot_pwm_breakout.step) (right click, save link as)
+
+[EchoPilot AI USB3 A Breakout Board 3D model (STEP) File Download](https://echomav.com/mechanical/echopilot-ai-usb-a-breakout.step) (right click, save link as)
 
 ## Notes on Vibration Isolation
 
