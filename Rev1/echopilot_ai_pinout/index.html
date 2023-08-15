@@ -412,8 +412,15 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#jetson-usb-31-ss-j31" class="md-nav__link">
-    Jetson USB 3.1 SS (J31)
+  <a href="#jetson-usb-console-j15" class="md-nav__link">
+    Jetson USB Console (J15)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fmu-sd-card-j10" class="md-nav__link">
+    FMU SD Card (J10)
   </a>
   
 </li>
@@ -644,8 +651,15 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#jetson-usb-31-ss-j31" class="md-nav__link">
-    Jetson USB 3.1 SS (J31)
+  <a href="#jetson-usb-console-j15" class="md-nav__link">
+    Jetson USB Console (J15)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fmu-sd-card-j10" class="md-nav__link">
+    FMU SD Card (J10)
   </a>
   
 </li>
@@ -739,8 +753,8 @@
 <p><img alt="Top Side Components" src="../assets/top-side-labels.png" /></p>
 <h4 id="debug-power-in-j8">Debug Power In (J8)<a class="headerlink" href="#debug-power-in-j8" title="Permanent link">&para;</a></h4>
 <p>This connector is <strong>not normally used</strong>. It exists only to power the EchoPilot AI without a carrier board attached.</p>
-<p>Connector: J8, Part Number: B2B-XH-A(LF)(SN)<br />
-Mating Connector: XHP-2</p>
+<p>Connector: J8, Part Number: NA<br />
+Mating Connector: NA, 2.54mm spacing, 0.8mm holes</p>
 <table>
 <thead>
 <tr>
@@ -910,19 +924,23 @@ Mating Connector: 0510210400</p>
 </tbody>
 </table>
 <h4 id="fmu-usb-j7">FMU USB (J7)<a class="headerlink" href="#fmu-usb-j7" title="Permanent link">&para;</a></h4>
-<p>This is a USB-C connector following USB 2.0 specifications. It provides access to the autopilot (FMU) via the main STM32H7 processor. Connect to this port for configuation of the autopilot or autopilot firmware updates.</p>
-<p>Connector: J7, Part Number: 12401610E4#2A<br />
-Mating Connector: Standard USB-C cable. Does not need to be USB 3 compliant.</p>
-<h4 id="jetson-usb-31-ss-j31">Jetson USB 3.1 SS (J31)<a class="headerlink" href="#jetson-usb-31-ss-j31" title="Permanent link">&para;</a></h4>
-<p>This is a USB-C connector following USB 3.1 SS specifications. This provides a high-speed USB connection to the Jetson SOM. We recommended using this connector for 4G/5G modems, USB drives or other peripherals needing high speed access. For lower-speed peripherals, 4 USB 2.0 ports are available on the Carrier Board.</p>
-<p>Connector: J31, Part Number: 12401610E4#2A<br />
-Mating Connector: USB-C 3.1 compliant cable.</p>
+<p>This is a USB-C connector following USB 2.0 specifications. It provides access to the autopilot (FMU) via the main STM32H7 processor. Connect to this port for configuration of the autopilot or autopilot firmware updates.</p>
+<p>Connector: J7, Part Number: 1054500101<br />
+Mating Connector: USB-C 2.0 compliant cable. </p>
+<h4 id="jetson-usb-console-j15">Jetson USB Console (J15)<a class="headerlink" href="#jetson-usb-console-j15" title="Permanent link">&para;</a></h4>
+<p>This is a USB-C connector providing console UART access to the Jetson SOM via an FTDI FT231XQ-R USB to Serial converter.</p>
+<p>Connector: J15, Part Number: 1054500101
+Mating Connector: USB-C 2.0 compliant cable.</p>
+<h4 id="fmu-sd-card-j10">FMU SD Card (J10)<a class="headerlink" href="#fmu-sd-card-j10" title="Permanent link">&para;</a></h4>
+<p>MicroSD card for logging from the FMU.</p>
+<p>Connector: J10, Part Number: 5025700893
+Mating Connector: MicroSD Card</p>
 <h3 id="bottom-side-echopilot-ai">Bottom Side EchoPilot AI<a class="headerlink" href="#bottom-side-echopilot-ai" title="Permanent link">&para;</a></h3>
 <p><img alt="Bottom Side Components" src="../assets/bottom-side-labels.png" /></p>
 <h4 id="board-to-board-jetson-j5">Board to Board Jetson (J5)<a class="headerlink" href="#board-to-board-jetson-j5" title="Permanent link">&para;</a></h4>
 <p>This connector handles the Jetson-related board to board signals between the EchoPilot AI and a carrier board.</p>
 <p>Connector: J5, Part Number: FX23L-80S-0.5SV<br />
-Mating Connector: FX23L-80P-0.5SV8 (8mm standoff, also available in 10 and 12mm)  </p>
+Mating Connector: FX23L-80P-0.5SV10 (10mm standoff, also available in 10 and 12mm)  </p>
 <p><img alt="Pin Locations" src="../assets/jetson_b2b.png" /></p>
 <table>
 <thead>
@@ -936,15 +954,15 @@ Mating Connector: FX23L-80P-0.5SV8 (8mm standoff, also available in 10 and 12mm)
 <tbody>
 <tr>
 <td>1</td>
-<td>I</td>
-<td>3.3V</td>
-<td>Jetson Console RX</td>
+<td>IO</td>
+<td>Diff Signal</td>
+<td>Jetson CAN+</td>
 </tr>
 <tr>
 <td>2</td>
-<td>O</td>
-<td>3.3V</td>
-<td>Jetson Console TX</td>
+<td>OO</td>
+<td>Diff Signal</td>
+<td>Jetson CAN-</td>
 </tr>
 <tr>
 <td>3</td>
@@ -1237,32 +1255,32 @@ Mating Connector: FX23L-80P-0.5SV8 (8mm standoff, also available in 10 and 12mm)
 <tr>
 <td>51</td>
 <td>IO</td>
-<td>3.3V</td>
-<td>JETSON I2C1_SDA</td>
+<td>Diff Signal</td>
+<td>USB3SS RX+</td>
 </tr>
 <tr>
 <td>52</td>
 <td>IO</td>
-<td>3.3V</td>
-<td>JETSON I2C1_SCL</td>
+<td>Diff Signal</td>
+<td>USB3SS RX-</td>
 </tr>
 <tr>
 <td>53</td>
-<td>NA</td>
-<td>NA</td>
-<td>NC</td>
+<td>Pwr</td>
+<td>GND</td>
+<td>GND</td>
 </tr>
 <tr>
 <td>54</td>
-<td>NA</td>
-<td>NA</td>
-<td>NC</td>
+<td>IO</td>
+<td>Diff Signal</td>
+<td>USB3SS TX+</td>
 </tr>
 <tr>
 <td>55</td>
-<td>NA</td>
-<td>NA</td>
-<td>NC</td>
+<td>IO</td>
+<td>Diff Signal</td>
+<td>USB3SS TX-</td>
 </tr>
 <tr>
 <td>56</td>
@@ -1274,19 +1292,19 @@ Mating Connector: FX23L-80P-0.5SV8 (8mm standoff, also available in 10 and 12mm)
 <td>57</td>
 <td>Pwr</td>
 <td>5V</td>
-<td>VBUS5</td>
+<td>USB2.0_3 VBUS</td>
 </tr>
 <tr>
 <td>58</td>
 <td>IO</td>
 <td>Diff Signal</td>
-<td>USB_4 D+</td>
+<td>USB3SS D+</td>
 </tr>
 <tr>
 <td>59</td>
 <td>IO</td>
 <td>Diff Signal</td>
-<td>USB_4 D-</td>
+<td>USB3SS D-</td>
 </tr>
 <tr>
 <td>60</td>
@@ -1298,7 +1316,7 @@ Mating Connector: FX23L-80P-0.5SV8 (8mm standoff, also available in 10 and 12mm)
 <td>61</td>
 <td>Pwr</td>
 <td>5V</td>
-<td>VBUS4</td>
+<td>VBUS3</td>
 </tr>
 <tr>
 <td>62</td>
@@ -1322,7 +1340,7 @@ Mating Connector: FX23L-80P-0.5SV8 (8mm standoff, also available in 10 and 12mm)
 <td>65</td>
 <td>Pwr</td>
 <td>5V</td>
-<td>VBUS3</td>
+<td>VBUS2</td>
 </tr>
 <tr>
 <td>66</td>
@@ -1346,7 +1364,7 @@ Mating Connector: FX23L-80P-0.5SV8 (8mm standoff, also available in 10 and 12mm)
 <td>69</td>
 <td>Pwr OUT</td>
 <td>5V</td>
-<td>VBUS2</td>
+<td>VBUS1</td>
 </tr>
 <tr>
 <td>70</td>
@@ -1392,21 +1410,21 @@ Mating Connector: FX23L-80P-0.5SV8 (8mm standoff, also available in 10 and 12mm)
 </tr>
 <tr>
 <td>77</td>
-<td>Pwr OUT</td>
+<td>IO</td>
 <td>1.8</td>
-<td>+1.8V OUT</td>
+<td>Jetson I2C SDA</td>
 </tr>
 <tr>
 <td>78</td>
-<td>Pwr OUT</td>
+<td>O</td>
 <td>1.8</td>
-<td>+1.8V OUT</td>
+<td>Jetson I2C SCL</td>
 </tr>
 <tr>
 <td>79</td>
-<td>Pwr OUT</td>
-<td>3.3</td>
-<td>+3.3V OUT</td>
+<td>IO</td>
+<td>1.8</td>
+<td>Jetson GPIO 02</td>
 </tr>
 <tr>
 <td>80</td>
@@ -1418,13 +1436,13 @@ Mating Connector: FX23L-80P-0.5SV8 (8mm standoff, also available in 10 and 12mm)
 <td>81</td>
 <td>Pwr IN</td>
 <td>5.1</td>
-<td>+5.1V</td>
+<td>+5.2V</td>
 </tr>
 <tr>
 <td>82</td>
 <td>Pwr IN</td>
 <td>5.1</td>
-<td>+5.1V</td>
+<td>+5.2V</td>
 </tr>
 <tr>
 <td>83</td>
