@@ -6,7 +6,7 @@ The EchoPilot AI is a highly integrated vehicle control and edge computing syste
 
 The power of  an advanced autopilot is seamlessly combined with high-performance computing (including AI and machine learning), IP networking, cloud connectivity and flexible low-latency hardware accelerated video encoding.
 
-![EchoPilot AI](assets/echopilot_ai_stack.jpg)
+![EchoPilot AI](assets/rendering_stack.png)
 
 Autopilot Sensors
 
@@ -18,9 +18,9 @@ IMU 3        | ICM42688P
 Barometer 1        | ICP-20100                  
 Barometer 2        | ICP-20100 
 Magnetometer        | PNI RM3100    
-Add-On INS      | VectorNAV VN-X00 (optional, standalone modules only via RS-232)        
+Add-On INS      | Standalone modules only via RS-232        
 
-The hardware is configured into a two board stack. The upper board is the EchoPilot AI board, and it contains the flight management unit, peripherals, sensors and Nvidia Jetson interface. The lower board is the Carrier Board, and it handles power regulation and connectors. Two high-density FX23L-80S-0.5SV 80-pin board-to-board connectors are used between the two boards.
+The hardware is configured into a two board stack. The upper board is the EchoPilot AI board, and it contains the flight management unit, peripherals, sensors and Nvidia Jetson interface. The lower board is the Carrier Board, and it handles power regulation and connectors. Two high-density FX23L-80S-0.5SV 80-pin board-to-board connectors are used between the two boards. There is 10mm between boards.
 
 This design philosophy achieves multiple goals:
 
@@ -33,15 +33,15 @@ This design philosophy achieves multiple goals:
 
 ### Accessing the Jetson via the console
 
-These instructions assume you have a Jetson module that is already flashed. If you have a new Jetson module that is not flashed, please see [Building and Flashing a Jetson with L4T](/compile_l4t) instructions.
+If you included a Jetson SOM in your purchase, it will have been flashed and tested at the factory. If you have a new Jetson module that is not flashed, please see [Building and Flashing a Jetson with L4T](/compile_l4t) instructions.
 
 !!! WARNING
 
-    Do not run the Jetson SOM without a heatsink. The module may be damaged or performance throttled. See [connecttech.com](http://connecttech.com) for recommended active and passive heatsinks.
+    Do not run the Jetson SOM without a heat sink. The module may be damaged or performance throttled. See [connecttech.com](http://connecttech.com) for recommended active and passive heat sinks and heat spreaders.
 
-1. Assemble the EchoPilot AI board with a Carrier Board, using 8mm standoffs between the two boards.
+1. Assemble the EchoPilot AI board with a Carrier Board, using 10mm standoffs between the two boards.
 2. If a Jetson Module is not already installed in the EchoPilot AI, install the module now.
-3. Attached a USB cable between your host computer and J7 (Console) on the Carrier Board
+3. Attached a USB cable between your host computer and J16 (Console) on the EchoPilot AI Board
 ![Console USB Connection](assets/usb-to-echopilot-carrier.png)
 4. In step 3, your host computer should have enumerated a virtual comm port. You will now need to find the name of the port.
 !!! info
@@ -53,7 +53,7 @@ Use a terminal program to connect to the Jetson's console at 115200 baud, 8N1.
     **On Linux:** We recommend Picocom. Install with ```sudo apt-get install picocom```. Use with ```picocom /dev/ttyUSB? -b 115200```. To exit picocom, use ```Ctrl-a Ctrl-x```.
 Power the Carrier Board with 7-56VDC source capable of supplying up to **4A**.
 !!! warning
-    If using a bench supply with over-current protection, we recommend turning it **OFF**. The boot process requires short bursts of high current and over-current protection on some supplies will result in a failed boot.
+    If using a bench supply with over-current protection, we recommend turning it **OFF**. The boot process requires short bursts of high current and over-current protection on some supplies will result in a failed boot. In most cases, if the Jetson fails to boot it is due to a poor power supply.
 You should now see the boot messages in your console, and once boot is complete, you will see a login prompt.
 !!! note
     The default username is **echopilot** and the default password is **echopilot**
@@ -166,54 +166,54 @@ sudo umount /dev/mmcblk1p1 /sdcard
 
 ## Configure the Network
 
-Linux for Tegra uses networkmanager (`nmcli`) for its network interfaces. Below you will find a few commands for common network tasks.
+Linux for Tegra uses networkmanager (`nmcli`) for its network interfaces. Below you will find a few commands for common network tasks. These examples are not intented for you to follow sequentially, these are common examples which will demonstrate most network configuration needs.
 
 Show connections:    
 ```nmcli con show```
 
-Delete the default connection ("Wired connection 1") and set up a static connection called `static-eth0` with an IP of 172.20.1.100, a netmask of 255.255.0.0 and a gateway of 172.20.2.100:    
+Example: Delete the default connection ("Wired connection 1") and set up a static connection called `static-eth0` with an IP of 172.20.1.100, a netmask of 255.255.0.0 and a gateway of 172.20.2.100:    
 ```
 sudo nmcli c delete "Wired connection 1"
 sudo nmcli c add con-name static-eth0 ifname eth0 type ethernet ip4 172.20.1.20/16 gw4 172.20.2.100
 sudo nmcli c up static-eth0
 ```
 
-Change IP address of `static-eth0` connection to `192.168.1.4/16`:    
+Example: Change IP address of `static-eth0` connection to `192.168.1.4/16`:    
 ```
 sudo nmcli con mod static-eth0 ipv4.address 192.168.1.1/16
 ```
 
-Change gateway of `static-eth0` connection to `192.168.1.1`:    
+Example: Change gateway of `static-eth0` connection to `192.168.1.1`:    
 ```
 sudo nmcli con mod static-eth0 ipv4.gateway 192.168.1.1
 ```
 
-Change dns of `static-eth0` connection to `8.8.8.8`:       
+Example: Change dns of `static-eth0` connection to `8.8.8.8`:       
 ```
 sudo nmcli con mod static-eth0 ipv4.dns "8.8.8.8"
 ```
 
-Take down/up of `static-eth0`:      
+Example: Take down/up of `static-eth0`:      
 ```
 sudo nmcli con down static-eth0
 sudo nmcli con up static-eth0
 ```
-Delete `static-eth0` connection:    
+Example: Delete `static-eth0` connection:    
 ```
 sudo nmcli c delete "static-eth0"
 ```
 
-Add new connection called `static-eth0` with IP `172.20.2.22/16` and gateway `172.20.2.100`:    
+Example: Add new connection called `static-eth0` with IP `172.20.2.22/16` and gateway `172.20.2.100`:    
 ```
 sudo nmcli c add con-name static-eth0 ifname eth0 type ethernet ip4 172.20.2.22/16 gw4 172.20.2.100
 ```
 
-Add a persistent route so that multicast traffic to 224.x.x.x goes to the `static-eth0` connection:  
+Example: Add a persistent route so that multicast traffic to 224.x.x.x goes to the `static-eth0` connection:  
 ```
 sudo nmcli con mod static-eth0 +ipv4.routes "224.0.0.0/8"
 ```
 
-Change eth0 to enable remove static IP and enable DHCP (In this case, it would make more sense to delete the connection since it is named `static-eth0` and call it something else, but for edification:
+Example: Change eth0 to enable remove static IP and enable DHCP (In this case, it would make more sense to delete the connection since it is named `static-eth0` and call it something else, but for edification:
 ```
 sudo nmcli con mod static-eth0 ipv4.address ""
 sudo nmcli con mod static-eth0 ipv4.method auto
