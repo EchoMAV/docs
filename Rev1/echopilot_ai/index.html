@@ -893,8 +893,8 @@
 <th>B2B (J5)</th>
 <th>Voltage</th>
 <th>Default Use</th>
-<th>Pin Description (Xavier)</th>
-<th>Pin Description (Nano)</th>
+<th>GPIO (Xavier)</th>
+<th>GPIO (Nano)</th>
 </tr>
 </thead>
 <tbody>
@@ -908,20 +908,20 @@
 <td>AUDIO_MCLK</td>
 </tr>
 <tr>
-<td>PIN 212</td>
+<td>PIN 124</td>
 <td>IO</td>
-<td>38</td>
+<td>37</td>
 <td>+1.8V</td>
-<td>Spare IO</td>
-<td>GPIO3_PQ.01</td>
-<td>GPIO3_PV.01</td>
+<td>GPIO O2</td>
+<td>GPIO3_PQ.03</td>
+<td>GPIO3_PH.06</td>
 </tr>
 <tr>
 <td>PIN 218</td>
 <td>IO</td>
 <td>37</td>
-<td>+1.8V</td>
-<td>Spare IO</td>
+<td>+3.3V*</td>
+<td>Iridium Ring</td>
 <td>GPIO3_PCC.04</td>
 <td>GPIO3_PY.02</td>
 </tr>
@@ -930,7 +930,7 @@
 <td>I</td>
 <td>74</td>
 <td>+3.3V*</td>
-<td>Iridium Ring</td>
+<td>Iridium On/Off</td>
 <td>GPIO3_PCC.00</td>
 <td>GPIO3_PI.02</td>
 </tr>
@@ -939,7 +939,7 @@
 <td>I</td>
 <td>73</td>
 <td>+3.3V*</td>
-<td>Iridium NA</td>
+<td>Iridium Network Available</td>
 <td>GPIO3_PR.00</td>
 <td>GPIO3_PV.00</td>
 </tr>
@@ -947,7 +947,7 @@
 </table>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>*Pins 126 and 206 are level-shifted from 1.8V to 3.3V prior to the B2B (J5) connector via a TXS0108ERGYR level translator.</p>
+<p>*Pins 126, 206 abd 130 are level-shifted from 1.8V to 3.3V prior to the B2B (J5) connector via a TXS0108ERGYR level translator.</p>
 </div>
 <p>The following Jetson IO is used internally by the EchoPilot AI:</p>
 <div class="admonition warning">
@@ -968,19 +968,11 @@
 <tbody>
 <tr>
 <td>PIN 87</td>
-<td>Pwr</td>
-<td>5V</td>
+<td>I</td>
+<td>+1.8V</td>
 <td>Vbus Detect</td>
 <td>USB_VBUS_EN0</td>
 <td>USB_VBUS_EN0</td>
-</tr>
-<tr>
-<td>PIN 128</td>
-<td>O</td>
-<td>+1.8V</td>
-<td>SD Card Enable</td>
-<td>GPIO3_PCC.02</td>
-<td>GPIO3_PH.07</td>
 </tr>
 <tr>
 <td>PIN 130</td>
@@ -991,12 +983,12 @@
 <td>GPIO3_PI.00</td>
 </tr>
 <tr>
-<td>PIN 208</td>
+<td>PIN 212</td>
 <td>I</td>
 <td>+1.8V</td>
-<td>SD Card Detect</td>
-<td>GPIO3_PQ.02</td>
-<td>GPIO3_PZ.02</td>
+<td>M2 Alert</td>
+<td>GPIO3_PQ.01</td>
+<td>GPIO3_PV.01</td>
 </tr>
 </tbody>
 </table>
@@ -1018,16 +1010,16 @@
 <td>O</td>
 <td>+5V</td>
 <td>Fan PWM</td>
-<td>GP_PWM6</td>
-<td>PM3_PWM3</td>
+<td>GPIO3_PH.01</td>
+<td>GPIO3_PE.07</td>
 </tr>
 <tr>
-<td>PIN 127</td>
+<td>PIN 208</td>
 <td>I</td>
 <td>+5V</td>
-<td>Fan Tach</td>
+<td>Fan Tachometer</td>
 <td>GPIO3_PQ.02</td>
-<td>GPIO3_PI.01</td>
+<td>GPIO3_PZ.02</td>
 </tr>
 </tbody>
 </table>
@@ -1043,9 +1035,10 @@
   </p>
 <figcaption>EchoPilot AI without a Carrier Board Attached</figcaption>
 </figure>
-<p><a href="https://echomav.com/mechanical/echopilot_ai_r0.step">EchoPilot AI 3D Model (STEP) File Download</a> (right click, save link as)</p>
-<p><a href="https://echomav.com/mechanical/echopilot_ai_carrier_r0.step">EchoPilot AI Universal Carrier Board 3D model (STEP) File Download</a> (right click, save link as)</p>
+<p><a href="https://echomav.com/mechanical/echopilot_ai_r1a.step">EchoPilot AI 3D Model (STEP) File Download</a> (right click, save link as)</p>
+<p><a href="https://echomav.com/mechanical/echopilot_ai_carrier_r1.step">EchoPilot AI Universal Carrier Board 3D model (STEP) File Download</a> (right click, save link as)</p>
 <p><a href="https://echomav.com/mechanical/echopilot_pwm_breakout.step">EchoPilot AI PWM Breakout Board 3D model (STEP) File Download</a> (right click, save link as)</p>
+<p><a href="https://echomav.com/mechanical/echopilot-ai-usb-a-breakout.step">EchoPilot AI USB3 A Breakout Board 3D model (STEP) File Download</a> (right click, save link as)</p>
 <h2 id="notes-on-vibration-isolation">Notes on Vibration Isolation<a class="headerlink" href="#notes-on-vibration-isolation" title="Permanent link">&para;</a></h2>
 <p>Many commercial autopilots use foam vibration isolation on a daughterboard containing the IMUs. You'll notice the EchoPilot AI does not use this type of design and the IMUs are mounted directly to the circuit board. The reason for this is that we feel better vibration isolation can be achieved (if required) by leveraging the mass of the entire EchoPilot system (carrier board, main board and Jetson SOM) rather than the very small mass of an IMU daughterboard. For the types of vibrations encountered by large-prop multi-rotors and piston-based engines (50-90 Hz), the total mass of the EchoPilot system mounted on vibration silicone isolators or wire rope isolators are very effective. This design has the added benefits of protecting critical electronics from exposure to continuous vibrations.  </p>
 <div class="admonition note">
