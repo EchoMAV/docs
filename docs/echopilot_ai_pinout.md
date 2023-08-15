@@ -170,8 +170,8 @@ Mating Connector: FX23L-80P-0.5SV10 (10mm standoff, also available in 10 and 12m
 | 78         |   O        |   1.8      |   Jetson I2C SCL                |
 | 79         |   IO        |   1.8      |   Jetson GPIO 02                |
 | 80         |   Pwr OUT        |   3.3      |   +3.3V OUT                |
-| 81         |   Pwr IN        |   5.1      |   +5.2V                |
-| 82         |    Pwr IN       |   5.1      |   +5.2V                |
+| 81         |   Pwr IN        |   5.2      |   +5.2V                |
+| 82         |    Pwr IN       |   5.2      |   +5.2V                |
 | 83         |  Pwr         |   GND      |    GND               |
 | 84         |  Pwr         |   GND      |    GND               |
 
@@ -260,13 +260,13 @@ Mating Connector: FX23L-80P-0.5SV8 (8mm standoff, also available in 10 and 12mm)
 | 73         |    O       |   3.3V      |  FMU UART4 TX                 |
 | 74         |    I       |   3.3V      |  FMU UART4 RX                 |
 | 75         |    Pwr       |   GND      |  GND                 |
-| 76         |    NA       |   NA      |   NC                |
-| 77         |   NA        |   NA      |   NC              |
-| 78         |   NA        |   NA      |   NC                |
-| 79         |   NA        |   NA     |   NC                |
+| 76         |    I       |   3.3V      |   BATTERY2 CURRENT SENSE                |
+| 77         |   I        |   3.3V      |   BATTERY2 VOLTAGE SENSE              |
+| 78         |   I        |   3.3V      |   SPARE ADC1                |
+| 79         |   I        |   3.3V     |   SPARE ADC2                |
 | 80         |   NA        |   NA      |   NC               |
-| 81         |   Pwr IN        |   +5.1V      |   +5.1V (JETSON POWER)     |
-| 82         |    Pwr IN        |   +5.1V      |   +5.1V (JETSON POWER)     |
+| 81         |   Pwr IN        |   +5.2V      |   +5.2V (JETSON POWER)     |
+| 82         |    Pwr IN        |   +5.2V      |   +5.2V (JETSON POWER)     |
 | 83         |  Pwr         |   GND      |    GND               |
 | 84         |  Pwr         |   GND      |    GND               |
 
@@ -288,12 +288,11 @@ PIN 6        | Pwr           | GND          | Gnd
 #### Jetson Debug (J25)
 This connector is used to flash new firmware to the Jetson SOM.
 
-Connector: J25, Part Number: SM04B-GHS-TB(LF)(SN)  
-Mating Connector: GHR-04V-S
+Connector: J25, Part Number: 629105150521 
+Mating Connector: MicroUSB Cable
 
-Pin Number   | Direction     | Voltage       | Pin Description
------------- | ------------- | ------------  | ------------
-PIN 1        | Pwr In            | +5.0V           | VBus
-PIN 2        | IO            | Diff Signal          | USB D-
-PIN 3        | IO            | Diff Signal          | USB D+
-PIN 4        | Pwr            | GND         | Gnd
+#### NVMe SSD M.2 Slot (J14)
+M.2 connector, for use with size 2230 NVMe Solid State Drives. 
+
+Connector: J14, Part Number: MDT420M01001 
+Mating Connector: 2230 M.2 Key M
