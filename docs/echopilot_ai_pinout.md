@@ -7,8 +7,8 @@
 #### Debug Power In (J8)
 This connector is **not normally used**. It exists only to power the EchoPilot AI without a carrier board attached.
 
-Connector: J8, Part Number: B2B-XH-A(LF)(SN)  
-Mating Connector: XHP-2
+Connector: J8, Part Number: NA  
+Mating Connector: NA, 2.54mm spacing, 0.8mm holes
 
 Pin Number   | Direction     | Voltage       | Pin Description
 ------------ | ------------- | ------------  | ------------
@@ -59,16 +59,22 @@ PIN 3        | I           | +5V          | Fan Tachometer Signal
 PIN 4        | O            | +5V         | Fan PWM Signal
 
 #### FMU USB (J7)
-This is a USB-C connector following USB 2.0 specifications. It provides access to the autopilot (FMU) via the main STM32H7 processor. Connect to this port for configuation of the autopilot or autopilot firmware updates.
+This is a USB-C connector following USB 2.0 specifications. It provides access to the autopilot (FMU) via the main STM32H7 processor. Connect to this port for configuration of the autopilot or autopilot firmware updates.
 
-Connector: J7, Part Number: 12401610E4#2A  
-Mating Connector: Standard USB-C cable. Does not need to be USB 3 compliant.
+Connector: J7, Part Number: 1054500101  
+Mating Connector: USB-C 2.0 compliant cable. 
 
-#### Jetson USB 3.1 SS (J31)
-This is a USB-C connector following USB 3.1 SS specifications. This provides a high-speed USB connection to the Jetson SOM. We recommended using this connector for 4G/5G modems, USB drives or other peripherals needing high speed access. For lower-speed peripherals, 4 USB 2.0 ports are available on the Carrier Board.
+#### Jetson USB Console (J15)
+This is a USB-C connector providing console UART access to the Jetson SOM via an FTDI FT231XQ-R USB to Serial converter.
 
-Connector: J31, Part Number: 12401610E4#2A  
-Mating Connector: USB-C 3.1 compliant cable.
+Connector: J15, Part Number: 1054500101
+Mating Connector: USB-C 2.0 compliant cable.
+
+#### FMU SD Card (J10)
+MicroSD card for logging from the FMU.
+
+Connector: J10, Part Number: 5025700893
+Mating Connector: MicroSD Card
 
 ### Bottom Side EchoPilot AI
 
@@ -78,14 +84,14 @@ Mating Connector: USB-C 3.1 compliant cable.
 This connector handles the Jetson-related board to board signals between the EchoPilot AI and a carrier board.
 
 Connector: J5, Part Number: FX23L-80S-0.5SV  
-Mating Connector: FX23L-80P-0.5SV8 (8mm standoff, also available in 10 and 12mm)  
+Mating Connector: FX23L-80P-0.5SV10 (10mm standoff, also available in 10 and 12mm)  
 
 ![Pin Locations](assets/jetson_b2b.png)
 
 | Pin Number | Direction | Voltage | Pin Desription    |
 |------------|-----------|---------|-------------------|
-| 1          | I         | 3.3V    | Jetson Console RX |
-| 2          | O         | 3.3V    | Jetson Console TX |
+| 1          | IO         | Diff Signal    | Jetson CAN+ |
+| 2          | OO         | Diff Signal    | Jetson CAN- |
 | 3          | Pwr       | GND     | GND              |
 | 4          | IO        | 1.8V    | CAM0_SDA0         |
 | 5          | IO           |   1.8V      | CAM0_SCL0          |
@@ -134,25 +140,25 @@ Mating Connector: FX23L-80P-0.5SV8 (8mm standoff, also available in 10 and 12mm)
 | 48         |   IO        |   Diff Signal      |  ETH2 TX+                 |
 | 49         |   IO        |   Diff Signal      |  ETH2 TX-                 |
 | 50         |    Pwr       |    GND     |  GND                 |
-| 51         |    IO       |    3.3V     |  JETSON I2C1_SDA                 |
-| 52         |    IO       |    3.3V     |  JETSON I2C1_SCL                 |
-| 53         |   NA        |   NA      |  NC                |
-| 54         |   NA        |   NA      |  NC                 |
-| 55         |   NA        |   NA      |  NC                 |
+| 51         |    IO       |    Diff Signal     |  USB3SS RX+                |
+| 52         |    IO       |    Diff Signal     |  USB3SS RX-                 |
+| 53         |    Pwr        |   GND      |  GND                |
+| 54         |   IO        |   Diff Signal      |  USB3SS TX+                 |
+| 55         |   IO        |   Diff Signal      |  USB3SS TX-                 |
 | 56         |   Pwr        |   GND      |  GND                 |
-| 57         |   Pwr        |   5V      |  VBUS5                 |
-| 58         |    IO       |  Diff Signal       |  USB_4 D+                 |
-| 59         |   IO        |  Diff Signal       |  USB_4 D-                 |
+| 57         |   Pwr        |   5V      |  USB2.0_3 VBUS                 |
+| 58         |    IO       |  Diff Signal       |  USB3SS D+                 |
+| 59         |   IO        |  Diff Signal       |  USB3SS D-                 |
 | 60         |   Pwr        |   GND      |  GND                 |
-| 61         |   Pwr        |    5V     |  VBUS4                 |
+| 61         |   Pwr        |    5V     |  VBUS3                 |
 | 62         |    IO       |   Diff Signal      |  USB_3 D+                 |
 | 63         |    IO       |   Diff Signal      |  USB_3 D-                 |
 | 64         |    Pwr       |    GND     |  GND                 |
-| 65         |    Pwr       |     5V    |  VBUS3                 |
+| 65         |    Pwr       |     5V    |  VBUS2                 |
 | 66         |    IO       |   Diff Signal      |  USB_2 D+                 |
 | 67         |    IO       |   Diff Signal      |  USB_2 D-                 |
 | 68         |    Pwr       |   GND      |  GND                 |
-| 69         |    Pwr OUT       |   5V      |  VBUS2                 |
+| 69         |    Pwr OUT       |   5V      |  VBUS1                 |
 | 70         |    IO      |   Diff Signal      |  USB_1 D+            |
 | 71         |    IO       |  Diff Signal       |  USB_1 D-                 |
 | 72         |    Pwr       |   GND      |  GND                 |
@@ -160,12 +166,12 @@ Mating Connector: FX23L-80P-0.5SV8 (8mm standoff, also available in 10 and 12mm)
 | 74         |    I       |   3.3V      |  IRIDIUM RING                 |
 | 75         |    I       |   3.3V      |  IRIDIUM TX UART                 |
 | 76         |    O       |   3.3V      |   IRIDIUM ON/OFF                |
-| 77         |   Pwr OUT        |   1.8      |   +1.8V OUT               |
-| 78         |Pwr OUT        |   1.8      |   +1.8V OUT                |
-| 79         |   Pwr OUT        |   3.3      |   +3.3V OUT                |
+| 77         |   IO        |   1.8      |   Jetson I2C SDA               |
+| 78         |   O        |   1.8      |   Jetson I2C SCL                |
+| 79         |   IO        |   1.8      |   Jetson GPIO 02                |
 | 80         |   Pwr OUT        |   3.3      |   +3.3V OUT                |
-| 81         |   Pwr IN        |   5.1      |   +5.1V                |
-| 82         |    Pwr IN       |   5.1      |   +5.1V                |
+| 81         |   Pwr IN        |   5.1      |   +5.2V                |
+| 82         |    Pwr IN       |   5.1      |   +5.2V                |
 | 83         |  Pwr         |   GND      |    GND               |
 | 84         |  Pwr         |   GND      |    GND               |
 
