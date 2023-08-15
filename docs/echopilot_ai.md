@@ -41,7 +41,7 @@ If you included a Jetson SOM in your purchase, it will have been flashed and tes
 
 1. Assemble the EchoPilot AI board with a Carrier Board, using 10mm standoffs between the two boards.
 2. If a Jetson Module is not already installed in the EchoPilot AI, install the module now.
-3. Attached a USB cable between your host computer and J16 (Console) on the EchoPilot AI Board
+3. Attached a USB cable between your host computer and J15 (Console) on the EchoPilot AI Board
 ![Console USB Connection](assets/usb-to-echopilot-carrier.png)
 4. In step 3, your host computer should have enumerated a virtual comm port. You will now need to find the name of the port.
 !!! info
