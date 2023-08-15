@@ -15,7 +15,7 @@
         <link rel="next" href="../echopilot_ai_pinout/">
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.19">
+      <meta name="generator" content="mkdocs-1.5.2, mkdocs-material-9.1.21">
     
     
       
@@ -772,7 +772,7 @@
 <h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
 <p>The EchoPilot AI is a highly integrated vehicle control and edge computing system designed to power next-generation uncrewed systems. The EchoPilot AI supports computer vision, machine learning, autonomy, artificial intelligence and other advanced edge computing needs. The EchoPilot AI implements a STM32H7-based autopilot compatible with the popular Ardupilot and PX4 projects, and uses Pixhawk <a href="https://github.com/pixhawk/Pixhawk-Standards/blob/master/DS-009%20Pixhawk%20Connector%20Standard.pdf">open-hardware connectivity standards</a>. </p>
 <p>The power of  an advanced autopilot is seamlessly combined with high-performance computing (including AI and machine learning), IP networking, cloud connectivity and flexible low-latency hardware accelerated video encoding.</p>
-<p><img alt="EchoPilot AI" src="../assets/echopilot_ai_stack.jpg" /></p>
+<p><img alt="EchoPilot AI" src="../assets/rendering_stack.png" /></p>
 <p>Autopilot Sensors</p>
 <table>
 <thead>
@@ -808,11 +808,11 @@
 </tr>
 <tr>
 <td>Add-On INS</td>
-<td>VectorNAV VN-X00 (optional, standalone modules only via RS-232)</td>
+<td>Standalone modules only via RS-232</td>
 </tr>
 </tbody>
 </table>
-<p>The hardware is configured into a two board stack. The upper board is the EchoPilot AI board, and it contains the flight management unit, peripherals, sensors and Nvidia Jetson interface. The lower board is the Carrier Board, and it handles power regulation and connectors. Two high-density FX23L-80S-0.5SV 80-pin board-to-board connectors are used between the two boards.</p>
+<p>The hardware is configured into a two board stack. The upper board is the EchoPilot AI board, and it contains the flight management unit, peripherals, sensors and Nvidia Jetson interface. The lower board is the Carrier Board, and it handles power regulation and connectors. Two high-density FX23L-80S-0.5SV 80-pin board-to-board connectors are used between the two boards. There is 10mm between boards.</p>
 <p>This design philosophy achieves multiple goals:</p>
 <ol>
 <li>For integrated vehicle solutions, it is often desired to design a custom carrier board to add additional components, minimize cables/wiring and integrate power distribution. The EchoPilot AI's design allows you to optionally design a custom carrier board (using the provided Carrier Board as a <a href="https://github.com/EchoMAV/echopilot_ai_carrier">reference design</a>).</li>
@@ -822,15 +822,15 @@
 </ol>
 <h2 id="quick-start-guide">Quick Start Guide<a class="headerlink" href="#quick-start-guide" title="Permanent link">&para;</a></h2>
 <h3 id="accessing-the-jetson-via-the-console">Accessing the Jetson via the console<a class="headerlink" href="#accessing-the-jetson-via-the-console" title="Permanent link">&para;</a></h3>
-<p>These instructions assume you have a Jetson module that is already flashed. If you have a new Jetson module that is not flashed, please see <a href="/compile_l4t">Building and Flashing a Jetson with L4T</a> instructions.</p>
+<p>If you included a Jetson SOM in your purchase, it will have been flashed and tested at the factory. If you have a new Jetson module that is not flashed, please see <a href="/compile_l4t">Building and Flashing a Jetson with L4T</a> instructions.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>Do not run the Jetson SOM without a heatsink. The module may be damaged or performance throttled. See <a href="http://connecttech.com">connecttech.com</a> for recommended active and passive heatsinks.</p>
+<p>Do not run the Jetson SOM without a heat sink. The module may be damaged or performance throttled. See <a href="http://connecttech.com">connecttech.com</a> for recommended active and passive heat sinks and heat spreaders.</p>
 </div>
 <ol>
-<li>Assemble the EchoPilot AI board with a Carrier Board, using 8mm standoffs between the two boards.</li>
+<li>Assemble the EchoPilot AI board with a Carrier Board, using 10mm standoffs between the two boards.</li>
 <li>If a Jetson Module is not already installed in the EchoPilot AI, install the module now.</li>
-<li>Attached a USB cable between your host computer and J7 (Console) on the Carrier Board
+<li>Attached a USB cable between your host computer and J16 (Console) on the EchoPilot AI Board
 <img alt="Console USB Connection" src="../assets/usb-to-echopilot-carrier.png" /></li>
 <li>In step 3, your host computer should have enumerated a virtual comm port. You will now need to find the name of the port.</li>
 </ol>
@@ -848,7 +848,7 @@
 <p>Power the Carrier Board with 7-56VDC source capable of supplying up to <strong>4A</strong>.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>If using a bench supply with over-current protection, we recommend turning it <strong>OFF</strong>. The boot process requires short bursts of high current and over-current protection on some supplies will result in a failed boot.</p>
+<p>If using a bench supply with over-current protection, we recommend turning it <strong>OFF</strong>. The boot process requires short bursts of high current and over-current protection on some supplies will result in a failed boot. In most cases, if the Jetson fails to boot it is due to a poor power supply.</p>
 </div>
 <p>You should now see the boot messages in your console, and once boot is complete, you will see a login prompt.</p>
 <div class="admonition note">
@@ -1061,37 +1061,37 @@ To unmount it:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>sudo umount /dev/mmcblk1p1 /sdcard
 </code></pre></div></p>
 <h2 id="configure-the-network">Configure the Network<a class="headerlink" href="#configure-the-network" title="Permanent link">&para;</a></h2>
-<p>Linux for Tegra uses networkmanager (<code>nmcli</code>) for its network interfaces. Below you will find a few commands for common network tasks.</p>
+<p>Linux for Tegra uses networkmanager (<code>nmcli</code>) for its network interfaces. Below you will find a few commands for common network tasks. These examples are not intented for you to follow sequentially, these are common examples which will demonstrate most network configuration needs.</p>
 <p>Show connections:  <br />
 <code>nmcli con show</code></p>
-<p>Delete the default connection ("Wired connection 1") and set up a static connection called <code>static-eth0</code> with an IP of 172.20.1.100, a netmask of 255.255.0.0 and a gateway of 172.20.2.100:  <br />
+<p>Example: Delete the default connection ("Wired connection 1") and set up a static connection called <code>static-eth0</code> with an IP of 172.20.1.100, a netmask of 255.255.0.0 and a gateway of 172.20.2.100:  <br />
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>sudo nmcli c delete &quot;Wired connection 1&quot;
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>sudo nmcli c add con-name static-eth0 ifname eth0 type ethernet ip4 172.20.1.20/16 gw4 172.20.2.100
 <a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>sudo nmcli c up static-eth0
 </code></pre></div></p>
-<p>Change IP address of <code>static-eth0</code> connection to <code>192.168.1.4/16</code>:  <br />
+<p>Example: Change IP address of <code>static-eth0</code> connection to <code>192.168.1.4/16</code>:  <br />
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>sudo nmcli con mod static-eth0 ipv4.address 192.168.1.1/16
 </code></pre></div></p>
-<p>Change gateway of <code>static-eth0</code> connection to <code>192.168.1.1</code>:  <br />
+<p>Example: Change gateway of <code>static-eth0</code> connection to <code>192.168.1.1</code>:  <br />
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>sudo nmcli con mod static-eth0 ipv4.gateway 192.168.1.1
 </code></pre></div></p>
-<p>Change dns of <code>static-eth0</code> connection to <code>8.8.8.8</code>:     <br />
+<p>Example: Change dns of <code>static-eth0</code> connection to <code>8.8.8.8</code>:     <br />
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>sudo nmcli con mod static-eth0 ipv4.dns &quot;8.8.8.8&quot;
 </code></pre></div></p>
-<p>Take down/up of <code>static-eth0</code>:    <br />
+<p>Example: Take down/up of <code>static-eth0</code>:    <br />
 <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>sudo nmcli con down static-eth0
 <a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>sudo nmcli con up static-eth0
 </code></pre></div>
-Delete <code>static-eth0</code> connection:  <br />
+Example: Delete <code>static-eth0</code> connection:  <br />
 <div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>sudo nmcli c delete &quot;static-eth0&quot;
 </code></pre></div></p>
-<p>Add new connection called <code>static-eth0</code> with IP <code>172.20.2.22/16</code> and gateway <code>172.20.2.100</code>:  <br />
+<p>Example: Add new connection called <code>static-eth0</code> with IP <code>172.20.2.22/16</code> and gateway <code>172.20.2.100</code>:  <br />
 <div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>sudo nmcli c add con-name static-eth0 ifname eth0 type ethernet ip4 172.20.2.22/16 gw4 172.20.2.100
 </code></pre></div></p>
-<p>Add a persistent route so that multicast traffic to 224.x.x.x goes to the <code>static-eth0</code> connection:<br />
+<p>Example: Add a persistent route so that multicast traffic to 224.x.x.x goes to the <code>static-eth0</code> connection:<br />
 <div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>sudo nmcli con mod static-eth0 +ipv4.routes &quot;224.0.0.0/8&quot;
 </code></pre></div></p>
-<p>Change eth0 to enable remove static IP and enable DHCP (In this case, it would make more sense to delete the connection since it is named <code>static-eth0</code> and call it something else, but for edification:
+<p>Example: Change eth0 to enable remove static IP and enable DHCP (In this case, it would make more sense to delete the connection since it is named <code>static-eth0</code> and call it something else, but for edification:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>sudo nmcli con mod static-eth0 ipv4.address &quot;&quot;
 <a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>sudo nmcli con mod static-eth0 ipv4.method auto
 <a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>sudo nmcli con down static-eth0
