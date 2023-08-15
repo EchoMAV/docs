@@ -91,7 +91,7 @@ Mating Connector: FX23L-80P-0.5SV10 (10mm standoff, also available in 10 and 12m
 | Pin Number | Direction | Voltage | Pin Desription    |
 |------------|-----------|---------|-------------------|
 | 1          | IO         | Diff Signal    | Jetson CAN+ |
-| 2          | OO         | Diff Signal    | Jetson CAN- |
+| 2          | IO         | Diff Signal    | Jetson CAN- |
 | 3          | Pwr       | GND     | GND              |
 | 4          | IO        | 1.8V    | CAM0_SDA0         |
 | 5          | IO           |   1.8V      | CAM0_SCL0          |
@@ -166,9 +166,9 @@ Mating Connector: FX23L-80P-0.5SV10 (10mm standoff, also available in 10 and 12m
 | 74         |    I       |   3.3V      |  IRIDIUM RING                 |
 | 75         |    I       |   3.3V      |  IRIDIUM TX UART                 |
 | 76         |    O       |   3.3V      |   IRIDIUM ON/OFF                |
-| 77         |   IO        |   1.8      |   Jetson I2C SDA               |
-| 78         |   O        |   1.8      |   Jetson I2C SCL                |
-| 79         |   IO        |   1.8      |   Jetson GPIO 02                |
+| 77         |   IO        |   1.8      |   JETSON I2C SDA               |
+| 78         |   O        |   1.8      |   JETSON I2C SCL                |
+| 79         |   IO        |   1.8      |   JETSON GPIO 02                |
 | 80         |   Pwr OUT        |   3.3      |   +3.3V OUT                |
 | 81         |   Pwr IN        |   5.2      |   +5.2V                |
 | 82         |    Pwr IN       |   5.2      |   +5.2V                |
