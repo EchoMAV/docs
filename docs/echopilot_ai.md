@@ -147,28 +147,102 @@ PIN 208        | I         |  +5V  | Fan Tachometer  |   GPIO3_PQ.02     | GPIO3
 
 [EchoPilot AI USB3 A Breakout Board 3D model (STEP) File Download](https://echomav.com/mechanical/echopilot-ai-usb-a-breakout.step) (right click, save link as)
 
-## Notes on Vibration Isolation
+## Vibration Isolation
 
 Many commercial autopilots use foam vibration isolation on a daughterboard containing the IMUs. You'll notice the EchoPilot AI does not use this type of design and the IMUs are mounted directly to the circuit board. The reason for this is that we feel better vibration isolation can be achieved (if required) by leveraging the mass of the entire EchoPilot system (carrier board, main board and Jetson SOM) rather than the very small mass of an IMU daughterboard. For the types of vibrations encountered by large-prop multi-rotors and piston-based engines (50-90 Hz), the total mass of the EchoPilot system mounted on vibration silicone isolators or wire rope isolators are very effective. This design has the added benefits of protecting critical electronics from exposure to continuous vibrations.  
+
+An example of a typical vibration isolation mount is shown below:
+
+<figure markdown>
+  ![EchoMAV EchoPilot AI Vibration Mount)](assets/echopilot_ai_vibration_mount.png){ width="600" }
+  <figcaption>EchoPilot AI Vibration Mount</figcaption>
+</figure>
 
 !!! note
     Note that for small and medium multi-rotors and electric planes, electric quadplanes and other vehicle types, vibration isolation is very rarely needed. 
 
-## Using the SD Card
+## Mounting an NVMe SSD
 
-The SD card supports hot-plugging. When connected, `/dev/mmcblk1p1` should be found by the operating system. To mount this drive to a directory (e.g., `/sdcard`) use the following command:
+The EchoPilot AI includes an M.2 Key-M slot for a size 2230 NVMe SSD. We recommend a PCIe Gen. 4 NVMe SSD, such as the Kingston OM3PGP41024P-A0 or equivalent.  
+
+To add an NVMe SSD to an EchoPilot system, first power off the system and install the SSD using a M2x3mm wafer head screw. 
+
+<figure markdown>
+  ![NVMe Install)](assets/nvme-install.png){ width="600" }
+  <figcaption>Install the 2230 NVMe drive and secure with an M2x3 wafer head screw</figcaption>
+</figure>
+
+Power on the sytem and gain console access.
+
+Identify the NVMe SSD using:  
 ```
-mkdir /sdcard
-sudo mount /dev/mmcblk1p1 /sdcard
+sudo fdisk -l
 ```
-To unmount it:
+
+Create a partiaion table using:  
 ```
-sudo umount /dev/mmcblk1p1 /sdcard
+sudo parted /dev/nvme0n1 mklabel gpt
+```
+
+Create a new partition on the NVMe SSD:  
+```
+sudo parted -a optimal /dev/nvme0n1 mkpart primary ext4 0% 100%
+```
+
+Format the newly created partition:  
+```
+sudo mkfs.ext4 /dev/nvme0n1p
+```
+
+Create a mount point directory:  
+```
+sudo mkdir /mnt/nvme
+```
+
+Mount the NVMe SSD partition to the mount point directory:  
+```
+sudo mount /dev/nvme0n1p1 /mnt/nvme
+```
+
+Verify the NVMe SSD is mounted correctly by checking the file system:  
+```
+df -h
 ```
 
 ## Configure the Network
 
-Linux for Tegra uses networkmanager (`nmcli`) for its network interfaces. Below you will find a few commands for common network tasks. These examples are not intented for you to follow sequentially, these are common examples which will demonstrate most network configuration needs.
+The EchoPilot AI has two 100Mbps Ethernet ports (ETH1 and ETH2). Upstream, these go to a network switch, so either one can be used to access the Jetson SOM. To interface using standard RJ45 cable, use the included Ethernet adapter board and cable assembly connected as shown below. The make your own cable assembly, refer to the [Pinout](../echopilot_carrier_pinout/#ethernet-1-j15)
+
+<figure markdown>
+  ![Ethernet Connection)](assets/ethernet-connection.png){ width="900" }
+  <figcaption>To connect a standard RJ45 network cable, use the adapter as shown</figcaption>
+</figure>
+
+EchoMAV's standard provisioning leaves the Jetson module set up to use [DHCP](https://en.wikipedia.org/wiki/Dynamic_Host_Configuration_Protocol). As configured, connecting one of the EchoPilot AI's ethernet ports to a router or other DHCP server will allow the Jetson to obtain an IP address and set up routing for your network. 
+
+### Configuring a Static IP Address
+
+If you do not have a DHCP server, or you wish to assign a static IP address to the Jetson, follow the instructions below.
+
+First [gain console access](#accessing-the-jetson-via-the-console) via the USB connector. Once loged in via the console, delete the default connection ("Wired connection 1"):
+```
+sudo nmcli c delete "Wired connection 1"
+```
+Set up a static connection called `static-eth0` with an IP of 172.20.1.100, a netmask of 255.255.0.0 and a gateway of 172.20.2.100. The values are just examples, please adjust to the desired settings for your network.
+``` 
+sudo nmcli c add con-name static-eth0 ifname eth0 type ethernet ip4 172.20.1.20/16 gw4 172.20.2.100
+```
+Bring up the new interface
+```
+sudo nmcli c up static-eth0
+```
+To verify network connectivity, ping another device on the network, or to verify internet connectivity, ping a Google DNS server:
+```
+ping 8.8.8.8
+```
+
+### Other NetworkManager tips and tricks
+Linux for Tegra uses networkmanager (`nmcli`) for its network interfaces. Below you will find a few commands for common network tasks. These examples are not intended for you to follow sequentially, these are common examples which will demonstrate most network configuration needs.
 
 Show connections:    
 ```nmcli con show```
@@ -180,17 +254,17 @@ sudo nmcli c add con-name static-eth0 ifname eth0 type ethernet ip4 172.20.1.20/
 sudo nmcli c up static-eth0
 ```
 
-Example: Change IP address of `static-eth0` connection to `192.168.1.4/16`:    
+Example: Change IP address of `static-eth0` connection to `192.168.1.4` with a 255.255.0.0 (/16) netmask:    
 ```
 sudo nmcli con mod static-eth0 ipv4.address 192.168.1.1/16
 ```
 
-Example: Change gateway of `static-eth0` connection to `192.168.1.1`:    
+Example: Change the gateway of `static-eth0` connection to `192.168.1.1`:    
 ```
 sudo nmcli con mod static-eth0 ipv4.gateway 192.168.1.1
 ```
 
-Example: Change dns of `static-eth0` connection to `8.8.8.8`:       
+Example: Change the DNS of `static-eth0` connection to `8.8.8.8`:       
 ```
 sudo nmcli con mod static-eth0 ipv4.dns "8.8.8.8"
 ```
@@ -200,12 +274,12 @@ Example: Take down/up of `static-eth0`:
 sudo nmcli con down static-eth0
 sudo nmcli con up static-eth0
 ```
-Example: Delete `static-eth0` connection:    
+Example: Delete the `static-eth0` connection:    
 ```
 sudo nmcli c delete "static-eth0"
 ```
 
-Example: Add new connection called `static-eth0` with IP `172.20.2.22/16` and gateway `172.20.2.100`:    
+Example: Add a new connection called `static-eth0` with IP `172.20.2.22/16` and gateway `172.20.2.100` on interface `eth0`:    
 ```
 sudo nmcli c add con-name static-eth0 ifname eth0 type ethernet ip4 172.20.2.22/16 gw4 172.20.2.100
 ```
@@ -215,7 +289,7 @@ Example: Add a persistent route so that multicast traffic to 224.x.x.x goes to t
 sudo nmcli con mod static-eth0 +ipv4.routes "224.0.0.0/8"
 ```
 
-Example: Change eth0 to enable remove static IP and enable DHCP (In this case, it would make more sense to delete the connection since it is named `static-eth0` and call it something else, but for edification:
+Example: Change the static-eth0 connection to remove static IP and enable DHCP (In this case, it would be clearer to delete the connection since it is named `static-eth0` and call it something else, but for edification:
 ```
 sudo nmcli con mod static-eth0 ipv4.address ""
 sudo nmcli con mod static-eth0 ipv4.method auto
@@ -250,12 +324,9 @@ The 2 CAN connections from the FMU (CAN1 and CAN2) and the 1 from the Jetson are
 
 CAN   | Resistor Label     | Notes      
 ------------ | ------------- | ------------ 
-FMU CAN1       | R19 and R156         |  Near U4 and U45, size 0402, see important info below
+FMU CAN1       | R19         |  Near U4 and U45, size 0402
 FMU CAN2        | R9         |  Near U3, size 0402
-JETSON CAN1 | R95         |  Near U32 (Rev1+ only), size 0402  
-
-!!! note
-    FMU CAN1 default configuration provides connectivity between the FMU and the RemoteID system. Therefore, two CAN transceivers with termination resistors are installed by default. If you wish to use CAN1 with the EchoPilot at the END of the chain, remove R156. If you wish to use the EchoPilot in the MIDDLE of a chain, remove both R19 and R156. 
+JETSON CAN1 | R95         |  Near U32, size 0402  
 
 ## Remote ID Subsystem
 
@@ -267,6 +338,12 @@ It is the responsibility of the user to configure the ArduRemoteID firmware in a
 
 To flash ArduRemote ID to the ESPS32-C3, you will need a TC2030-USB-NL cable from [tag-connect.com](https://www.tag-connect.com) and follow the flashing instructions from the [AruRemoteID](https://github.com/ArduPilot/ArduRemoteID#flashing) project.
 
-To configure the Remote ID system, parameters can be accessed from DroneCAN (via Mission Planner or DroneCAN GUI) or with MAVLink. To use DroneCAN, [SLCAN will need to be enabled](https://ardupilot.org/copter/docs/common-slcan-f7h7.html#common-slcan-f7h7) to allow the autopilot to connect to the CANBUS through USB.  
+The ESP32-C3 is connected to the FMU via UART6, aka Telem3 (pins PG9 (RX) and PG14 (TX) from the STM32H742). You will need to configure ArduPilot/PX4 to use this UART for RemoteID.
 
-For making changes to DroneCAN devices, see the instructions [here](https://ardupilot.org/copter/docs/common-slcan-f7h7.html#making-changes-to-dronecan-devices). The FMU is connected to the ESP32-C3 via CAN1, with the default configuration providing termination resistors at both the FMU side and ESP32 side.
+For building ArduRemoteID for the EchoPilot AI, the following pins will need to be defined for the hardware:
+```
+#define PIN_UART_TX 4
+#define PIN_UART_RX 5
+WS2812_LED_PIN GPIO_NUM_8
+```
+
