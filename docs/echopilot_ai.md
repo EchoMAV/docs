@@ -163,7 +163,9 @@ An example of a typical vibration isolation mount is shown below:
 
 ## Mounting an NVMe SSD
 
-The EchoPilot AI includes an M.2 Key-M slot for a size 2230 NVMe SSD. We recommend a PCIe Gen. 4 NVMe SSD, such as the Kingston OM3PGP41024P-A0 or equivalent.  
+The EchoPilot AI includes an M.2 Key-M slot for a size 2230 NVMe SSD. We recommend a PCIe Gen. 4 NVMe SSD, such as the Western Digital SN740 (SDDPTQD-1T00), Western Digital Industrial Series (SDBPTPZ-1T00-XI) or Kingston OM3PGP41024P-A0 for applications in the 0-70°C range. Please be aware that most consumer NVMe SSDs have a commercial temperature rating (0-70°C). We recommend industrial rated devices for high-risk or high-valued use in uncrewed systems.
+
+The NVMe is power by a dedicated supply, 3A. 
 
 To add an NVMe SSD to an EchoPilot system, first power off the system and install the SSD using a M2x3mm wafer head screw. 
 
@@ -172,7 +174,7 @@ To add an NVMe SSD to an EchoPilot system, first power off the system and instal
   <figcaption>Install the 2230 NVMe drive and secure with an M2x3 wafer head screw</figcaption>
 </figure>
 
-Power on the sytem and gain console access.
+Power on the sytem and [gain console access](#accessing-the-jetson-via-the-console).
 
 Identify the NVMe SSD using:  
 ```
