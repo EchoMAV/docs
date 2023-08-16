@@ -1092,14 +1092,15 @@
 <p>Note that for small and medium multi-rotors and electric planes, electric quadplanes and other vehicle types, vibration isolation is very rarely needed. </p>
 </div>
 <h2 id="mounting-an-nvme-ssd">Mounting an NVMe SSD<a class="headerlink" href="#mounting-an-nvme-ssd" title="Permanent link">&para;</a></h2>
-<p>The EchoPilot AI includes an M.2 Key-M slot for a size 2230 NVMe SSD. We recommend a PCIe Gen. 4 NVMe SSD, such as the Kingston OM3PGP41024P-A0 or equivalent.  </p>
+<p>The EchoPilot AI includes an M.2 Key-M slot for a size 2230 NVMe SSD. We recommend a PCIe Gen. 4 NVMe SSD, such as the Western Digital SN740 (SDDPTQD-1T00), Western Digital Industrial Series (SDBPTPZ-1T00-XI) or Kingston OM3PGP41024P-A0 for applications in the 0-70°C range. Please be aware that most consumer NVMe SSDs have a commercial temperature rating (0-70°C). We recommend industrial rated devices for high-risk or high-valued use in uncrewed systems.</p>
+<p>The NVMe is power by a dedicated supply, 3A. </p>
 <p>To add an NVMe SSD to an EchoPilot system, first power off the system and install the SSD using a M2x3mm wafer head screw. </p>
 <figure>
 <p><img alt="NVMe Install)" src="../assets/nvme-install.png" width="600" />
   </p>
 <figcaption>Install the 2230 NVMe drive and secure with an M2x3 wafer head screw</figcaption>
 </figure>
-<p>Power on the sytem and gain console access.</p>
+<p>Power on the sytem and <a href="#accessing-the-jetson-via-the-console">gain console access</a>.</p>
 <p>Identify the NVMe SSD using:<br />
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>sudo fdisk -l
 </code></pre></div></p>
