@@ -19,7 +19,7 @@ Mating Connector:  0510211000
 |------------|-----------|---------|-------------------|
 | 1          | Pwr         | GND    | GND |
 | 2          | NA         | NA    | NC |
-| 3          | Pwr OUT       | +5V     | +5V (unprotected)              |
+| 3          | Pwr OUT       | +5V     | +5V_OUT3[^3]              |
 | 4          | O        | 3.3V    | Iridium On/Off         |
 | 5          | I           |   3.3V      | TX (from modem's perspective)          |
 | 6          | I          |   3.3V      | Iridium Ring                 |
@@ -69,8 +69,8 @@ Mating Connector: FX23L-80S-0.5SV
 
 | Pin Number | Direction | Voltage | Pin Desription    |
 |------------|-----------|---------|-------------------|
-| 1          | I         | 3.3V    | Jetson Console RX |
-| 2          | O         | 3.3V    | Jetson Console TX |
+| 1          | IO         | Diff Signal    | Jetson CAN+ |
+| 2          | IO         | Diff Signal    | Jetson CAN- |
 | 3          | Pwr       | GND     | GND              |
 | 4          | IO        | 1.8V    | CAM0_SDA0         |
 | 5          | IO           |   1.8V      | CAM0_SCL0          |
@@ -105,7 +105,7 @@ Mating Connector: FX23L-80S-0.5SV
 | 34         |  IO         |  1.8V       | I2SO_FS                  |
 | 35         |  IO         |  1.8V       | I2SO_SCLK                  |
 | 36         |  IO         |  1.8V       | AUDIO_MCLK                 |
-| 36         |  IO         |  1.8V       | GPIO12                  |
+| 37         |  IO         |  1.8V       | GPIO12                  |
 | 38         | IO          |  1.8V       | GPIO10                  |
 | 39         |   Pwr        |  GND       | GND                  |
 | 40         |   O        |   3.3V      | IRIDIUM RX UART                  |
@@ -119,38 +119,38 @@ Mating Connector: FX23L-80S-0.5SV
 | 48         |   IO        |   Diff Signal      |  ETH2 TX+                 |
 | 49         |   IO        |   Diff Signal      |  ETH2 TX-                 |
 | 50         |    Pwr       |    GND     |  GND                 |
-| 51         |    IO       |    3.3V     |  JETSON I2C1_SDA                 |
-| 52         |    IO       |    3.3V     |  JETSON I2C1_SCL                 |
-| 53         |   NA        |   NA      |  NC                |
-| 54         |   NA        |   NA      |  NC                 |
-| 55         |   NA        |   NA      |  NC                 |
+| 51         |    IO       |    Diff Signal     |  JETSON USB3SS RX+                 |
+| 52         |    IO       |    Diff Signal     |  JETSON USB3SS RX-                 |
+| 53         |   Pwr        |   GND      |  GND                |
+| 54         |   IO        |   Diff Signal      |  JETSON USB3SS TX+                 |
+| 55         |   IO        |   Diff Signal      |  JETSON USB3SS TX-                 |
 | 56         |   Pwr        |   GND      |  GND                 |
-| 57         |   Pwr OUT        |   5V      |  VBUS5                 |
-| 58         |    IO       |  Diff Signal       |  USB5 D+                 |
-| 59         |   IO        |  Diff Signal       |  USB5 D-                 |
+| 57         |   Pwr OUT        |   5V      |  USB3SS VBUS                 |
+| 58         |    IO       |  Diff Signal       |  JETSON USB3SS D+                 |
+| 59         |   IO        |  Diff Signal       |  JETSON USB3SS D-                 |
 | 60         |   Pwr        |   GND      |  GND                 |
-| 61         |   Pwr OUT       |    5V     |  VBUS4                 |
-| 62         |    IO       |   Diff Signal      |  USB4 D+                 |
-| 63         |    IO       |   Diff Signal      |  USB4 D-                 |
+| 61         |   Pwr OUT       |    5V     |  VBUS3                 |
+| 62         |    IO       |   Diff Signal      |  USB_3 D+                 |
+| 63         |    IO       |   Diff Signal      |  USB_3 D-                 |
 | 64         |    Pwr       |    GND     |  GND                 |
-| 65         |    Pwr       |     5V    |  VBUS3                 |
-| 66         |    IO       |   Diff Signal      |  USB3 D+                 |
-| 67         |    IO       |   Diff Signal      |  USB3 D-                 |
+| 65         |    Pwr       |     5V    |  VBUS2                 |
+| 66         |    IO       |   Diff Signal      |  USB_2 D+                 |
+| 67         |    IO       |   Diff Signal      |  USB_2 D-                 |
 | 68         |    Pwr       |   GND      |  GND                 |
-| 69         |    Pwr OUT       |   5V      |  VBUS2                 |
-| 70         |    IO      |   Diff Signal      |  USB2 D+            |
-| 71         |    IO       |  Diff Signal       |  USB2 D-                 |
+| 69         |    Pwr OUT       |   5V      |  VBUS1                 |
+| 70         |    IO      |   Diff Signal      |  USB_1 D+            |
+| 71         |    IO       |  Diff Signal       |  USB_1 D-                 |
 | 72         |    Pwr       |   GND      |  GND                 |
 | 73         |    I       |   3.3V      |  IRIDIUM NA                 |
 | 74         |    I       |   3.3V      |  IRIDIUM RING                 |
 | 75         |    I       |   3.3V      |  IRIDIUM TX UART                 |
 | 76         |    O       |   3.3V      |   IRIDIUM ON/OFF                |
-| 77         |   Pwr OUT        |   1.8      |   +1.8V OUT               |
-| 78         |Pwr OUT        |   1.8      |   +1.8V OUT                |
-| 79         |   Pwr OUT        |   3.3      |   +3.3V OUT                |
+| 77         |   IO        |   1.8      |   JETSON I2C1_SDA               |
+| 78         |   O        |   1.8      |   JETSON I2C1_SCL                |
+| 79         |   Pwr OUT        |   3.3      |   JETSON GPIO 02                |
 | 80         |   Pwr OUT        |   3.3      |   +3.3V OUT                |
-| 81         |   Pwr IN        |   5.1      |   +5.1V                |
-| 82         |    Pwr IN       |   5.1      |   +5.1V                |
+| 81         |   Pwr IN        |   5.2      |   +5.2V                |
+| 82         |    Pwr IN       |   5.2      |   +5.2V                |
 | 83         |  Pwr         |   GND      |    GND               |
 | 84         |  Pwr         |   GND      |    GND               |
 
@@ -210,12 +210,12 @@ Mating Connector: FX23L-80S-0.5SV
 | 19         | IO           |   3.3V      |    FMU I2C_2 SDA       |
 | 20         | Pwr          |    GND     |    GND               |
 | 21         | Pwr OUT         |    +5V     |   +5V OUT_1[^1]                |
-| 22         | IO          |    Diff Signal     | CAN 2+                   |
-| 23         | IO          |   Diff Signal      | CAN 2-                  |
+| 22         | IO          |    Diff Signal     | FMU CAN 2+                   |
+| 23         | IO          |   Diff Signal      | FMU CAN 2-                  |
 | 24         | Pwr          |  GND       | GND                   |
 | 25         |  Pwr OUT         |    +5V     | +5V OUT_1[^1]                |
-| 26         |  IO         |    Diff Signal     |  CAN 1+                 |
-| 27         |  IO         |   Diff Signal      |  CAN 1-                  |
+| 26         |  IO         |    Diff Signal     |  FMU CAN 1+                 |
+| 27         |  IO         |   Diff Signal      |  FMU CAN 1-                  |
 | 28         |  Pwr         |   GND      | GND                  |
 | 29         |  Pwr OUT         |  +5V       | +5V OUT_1[^1]                  |
 | 30         |  O         |  +3.3V       | TELEM1_RTS                  |
@@ -223,8 +223,8 @@ Mating Connector: FX23L-80S-0.5SV
 | 32         |  I         |  +3.3V      | TELEM1_RX                |
 | 33         |  O         |  +3.3V       | TELEM1_TX                  |
 | 34         |  Pwr         |  GND      | GND                  |
-| 35         |  I         |  3.3V       | BATTERY CURRENT SENSE                  |
-| 36         |  I         |  3.3V       | BATTERY VOLTAGE SENSE                 |
+| 35         |  I         |  3.3V       | BATTERY CURRENT SENSE1                  |
+| 36         |  I         |  3.3V       | BATTERY VOLTAGE SENSE1                 |
 | 36         |  Pwr         |  GND      | GND                  
 | 38         |  I          |  +3.3V       | +VSERVO SENSE                  |
 | 39         |   Pwr        |  GND       | GND                  |
@@ -260,32 +260,45 @@ Mating Connector: FX23L-80S-0.5SV
 | 69         |    Pwr        |   GND      |  GND                 |
 | 70         |    I      |   +3.3V      |  VDD POWER A VALID            |
 | 71         |    I       |  +3.3V       |  VDD POWER B VALID                 |
-| 72         |    O       |   +3.3V      |  SBUS OUTPUT                 |
+| 72         |    O       |   +3.3V      |  S.BUS OUTPUT                 |
 | 73         |    O       |   3.3V      |  FMU UART4 TX                 |
 | 74         |    I       |   3.3V      |  FMU UART4 RX                 |
 | 75         |    Pwr       |   GND      |  GND                 |
-| 76         |    NA       |   NA      |   NC                |
-| 77         |   NA        |   NA      |   NC              |
-| 78         |   NA        |   NA      |   NC                |
-| 79         |   NA        |   NA     |   NC                |
+| 76         |    NA       |   NA      |    BATTERY CURRENT SENSE2               |
+| 77         |   NA        |   NA      |   BATTERY VOLTAGE SENSE2              |
+| 78         |   NA        |   NA      |   SPARE ADC1                |
+| 79         |   NA        |   NA     |    SPARE ADC2                |
 | 80         |   NA        |   NA      |   NC               |
-| 81         |   Pwr IN        |   +5.1V      |   +5.1V (JETSON POWER)     |
-| 82         |    Pwr IN        |   +5.1V      |   +5.1V (JETSON POWER)     |
+| 81         |   Pwr IN        |   +5.2V      |   +5.2V (JETSON POWER)     |
+| 82         |    Pwr IN        |   +5.2V      |   +5.2V (JETSON POWER)     |
 | 83         |  Pwr         |   GND      |    GND               |
 | 84         |  Pwr         |   GND      |    GND               |
 
 [^1]: 5V_OUT1 bus is limited to a total of 500mA. 
 [^2]: 5V_OUT2 bus is limited to a total of 500mA.
 
+#### +Jetson I2C1 (J34)
+Jetson I2C1 
+
+Connector: J34, Part Number: SM04B-GHS-TB(LF)(SN)  
+Mating Connector: GHR-04V-S   
+
+Pin Number   | Direction     | Voltage       | Pin Description
+------------ | ------------- | ------------  | ------------
+1        | Pwr OUT            | +5V          | +5V_OUT3[^3]
+2        | Pwr            | +1.8B         | I2C_1 SCL
+3        | Pwr            | +1.8V         | I2C_1 SDA
+4        | Pwr            | GND         | GND
+
 #### +5V Out (J11)
-This connector provides a spare regulated +5V output. It is protected by a reverse polarity diode and a self-resetting fuse (060#L100SLYR)  
+This connector provides a spare regulated +5V output.  
 
 Connector: J11, Part Number: SM02B-GHS-TB(LF)(SN)  
 Mating Connector: GHR-02V-S   
 
 Pin Number   | Direction     | Voltage       | Pin Description
 ------------ | ------------- | ------------  | ------------
-1        | Pwr OUT            | +5V          | +5V (Fused at 1A)
+1        | Pwr OUT            | +5V          | +5V_OUT3[^3]
 2        | Pwr            | GND         | GND
 
 #### +VBattery (J12)
@@ -300,6 +313,18 @@ Pin Number   | Direction     | Voltage       | Pin Description
 2        | Pwr OUT            | +VBATT         | +VBATT (unprotected)
 3        | Pwr            | GND          | GND
 4        | Pwr            | GND         | GND
+
+#### S.Bus Out/RSSI In (J26)
+This connector can be used for either S.BUS Output or RSSI Input.
+
+Connector: J26, Part Number: SM03B-GHS-TB(LF)(SN)  
+Mating Connector: GHR-03V-S     
+
+Pin Number   | Direction     | Voltage       | Pin Description
+------------ | ------------- | ------------  | ------------ 
+1        | I            | +3.3V          | S.Bus Out / RSSI In
+2        | Pwr OUT            | +5V        | +5V OUT_1 [^1]  
+3        | Pwr            | GND         | GND 
 
 #### GPS/Compass (J20)
 This connector provides a [Pixhawk standard](https://github.com/pixhawk/Pixhawk-Standards/blob/master/DS-009%20Pixhawk%20Connector%20Standard.pdf) GPS/Compass connection.
@@ -320,17 +345,21 @@ Pin Number   | Direction     | Voltage       | Pin Description
 9        | Pwr            | +5V          | Buzzer Out
 10        | Pwr            | GND         | GND
 
-#### Radio In (J16)
-This connector provides a optional radio input in to the autopilot. A wide range of radio protocols are supported. Please see [here](https://ardupilot.org/copter/docs/common-rc-systems.html) for example.
 
-Connector: J16, Part Number: SM03B-GHS-TB(LF)(SN)   
-Mating Connector: GHR-03V-S   
+#### Jetson CAN (J7)
+This connector provides a CAN interface from the Jetson.
+
+Connector: J7, Part Number: SM04B-GHS-TB(LF)(SN)  
+Mating Connector: GHR-04V-S     
 
 Pin Number   | Direction     | Voltage       | Pin Description
 ------------ | ------------- | ------------  | ------------
-1        | I            | +3.3V          | RC In
-2        | Pwr OUT            | +5V         | +5V OUT_2[^2]  
-3        | Pwr            | GND         | GND
+1        | Pwr OUT            | +5V          | +5V OUT_3 [^3]  
+2        | IO            | Diff Signal        | CAN+ (Jetson)
+3        | IO            | Diff Signal          | CAN- (Jetson)
+4        | Pwr            | GND         | GND
+
+[^3]: +5V_OUT3 bus is limited to a total of 1500mA by a TPS2561.
 
 #### Power In (J27)
 This connector provides power input to the system. The power supply should be between 7-56 VDC and should be capable of supply up to 4A.
@@ -346,6 +375,9 @@ Pin Number   | Direction     | Voltage       | Pin Description
 ### Bottom Side Carrier Board
 
 ![Bottom Side Components](assets/bottom-side-labels-carrier-board.png)
+
+#### Nano SIM Card (J31)
+A Nano SIM card holder. Used only if a M.2 3052 Key B Cellular modem is attached to J30.
 
 #### MIPI Cam 2 (J14)
 This connector provides a CSI/MIPI Camera connection, following the Raspberry Pi 15-pin 1mm spacing FFC standard.
@@ -396,25 +428,60 @@ Pin Number   | Direction     | Voltage       | Pin Description
 14        | IO            | +3.3V         | CAM0_SDAO
 15        | Pwr OUT            | +3.3V          | +3.3V
 
-#### Jetson Console (J7)
-This is a USB-C connector following USB 2.0 specifications. An FTDI USB to UART IC ((FT231XQ-R) is used to provide UART access to the Jetson. The FTDI chip is powered by the USB bus.
+#### Radio In (J16)
+This connector provides a optional radio input in to the autopilot. A wide range of radio protocols are supported. Please see [here](https://ardupilot.org/copter/docs/common-rc-systems.html) for example.
 
-Connector: J7, Part Number: 12401610E4#2A  
-Mating Connector: Standard USB-C cable. Does not need to be USB 3 compliant.
+Connector: J16, Part Number: SM03B-GHS-TB(LF)(SN)   
+Mating Connector: GHR-03V-S   
 
-#### CAN 2 (FMU) (J17)
-This connector provides a [Pixhawk standard](https://github.com/pixhawk/Pixhawk-Standards/blob/master/DS-009%20Pixhawk%20Connector%20Standard.pdf) CAN connection from the FMU (CAN 2).
+Pin Number   | Direction     | Voltage       | Pin Description
+------------ | ------------- | ------------  | ------------
+1        | I            | +3.3V          | RC In
+2        | Pwr OUT            | +5V         | +5V OUT_2[^2]  
+3        | Pwr            | GND         | GND
 
-Connector: J7, Part Number: SM04B-GHS-TB(LF)(SN)  
+#### Jetson GPIO (J33)
+Spare GPIO from the Jetson SOM
+
+Connector: J33, Part Number: SM04B-GHS-TB(LF)(SN)   
+Mating Connector: GHR-04V-S   
+
+Pin Number   | Direction     | Voltage       | Pin Description
+------------ | ------------- | ------------  | ------------
+1        | IO            | +1.8V          | GPIO 02
+2        | IO            | +1.8V         | GPIO 10
+3        | IO            | +1.8V         | GPIO 12
+3        | Pwr            | GND         | GND
+
+#### V/I Sense and Analog In (J13)
+This connector provides dual voltage and current sense input, for use with an off-board current sensor monitor. These signals should be scaled to 0-3.3V or damage may occur. Your autopilot firmware will allow you to enter scaling factors for proper display of voltage/current on a GCS system. This connector also provides two spare analog inputs to the FMU.
+
+Connector: J13, Part Number: SM08B-GHS-TB(LF)(SN)  
+Mating Connector: GHR-08V-S     
+
+Pin Number   | Direction     | Voltage       | Pin Description | STM32 Pin
+------------ | ------------- | ------------  | ------------ | ------------
+1        | Pwr            | +5.0V          | +5V Out | NA
+2        | I            | +3.3V        | Voltage Sense1 |  PA0
+3        | I            | +3.3V         | Current Sense1 | PA1
+4        | I            | +3.3V        | Voltage Sense2 |  PA2
+5        | I            | +3.3V         | Current Sense2 | PA3
+6        | I            | +3.3V        | Spare ADC 1|  PC4
+7        | I            | +3.3V         | Spare ADC 2 | PA4
+8        | Pwr            | GND        | GND |  NA
+
+#### I2C 2 (FMU) (J25)
+This connector provides a [Pixhawk standard](https://github.com/pixhawk/Pixhawk-Standards/blob/master/DS-009%20Pixhawk%20Connector%20Standard.pdf) I2C connection from the FMU (I2C 2).
+
+Connector: J25, Part Number: SM04B-GHS-TB(LF)(SN)  
 Mating Connector: GHR-04V-S     
 
 Pin Number   | Direction     | Voltage       | Pin Description
 ------------ | ------------- | ------------  | ------------
-1        | Pwr OUT            | +5V          | +5V OUT_1 [^1]  
-2        | IO            | Diff Signal        | CAN_2+ (FMU)
-3        | IO            | Diff Signal          | CAN_2- (FMU)
+1        | Pwr OUT           | +5V          | +5V OUT_1 [^1]  
+2        | O            | +3.3V        | I2C_2 SCL (FMU)
+3        | IO            | +3.3V          | I2C_2 SDA (FMU)
 4        | Pwr            | GND         | GND
-
 
 #### Telem1 (J18)
 This connector provides a [Pixhawk standard](https://github.com/pixhawk/Pixhawk-Standards/blob/master/DS-009%20Pixhawk%20Connector%20Standard.pdf) TELEM connection from the FMU (TELEM1).
@@ -431,42 +498,71 @@ Pin Number   | Direction     | Voltage       | Pin Description
 5        | I            | +3.3V          | Telem1 RTS
 6        | Pwr            | GND         | GND
 
-#### I2C 2 (FMU) (J25)
-This connector provides a [Pixhawk standard](https://github.com/pixhawk/Pixhawk-Standards/blob/master/DS-009%20Pixhawk%20Connector%20Standard.pdf) I2C connection from the FMU (I2C 2).
+#### USB3_2 (J24)
+This connector provides a USB3 SS connection to the Jetson, via a TUSB8042 hub. Note that 1uF capacitors are placed near the connector on the SS Tx+ and TX- lines.
 
-Connector: J25, Part Number: SM04B-GHS-TB(LF)(SN)  
+Connector: J24, Part Number: SM10B-GHS-TB(LF)(SN)  
+Mating Connector: GHR-10V-S     
+
+Pin Number   | Direction     | Voltage       | Pin Description
+------------ | ------------- | ------------  | ------------
+1        | Pwr OUT           | +5V          | VBus 
+2        | IO            | Diff Signal        | USB D-
+3        | IO            | Diff Signal          | USB D+
+4        | Pwr            | GND        | GND
+5        | IO            | Diff Signal         | USBSS Rx-
+6        | IO            | Diff Signal         | USBSS RX+
+7        | Pwr            | GND         | GND
+8        | IO            | Diff Signal         | USBSS Tx-
+9        | IO            | Diff Signal         | USBSS Tx+
+10        | Pwr            | GND         | GND
+
+#### USB3_1 (J29)
+This connector provides a USB3 SS connection to the Jetson, via a TUSB8042 hub. Note that 1uF capacitors are placed near the connector on the SS Tx+ and TX- lines.
+
+Connector: J29, Part Number: SM10B-GHS-TB(LF)(SN)  
+Mating Connector: GHR-10V-S     
+
+Pin Number   | Direction     | Voltage       | Pin Description
+------------ | ------------- | ------------  | ------------
+1        | Pwr OUT           | +5V          | VBus 
+2        | IO            | Diff Signal        | USB D-
+3        | IO            | Diff Signal          | USB D+
+4        | Pwr            | GND        | GND
+5        | IO            | Diff Signal         | USBSS Rx-
+6        | IO            | Diff Signal         | USBSS RX+
+7        | Pwr            | GND         | GND
+8        | IO            | Diff Signal         | USBSS Tx-
+9        | IO            | Diff Signal         | USBSS Tx+
+10        | Pwr            | GND         | GND
+
+#### INS/RS-232 FMU UART (J32)
+This connector provides an RS-232 level shifted UART from the FMU for connection to an external device, such as an Inertial Navigation System (INS).
+
+Connector: J132, Part Number: SM04B-GHS-TB(LF)(SN)  
 Mating Connector: GHR-04V-S     
 
 Pin Number   | Direction     | Voltage       | Pin Description
 ------------ | ------------- | ------------  | ------------
-1        | Pwr OUT           | +5V          | +5V OUT_1 [^1]  
-2        | O            | +3.3V        | I2C_2 SCL (FMU)
-3        | IO            | +3.3V          | I2C_2 SDA (FMU)
+1        | Pwr OUT            | +5V          | +5V_OUT4 [^4]  
+2        | IO            | Diff Signal        | RS232 TX, UART4 (FMU)
+3        | IO            | Diff Signal          | RS232 RX, UART4 (FMU)
 4        | Pwr            | GND         | GND
 
-#### S.Bus Out/RSSI In (J26)
-This connector can be used for either S.BUS Output or RSSI Input.
+[^4]: +5V_OUT4 bus is limited to a total of 1500mA by a TPS2561.
 
-Connector: J26, Part Number: SM03B-GHS-TB(LF)(SN)  
-Mating Connector: GHR-03V-S     
+#### CAN 2 (FMU) (J17)
+This connector provides a [Pixhawk standard](https://github.com/pixhawk/Pixhawk-Standards/blob/master/DS-009%20Pixhawk%20Connector%20Standard.pdf) CAN connection from the FMU (CAN 2).
+
+Connector: J17, Part Number: SM04B-GHS-TB(LF)(SN)  
+Mating Connector: GHR-04V-S     
 
 Pin Number   | Direction     | Voltage       | Pin Description
------------- | ------------- | ------------  | ------------ 
-1        | I            | +3.3V          | S.Bus Out / RSSI In
-2        | Pwr OUT            | +5V        | +5V OUT_1 [^1]  
-3        | Pwr            | GND         | GND 
-
-#### V/I Sense (J13)
-This connector provides voltage and current sense input, for use with an off-board current sensor monitor. These signals should be scaled to 0-3.3V or damage may occur. Your autopilot firmware will allow you to enter scaling factors for proper display of voltage/current on a GCS system. 
-
-Connector: J13, Part Number: SM03B-GHS-TB(LF)(SN)  
-Mating Connector: GHR-03V-S     
-
-Pin Number   | Direction     | Voltage       | Pin Description | STM32 Pin
------------- | ------------- | ------------  | ------------ | ------------
-1        | I            | +3.3V          | Voltage Sense | PA0
-2        | I            | +3.3V        | Current Sense |  PA1
-3        | Pwr            | GND         | GND | NA
+------------ | ------------- | ------------  | ------------
+1        | Pwr OUT            | +5V          | +5V OUT_1 [^1]  
+2        | IO            | Diff Signal        | CAN_2+ (FMU)
+3        | IO            | Diff Signal          | CAN_2- (FMU)
+4        | Pwr            | GND         | GND
 
 #### CAN 1 (FMU) (J19)
 This connector provides a [Pixhawk standard](https://github.com/pixhawk/Pixhawk-Standards/blob/master/DS-009%20Pixhawk%20Connector%20Standard.pdf) CAN connection from the FMU (CAN 1).
@@ -481,19 +577,6 @@ Pin Number   | Direction     | Voltage       | Pin Description
 3        | IO            | Diff Signal          | CAN_1- (Jetson)
 4        | Pwr            | GND         | GND
 
-
-#### USB4 (J24)
-This connector provides USB 2.0 connectivity from the Jetson SOM.
-
-Connector: J24, Part Number: SM04B-GHS-TB(LF)(SN)  
-Mating Connector: GHR-04V-S     
-
-Pin Number   | Direction     | Voltage       | Pin Description
------------- | ------------- | ------------  | ------------
-1        | Pwr OUT            | +5V          | +5V VBUS (Protected 500mA)
-2        | IO            | Diff Signal        | USB4_D- (Jetson)
-3        | IO            | Diff Signal          | USB4_D+ (Jetson)
-4        | Pwr            | GND         | GND
 
 #### USB3 (J23)
 This connector provides USB 2.0 connectivity from the Jetson SOM.
@@ -534,8 +617,13 @@ Pin Number   | Direction     | Voltage       | Pin Description
 3        | IO            | Diff Signal          | USB1_D+ (Jetson)
 4        | Pwr            | GND         | GND
 
-#### Jetson Console (J29)
-This is a USB-C connector following USB 2.0 specifications. An FTDI USB to UART IC (FT231XQ-R) is used to provide UART access to the optional VectorNav INS. The FTDI chip is powered by the USB bus.
+#### M.2 Connector for Cellular Modem (J30)
+This is Key B M.2 connector for use with a 3052 form factor cellular modem, such as the Sierra Wireless EM9191. The connector has USB3 connectivity to the modem (no PCIe) and a dedicated 3.3V power supply. Attach the modem using a M2x0.4mm x 3mm wafer head screw.  
 
-Connector: J29, Part Number: 12401610E4#2A  
-Mating Connector: Standard USB-C cable. Does not need to be USB 3 compliant.
+A heat pad under the modem provides the option for a heat sinking solution from the cellular modem. The following components can be used to build a heat sink:  
+Thermal Pad between the modem and Carrier Board: Panasonic EYG-T7070A15A (cut to fit)
+14x14mm heatsink mounted on the Carrier Board: CUI HSB03-141406
+Heatsink Adhesive: MG Chemicals 8329TFF-25ML
+
+Connector: J29, Part Number: SM3ZS067U310ABR1200  
+Mating Connector: M.2 Key B Modem, size 3052
