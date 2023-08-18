@@ -5,9 +5,8 @@
 When a Jetson Nano module is included with an EchoPilot AI purchase, it is flashed with a custom Linux for Tegra (L4T) image which includes support for the hardware and pin configuration of the EchoPilot AI. If you wish to build/update the kernel for use with the EchoPilot AI, the instructions below will provide the information and files you need to ensure your custom image remains fully compatible with the EchoPilot AI hardware. When compared to a standard Nvidia development carrier board, the primary differences in the EchoPilot AI hardware are:
 
 1. The EchoPilot AI does not have an I2C HDMI controller
-2. The EchoPilot AI has an SD Card (SDMMC3)
 
-To minimize console errors due to (1) and to enable the SD card on SDMMC3, the kernel must be compiled from source and flashed to the Nano using the Debug USB port and recovery mode. The following instructions will walk you through the process.
+To minimize console errors due to (1), the kernel must be compiled from source and flashed to the Nano using the Debug USB port and recovery mode. The following instructions will walk you through the process.
 
 !!! WARNING
     
@@ -18,7 +17,7 @@ To minimize console errors due to (1) and to enable the SD card on SDMMC3, the k
 What you will doing:
 
 1. Download and setup the necessary files
-2. Replace .dtb and create a extlinux.conf file
+2. Replace .dtb file and create a extlinux.conf file
 3. Generate the image and flash the device
 
 So buckle up and let's get started.
@@ -67,7 +66,7 @@ sudo ./apply_binaries.sh
 !!! note
     Before “apply_binaries.sh” is run, the content in “Linux_for_Tegra/rootfs/” is purely Ubuntu. After “apply_binaries.sh” the “rootfs/” will contain NVIDIA content, e.g, drivers for the GPU and some firmware.
 
-### Get the EchoPilot .dtb, .cfg and extlinux.conf files
+### Get the EchoPilot .dtb and extlinux.conf files
 
 The files you will need to replace include the device tree binary (.dtb) and extlinux.conf files. These files can be obtained from the echopilot_ai_bsp repository [https://github.com/EchoMAV/echopilot_ai_bsp](https://github.com/EchoMAV/echopilot_ai_bsp). Use the steps below to clone and install these files:
 
@@ -77,9 +76,9 @@ cd ~
 git clone https://github.com/EchoMAV/echopilot_ai_bsp
 cd echopilot_ai_bsp
 ```
-Checkout the appropriate branch for your EchoPilot AI board revision. For example, EchoPilot AI rev0 hardware:
+Checkout the appropriate branch for your EchoPilot AI board revision. For example, EchoPilot AI rev1 hardware:
 ```
-git checkout board_revision_0
+git checkout board_revision_1
 ```
 Run the install script to copy the dtb and extlinux.conf files into your Linux_for_Tegra folder. The usage is `./install_l4t_nano.sh [Path to Linux_for_Tegra]`, e.g.:
 ```
@@ -90,12 +89,12 @@ Ensure this script completes with no errors before proceeding with flashing.
 ### Flash device
 !!! important
     While not shown in the images below. The EchoPilot AI should be plugged into a Carrier Board for these steps, as that is how the Jetson module is powered. 
-1. Plug in a usb cable (this will require a JST-GH to micro usb female adapter for Rev0 boards) to the Jetson Debug port (J25) on the EchoPilot AI. Rev 0 is shown below to help you locate this connector. Note: future versions of hardware may use a USB micro connector for J25 rather than a JST-GH connector.
+1. Plug in a micro usb cable to the Jetson Debug port (J25) on the EchoPilot AI. Refer to the image below for the Jetson Program / Debug connector on the left side.
 ![Bottom Side Components](assets/bottom-side-labels.png)
-2. Hold the recovery button down. (see image below for location of the recovery button).
+2. Hold the recovery button down as power is applied. (see image below for location of the recovery button).
 ![Top Side Components](assets/top-side-labels.png)
 3. Apply power, and release recovery button after a few seconds.
-4. Flash device:
+4. Flash device using the command below:
 
 ```
 cd ~/Nanogit/Linux_for_Tegra/
