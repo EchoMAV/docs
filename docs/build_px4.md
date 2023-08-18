@@ -18,7 +18,7 @@ Note if you have built PX4 before, you can likely skip this step. Also remove th
 bash ./Tools/setup/ubuntu.sh --no-sim-tools
 ```
 ### Checkout a release
-You can identify a version you wish to build by looking at the release history [https://github.com/PX4/PX4-Autopilot/releases](https://github.com/PX4/PX4-Autopilot/releases). In the example below, we will demonstrate checking out release 1.13  
+You can identify a version you wish to build by looking at the release history [https://github.com/PX4/PX4-Autopilot/releases](https://github.com/PX4/PX4-Autopilot/releases). In the example below, we will demonstrate checking out release 1.13.3  
 !!! info
     You can reuse an existing repo rather than cloning a new one if this isn't your first PX4 rodeo. In this case, clean the build environment before proceeding:
     ```
@@ -27,8 +27,8 @@ You can identify a version you wish to build by looking at the release history [
     ```
 
 ```
-git fetch origin release/1.13
-git checkout release/1.13
+git fetch origin release/1.13.3
+git checkout release/1.13.3
 ```
 Update submodules:
 ```
@@ -46,7 +46,7 @@ First obtain the hardware board files from the [EchoPilot AI BSP](https://github
 ```
 git clone https://github.com/EchoMAV/echopilot_ai_bsp
 cd echopilot_ai_bsp
-git checkout board_revision_0   # Change per your hardware
+git checkout board_revision_1   # Change per your hardware
 ```
 !!! warning
     Be sure you checked out the appropriate branch matching your EchoPilot AI hardware revision!
@@ -62,7 +62,7 @@ make echomav_echopilot-ai
 The .px4 file will be located in the ```~/PX4-Autopilot/build/echomav_echopilot-ai_default/``` folder. The firmware is now ready to be loaded on the board.  
 
 !!! info
-    If the EchoPilot AI is plugged in to your host computer, unplug it before proceeding. The board should be totally powered off before proceeding.
+    If the EchoPilot AI is plugged in to your host computer, unplug it before proceeding. Also ensure there is **no power** to the EchoPilot AI. The board should be totally powered off before proceeding. The FMU will get power via the USB cable in the step below.
 
 ```
 make echomav_echopilot-ai upload

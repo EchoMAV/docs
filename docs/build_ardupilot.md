@@ -73,7 +73,7 @@ cd ~/ardupilot
 The arducopter.apj and arducopter.bin file will be located in the ```~/ardupilot/build/EchoPilotAI/bin/``` folder. The firmware is now ready to be loaded on the board. This can be done by adding the upload argument as explained below, or using common ground control station software such as Mission Planner or QGroundControl to upload the ```apj``` file.
 
 !!! info
-    If the EchoPilot AI's FMU USB connection is plugged in to your host computer, unplug it before proceeding. Also ensure the board is fully powered down. The board should be totally powered off before proceeding.
+    If the EchoPilot AI's FMU USB connection is plugged in to your host computer, unplug it before proceeding. Also ensure the board is fully powered down. The board should be totally powered off before proceeding. The FMU will get power via the USB cable in the step below.
 
 #### Uploading using the WAF script
 ```
