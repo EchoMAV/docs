@@ -477,8 +477,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#get-the-echopilot-dtb-cfg-and-extlinuxconf-files" class="md-nav__link">
-    Get the EchoPilot .dtb, .cfg and extlinux.conf files
+  <a href="#get-the-echopilot-dtb-and-extlinuxconf-files" class="md-nav__link">
+    Get the EchoPilot .dtb and extlinux.conf files
   </a>
   
 </li>
@@ -593,8 +593,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#get-the-echopilot-dtb-cfg-and-extlinuxconf-files" class="md-nav__link">
-    Get the EchoPilot .dtb, .cfg and extlinux.conf files
+  <a href="#get-the-echopilot-dtb-and-extlinuxconf-files" class="md-nav__link">
+    Get the EchoPilot .dtb and extlinux.conf files
   </a>
   
 </li>
@@ -644,12 +644,11 @@
 
 <h1 id="compiling-l4t-for-the-xavier-nx-on-the-echopilot-ai">Compiling L4T for the Xavier NX on the EchoPilot AI<a class="headerlink" href="#compiling-l4t-for-the-xavier-nx-on-the-echopilot-ai" title="Permanent link">&para;</a></h1>
 <h2 id="instructions-for-customizing-the-device-tree-and-compiling-the-kernel-for-the-xavier-nx-on-echopilot-ai">Instructions for customizing the device tree and compiling the kernel for the Xavier NX on EchoPilot AI<a class="headerlink" href="#instructions-for-customizing-the-device-tree-and-compiling-the-kernel-for-the-xavier-nx-on-echopilot-ai" title="Permanent link">&para;</a></h2>
-<p>When a Jetson Xavier NX module is included with an EchoPilot AI purchase, it is flashed with a custom Linux for Tegra (L4T) image which includes support for the hardware and pin configuration of the EchoPilot AI. If you wish to build/update the kernel for use with the EchoPilot AI, the instructions below will provide the information and files you need to ensure your custom image remains fully compatible with the EchoPilot AI hardware. When compared to a standard Nvidia development carrier board, the primary differences in the EchoPilot AI hardware are:</p>
+<p>When a Jetson Xavier NX module is included with an EchoPilot AI purchase, it is flashed with a custom Linux for Tegra (L4T) image which includes support for the hardware configuration of the EchoPilot AI. The EchoPilot AI hardware provides provides nearly identical features of the Nvidia development kit board (PIf you wish to build/update the kernel for use with the EchoPilot AI, the instructions below will provide the information and files you need to ensure your custom image remains fully compatible with the EchoPilot AI hardware. When compared to a standard Nvidia development carrier board, the primary difference in the EchoPilot AI hardware are:</p>
 <ol>
 <li>The EchoPilot AI does not have an I2C HDMI controller</li>
-<li>The EchoPilot AI has an SD Card (SDMMC3)</li>
 </ol>
-<p>To minimize console errors due to (1) and to enable the SD card on SDMMC3, the kernel must be compiled from source and flashed to the Xavier NX using the Debug USB port and recovery mode. It is not possible to update only the dtb files because the pinmux changes require a full flash. The following instructions will walk you through the process.</p>
+<p>To minimize console errors due to (1) which would otherwise be present if , the kernel must be compiled from source and flashed to the Xavier NX using the Debug USB port and recovery mode. It is not possible to update only the dtb files because the pinmux changes require a full flash. The following instructions will walk you through the process.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>These instructions were developed and tested on Ubuntu 20.04 LTS (with a Windows machine used for the Excel pinmux change). We recommend using a <em>physical</em> machine running Ubuntu 20.04 LTS.</p>
@@ -658,7 +657,7 @@
 <p>What you will doing:</p>
 <ol>
 <li>Download and setup the necessary files</li>
-<li>Replace .dtb and .cfg files, and create a extlinux.conf file</li>
+<li>Replace .dtb and create a extlinux.conf file</li>
 <li>Generate the image and flash the device</li>
 </ol>
 <p>So buckle up and let's get started.</p>
@@ -700,17 +699,17 @@ Next you will need to download three packages from Nvidia: <a href="https://deve
 <p class="admonition-title">Note</p>
 <p>Before “apply_binaries.sh” is run, the content in “Linux_for_Tegra/rootfs/” is purely Ubuntu. After “apply_binaries.sh” the “rootfs/” will contain NVIDIA content, e.g, drivers for the GPU and some firmware.</p>
 </div>
-<h3 id="get-the-echopilot-dtb-cfg-and-extlinuxconf-files">Get the EchoPilot .dtb, .cfg and extlinux.conf files<a class="headerlink" href="#get-the-echopilot-dtb-cfg-and-extlinuxconf-files" title="Permanent link">&para;</a></h3>
-<p>The files you will need to replace include the device tree binary (.dtb), pinmux configuration (.cfg) and extlinux.conf files. These files can be obtained from the echopilot_dtb_pinmux repository <a href="https://github.com/EchoMAV/echopilot_ai_bsp">https://github.com/EchoMAV/echopilot_ai_bsp</a>. Use the steps below to clone and install these files:</p>
+<h3 id="get-the-echopilot-dtb-and-extlinuxconf-files">Get the EchoPilot .dtb and extlinux.conf files<a class="headerlink" href="#get-the-echopilot-dtb-and-extlinuxconf-files" title="Permanent link">&para;</a></h3>
+<p>The files you will need to replace include the device tree binary (.dtb) and extlinux.conf files. These files can be obtained from the repository <a href="https://github.com/EchoMAV/echopilot_ai_bsp">https://github.com/EchoMAV/echopilot_ai_bsp</a>. Use the steps below to clone and install these files:</p>
 <p>Clone the files:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>cd ~
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>git clone https://github.com/EchoMAV/echopilot_ai_bsp
 <a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>cd echopilot_ai_bsp
 </code></pre></div>
-Checkout the appropriate branch for your EchoPilot AI board revision. For example, EchoPilot AI rev0 hardware:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>git checkout board_revision_0
+Checkout the appropriate branch for your EchoPilot AI board revision. For example, EchoPilot AI rev1 hardware:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>git checkout board_revision_1
 </code></pre></div>
-Run the install script to copy the cfg, dtb and extlinux.conf files into your Linux_for_Tegra folder. The usage is <code>./install_l4t_xavier_nx.sh [Path to Linux_for_Tegra]</code>, e.g.:
+Run the install script to copy the dtb and extlinux.conf files into your Linux_for_Tegra folder. The usage is <code>./install_l4t_xavier_nx.sh [Path to Linux_for_Tegra]</code>, e.g.:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>./install_l4t_xavier_nx.sh ~/XavierNX/Linux_for_Tegra/
 </code></pre></div>
 Ensure this script completes with no errors before proceeding with flashing.</p>
@@ -720,12 +719,12 @@ Ensure this script completes with no errors before proceeding with flashing.</p>
 <p>While not shown in the images below. The EchoPilot AI should be plugged into a Carrier Board for these steps, as that is how the Jetson module is powered. </p>
 </div>
 <ol>
-<li>Plug in a usb cable (this will require a JST-GH to micro usb female adapter for Rev0 boards) to the Jetson Debug port (J25) on the EchoPilot AI. Rev 0 is shown below to help you locate this connector. Note: future versions of hardware may use a USB micro connector for J25 rather than a JST-GH connector.
+<li>Plug in a micro usb cable to the Jetson Debug port (J25) on the EchoPilot AI. Refer to the image below for the Jetson Program / Debug connector on the left side.
 <img alt="Bottom Side Components" src="../assets/bottom-side-labels.png" /></li>
-<li>Hold the recovery button down. (see image below for location of the recovery button).
+<li>Hold the recovery button down as power is applied. (see image below for location of the recovery button).
 <img alt="Top Side Components" src="../assets/top-side-labels.png" /></li>
 <li>Apply power, and release recovery button after a few seconds.</li>
-<li>Flash device:</li>
+<li>From your host PC, flash the Xavier NX device:</li>
 </ol>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>cd ~/Nano/Linux_for_Tegra/
 <a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>sudo ./flash.sh jetson-xavier-nx-devkit-emmc mmcblk0p1

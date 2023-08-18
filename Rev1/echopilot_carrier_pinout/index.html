@@ -585,22 +585,22 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#usb3-j23" class="md-nav__link">
-    USB3 (J23)
+  <a href="#usb20-3-j23" class="md-nav__link">
+    USB2.0 #3 (J23)
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#usb2-j22" class="md-nav__link">
-    USB2 (J22)
+  <a href="#usb20-2-j22" class="md-nav__link">
+    USB2.0 #2 (J22)
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#usb1-j21" class="md-nav__link">
-    USB1 (J21)
+  <a href="#usb20-1-j21" class="md-nav__link">
+    USB2.0 #1 (J21)
   </a>
   
 </li>
@@ -937,22 +937,22 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#usb3-j23" class="md-nav__link">
-    USB3 (J23)
+  <a href="#usb20-3-j23" class="md-nav__link">
+    USB2.0 #3 (J23)
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#usb2-j22" class="md-nav__link">
-    USB2 (J22)
+  <a href="#usb20-2-j22" class="md-nav__link">
+    USB2.0 #2 (J22)
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#usb1-j21" class="md-nav__link">
-    USB1 (J21)
+  <a href="#usb20-1-j21" class="md-nav__link">
+    USB2.0 #1 (J21)
   </a>
   
 </li>
@@ -1177,7 +1177,7 @@ Mating Connector: GHR-04V-S</p>
 </table>
 <h4 id="board-to-board-jetson-j5">Board to Board Jetson (J5)<a class="headerlink" href="#board-to-board-jetson-j5" title="Permanent link">&para;</a></h4>
 <p>This connector handles the Jetson-related board to board signals. It connects to the EchoPilot AI board.  </p>
-<p>Connector: J5, Part Number: FX23L-80P-0.5SV8<br />
+<p>Connector: J5, Part Number: FX23L-80P-0.5SV10<br />
 Mating Connector: FX23L-80S-0.5SV  </p>
 <table>
 <thead>
@@ -1801,7 +1801,7 @@ Mating Connector: GHR-14V-S</p>
 </table>
 <h4 id="board-to-board-fmu-j6">Board to Board FMU (J6)<a class="headerlink" href="#board-to-board-fmu-j6" title="Permanent link">&para;</a></h4>
 <p>This connector handles the FMU-related board to board signals.  It connects to the EchoPilot AI board.  </p>
-<p>Connector: J6, Part Number: FX23L-80P-0.5SV8<br />
+<p>Connector: J6, Part Number: FX23L-80P-0.5SV10<br />
 Mating Connector: FX23L-80S-0.5SV   </p>
 <table>
 <thead>
@@ -2538,7 +2538,7 @@ Mating Connector: GHR-10V-S   </p>
 </tbody>
 </table>
 <h4 id="jetson-can-j7">Jetson CAN (J7)<a class="headerlink" href="#jetson-can-j7" title="Permanent link">&para;</a></h4>
-<p>This connector provides a CAN interface from the Jetson.</p>
+<p>This connector provides a CAN interface from the Jetson. The EchoPilot AI main board has a 120 ohm termination resistor at the CAN transceiver (LTC2875).</p>
 <p>Connector: J7, Part Number: SM04B-GHS-TB(LF)(SN)<br />
 Mating Connector: GHR-04V-S     </p>
 <table>
@@ -2856,7 +2856,7 @@ Mating Connector: GHR-03V-S   </p>
 </tbody>
 </table>
 <h4 id="jetson-gpio-j33">Jetson GPIO (J33)<a class="headerlink" href="#jetson-gpio-j33" title="Permanent link">&para;</a></h4>
-<p>Spare GPIO from the Jetson SOM</p>
+<p>Spare GPIO from the Jetson module.</p>
 <p>Connector: J33, Part Number: SM04B-GHS-TB(LF)(SN) <br />
 Mating Connector: GHR-04V-S   </p>
 <table>
@@ -2896,7 +2896,7 @@ Mating Connector: GHR-04V-S   </p>
 </tbody>
 </table>
 <h4 id="vi-sense-and-analog-in-j13">V/I Sense and Analog In (J13)<a class="headerlink" href="#vi-sense-and-analog-in-j13" title="Permanent link">&para;</a></h4>
-<p>This connector provides dual voltage and current sense input, for use with an off-board current sensor monitor. These signals should be scaled to 0-3.3V or damage may occur. Your autopilot firmware will allow you to enter scaling factors for proper display of voltage/current on a GCS system. This connector also provides two spare analog inputs to the FMU.</p>
+<p>This connector provides dual voltage and current sense input, for use with off-board current sensor monitor(s). These signals should be scaled to 0-3.3V or damage may occur. Your autopilot firmware will allow you to enter scaling factors for proper display of voltage/current when ground control software. This connector also provides two spare analog inputs to the FMU.</p>
 <p>Connector: J13, Part Number: SM08B-GHS-TB(LF)(SN)<br />
 Mating Connector: GHR-08V-S     </p>
 <table>
@@ -3061,7 +3061,7 @@ Mating Connector: GHR-06V-S     </p>
 </tbody>
 </table>
 <h4 id="usb3_2-j24">USB3_2 (J24)<a class="headerlink" href="#usb3_2-j24" title="Permanent link">&para;</a></h4>
-<p>This connector provides a USB3 SS connection to the Jetson, via a TUSB8042 hub. Note that 1uF capacitors are placed near the connector on the SS Tx+ and TX- lines.</p>
+<p>This connector provides a USB3 SuperSpeed connection to the Jetson, via a TUSB8042 hub. Note that 1uF capacitors are placed near the connector on the Tx+ and TX- lines.</p>
 <p>Connector: J24, Part Number: SM10B-GHS-TB(LF)(SN)<br />
 Mating Connector: GHR-10V-S     </p>
 <table>
@@ -3108,7 +3108,7 @@ Mating Connector: GHR-10V-S     </p>
 <td>6</td>
 <td>IO</td>
 <td>Diff Signal</td>
-<td>USBSS RX+</td>
+<td>USBSS Rx+</td>
 </tr>
 <tr>
 <td>7</td>
@@ -3137,7 +3137,7 @@ Mating Connector: GHR-10V-S     </p>
 </tbody>
 </table>
 <h4 id="usb3_1-j29">USB3_1 (J29)<a class="headerlink" href="#usb3_1-j29" title="Permanent link">&para;</a></h4>
-<p>This connector provides a USB3 SS connection to the Jetson, via a TUSB8042 hub. Note that 1uF capacitors are placed near the connector on the SS Tx+ and TX- lines.</p>
+<p>This connector provides a USB3 SuperSpeed connection to the Jetson, via a TUSB8042 hub. Note that 1uF capacitors are placed near the connector on the Tx+ and TX- lines.</p>
 <p>Connector: J29, Part Number: SM10B-GHS-TB(LF)(SN)<br />
 Mating Connector: GHR-10V-S     </p>
 <table>
@@ -3184,7 +3184,7 @@ Mating Connector: GHR-10V-S     </p>
 <td>6</td>
 <td>IO</td>
 <td>Diff Signal</td>
-<td>USBSS RX+</td>
+<td>USBSS Rx+</td>
 </tr>
 <tr>
 <td>7</td>
@@ -3253,7 +3253,7 @@ Mating Connector: GHR-04V-S     </p>
 </tbody>
 </table>
 <h4 id="can-2-fmu-j17">CAN 2 (FMU) (J17)<a class="headerlink" href="#can-2-fmu-j17" title="Permanent link">&para;</a></h4>
-<p>This connector provides a <a href="https://github.com/pixhawk/Pixhawk-Standards/blob/master/DS-009%20Pixhawk%20Connector%20Standard.pdf">Pixhawk standard</a> CAN connection from the FMU (CAN 2).</p>
+<p>This connector provides a <a href="https://github.com/pixhawk/Pixhawk-Standards/blob/master/DS-009%20Pixhawk%20Connector%20Standard.pdf">Pixhawk standard</a> CAN connection from the FMU (CAN 2). The EchoPilot AI main board has a 120 ohm termination resistor at the CAN transceiver (LTC2875).</p>
 <p>Connector: J17, Part Number: SM04B-GHS-TB(LF)(SN)<br />
 Mating Connector: GHR-04V-S     </p>
 <table>
@@ -3276,13 +3276,13 @@ Mating Connector: GHR-04V-S     </p>
 <td>2</td>
 <td>IO</td>
 <td>Diff Signal</td>
-<td>CAN_2+ (FMU)</td>
+<td>CAN 2+ (FMU)</td>
 </tr>
 <tr>
 <td>3</td>
 <td>IO</td>
 <td>Diff Signal</td>
-<td>CAN_2- (FMU)</td>
+<td>CAN 2- (FMU)</td>
 </tr>
 <tr>
 <td>4</td>
@@ -3293,7 +3293,7 @@ Mating Connector: GHR-04V-S     </p>
 </tbody>
 </table>
 <h4 id="can-1-fmu-j19">CAN 1 (FMU) (J19)<a class="headerlink" href="#can-1-fmu-j19" title="Permanent link">&para;</a></h4>
-<p>This connector provides a <a href="https://github.com/pixhawk/Pixhawk-Standards/blob/master/DS-009%20Pixhawk%20Connector%20Standard.pdf">Pixhawk standard</a> CAN connection from the FMU (CAN 1).</p>
+<p>This connector provides a <a href="https://github.com/pixhawk/Pixhawk-Standards/blob/master/DS-009%20Pixhawk%20Connector%20Standard.pdf">Pixhawk standard</a> CAN connection from the FMU (CAN 1). The EchoPilot AI main board has a 120 ohm termination resistor at the CAN transceiver (LTC2875).</p>
 <p>Connector: J19, Part Number: SM04B-GHS-TB(LF)(SN)<br />
 Mating Connector: GHR-04V-S     </p>
 <table>
@@ -3316,13 +3316,13 @@ Mating Connector: GHR-04V-S     </p>
 <td>2</td>
 <td>IO</td>
 <td>Diff Signal</td>
-<td>CAN_1+ (Jetson)</td>
+<td>CAN 1+ (FMU)</td>
 </tr>
 <tr>
 <td>3</td>
 <td>IO</td>
 <td>Diff Signal</td>
-<td>CAN_1- (Jetson)</td>
+<td>CAN 1- (FMU)</td>
 </tr>
 <tr>
 <td>4</td>
@@ -3332,8 +3332,8 @@ Mating Connector: GHR-04V-S     </p>
 </tr>
 </tbody>
 </table>
-<h4 id="usb3-j23">USB3 (J23)<a class="headerlink" href="#usb3-j23" title="Permanent link">&para;</a></h4>
-<p>This connector provides USB 2.0 connectivity from the Jetson SOM.</p>
+<h4 id="usb20-3-j23">USB2.0 #3 (J23)<a class="headerlink" href="#usb20-3-j23" title="Permanent link">&para;</a></h4>
+<p>This connector provides USB 2.0 connectivity from the Jetson SOM via a hub onboard the EchoPilot AI mainboard.</p>
 <p>Connector: J23, Part Number: SM04B-GHS-TB(LF)(SN)<br />
 Mating Connector: GHR-04V-S     </p>
 <table>
@@ -3372,8 +3372,8 @@ Mating Connector: GHR-04V-S     </p>
 </tr>
 </tbody>
 </table>
-<h4 id="usb2-j22">USB2 (J22)<a class="headerlink" href="#usb2-j22" title="Permanent link">&para;</a></h4>
-<p>This connector provides USB 2.0 connectivity from the Jetson SOM.</p>
+<h4 id="usb20-2-j22">USB2.0 #2 (J22)<a class="headerlink" href="#usb20-2-j22" title="Permanent link">&para;</a></h4>
+<p>This connector provides USB 2.0 connectivity from the Jetson SOM via a hub onboard the EchoPilot AI mainboard.</p>
 <p>Connector: J22, Part Number: SM04B-GHS-TB(LF)(SN)<br />
 Mating Connector: GHR-04V-S     </p>
 <table>
@@ -3412,8 +3412,8 @@ Mating Connector: GHR-04V-S     </p>
 </tr>
 </tbody>
 </table>
-<h4 id="usb1-j21">USB1 (J21)<a class="headerlink" href="#usb1-j21" title="Permanent link">&para;</a></h4>
-<p>This connector provides USB 2.0 connectivity from the Jetson SOM.</p>
+<h4 id="usb20-1-j21">USB2.0 #1 (J21)<a class="headerlink" href="#usb20-1-j21" title="Permanent link">&para;</a></h4>
+<p>This connector provides USB 2.0 connectivity from the Jetson SOM via a hub onboard the EchoPilot AI mainboard.</p>
 <p>Connector: J21, Part Number: SM04B-GHS-TB(LF)(SN)<br />
 Mating Connector: GHR-04V-S     </p>
 <table>
@@ -3453,11 +3453,13 @@ Mating Connector: GHR-04V-S     </p>
 </tbody>
 </table>
 <h4 id="m2-connector-for-cellular-modem-j30">M.2 Connector for Cellular Modem (J30)<a class="headerlink" href="#m2-connector-for-cellular-modem-j30" title="Permanent link">&para;</a></h4>
-<p>This is Key B M.2 connector for use with a 3052 form factor cellular modem, such as the Sierra Wireless EM9191. The connector has USB3 connectivity to the modem (no PCIe) and a dedicated 3.3V power supply. Attach the modem using a M2x0.4mm x 3mm wafer head screw.  </p>
-<p>A heat pad under the modem provides the option for a heat sinking solution from the cellular modem. The following components can be used to build a heat sink:<br />
-Thermal Pad between the modem and Carrier Board: Panasonic EYG-T7070A15A (cut to fit)
-14x14mm heatsink mounted on the Carrier Board: CUI HSB03-141406
-Heatsink Adhesive: MG Chemicals 8329TFF-25ML</p>
+<p>This is a Key B M.2 connector for use with a 3052 form factor cellular modem, such as the Sierra Wireless EM9191. The connector includes USB3.1 connectivity to the modem ( PCIe is not supported). Attach the modem using a M2x0.4mm x 3mm wafer head screw.  </p>
+<p>A heat pad under the modem provides the option for a heat sinking solution from the cellular modem. The following components can be used to build a heat sink:  </p>
+<blockquote>
+<p>Thermal Pad between the modem and Carrier Board: <strong>Panasonic EYG-T7070A15A (cut to fit):</strong><br />
+14x14mm heatsink mounted on the Carrier Board: <strong>CUI HSB03-141406</strong>  <br />
+Heatsink Adhesive: <strong>MG Chemicals 8329TFF-25ML</strong>  </p>
+</blockquote>
 <p>Connector: J29, Part Number: SM3ZS067U310ABR1200<br />
 Mating Connector: M.2 Key B Modem, size 3052</p>
 <div class="footnote">

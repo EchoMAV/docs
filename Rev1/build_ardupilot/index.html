@@ -697,14 +697,10 @@ Now reload the path (log-out and log-in to make permanent)
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>. ~/.profile
 </code></pre></div></p>
 <h3 id="checkout-a-release-or-tag">Checkout a release or tag<a class="headerlink" href="#checkout-a-release-or-tag" title="Permanent link">&para;</a></h3>
-<p>You can identify a version you wish to build by looking at the ArduPilot tags <a href="https://github.com/ArduPilot/ardupilot/tags">https://github.com/ArduPilot/ardupilot/tags</a>. In the example below, we will demonstrate checking out release ArduCopter-stable </p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>git checkout tags/ArduCopter-stable
+<p>You can identify a version you wish to build by looking at the ArduPilot tags <a href="https://github.com/ArduPilot/ardupilot/tags">https://github.com/ArduPilot/ardupilot/tags</a>. In the example below, we will demonstrate checking out release Copter-4.3.7 </p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>git checkout tags/Copter-4.3.7
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>git submodule update --init --recursive
 </code></pre></div>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>We have observed a failure to identify I2C compasses on ArduPilot 4.3 releases. If your design relies on the RM3100 compass onboard the EchoPilot AI, we recommend avoiding version 4.3.x. This problem appears to have been fixed in 4.4+ releases. We recommend using version 4.2.4 or earlier, or 4.4+.</p>
-</div>
 <h3 id="do-a-test-build">Do a test build<a class="headerlink" href="#do-a-test-build" title="Permanent link">&para;</a></h3>
 <p>Before we build firmware for the EchoPilot AI board, it is wise to first build a native target to verify that your toolchain and environment is setup and working. Build the sitl (software in the loop simulator) target first:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>./waf configure --board sitl
@@ -715,20 +711,20 @@ If the build completes without errors, congrats! If there are errors, you will n
 <p>Obtain the hardware board files from the <a href="https://github.com/EchoMAV/echopilot_ai_bsp">EchoPilot AI BSP</a> repo and checkout the appropriate branch matching the hardware revision of your EchoPilot AI using the commands below. The Hardware revision is marked on the board silkscreen near the FAN connector:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>git clone https://github.com/EchoMAV/echopilot_ai_bsp
 <a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>cd echopilot_ai_bsp
-<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>git checkout board_revision_0     # Select the appropriate revision
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>git checkout board_revision_1     # Select the appropriate revision
 </code></pre></div>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Be sure you checked out the appropriate branch matching your EchoPilot AI hardware revision!</p>
 </div>
-<p>Install the ArduPilot board definition files into the correct folder using the provided <code>install_ardupilot.sh</code> script. The first argument is the path to where you have the ardupilot repo on your system, e.g. <code>~/ardupilot</code>.
+<p>Use the <code>install_ardupilot.sh</code> script to automatically copy the EchoPilot HW hardware definition files into the right place in the ardupilot directory structure. The first (and only) argument when using this script is the path to where you have the ardupilot repo installed on your system, e.g., <code>~/ardupilot</code>. For example:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>./install_ardupilot.sh ~/ardupilot
 </code></pre></div></p>
 <h3 id="build-ardupilot-for-the-echopilot-ai">Build ArduPilot for the EchoPilot AI<a class="headerlink" href="#build-ardupilot-for-the-echopilot-ai" title="Permanent link">&para;</a></h3>
-<p>At this point, you should have the hardware files located in <code>~/ardupilot/libraries/AP_HAL_ChibiOS/hwdef/EchoPilotAI/</code>. To build firmware targeting this board, use the command:
+<p>At this point, you should have the EchoPilot AI hardware files located in <code>~/ardupilot/libraries/AP_HAL_ChibiOS/hwdef/EchoPilotAI/</code>. To build firmware targeting EchoPilot AI, use the command:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>cd ~/ardupilot
 <a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>./waf configure --board EchoPilotAI
-<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>./waf copter    # or choose a different target
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>./waf copter    # or choose a different target per below
 </code></pre></div></p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
@@ -740,10 +736,10 @@ If the build completes without errors, congrats! If there are errors, you will n
 <a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>./waf sub                               # ROV and other submarines
 </code></pre></div></p>
 </div>
-<p>The arducopter.apj and arducopter.bin file will be located in the <code>~/ardupilot/build/EchoPilotAI/bin/</code> folder. The firmware is now ready to be loaded on the board. This can be done by adding the upload argument, or with a ground control station. </p>
+<p>The arducopter.apj and arducopter.bin file will be located in the <code>~/ardupilot/build/EchoPilotAI/bin/</code> folder. The firmware is now ready to be loaded on the board. This can be done by adding the upload argument as explained below, or using common ground control station software such as Mission Planner or QGroundControl to upload the <code>apj</code> file.</p>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
-<p>If the EchoPilot AI is plugged in to your host computer, unplug it before proceeding. The board should be totally powered off before proceeding.</p>
+<p>If the EchoPilot AI's FMU USB connection is plugged in to your host computer, unplug it before proceeding. Also ensure the board is fully powered down. The board should be totally powered off before proceeding.</p>
 </div>
 <h4 id="uploading-using-the-waf-script">Uploading using the WAF script<a class="headerlink" href="#uploading-using-the-waf-script" title="Permanent link">&para;</a></h4>
 <p><div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>./waf copter --upload
