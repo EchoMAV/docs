@@ -70,7 +70,7 @@ You should now see the boot messages in your console, and once boot is complete,
 
 ## Board Components and Connectors
 
-### EchoPilot AI
+### EchoPilot AI Mainboard
 
 ![Top Side Components](assets/top-side-labels.png)
 
@@ -84,9 +84,9 @@ You should now see the boot messages in your console, and once boot is complete,
 
 ### Pinouts
 
-For EchoPilot AI Pinouts, refer to the [EchoPilot AI Pinout Page](echopilot_ai_pinout.md).  
+For EchoPilot AI Mainboard Pinouts, refer to the [EchoPilot AI Pinout Page](echopilot_ai_pinout.md).  
 
-For Carrier Board Pinouts, refer to the [Carrier Board Pinout Page](echopilot_carrier_pinout.md).
+For Standard Carrier Board Pinouts, refer to the [Carrier Board Pinout Page](echopilot_carrier_pinout.md).
 
 ## Jetson IO Availability
 
