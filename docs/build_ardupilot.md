@@ -23,15 +23,12 @@ Now reload the path (log-out and log-in to make permanent)
 ```
 
 ### Checkout a release or tag
-You can identify a version you wish to build by looking at the ArduPilot tags [https://github.com/ArduPilot/ardupilot/tags](https://github.com/ArduPilot/ardupilot/tags). In the example below, we will demonstrate checking out release ArduCopter-stable 
+You can identify a version you wish to build by looking at the ArduPilot tags [https://github.com/ArduPilot/ardupilot/tags](https://github.com/ArduPilot/ardupilot/tags). In the example below, we will demonstrate checking out release Copter-4.3.7 
 
 ```
-git checkout tags/ArduCopter-stable
+git checkout tags/Copter-4.3.7
 git submodule update --init --recursive
 ```
-!!! WARNING
-
-    We have observed a failure to identify I2C compasses on ArduPilot 4.3 releases. If your design relies on the RM3100 compass onboard the EchoPilot AI, we recommend avoiding version 4.3.x. This problem appears to have been fixed in 4.4+ releases. We recommend using version 4.2.4 or earlier, or 4.4+.
 
 ### Do a test build
 Before we build firmware for the EchoPilot AI board, it is wise to first build a native target to verify that your toolchain and environment is setup and working. Build the sitl (software in the loop simulator) target first:
@@ -46,21 +43,21 @@ Obtain the hardware board files from the [EchoPilot AI BSP](https://github.com/E
 ```
 git clone https://github.com/EchoMAV/echopilot_ai_bsp
 cd echopilot_ai_bsp
-git checkout board_revision_0     # Select the appropriate revision
+git checkout board_revision_1     # Select the appropriate revision
 ```
 !!! warning
     Be sure you checked out the appropriate branch matching your EchoPilot AI hardware revision!
 
-Install the ArduPilot board definition files into the correct folder using the provided `install_ardupilot.sh` script. The first argument is the path to where you have the ardupilot repo on your system, e.g. `~/ardupilot`.
+Use the `install_ardupilot.sh` script to automatically copy the EchoPilot HW hardware definition files into the right place in the ardupilot directory structure. The first (and only) argument when using this script is the path to where you have the ardupilot repo installed on your system, e.g., `~/ardupilot`. For example:
 ```
 ./install_ardupilot.sh ~/ardupilot
 ```
 ### Build ArduPilot for the EchoPilot AI
-At this point, you should have the hardware files located in ```~/ardupilot/libraries/AP_HAL_ChibiOS/hwdef/EchoPilotAI/```. To build firmware targeting this board, use the command:
+At this point, you should have the EchoPilot AI hardware files located in ```~/ardupilot/libraries/AP_HAL_ChibiOS/hwdef/EchoPilotAI/```. To build firmware targeting EchoPilot AI, use the command:
 ```
 cd ~/ardupilot
 ./waf configure --board EchoPilotAI
-./waf copter    # or choose a different target
+./waf copter    # or choose a different target per below
 ```
 !!! tip
 
@@ -73,10 +70,10 @@ cd ~/ardupilot
     ./waf sub                               # ROV and other submarines
     ```
 
-The arducopter.apj and arducopter.bin file will be located in the ```~/ardupilot/build/EchoPilotAI/bin/``` folder. The firmware is now ready to be loaded on the board. This can be done by adding the upload argument, or with a ground control station. 
+The arducopter.apj and arducopter.bin file will be located in the ```~/ardupilot/build/EchoPilotAI/bin/``` folder. The firmware is now ready to be loaded on the board. This can be done by adding the upload argument as explained below, or using common ground control station software such as Mission Planner or QGroundControl to upload the ```apj``` file.
 
 !!! info
-    If the EchoPilot AI is plugged in to your host computer, unplug it before proceeding. The board should be totally powered off before proceeding.
+    If the EchoPilot AI's FMU USB connection is plugged in to your host computer, unplug it before proceeding. Also ensure the board is fully powered down. The board should be totally powered off before proceeding.
 
 #### Uploading using the WAF script
 ```

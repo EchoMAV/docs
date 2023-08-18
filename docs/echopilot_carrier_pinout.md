@@ -64,7 +64,7 @@ Pin Number   | Direction     | Voltage       | Pin Description
 #### Board to Board Jetson (J5)
 This connector handles the Jetson-related board to board signals. It connects to the EchoPilot AI board.  
 
-Connector: J5, Part Number: FX23L-80P-0.5SV8  
+Connector: J5, Part Number: FX23L-80P-0.5SV10  
 Mating Connector: FX23L-80S-0.5SV  
 
 | Pin Number | Direction | Voltage | Pin Desription    |
@@ -184,7 +184,7 @@ Pin Number   | Direction     | Voltage       | Pin Description
 #### Board to Board FMU (J6)
 This connector handles the FMU-related board to board signals.  It connects to the EchoPilot AI board.  
 
-Connector: J6, Part Number: FX23L-80P-0.5SV8  
+Connector: J6, Part Number: FX23L-80P-0.5SV10  
 Mating Connector: FX23L-80S-0.5SV   
 
 | Pin Number | Direction | Voltage | Pin Desription    |
@@ -347,7 +347,7 @@ Pin Number   | Direction     | Voltage       | Pin Description
 
 
 #### Jetson CAN (J7)
-This connector provides a CAN interface from the Jetson.
+This connector provides a CAN interface from the Jetson. The EchoPilot AI main board has a 120 ohm termination resistor at the CAN transceiver (LTC2875).
 
 Connector: J7, Part Number: SM04B-GHS-TB(LF)(SN)  
 Mating Connector: GHR-04V-S     
@@ -441,7 +441,7 @@ Pin Number   | Direction     | Voltage       | Pin Description
 3        | Pwr            | GND         | GND
 
 #### Jetson GPIO (J33)
-Spare GPIO from the Jetson SOM
+Spare GPIO from the Jetson module.
 
 Connector: J33, Part Number: SM04B-GHS-TB(LF)(SN)   
 Mating Connector: GHR-04V-S   
@@ -454,7 +454,7 @@ Pin Number   | Direction     | Voltage       | Pin Description
 3        | Pwr            | GND         | GND
 
 #### V/I Sense and Analog In (J13)
-This connector provides dual voltage and current sense input, for use with an off-board current sensor monitor. These signals should be scaled to 0-3.3V or damage may occur. Your autopilot firmware will allow you to enter scaling factors for proper display of voltage/current on a GCS system. This connector also provides two spare analog inputs to the FMU.
+This connector provides dual voltage and current sense input, for use with off-board current sensor monitor(s). These signals should be scaled to 0-3.3V or damage may occur. Your autopilot firmware will allow you to enter scaling factors for proper display of voltage/current when ground control software. This connector also provides two spare analog inputs to the FMU.
 
 Connector: J13, Part Number: SM08B-GHS-TB(LF)(SN)  
 Mating Connector: GHR-08V-S     
@@ -499,7 +499,7 @@ Pin Number   | Direction     | Voltage       | Pin Description
 6        | Pwr            | GND         | GND
 
 #### USB3_2 (J24)
-This connector provides a USB3 SS connection to the Jetson, via a TUSB8042 hub. Note that 1uF capacitors are placed near the connector on the SS Tx+ and TX- lines.
+This connector provides a USB3 SuperSpeed connection to the Jetson, via a TUSB8042 hub. Note that 1uF capacitors are placed near the connector on the Tx+ and TX- lines.
 
 Connector: J24, Part Number: SM10B-GHS-TB(LF)(SN)  
 Mating Connector: GHR-10V-S     
@@ -511,14 +511,14 @@ Pin Number   | Direction     | Voltage       | Pin Description
 3        | IO            | Diff Signal          | USB D+
 4        | Pwr            | GND        | GND
 5        | IO            | Diff Signal         | USBSS Rx-
-6        | IO            | Diff Signal         | USBSS RX+
+6        | IO            | Diff Signal         | USBSS Rx+
 7        | Pwr            | GND         | GND
 8        | IO            | Diff Signal         | USBSS Tx-
 9        | IO            | Diff Signal         | USBSS Tx+
 10        | Pwr            | GND         | GND
 
 #### USB3_1 (J29)
-This connector provides a USB3 SS connection to the Jetson, via a TUSB8042 hub. Note that 1uF capacitors are placed near the connector on the SS Tx+ and TX- lines.
+This connector provides a USB3 SuperSpeed connection to the Jetson, via a TUSB8042 hub. Note that 1uF capacitors are placed near the connector on the Tx+ and TX- lines.
 
 Connector: J29, Part Number: SM10B-GHS-TB(LF)(SN)  
 Mating Connector: GHR-10V-S     
@@ -530,7 +530,7 @@ Pin Number   | Direction     | Voltage       | Pin Description
 3        | IO            | Diff Signal          | USB D+
 4        | Pwr            | GND        | GND
 5        | IO            | Diff Signal         | USBSS Rx-
-6        | IO            | Diff Signal         | USBSS RX+
+6        | IO            | Diff Signal         | USBSS Rx+
 7        | Pwr            | GND         | GND
 8        | IO            | Diff Signal         | USBSS Tx-
 9        | IO            | Diff Signal         | USBSS Tx+
@@ -552,7 +552,7 @@ Pin Number   | Direction     | Voltage       | Pin Description
 [^4]: +5V_OUT4 bus is limited to a total of 1500mA by a TPS2561.
 
 #### CAN 2 (FMU) (J17)
-This connector provides a [Pixhawk standard](https://github.com/pixhawk/Pixhawk-Standards/blob/master/DS-009%20Pixhawk%20Connector%20Standard.pdf) CAN connection from the FMU (CAN 2).
+This connector provides a [Pixhawk standard](https://github.com/pixhawk/Pixhawk-Standards/blob/master/DS-009%20Pixhawk%20Connector%20Standard.pdf) CAN connection from the FMU (CAN 2). The EchoPilot AI main board has a 120 ohm termination resistor at the CAN transceiver (LTC2875).
 
 Connector: J17, Part Number: SM04B-GHS-TB(LF)(SN)  
 Mating Connector: GHR-04V-S     
@@ -560,12 +560,12 @@ Mating Connector: GHR-04V-S
 Pin Number   | Direction     | Voltage       | Pin Description
 ------------ | ------------- | ------------  | ------------
 1        | Pwr OUT            | +5V          | +5V OUT_1 [^1]  
-2        | IO            | Diff Signal        | CAN_2+ (FMU)
-3        | IO            | Diff Signal          | CAN_2- (FMU)
+2        | IO            | Diff Signal        | CAN 2+ (FMU)
+3        | IO            | Diff Signal          | CAN 2- (FMU)
 4        | Pwr            | GND         | GND
 
 #### CAN 1 (FMU) (J19)
-This connector provides a [Pixhawk standard](https://github.com/pixhawk/Pixhawk-Standards/blob/master/DS-009%20Pixhawk%20Connector%20Standard.pdf) CAN connection from the FMU (CAN 1).
+This connector provides a [Pixhawk standard](https://github.com/pixhawk/Pixhawk-Standards/blob/master/DS-009%20Pixhawk%20Connector%20Standard.pdf) CAN connection from the FMU (CAN 1). The EchoPilot AI main board has a 120 ohm termination resistor at the CAN transceiver (LTC2875).
 
 Connector: J19, Part Number: SM04B-GHS-TB(LF)(SN)  
 Mating Connector: GHR-04V-S     
@@ -573,13 +573,13 @@ Mating Connector: GHR-04V-S
 Pin Number   | Direction     | Voltage       | Pin Description
 ------------ | ------------- | ------------  | ------------
 1        | Pwr OUT           | +5V          | +5V OUT_1 [^1]  
-2        | IO            | Diff Signal        | CAN_1+ (Jetson)
-3        | IO            | Diff Signal          | CAN_1- (Jetson)
+2        | IO            | Diff Signal        | CAN 1+ (FMU)
+3        | IO            | Diff Signal          | CAN 1- (FMU)
 4        | Pwr            | GND         | GND
 
 
-#### USB3 (J23)
-This connector provides USB 2.0 connectivity from the Jetson SOM.
+#### USB2.0 #3 (J23)
+This connector provides USB 2.0 connectivity from the Jetson SOM via a hub onboard the EchoPilot AI mainboard.
 
 Connector: J23, Part Number: SM04B-GHS-TB(LF)(SN)  
 Mating Connector: GHR-04V-S     
@@ -591,8 +591,8 @@ Pin Number   | Direction     | Voltage       | Pin Description
 3        | IO            | Diff Signal          | USB3_D+ (Jetson)
 4        | Pwr            | GND         | GND
 
-#### USB2 (J22)
-This connector provides USB 2.0 connectivity from the Jetson SOM.
+#### USB2.0 #2 (J22)
+This connector provides USB 2.0 connectivity from the Jetson SOM via a hub onboard the EchoPilot AI mainboard.
 
 Connector: J22, Part Number: SM04B-GHS-TB(LF)(SN)  
 Mating Connector: GHR-04V-S     
@@ -604,8 +604,8 @@ Pin Number   | Direction     | Voltage       | Pin Description
 3        | IO            | Diff Signal          | USB2_D+ (Jetson)
 4        | Pwr            | GND         | GND
 
-#### USB1 (J21)
-This connector provides USB 2.0 connectivity from the Jetson SOM.
+#### USB2.0 #1 (J21)
+This connector provides USB 2.0 connectivity from the Jetson SOM via a hub onboard the EchoPilot AI mainboard.
 
 Connector: J21, Part Number: SM04B-GHS-TB(LF)(SN)  
 Mating Connector: GHR-04V-S     
@@ -618,12 +618,12 @@ Pin Number   | Direction     | Voltage       | Pin Description
 4        | Pwr            | GND         | GND
 
 #### M.2 Connector for Cellular Modem (J30)
-This is Key B M.2 connector for use with a 3052 form factor cellular modem, such as the Sierra Wireless EM9191. The connector has USB3 connectivity to the modem (no PCIe) and a dedicated 3.3V power supply. Attach the modem using a M2x0.4mm x 3mm wafer head screw.  
+This is a Key B M.2 connector for use with a 3052 form factor cellular modem, such as the Sierra Wireless EM9191. The connector includes USB3.1 connectivity to the modem ( PCIe is not supported). Attach the modem using a M2x0.4mm x 3mm wafer head screw.  
 
 A heat pad under the modem provides the option for a heat sinking solution from the cellular modem. The following components can be used to build a heat sink:  
-Thermal Pad between the modem and Carrier Board: Panasonic EYG-T7070A15A (cut to fit)
-14x14mm heatsink mounted on the Carrier Board: CUI HSB03-141406
-Heatsink Adhesive: MG Chemicals 8329TFF-25ML
+> Thermal Pad between the modem and Carrier Board: **Panasonic EYG-T7070A15A (cut to fit):**  
+> 14x14mm heatsink mounted on the Carrier Board: **CUI HSB03-141406**    
+> Heatsink Adhesive: **MG Chemicals 8329TFF-25ML**  
 
 Connector: J29, Part Number: SM3ZS067U310ABR1200  
 Mating Connector: M.2 Key B Modem, size 3052
