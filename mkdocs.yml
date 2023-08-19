@@ -9,6 +9,7 @@ nav:
         - EchoPilot AI Pinout: echopilot_ai_pinout.md
         - EchoPilot Carrier Pinout: echopilot_carrier_pinout.md
         - EchoPilot PWM Pinout: echopilot_pwm_pinout.md
+        - EchoPilot USBA Pinout: echopilot_usba_pinout.md
         - Building PX4: build_px4.md
         - Building ArduPilot: build_ardupilot.md
         - Building L4T (Orin NX): compile_l4t_orin.md

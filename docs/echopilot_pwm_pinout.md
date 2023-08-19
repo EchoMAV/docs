@@ -3,7 +3,7 @@
 ![PWM Breakout](assets/echopilot_ai_6.png)
 ![PWM Breakout Board](assets/echopilot_pwm_breakout.JPG)
 
-#### JST to EchoPilot Connector
+#### EchoPilot Carrier Board Connector (J1)
 This connector is used along with the provided cable to connect to J20 on the Carrier Board.
 
 Connector: J1, Part Number: SM14B-SRSS-TB(LF)(SN)  
@@ -40,3 +40,7 @@ Connector: J2, Part Number: TSW-112-08-G-T-RA_1
 Mating Connector: Standard 0.1" spacing servo/esc Futaba style
 
 ![PWM Breakout End View](assets/echopilot_pwm_endview.png)
+
+#### STEP File Download
+
+[EchoPilot AI PWM Breakout Board 3D model (STEP) File Download](https://echomav.com/mechanical/echopilot_pwm_breakout.step) (right click, save link as)
