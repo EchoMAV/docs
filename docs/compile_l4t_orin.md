@@ -96,7 +96,7 @@ Ensure this script completes with no errors before proceeding with flashing.
 2. Hold the recovery button down as power is applied. (see image below for location of the recovery button).
 
 ![Top Side Components](assets/top-side-labels.png)
-3. Apply power via the XT30 connector on the carrier board, and release the recovery button after a few seconds.
+3. Apply power via the XT30 connector on the carrier board, and release the recovery button after a few seconds.  
 4. Build the image and flash device using the command below:
 
 ```
@@ -109,6 +109,9 @@ sudo ./tools/kernel_flash/l4t_initrd_flash.sh --external-device nvme0n1p1 -c too
     ```
     sudo bash -c "echo -1 > /sys/module/usbcore/parameters/autosuspend"
     ```
+
+!!! note
+    The flash command above builds the image and flashes. Once the image is built the first time, you can flash additional boards without the time consuming image rebuild each time. Add the ```--flash-only``` argument to the l4t_initrd_flash.sh script.
 
 
 
