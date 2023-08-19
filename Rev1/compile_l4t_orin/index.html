@@ -749,7 +749,7 @@ Ensure this script completes with no errors before proceeding with flashing.</p>
 </code></pre></div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>On our own host Linux systems, we have observed that the Nvidia script above may sometimes timeout due to a usb write error. This problem appears to be related to USB autosuspend. If you encounter similar errors, please try this command and the attempt flashing again.
+<p>On our own host Linux systems, we have observed that the Nvidia script above may sometimes timeout due to a USB write error. This problem appears to be related to USB autosuspend. If you encounter similar errors, please try this command to disable autosuspend and then attempt flashing again.
 <div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>sudo bash -c &quot;echo -1 &gt; /sys/module/usbcore/parameters/autosuspend&quot;
 </code></pre></div></p>
 </div>
