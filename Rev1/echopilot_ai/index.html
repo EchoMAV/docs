@@ -1151,7 +1151,38 @@
 <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>df -h
 </code></pre></div></p>
 <h2 id="unique-board-identifier">Unique Board Identifier<a class="headerlink" href="#unique-board-identifier" title="Permanent link">&para;</a></h2>
-<p>Each EchoPilot AI includes an AT24CS01-STUM unique ID EEPROM attached to the Jetson I2C0 port at address 0x58. This can be used to obtain a unique 128-bit identifier (serial number) for your board. </p>
+<p>Each EchoPilot AI includes an AT24CS01-STUM unique ID EEPROM attached to the Jetson I2C 1 port at address 0x58. This can be used to obtain a unique 128-bit identifier (serial number) for your board. </p>
+<p>Below is an example python script you can use to read this serial number.</p>
+<p>First install python3 wih smbus
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>sudo apt-get install python3-smbus
+</code></pre></div>
+Create a new file <code>serial.py</code> with these contents:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>import smbus
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>i2c_ch = 1
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a># address on the I2C bus
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>i2c_address = 0x58
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>
+<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a># Register address
+<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a>serial_num = 0x80
+<a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a>
+<a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a># Read serial number register
+<a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a>def read_serial():
+<a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a>
+<a id="__codelineno-8-14" name="__codelineno-8-14" href="#__codelineno-8-14"></a>    # Read the serial register, a 16 byte block
+<a id="__codelineno-8-15" name="__codelineno-8-15" href="#__codelineno-8-15"></a>    val = bus.read_i2c_block_data(i2c_address, serial_num, 16)    
+<a id="__codelineno-8-16" name="__codelineno-8-16" href="#__codelineno-8-16"></a>    return val
+<a id="__codelineno-8-17" name="__codelineno-8-17" href="#__codelineno-8-17"></a>
+<a id="__codelineno-8-18" name="__codelineno-8-18" href="#__codelineno-8-18"></a># Initialize I2C (SMBus)
+<a id="__codelineno-8-19" name="__codelineno-8-19" href="#__codelineno-8-19"></a>bus = smbus.SMBus(i2c_ch)
+<a id="__codelineno-8-20" name="__codelineno-8-20" href="#__codelineno-8-20"></a>
+<a id="__codelineno-8-21" name="__codelineno-8-21" href="#__codelineno-8-21"></a># Print out the serial number
+<a id="__codelineno-8-22" name="__codelineno-8-22" href="#__codelineno-8-22"></a>print(bytes(read_serial()).hex())
+</code></pre></div>
+You can then run the script using
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>sudo python serial.py
+</code></pre></div></p>
 <h2 id="configure-the-network">Configure the Network<a class="headerlink" href="#configure-the-network" title="Permanent link">&para;</a></h2>
 <p>The EchoPilot AI has two 100Mbps Ethernet ports (ETH1 and ETH2). Upstream, these go to a network switch, so either one can be used to access the Jetson SOM. To interface using standard RJ45 cable, use the included Ethernet adapter board and cable assembly connected as shown below. The make your own cable assembly, refer to the <a href="../echopilot_carrier_pinout/#ethernet-1-j15">Pinout</a></p>
 <figure>
@@ -1163,64 +1194,64 @@
 <h3 id="configuring-a-static-ip-address">Configuring a Static IP Address<a class="headerlink" href="#configuring-a-static-ip-address" title="Permanent link">&para;</a></h3>
 <p>If you do not have a DHCP server, or you wish to assign a static IP address to the Jetson, follow the instructions below.</p>
 <p>First <a href="#accessing-the-jetson-via-the-console">gain console access</a> via the USB connector. Once loged in via the console, delete the default connection ("Wired connection 1"):
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>sudo nmcli c delete &quot;Wired connection 1&quot;
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>sudo nmcli c delete &quot;Wired connection 1&quot;
 </code></pre></div>
 Set up a static connection called <code>static-eth0</code> with an IP of 172.20.1.100, a netmask of 255.255.0.0 and a gateway of 172.20.2.100. The values are just examples, please adjust to the desired settings for your network.
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>sudo nmcli c add con-name static-eth0 ifname eth0 type ethernet ip4 172.20.1.20/16 gw4 172.20.2.100
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>sudo nmcli c add con-name static-eth0 ifname eth0 type ethernet ip4 172.20.1.20/16 gw4 172.20.2.100
 </code></pre></div>
 Bring up the new interface
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>sudo nmcli c up static-eth0
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>sudo nmcli c up static-eth0
 </code></pre></div>
 To verify network connectivity, ping another device on the network, or to verify internet connectivity, ping a Google DNS server:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>ping 8.8.8.8
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>ping 8.8.8.8
 </code></pre></div></p>
 <h3 id="other-networkmanager-tips-and-tricks">Other NetworkManager tips and tricks<a class="headerlink" href="#other-networkmanager-tips-and-tricks" title="Permanent link">&para;</a></h3>
 <p>Linux for Tegra uses networkmanager (<code>nmcli</code>) for its network interfaces. Below you will find a few commands for common network tasks. These examples are not intended for you to follow sequentially, these are common examples which will demonstrate most network configuration needs.</p>
 <p>Show connections:  <br />
 <code>nmcli con show</code></p>
 <p>Example: Delete the default connection ("Wired connection 1") and set up a static connection called <code>static-eth0</code> with an IP of 172.20.1.100, a netmask of 255.255.0.0 and a gateway of 172.20.2.100:  <br />
-<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>sudo nmcli c delete &quot;Wired connection 1&quot;
-<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>sudo nmcli c add con-name static-eth0 ifname eth0 type ethernet ip4 172.20.1.20/16 gw4 172.20.2.100
-<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>sudo nmcli c up static-eth0
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>sudo nmcli c delete &quot;Wired connection 1&quot;
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>sudo nmcli c add con-name static-eth0 ifname eth0 type ethernet ip4 172.20.1.20/16 gw4 172.20.2.100
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>sudo nmcli c up static-eth0
 </code></pre></div></p>
 <p>Example: Change IP address of <code>static-eth0</code> connection to <code>192.168.1.4</code> with a 255.255.0.0 (/16) netmask:  <br />
-<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>sudo nmcli con mod static-eth0 ipv4.address 192.168.1.1/16
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>sudo nmcli con mod static-eth0 ipv4.address 192.168.1.1/16
 </code></pre></div></p>
 <p>Example: Change the gateway of <code>static-eth0</code> connection to <code>192.168.1.1</code>:  <br />
-<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>sudo nmcli con mod static-eth0 ipv4.gateway 192.168.1.1
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>sudo nmcli con mod static-eth0 ipv4.gateway 192.168.1.1
 </code></pre></div></p>
 <p>Example: Change the DNS of <code>static-eth0</code> connection to <code>8.8.8.8</code>:     <br />
-<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>sudo nmcli con mod static-eth0 ipv4.dns &quot;8.8.8.8&quot;
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>sudo nmcli con mod static-eth0 ipv4.dns &quot;8.8.8.8&quot;
 </code></pre></div></p>
 <p>Example: Take down/up of <code>static-eth0</code>:    <br />
-<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>sudo nmcli con down static-eth0
-<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>sudo nmcli con up static-eth0
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>sudo nmcli con down static-eth0
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>sudo nmcli con up static-eth0
 </code></pre></div>
 Example: Delete the <code>static-eth0</code> connection:  <br />
-<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>sudo nmcli c delete &quot;static-eth0&quot;
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>sudo nmcli c delete &quot;static-eth0&quot;
 </code></pre></div></p>
 <p>Example: Add a new connection called <code>static-eth0</code> with IP <code>172.20.2.22/16</code> and gateway <code>172.20.2.100</code> on interface <code>eth0</code>:  <br />
-<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>sudo nmcli c add con-name static-eth0 ifname eth0 type ethernet ip4 172.20.2.22/16 gw4 172.20.2.100
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>sudo nmcli c add con-name static-eth0 ifname eth0 type ethernet ip4 172.20.2.22/16 gw4 172.20.2.100
 </code></pre></div></p>
 <p>Example: Add a persistent route so that multicast traffic to 224.x.x.x goes to the <code>static-eth0</code> connection:<br />
-<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>sudo nmcli con mod static-eth0 +ipv4.routes &quot;224.0.0.0/8&quot;
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>sudo nmcli con mod static-eth0 +ipv4.routes &quot;224.0.0.0/8&quot;
 </code></pre></div></p>
 <p>Example: Change the static-eth0 connection to remove static IP and enable DHCP (In this case, it would be clearer to delete the connection since it is named <code>static-eth0</code> and call it something else, but for edification:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>sudo nmcli con mod static-eth0 ipv4.address &quot;&quot;
-<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>sudo nmcli con mod static-eth0 ipv4.method auto
-<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a>sudo nmcli con down static-eth0
-<a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a>sudo nmcli con up static-eth0
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>sudo nmcli con mod static-eth0 ipv4.address &quot;&quot;
+<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a>sudo nmcli con mod static-eth0 ipv4.method auto
+<a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a>sudo nmcli con down static-eth0
+<a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a>sudo nmcli con up static-eth0
 </code></pre></div></p>
 <h2 id="interfacing-the-jetson-to-the-autopilot">Interfacing the Jetson to the Autopilot<a class="headerlink" href="#interfacing-the-jetson-to-the-autopilot" title="Permanent link">&para;</a></h2>
 <p>The autopilot has a high-speed serial interface between the STM32H7 and the Jetson SOM. The Jetson UART1 (pins 203, 205) are connected to the autopilot's USART3 (Typically Telem2). To enable <a href="https://mavlink.io/en/">MAVLink</a> data, you will need to check and/or modify PX4/Ardupilot parameters to ensure that Telem2 is set to MAVLink and set the baud rate to the desired value. A typical baud rate is 500,000 but you can use any baud rate you wish as long as the application receiving MAVLink on the Jetson is configured to match. </p>
 <p>On the Jetson side, UART1 is typically <code>/dev/ttyTHS2</code>.</p>
 <p>There are many options available for MAVLink routing and handling. One typical application is routing the MAVLink data over a network - and <a href="https://github.com/mavlink-router/mavlink-router">MAVLink Router</a> is a popular open-source solution. To use MAVLink Router to route MAVLink packets from UART1 (/dev/ttyTHS2) to a UDP endpoint (192.168.1.10:14550) on the network, use the following command:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>$ mavlink-routerd -e 192.168.1.10:14550 /dev/ttyTHS2:5000000
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>$ mavlink-routerd -e 192.168.1.10:14550 /dev/ttyTHS2:5000000
 </code></pre></div>
 <p>If you have issues accessing <code>/dev/ttyTHSX</code>, please disable <code>nvgetty</code> and ensure you are a member of the <code>dialout</code> group:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>sudo systemctl stop nvgetty
-<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>sudo systemctl disable nvgetty
-<a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a>sudo usermod -aG dialout $USER
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>sudo systemctl stop nvgetty
+<a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a>sudo systemctl disable nvgetty
+<a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a>sudo usermod -aG dialout $USER
 </code></pre></div></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -1261,9 +1292,9 @@ Example: Delete the <code>static-eth0</code> connection:  <br />
 <p>To flash ArduRemote ID to the ESPS32-C3, you will need a TC2030-USB-NL cable from <a href="https://www.tag-connect.com">tag-connect.com</a> and follow the flashing instructions from the <a href="https://github.com/ArduPilot/ArduRemoteID#flashing">AruRemoteID</a> project.</p>
 <p>The ESP32-C3 is connected to the FMU via UART6, aka Telem3 (pins PG9 (RX) and PG14 (TX) from the STM32H742). You will need to configure ArduPilot/PX4 to use this UART for RemoteID.</p>
 <p>For building ArduRemoteID for the EchoPilot AI, the following pins will need to be defined for the hardware:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>#define PIN_UART_TX 4
-<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a>#define PIN_UART_RX 5
-<a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a>WS2812_LED_PIN GPIO_NUM_8
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>#define PIN_UART_TX 4
+<a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a>#define PIN_UART_RX 5
+<a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a>WS2812_LED_PIN GPIO_NUM_8
 </code></pre></div></p>
 
 
