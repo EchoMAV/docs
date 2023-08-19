@@ -399,6 +399,20 @@
   
   
     <li class="md-nav__item">
+      <a href="../compile_l4t_orin/" class="md-nav__link">
+        Building L4T (Orin NX)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../compile_l4t/" class="md-nav__link">
         Building L4T (Xavier NX)
       </a>
@@ -662,7 +676,7 @@
 <blockquote>
 <p>_These instructions are adapted from the the excellent document by Ridge Run <a href="https://developer.ridgerun.com/wiki/index.php/Jetson_Nano/Development/Building_the_Kernel_from_Source">How to build NVIDIA Jetson Nano kernel</a> along with documentation pulled from Nvidia's forums. Some minor changes are included from this document because the last update was for LT4 32.3.1.</p>
 </blockquote>
-<p>Note that Nvidia has dropped software support for the Nano as it ends </p>
+<p>Note that Nvidia has dropped software support for the Nano. It has a planned EOL of 2027, but software updates are no longer being made to support it.</p>
 <h3 id="download-and-setup-necessary-files">Download and Setup Necessary Files<a class="headerlink" href="#download-and-setup-necessary-files" title="Permanent link">&para;</a></h3>
 <p>Note that you will need to create an NVIDIA developer account and login to download, so if you do not have a developer account please <a href="https://developer.nvidia.com/login">set that up</a> before proceeding. 
 Next you will need to download three packages from Nvidia: <a href="https://developer.nvidia.com/embedded/linux-tegra-r3273">Driver Package (BSP), Sample Root Filesystem and Driver Package (BSP) Sources</a>. </p>
@@ -725,10 +739,10 @@ Ensure this script completes with no errors before proceeding with flashing.</p>
 <img alt="Bottom Side Components" src="../assets/bottom-side-labels.png" /></li>
 <li>Hold the recovery button down as power is applied. (see image below for location of the recovery button).
 <img alt="Top Side Components" src="../assets/top-side-labels.png" /></li>
-<li>Apply power, and release recovery button after a few seconds.</li>
+<li>Apply power via the XT30 connector on the carrier board, and release recovery button after a few seconds.</li>
 <li>Flash device using the command below:</li>
 </ol>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>cd ~/Nanogit/Linux_for_Tegra/
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>cd ~/Nano/Linux_for_Tegra/
 <a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>sudo ./flash.sh jetson-nano-emmc mmcblk0p1
 </code></pre></div>
 

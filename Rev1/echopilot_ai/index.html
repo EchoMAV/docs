@@ -447,6 +447,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#unique-board-identifier" class="md-nav__link">
+    Unique Board Identifier
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#configure-the-network" class="md-nav__link">
     Configure the Network
   </a>
@@ -567,6 +574,20 @@
     <li class="md-nav__item">
       <a href="../build_ardupilot/" class="md-nav__link">
         Building ArduPilot
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../compile_l4t_orin/" class="md-nav__link">
+        Building L4T (Orin NX)
       </a>
     </li>
   
@@ -725,6 +746,13 @@
         <li class="md-nav__item">
   <a href="#using-an-nvme-ssd" class="md-nav__link">
     Using an NVMe SSD
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#unique-board-identifier" class="md-nav__link">
+    Unique Board Identifier
   </a>
   
 </li>
@@ -1122,6 +1150,8 @@
 <p>Verify the NVMe SSD is mounted correctly by checking the file system:<br />
 <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>df -h
 </code></pre></div></p>
+<h2 id="unique-board-identifier">Unique Board Identifier<a class="headerlink" href="#unique-board-identifier" title="Permanent link">&para;</a></h2>
+<p>Each EchoPilot AI includes an AT24CS01-STUM unique ID EEPROM attached to the Jetson I2C0 port at address 0x58. This can be used to obtain a unique 128-bit identifier (serial number) for your board. </p>
 <h2 id="configure-the-network">Configure the Network<a class="headerlink" href="#configure-the-network" title="Permanent link">&para;</a></h2>
 <p>The EchoPilot AI has two 100Mbps Ethernet ports (ETH1 and ETH2). Upstream, these go to a network switch, so either one can be used to access the Jetson SOM. To interface using standard RJ45 cable, use the included Ethernet adapter board and cable assembly connected as shown below. The make your own cable assembly, refer to the <a href="../echopilot_carrier_pinout/#ethernet-1-j15">Pinout</a></p>
 <figure>
