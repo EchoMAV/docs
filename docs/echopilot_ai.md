@@ -213,7 +213,43 @@ df -h
 
 ## Unique Board Identifier
 
-Each EchoPilot AI includes an AT24CS01-STUM unique ID EEPROM attached to the Jetson I2C0 port at address 0x58. This can be used to obtain a unique 128-bit identifier (serial number) for your board. 
+Each EchoPilot AI includes an AT24CS01-STUM unique ID EEPROM attached to the Jetson I2C 1 port at address 0x58. This can be used to obtain a unique 128-bit identifier (serial number) for your board. 
+
+Below is an example python script you can use to read this serial number.
+
+First install python3 wih smbus
+```
+sudo apt-get install python3-smbus
+```
+Create a new file ```serial.py``` with these contents:
+```
+import smbus
+
+i2c_ch = 1
+
+# address on the I2C bus
+i2c_address = 0x58
+
+# Register address
+serial_num = 0x80
+
+# Read serial number register
+def read_serial():
+
+    # Read the serial register, a 16 byte block
+    val = bus.read_i2c_block_data(i2c_address, serial_num, 16)    
+    return val
+
+# Initialize I2C (SMBus)
+bus = smbus.SMBus(i2c_ch)
+
+# Print out the serial number
+print(bytes(read_serial()).hex())
+```
+You can then run the script using
+```
+sudo python serial.py
+```
 
 ## Configure the Network
 
