@@ -211,6 +211,10 @@ Verify the NVMe SSD is mounted correctly by checking the file system:
 df -h
 ```
 
+## Unique Board Identifier
+
+Each EchoPilot AI includes an AT24CS01-STUM unique ID EEPROM attached to the Jetson I2C0 port at address 0x58. This can be used to obtain a unique 128-bit identifier (serial number) for your board. 
+
 ## Configure the Network
 
 The EchoPilot AI has two 100Mbps Ethernet ports (ETH1 and ETH2). Upstream, these go to a network switch, so either one can be used to access the Jetson SOM. To interface using standard RJ45 cable, use the included Ethernet adapter board and cable assembly connected as shown below. The make your own cable assembly, refer to the [Pinout](../echopilot_carrier_pinout/#ethernet-1-j15)

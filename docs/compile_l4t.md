@@ -90,7 +90,7 @@ Ensure this script completes with no errors before proceeding with flashing.
 ![Bottom Side Components](assets/bottom-side-labels.png)
 2. Hold the recovery button down as power is applied. (see image below for location of the recovery button).
 ![Top Side Components](assets/top-side-labels.png)
-3. Apply power, and release recovery button after a few seconds.
+3. Apply power via the XT30 connector on the carrier board, and release recovery button after a few seconds.
 4. From your host PC, flash the Xavier NX device:
 
 ```

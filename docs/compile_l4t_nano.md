@@ -24,7 +24,7 @@ So buckle up and let's get started.
 
 > _These instructions are adapted from the the excellent document by Ridge Run [How to build NVIDIA Jetson Nano kernel](https://developer.ridgerun.com/wiki/index.php/Jetson_Nano/Development/Building_the_Kernel_from_Source) along with documentation pulled from Nvidia's forums. Some minor changes are included from this document because the last update was for LT4 32.3.1.
 
-Note that Nvidia has dropped software support for the Nano as it ends 
+Note that Nvidia has dropped software support for the Nano. It has a planned EOL of 2027, but software updates are no longer being made to support it.
 
 ### Download and Setup Necessary Files
 
@@ -93,11 +93,11 @@ Ensure this script completes with no errors before proceeding with flashing.
 ![Bottom Side Components](assets/bottom-side-labels.png)
 2. Hold the recovery button down as power is applied. (see image below for location of the recovery button).
 ![Top Side Components](assets/top-side-labels.png)
-3. Apply power, and release recovery button after a few seconds.
+3. Apply power via the XT30 connector on the carrier board, and release recovery button after a few seconds.
 4. Flash device using the command below:
 
 ```
-cd ~/Nanogit/Linux_for_Tegra/
+cd ~/Nano/Linux_for_Tegra/
 sudo ./flash.sh jetson-nano-emmc mmcblk0p1
 ```
 
