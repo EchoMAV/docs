@@ -105,7 +105,7 @@ sudo ./tools/kernel_flash/l4t_initrd_flash.sh --external-device nvme0n1p1 -c too
 ```
 
 !!! note
-    On our own host Linux systems, we have observed that the Nvidia script above may sometimes timeout due to a usb write error. This problem appears to be related to USB autosuspend. If you encounter similar errors, please try this command and the attempt flashing again.
+    On our own host Linux systems, we have observed that the Nvidia script above may sometimes timeout due to a USB write error. This problem appears to be related to USB autosuspend. If you encounter similar errors, please try this command to disable autosuspend and then attempt flashing again.
     ```
     sudo bash -c "echo -1 > /sys/module/usbcore/parameters/autosuspend"
     ```
