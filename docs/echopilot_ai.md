@@ -355,20 +355,23 @@ For example, on ArduPilot set the following params
 SERIAL2_PROTOCOL MAVLink2
 SERIAL2_BAUD 500000
 ```
-
-On the Jetson side, UART1 is typically ```/dev/ttyTHS1```.
-
-There are many options available for MAVLink routing and handling. One typical application is routing the MAVLink data over a network - and [MAVLink Router](https://github.com/mavlink-router/mavlink-router) is a popular open-source solution. 
-
-EchoMAV has an open-source installer which makes it easy to install MAVLink Router and configure it as a service which starts at boot. Please refer to the our [MAVLink Router Installer Repo](https://github.com/EchoMAV/mavlink-router) for instructions. 
-
-If you use the install repo above, please refer to the instructions there for configuration. If you wish to install MAVLink Router manually, you may find instructions [here](https://github.com/mavlink-router/mavlink-router). To use MAVLink Router from the command line to route MAVLink packets from UART1 (/dev/ttyTHS1) to a UDP endpoint (192.168.1.10:14550) on the network, use the following command:
+For PX4, the following params
+```
+MAV_1_CONFIG 102: Telem 2
+MAV_1_RATE 500000
+MAV_1_MODE 2: Onboard
 
 ```
-$ mavlink-routerd -e 192.168.1.10:14550 /dev/ttyTHS1:5000000
-```
 
-If you have issues accessing `/dev/ttyTHSX`, please disable `nvgetty` and ensure you are a member of the `dialout` group, or just use our [MAVLink Router Installer Repo](https://github.com/EchoMAV/mavlink-router) which sets these things up for you:
+On the Jetson side, UART1 is typically ```/dev/ttyTHS1```, although it could vary with different Jetson modules including ```/dev/ttyTHS0``` and ```/dev/ttyTHS2```.
+
+For using the EchoPilot AI to route MAVLink data over a network, we recommend [MAVLink Router](https://github.com/mavlink-router/mavlink-router).
+
+EchoMAV has an open-source installer which makes it easy to install MAVLink Router and configure it as a service which starts at boot. Please refer to the our installer repo[https://github.com/EchoMAV/mavlink-router](https://github.com/EchoMAV/mavlink-router) for instructions. 
+
+If you use the install repo above, please refer to the instructions there for configuration. If you wish to install MAVLink Router manually (not recommended), you may find instructions [here](https://github.com/mavlink-router/mavlink-router). 
+
+If you have issues accessing `/dev/ttyTHSX`, please disable `nvgetty` and ensure you are a member of the `dialout` group, or just use our [MAVLink Router Installer Repo](https://github.com/EchoMAV/mavlink-router) along with `make install` which sets these things up for you:
 ```
 sudo systemctl stop nvgetty
 sudo systemctl disable nvgetty
