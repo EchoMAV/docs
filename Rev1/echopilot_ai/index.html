@@ -1361,14 +1361,17 @@ Example: Delete the <code>static-eth0</code> connection:  <br />
 <p>For example, on ArduPilot set the following params
 <div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>SERIAL2_PROTOCOL MAVLink2
 <a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>SERIAL2_BAUD 500000
-</code></pre></div></p>
-<p>On the Jetson side, UART1 is typically <code>/dev/ttyTHS1</code>.</p>
-<p>There are many options available for MAVLink routing and handling. One typical application is routing the MAVLink data over a network - and <a href="https://github.com/mavlink-router/mavlink-router">MAVLink Router</a> is a popular open-source solution. </p>
-<p>EchoMAV has an open-source installer which makes it easy to install MAVLink Router and configure it as a service which starts at boot. Please refer to the our <a href="https://github.com/EchoMAV/mavlink-router">MAVLink Router Installer Repo</a> for instructions. </p>
-<p>If you use the install repo above, please refer to the instructions there for configuration. If you wish to install MAVLink Router manually, you may find instructions <a href="https://github.com/mavlink-router/mavlink-router">here</a>. To use MAVLink Router from the command line to route MAVLink packets from UART1 (/dev/ttyTHS1) to a UDP endpoint (192.168.1.10:14550) on the network, use the following command:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>$ mavlink-routerd -e 192.168.1.10:14550 /dev/ttyTHS1:5000000
 </code></pre></div>
-<p>If you have issues accessing <code>/dev/ttyTHSX</code>, please disable <code>nvgetty</code> and ensure you are a member of the <code>dialout</code> group, or just use our <a href="https://github.com/EchoMAV/mavlink-router">MAVLink Router Installer Repo</a> which sets these things up for you:
+For PX4, the following params
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>MAV_1_CONFIG 102: Telem 2
+<a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a>MAV_1_RATE 500000
+<a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a>MAV_1_MODE 2: Onboard
+</code></pre></div></p>
+<p>On the Jetson side, UART1 is typically <code>/dev/ttyTHS1</code>, although it could vary with different Jetson modules including <code>/dev/ttyTHS0</code> and <code>/dev/ttyTHS2</code>.</p>
+<p>For using the EchoPilot AI to route MAVLink data over a network, we recommend <a href="https://github.com/mavlink-router/mavlink-router">MAVLink Router</a>.</p>
+<p>EchoMAV has an open-source installer which makes it easy to install MAVLink Router and configure it as a service which starts at boot. Please refer to the our installer repo<a href="https://github.com/EchoMAV/mavlink-router">https://github.com/EchoMAV/mavlink-router</a> for instructions. </p>
+<p>If you use the install repo above, please refer to the instructions there for configuration. If you wish to install MAVLink Router manually (not recommended), you may find instructions <a href="https://github.com/mavlink-router/mavlink-router">here</a>. </p>
+<p>If you have issues accessing <code>/dev/ttyTHSX</code>, please disable <code>nvgetty</code> and ensure you are a member of the <code>dialout</code> group, or just use our <a href="https://github.com/EchoMAV/mavlink-router">MAVLink Router Installer Repo</a> along with <code>make install</code> which sets these things up for you:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>sudo systemctl stop nvgetty
 <a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a>sudo systemctl disable nvgetty
 <a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a>sudo usermod -aG dialout $USER
