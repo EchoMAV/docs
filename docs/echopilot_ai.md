@@ -224,8 +224,11 @@ sudo apt-get install python3-smbus
 Create a new file ```serial.py``` with these contents:
 ```
 import smbus
+import sys
 
-i2c_ch = 1
+# usage, pass the i2c bus as the first argument, e.g. python3 serial_number 0
+
+i2c_ch = int(sys.argv[1]) 
 
 # address on the I2C bus
 i2c_address = 0x58
@@ -243,12 +246,16 @@ def read_serial():
 # Initialize I2C (SMBus)
 bus = smbus.SMBus(i2c_ch)
 
-# Print out the serial number
-print(bytes(read_serial()).hex())
+try:
+    # Print out the serial number
+    print(bytes(read_serial()).hex())
+
+except:
+    pass
 ```
-You can then run the script using
+You can then run the script using below, where the argument is the system's i2c bus. This may vary from different Jetson modules, but will most often by 0 or 1.
 ```
-sudo python serial.py
+sudo python3 serial.py 0
 ```
 
 ## Configure the Network
@@ -341,17 +348,27 @@ sudo nmcli con up static-eth0
 
 ## Interfacing the Jetson to the Autopilot
 
-The autopilot has a high-speed serial interface between the STM32H7 and the Jetson SOM. The Jetson UART1 (pins 203, 205) are connected to the autopilot's USART3 (Typically Telem2). To enable [MAVLink](https://mavlink.io/en/) data, you will need to check and/or modify PX4/Ardupilot parameters to ensure that Telem2 is set to MAVLink and set the baud rate to the desired value. A typical baud rate is 500,000 but you can use any baud rate you wish as long as the application receiving MAVLink on the Jetson is configured to match. 
+The autopilot has a high-speed serial interface between the STM32H7 and the Jetson SOM. The Jetson UART1 (pins 203, 205) are connected to the autopilot's USART3 (Typically Serial2). To enable [MAVLink](https://mavlink.io/en/) data, you will need to check and/or modify PX4/Ardupilot parameters to ensure that Telem2 is set to MAVLink and set the baud rate to the desired value. A typical baud rate is 500,000 but you can use any baud rate you wish as long as the application receiving MAVLink on the Jetson is configured to match. 
 
-On the Jetson side, UART1 is typically ```/dev/ttyTHS2```.
-
-There are many options available for MAVLink routing and handling. One typical application is routing the MAVLink data over a network - and [MAVLink Router](https://github.com/mavlink-router/mavlink-router) is a popular open-source solution. To use MAVLink Router to route MAVLink packets from UART1 (/dev/ttyTHS2) to a UDP endpoint (192.168.1.10:14550) on the network, use the following command:
-
+For example, on ArduPilot set the following params
 ```
-$ mavlink-routerd -e 192.168.1.10:14550 /dev/ttyTHS2:5000000
+SERIAL2_PROTOCOL MAVLink2
+SERIAL2_BAUD 500000
 ```
 
-If you have issues accessing `/dev/ttyTHSX`, please disable `nvgetty` and ensure you are a member of the `dialout` group:
+On the Jetson side, UART1 is typically ```/dev/ttyTHS1```.
+
+There are many options available for MAVLink routing and handling. One typical application is routing the MAVLink data over a network - and [MAVLink Router](https://github.com/mavlink-router/mavlink-router) is a popular open-source solution. 
+
+EchoMAV has an open-source installer which makes it easy to install MAVLink Router and configure it as a service which starts at boot. Please refer to the our [MAVLink Router Installer Repo](https://github.com/EchoMAV/mavlink-router) for instructions. 
+
+If you use the install repo above, please refer to the instructions there for configuration. If you wish to install MAVLink Router manually, you may find instructions [here](https://github.com/mavlink-router/mavlink-router). To use MAVLink Router from the command line to route MAVLink packets from UART1 (/dev/ttyTHS1) to a UDP endpoint (192.168.1.10:14550) on the network, use the following command:
+
+```
+$ mavlink-routerd -e 192.168.1.10:14550 /dev/ttyTHS1:5000000
+```
+
+If you have issues accessing `/dev/ttyTHSX`, please disable `nvgetty` and ensure you are a member of the `dialout` group, or just use our [MAVLink Router Installer Repo](https://github.com/EchoMAV/mavlink-router) which sets these things up for you:
 ```
 sudo systemctl stop nvgetty
 sudo systemctl disable nvgetty
