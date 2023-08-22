@@ -346,16 +346,16 @@ sudo nmcli con down static-eth0
 sudo nmcli con up static-eth0
 ```
 
-## Interfacing the Jetson to the Autopilot
+## Streaming Telemetry from the Autopilot
 
-The autopilot has a high-speed serial interface between the STM32H7 and the Jetson SOM. The Jetson UART1 (pins 203, 205) are connected to the autopilot's USART3 (Typically Serial2). To enable [MAVLink](https://mavlink.io/en/) data, you will need to check and/or modify PX4/Ardupilot parameters to ensure that Telem2 is set to MAVLink and set the baud rate to the desired value. A typical baud rate is 500,000 but you can use any baud rate you wish as long as the application receiving MAVLink on the Jetson is configured to match. 
+The autopilot has a high-speed serial interface between the FMU/STM32H7 and the Jetson SOM. The Jetson UART1 (pins 203, 205) is connected to the autopilot's USART3 (Typically Serial2). To enable [MAVLink](https://mavlink.io/en/) data, you will need to check and/or modify PX4/Ardupilot parameters to ensure that Telem2 is set to MAVLink and set the baud rate to the desired value. A typical baud rate is 500,000 but you can use any baud rate you wish as long as the application receiving MAVLink on the Jetson is configured to match. 
 
-For example, on ArduPilot set the following params
+For example, on ArduPilot set the following params and reboot.
 ```
 SERIAL2_PROTOCOL MAVLink2
 SERIAL2_BAUD 500000
 ```
-For PX4, the following params
+For PX4, set the following params and reboot.
 ```
 MAV_1_CONFIG 102: Telem 2
 MAV_1_RATE 500000
@@ -367,11 +367,11 @@ On the Jetson side, UART1 is typically ```/dev/ttyTHS1```, although it could var
 
 For using the EchoPilot AI to route MAVLink data over a network, we recommend [MAVLink Router](https://github.com/mavlink-router/mavlink-router).
 
-EchoMAV has an open-source installer which makes it easy to install MAVLink Router and configure it as a service which starts at boot. Please refer to the our installer repo[https://github.com/EchoMAV/mavlink-router](https://github.com/EchoMAV/mavlink-router) for instructions. 
+EchoMAV has an open-source installer which makes it easy to install MAVLink Router and configure it as a service which starts at boot. Please refer to the our installer repo [https://github.com/EchoMAV/mavlink-router](https://github.com/EchoMAV/mavlink-router) for instructions. 
 
-If you use the install repo above, please refer to the instructions there for configuration. If you wish to install MAVLink Router manually (not recommended), you may find instructions [here](https://github.com/mavlink-router/mavlink-router). 
+If you use the install repo above, please refer to the instructions there for configuration of the UART and destination IP address. If you wish to install and use MAVLink Router manually (not recommended), you may find instructions [here](https://github.com/mavlink-router/mavlink-router). 
 
-If you have issues accessing `/dev/ttyTHSX`, please disable `nvgetty` and ensure you are a member of the `dialout` group, or just use our [MAVLink Router Installer Repo](https://github.com/EchoMAV/mavlink-router) along with `make install` which sets these things up for you:
+If you have permission issues accessing `/dev/ttyTHSX`, please disable `nvgetty` and ensure you are a member of the `dialout` group, or just use our [MAVLink Router Installer Repo](https://github.com/EchoMAV/mavlink-router) along with `make install` and a reboot which sets these things up for you.
 ```
 sudo systemctl stop nvgetty
 sudo systemctl disable nvgetty
