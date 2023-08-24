@@ -616,6 +616,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#optional-create-default-user-and-accept-the-license" class="md-nav__link">
+    (Optional) Create Default User and Accept the License
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#flash-device" class="md-nav__link">
     Flash device
   </a>
@@ -714,6 +721,13 @@
           <li class="md-nav__item">
   <a href="#get-the-echopilot-dtb-and-extlinuxconf-files" class="md-nav__link">
     Get the EchoPilot .dtb and extlinux.conf files
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#optional-create-default-user-and-accept-the-license" class="md-nav__link">
+    (Optional) Create Default User and Accept the License
   </a>
   
 </li>
@@ -836,6 +850,11 @@ Run the install script to copy the dtb and extlinux.conf files into your Linux_f
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>sudo ./install_l4t_nano.sh ~/Nano/Linux_for_Tegra/
 </code></pre></div>
 Ensure this script completes with no errors before proceeding with flashing.</p>
+<h3 id="optional-create-default-user-and-accept-the-license">(Optional) Create Default User and Accept the License<a class="headerlink" href="#optional-create-default-user-and-accept-the-license" title="Permanent link">&para;</a></h3>
+<p>This step is optional, if you do not do it, then after the flash you will need to connect to the Jetson via a terminal application using the interface enumerated on the Jetson Debug port (J25) AFTER the flash is complete. You'll be greeted with a setup interface to accept Nvidia's license, set up the network, users, etc. To avoid this step, you can create the default user and accept the license prior to the flash using the command below:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>tools/l4t_create_default_user.sh -u echopilot -p echopilot -n EchoPilotAI --accept-license
+</code></pre></div>
+In the above, you can change the username <code>-u</code>, password <code>-p</code> and host name <code>-n</code> to whatever values you prefer.</p>
 <h3 id="flash-device">Flash device<a class="headerlink" href="#flash-device" title="Permanent link">&para;</a></h3>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
@@ -849,8 +868,8 @@ Ensure this script completes with no errors before proceeding with flashing.</p>
 <li>Apply power via the XT30 connector on the carrier board, and release recovery button after a few seconds.</li>
 <li>Flash device using the command below:</li>
 </ol>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>cd ~/Nano/Linux_for_Tegra/
-<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>sudo ./flash.sh jetson-nano-emmc mmcblk0p1
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>cd ~/Nano/Linux_for_Tegra/
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>sudo ./flash.sh jetson-nano-emmc mmcblk0p1
 </code></pre></div>
 
 
