@@ -89,7 +89,7 @@ Ensure this script completes with no errors before proceeding with flashing.
 ### (Optional) Create a Default User and Accept the License
 This step is optional, if you do __not__ do it, then after the flash you will need to connect to the Jetson via a terminal application using the interface enumerated on the Jetson Debug port (J25) AFTER the flash is complete. You'll be greeted with a setup interface prompting you to accept Nvidia's license, set up the network, set up the default user, etc. To avoid this step, you can create the default user and accept the license prior to the flash using the command below.
 ```
-tools/l4t_create_default_user.sh -u echopilot -p echopilot -n EchoPilotAI --accept-license
+sudo tools/l4t_create_default_user.sh -u echopilot -p echopilot -n EchoPilotAI --accept-license
 ```
 In the above, you can change the username ```-u```, password ```-p``` and host name ```-n``` to whatever values you prefer.
 
