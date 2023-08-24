@@ -852,7 +852,7 @@ Run the install script to copy the dtb and extlinux.conf files into your Linux_f
 Ensure this script completes with no errors before proceeding with flashing.</p>
 <h3 id="optional-create-a-default-user-and-accept-the-license">(Optional) Create a Default User and Accept the License<a class="headerlink" href="#optional-create-a-default-user-and-accept-the-license" title="Permanent link">&para;</a></h3>
 <p>This step is optional, if you do <strong>not</strong> do it, then after the flash you will need to connect to the Jetson via a terminal application using the interface enumerated on the Jetson Debug port (J25) AFTER the flash is complete. You'll be greeted with a setup interface prompting you to accept Nvidia's license, set up the network, set up the default user, etc. To avoid this step, you can create the default user and accept the license prior to the flash using the command below.
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>tools/l4t_create_default_user.sh -u echopilot -p echopilot -n EchoPilotAI --accept-license
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>sudo tools/l4t_create_default_user.sh -u echopilot -p echopilot -n EchoPilotAI --accept-license
 </code></pre></div>
 In the above, you can change the username <code>-u</code>, password <code>-p</code> and host name <code>-n</code> to whatever values you prefer.</p>
 <h3 id="flash-device">Flash device<a class="headerlink" href="#flash-device" title="Permanent link">&para;</a></h3>
