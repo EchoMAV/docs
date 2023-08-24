@@ -86,6 +86,13 @@ sudo ./install_l4t_nano.sh ~/Nano/Linux_for_Tegra/
 ```
 Ensure this script completes with no errors before proceeding with flashing.
 
+### (Optional) Create Default User and Accept the License
+This step is optional, if you do not do it, then after the flash you will need to connect to the Jetson via a terminal application using the interface enumerated on the Jetson Debug port (J25) AFTER the flash is complete. You'll be greeted with a setup interface to accept Nvidia's license, set up the network, users, etc. To avoid this step, you can create the default user and accept the license prior to the flash using the command below:
+```
+tools/l4t_create_default_user.sh -u echopilot -p echopilot -n EchoPilotAI --accept-license
+```
+In the above, you can change the username ```-u```, password ```-p``` and host name ```-n``` to whatever values you prefer.
+
 ### Flash device
 !!! important
     While not shown in the images below. The EchoPilot AI should be plugged into a Carrier Board for these steps, as that is how the Jetson module is powered. 
