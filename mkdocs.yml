@@ -5,16 +5,19 @@ repo_name: echomav/docs
 nav:
     - Home: index.md
     - EchoPilot AI: 
-        - Hardware Overview: echopilot_ai.md
-        - EchoPilot AI Pinout: echopilot_ai_pinout.md
-        - EchoPilot Carrier Pinout: echopilot_carrier_pinout.md
-        - EchoPilot PWM Pinout: echopilot_pwm_pinout.md
-        - EchoPilot USBA Pinout: echopilot_usba_pinout.md
-        - Building PX4: build_px4.md
-        - Building ArduPilot: build_ardupilot.md
-        - Building L4T (Orin NX): compile_l4t_orin.md
-        - Building L4T (Xavier NX): compile_l4t.md
-        - Building L4T (Nano): compile_l4t_nano.md
+        - General Documentation: echopilot_ai.md
+        - Pinouts:
+            - EchoPilot AI Pinout: echopilot_ai_pinout.md
+            - EchoPilot Carrier Pinout: echopilot_carrier_pinout.md
+            - EchoPilot PWM Pinout: echopilot_pwm_pinout.md
+            - EchoPilot USBA Pinout: echopilot_usba_pinout.md
+        - Building Firmware for the Autopilot:
+            - Building PX4: build_px4.md
+            - Building ArduPilot: build_ardupilot.md
+        - Building Nvidia Linux for Tegra:
+            - Building L4T (Orin NX): compile_l4t_orin.md
+            - Building L4T (Xavier NX): compile_l4t.md
+            - Building L4T (Nano): compile_l4t_nano.md
 theme:
   name: material
   custom_dir: overrides

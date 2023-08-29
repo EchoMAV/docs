@@ -68,6 +68,68 @@ You should now see the boot messages in your console, and once boot is complete,
     **QGroundControl:** Will automatically connect.  
     **Mission Planner:** Select the appropriate COM port at the top right, 115200, then click CONNECT.
 
+### Streaming telemetry over the network
+
+As of September, 2023, EchoMAV is provisioning Jetson hardware with a default software configuration which includes setting the Jetson to a static IP address and configuring [mavlink-router](https://github.com/EchoMAV/mavlink-router) to stream telemetry from the autopilot to 10.223.1.10:14550 over UDP. If you have an earlier release, you can clone and run `make` per the instructions [here](https://github.com/EchoMAV/mavlink-router). The rest of the instructions below assume the Jetson module installed in your EchoPilot AI hardware has been provisioned using our standard mavlink-router setup which includes assigning the Jetson a static IP address.
+
+Default telemetry will stream to `10.223.1.10` using UDP (client mode) port 14550. This will allow automatic connection to common Ground Control Stations including QGroundControl and Mission Planner. For this to work, your host computer must be set to `10.223.1.10` and the EchoPilot AI must have a [network connection](#configure-the-network) between one of the Ethenret ports and the host computer
+
+The UDP endpoint can be changed by first [gaining console access](#accessing-the-jetson-via-the-console) and editing `\etc\mavlink-router\main.conf`. For example:
+
+```
+[UdpEndpoint alpha]
+Mode = Normal
+Address = 10.223.1.10  #change to target IP address
+Port = 14550
+```
+Then restart the mavlink-router service (or reboot)
+```
+sudo systemctl restart mavlink-router
+```
+
+## EchoPilot IP Addressing
+
+__The EchoPilot AI will be labeled from the factory with a static IP address in the 10.223.0.0/16 subnet such as 10.223.134.126 (example only)__. The IP address is calculated from the Jetson's `eth0` interface MAC address. If the IP address is 10.223.x.y and the MAC address is 00:30:1A:4E:A4:3E, the x is equal to the decimal value of 0xA4, or 164, and y is equal to the decimal value of 0x3E, or 62. The full IP address is therefore 10.223.164.62/16. This IP address is printed on the label.
+
+To access the Jetson module using IP, first set up your host computer to have a static IP address in the 10.223.0.0/16 subnet with any IP address OTHER than the address of the EchoPilot AI.
+!!! info
+    **On Windows:** Open Device Manager (Windows Key + X → Press "W" → Click on "Change adapter options" → Right click, properties of the adapter connected to the EchoPilot AI → Highlight "Internet Protocol Version 4 (TCP/IPv4) and click __Properties__ ). Select "Use the following IP address" and configure the IP address and Subnet mask. Then click __OK__ → __Close__.  
+
+    ![Windows Network Setup](assets/network_setup_windows.jpg)
+
+    **On Linux:**
+    Find the wired interface name, most typically this can be found using
+    ```
+    $ ip ad
+    enp43s0: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc fq_codel state DOWN group default qlen 1000
+    link/ether 34:73:5a:e8:57:3f brd ff:ff:ff:ff:ff:ff
+
+    ```
+    In the response above, the interface name is `enp43s0`. Use `nmcli` and the interface name found above set a static IP address (e.g. 10.223.1.10/16): 
+    ```
+    $ nmcli con add con-name "static-eth" ifname enp43s0 type ethernet ip4 10.223.1.10/16
+    $ nmcli con up "static-eth"
+    ```
+    Now take down the other connections, for example a connection `ens32` is shown below:
+    ```
+    $ nmcli con show
+    NAME         UUID                 TYPE           DEVICE
+    enp43s0      ff9804db5-........   802-3-ethernet --
+    static-eth   a4b59cb4a-........   802-3-ethernet ens32
+
+    $ nmcli con down enp43s0
+    ```
+    Note that your device will likely lose internet access unless you happen to have a gateway on 10.223.x.x/16 subnet. To restore your default connection, use `nmcli` to take down the static connection and restore the original. For example:
+    ```
+    $ nmcli con down static-eth
+    $ nmcli con up enp43s0
+    ```
+
+If you do not know the IP address of your system, you can use the configuration IP alias of 192.168.154.0/24 to access the system.
+
+1. First change the IP address of your host system to 192.168.153.10/24 (any valid IP address in the 192.168.153.0/24 subnet __not equal__ to 192.168.154.0 will work). The method to do so varies depending on the OS, please refer to the instructions above.
+
+
 ## Board Components and Connectors
 
 ### EchoPilot AI Mainboard
@@ -260,26 +322,42 @@ sudo python3 serial.py 0
 
 ## Configure the Network
 
-The EchoPilot AI has two 100Mbps Ethernet ports (ETH1 and ETH2). Upstream, these go to a network switch, so either one can be used to access the Jetson SOM. To interface using standard RJ45 cable, use the included Ethernet adapter board and cable assembly connected as shown below. The make your own cable assembly, refer to the [Pinout](../echopilot_carrier_pinout/#ethernet-1-j15)
+The EchoPilot AI has two 100Mbps Ethernet ports (ETH1 and ETH2). Upstream, these go to a network switch, so either one can be used to access the Jetson SOM. To interface using a standard RJ45 cable, use the included Ethernet adapter board and cable assembly connected as shown below. The make your own cable assembly, refer to the [Pinout](../echopilot_carrier_pinout/#ethernet-1-j15)
 
 <figure markdown>
   ![Ethernet Connection)](assets/ethernet-connection.png){ width="900" }
   <figcaption>To connect a standard RJ45 network cable, use the adapter as shown</figcaption>
 </figure>
 
-EchoMAV's standard provisioning leaves the Jetson module set up to use [DHCP](https://en.wikipedia.org/wiki/Dynamic_Host_Configuration_Protocol). As configured, connecting one of the EchoPilot AI's ethernet ports to a router or other DHCP server will allow the Jetson to obtain an IP address and set up routing for your network. 
+EchoMAV's standard provisioning sets the Jetson module to a static IP address provided on the label with the device. There is also an alias ip of 192.168.253.0 which can be used if you do not know the static IP. 
+
+### Configuring for DHCP
+
+If you wish to use [DHCP](https://en.wikipedia.org/wiki/Dynamic_Host_Configuration_Protocol), follow the instructions below:
+
+First [gain console access](#accessing-the-jetson-via-the-console) via the USB connector. Once logged in via the console, modify the existing static connection (e.g. "static-eth0") to be DHCP:
+```
+sudo nmcli con mod static-eth0 ipv4.address ""
+sudo nmcli con mod static-eth0 ipv4.method auto
+sudo nmcli con down static-eth0
+sudo nmcli con up static-eth0
+```
+If the network connection is plugged into a DHCP server, the system will now get an IP address. You can confirm with: 
+```
+ip addr
+```
 
 ### Configuring a Static IP Address
 
 If you do not have a DHCP server, or you wish to assign a static IP address to the Jetson, follow the instructions below.
 
-First [gain console access](#accessing-the-jetson-via-the-console) via the USB connector. Once loged in via the console, delete the default connection ("Wired connection 1"):
+First [gain console access](#accessing-the-jetson-via-the-console) via the USB connector. Once logged in via the console, delete the default connection, for example "Wired connection 1":
 ```
 sudo nmcli c delete "Wired connection 1"
 ```
-Set up a static connection called `static-eth0` with an IP of 172.20.1.100, a netmask of 255.255.0.0 and a gateway of 172.20.2.100. The values are just examples, please adjust to the desired settings for your network.
+Set up a static connection called `static-eth0` with an IP of 10.223.1.10, a netmask of 255.255.0.0 and a gateway of 10.223.1.1. The values are just examples, please adjust to the desired settings for your network.
 ``` 
-sudo nmcli c add con-name static-eth0 ifname eth0 type ethernet ip4 172.20.1.20/16 gw4 172.20.2.100
+sudo nmcli c add con-name static-eth0 ifname eth0 type ethernet ip4 10.223.1.10/16 gw4 10.223.1.1
 ```
 Bring up the new interface
 ```
