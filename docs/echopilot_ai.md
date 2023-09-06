@@ -430,13 +430,13 @@ The autopilot has a high-speed serial interface between the FMU/STM32H7 and the 
 
 For example, on ArduPilot set the following params and reboot:
 ```
-SERIAL2_PROTOCOL MAVLink2
-SERIAL2_BAUD 500000
+SERIAL2_PROTOCOL: MAVLink2
+SERIAL2_BAUD: 500000
 ```
 For PX4, set the following params and reboot.
 ```
 MAV_1_CONFIG 102: Telem 2  ## Reboot after this change to expose additional parameters
-MAV_1_RATE 0
+MAV_1_RATE: 0
 MAV_1_MODE 2: Onboard
 SER_TEL2_BAUD: 500000   ## Reboot after this change
 
