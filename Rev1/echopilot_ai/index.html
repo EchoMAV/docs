@@ -16,7 +16,7 @@
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.5.2, mkdocs-material-9.2.5">
+      <meta name="generator" content="mkdocs-1.5.2, mkdocs-material-9.2.8">
     
     
       
@@ -24,7 +24,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.0e669242.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.046329b4.min.css">
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.85d0ee34.min.css">
@@ -1594,9 +1594,10 @@ Example: Delete the <code>static-eth0</code> connection:  <br />
 <a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a>SERIAL2_BAUD 500000
 </code></pre></div>
 For PX4, set the following params and reboot.
-<div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a>MAV_1_CONFIG 102: Telem 2
-<a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a>MAV_1_RATE 500000
+<div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a>MAV_1_CONFIG 102: Telem 2  ## Reboot after this change to expose additional parameters
+<a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a>MAV_1_RATE 0
 <a id="__codelineno-32-3" name="__codelineno-32-3" href="#__codelineno-32-3"></a>MAV_1_MODE 2: Onboard
+<a id="__codelineno-32-4" name="__codelineno-32-4" href="#__codelineno-32-4"></a>SER_TEL2_BAUD: 500000   ## Reboot after this change
 </code></pre></div></p>
 <p>On the Jetson side, UART1 is typically <code>/dev/ttyTHS0</code>, although it could vary with different Jetson modules including <code>/dev/ttyTHS1</code> and <code>/dev/ttyTHS2</code>.</p>
 <p>For using the EchoPilot AI to route MAVLink data over a network, we pre-install and recommend <a href="https://github.com/mavlink-router/mavlink-router">MAVLink Router</a>. For modules configured at the factory, we now provide mavlink-router installed by default and pushing telemetry to <code>10.223.1.10:14550</code></p>
@@ -1718,7 +1719,7 @@ For PX4, set the following params and reboot.
     <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.tracking", "navigation.instant", "navigation.top", "search.suggest", "search.highlight", "content.tabs.link", "content.code.annotation", "content.code.copy", "toc.follow", "content.action.edit", "content.action.view", "content.code.copy"], "search": "../assets/javascripts/workers/search.dfff1995.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.78eede0e.min.js"></script>
+      <script src="../assets/javascripts/bundle.dff1b7c8.min.js"></script>
       
     
   </body>
