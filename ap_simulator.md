@@ -2,7 +2,7 @@
 
 ### If you are running on windows, you will first need to install WSL1 (Windows Subsystem for Linux version 1)
 
-Click Start, type PowerShell, and then click Windows PowerShell
+Click Start, type PowerShell, and then right click "PowerShell" and "Run As Administrator"
 ```
 dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
 ```
