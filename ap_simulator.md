@@ -8,9 +8,13 @@ dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux 
 ```
 Restart your system
 
-Open [Microsoft Store] (https://apps.microsoft.com/store/detail/ubuntu-2004/9N6SVWS3RX71?hl=en-us&gl=us&rtc=1) and install Ubunti 20.04
+Open PowerShell again
+```
+wsl --set-default-version 1
+wsl --install -d Ubuntu-20.04
+```
 
-Once installation completes, you should be able to run Ubuntu, Click Start, type Ubuntu, and then click Ubuntu on Windows. The instructions below pick up at the point you have a command prompt.
+Once installation completes, you should be able to run Ubuntu, Click Start, type Ubuntu, and then click Ubuntu on Windows. The first time it runs you will create a username and password to use withing Ubuntu. The instructions below pick up at the point you have a command prompt.
 
 ### Install Ardupilot and run the simulator
 
