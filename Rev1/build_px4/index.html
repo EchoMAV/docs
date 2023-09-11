@@ -9,14 +9,14 @@
       
       
       
-        <link rel="prev" href="../echopilot_usba_pinout/">
+        <link rel="prev" href="../echopilot_pwm_pinout/">
       
       
         <link rel="next" href="../build_ardupilot/">
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.5.2, mkdocs-material-9.2.8">
+      <meta name="generator" content="mkdocs-1.5.2, mkdocs-material-9.3.0">
     
     
       
@@ -347,7 +347,7 @@
         
   
   <span class="md-ellipsis">
-    General Documentation
+    Hardware Overview
   </span>
   
 
@@ -356,42 +356,6 @@
   
 
               
-            
-              
-                
-  
-  
-  
-    
-    
-    
-      
-    
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
-      
-        
-        
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
-        
-          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
-            
-  
-  <span class="md-ellipsis">
-    Pinouts
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2_2">
-            <span class="md-nav__icon md-icon"></span>
-            Pinouts
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
             
               
                 
@@ -452,72 +416,6 @@
   
 
               
-            
-              
-                
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../echopilot_usba_pinout/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    EchoPilot USBA Pinout
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-    
-  
-  
-    
-    
-    
-      
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
-      
-        
-        
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" checked>
-        
-          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
-            
-  
-  <span class="md-ellipsis">
-    Building Firmware for the Autopilot
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_2_3">
-            <span class="md-nav__icon md-icon"></span>
-            Building Firmware for the Autopilot
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
             
               
                 
@@ -650,70 +548,6 @@
 
               
             
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    
-    
-    
-      
-    
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
-      
-        
-        
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" >
-        
-          <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
-            
-  
-  <span class="md-ellipsis">
-    Building Nvidia Linux for Tegra
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2_4">
-            <span class="md-nav__icon md-icon"></span>
-            Building Nvidia Linux for Tegra
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../compile_l4t_orin/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Building L4T (Orin NX)
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
               
                 
   
@@ -749,14 +583,6 @@
   
 
       </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
     </li>
   
 
@@ -896,7 +722,7 @@
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>bash ./Tools/setup/ubuntu.sh --no-sim-tools
 </code></pre></div></p>
 <h3 id="checkout-a-release">Checkout a release<a class="headerlink" href="#checkout-a-release" title="Permanent link">&para;</a></h3>
-<p>You can identify a version you wish to build by looking at the release history <a href="https://github.com/PX4/PX4-Autopilot/releases">https://github.com/PX4/PX4-Autopilot/releases</a>. In the example below, we will demonstrate checking out release 1.13.3  </p>
+<p>You can identify a version you wish to build by looking at the release history <a href="https://github.com/PX4/PX4-Autopilot/releases">https://github.com/PX4/PX4-Autopilot/releases</a>. In the example below, we will demonstrate checking out release 1.13  </p>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
 <p>You can reuse an existing repo rather than cloning a new one if this isn't your first PX4 rodeo. In this case, clean the build environment before proceeding:
@@ -904,8 +730,8 @@
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>make distclean
 </code></pre></div></p>
 </div>
-<p><div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>git fetch origin release/1.13.3
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>git checkout release/1.13.3
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>git fetch origin release/1.13
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>git checkout release/1.13
 </code></pre></div>
 Update submodules:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>make submodulesclean
@@ -919,7 +745,7 @@ If the build completes without errors, congrats! If there are errors, you will n
 <p>First obtain the hardware board files from the <a href="https://github.com/EchoMAV/echopilot_ai_bsp">EchoPilot AI BSP</a> repo and checkout the appropriate branch matching the hardware revision of you EchoPilot AI. The HW Revision is marked on the board silkscreen near the FAN connector:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>git clone https://github.com/EchoMAV/echopilot_ai_bsp
 <a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>cd echopilot_ai_bsp
-<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>git checkout board_revision_1   # Change per your hardware
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>git checkout board_revision_0   # Change per your hardware
 </code></pre></div>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -934,7 +760,7 @@ At this point, you should have the hardware files located in <code>~/PX4-Autopil
 The .px4 file will be located in the <code>~/PX4-Autopilot/build/echomav_echopilot-ai_default/</code> folder. The firmware is now ready to be loaded on the board.  </p>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
-<p>If the EchoPilot AI is plugged in to your host computer, unplug it before proceeding. Also ensure there is <strong>no power</strong> to the EchoPilot AI. The board should be totally powered off before proceeding. The FMU will get power via the USB cable in the step below.</p>
+<p>If the EchoPilot AI is plugged in to your host computer, unplug it before proceeding. The board should be totally powered off before proceeding.</p>
 </div>
 <p><div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>make echomav_echopilot-ai upload
 </code></pre></div>
