@@ -20,7 +20,7 @@
     
     
       
-        <title>Hardware Overview - EchoPilot AI Documentation</title>
+        <title>General Documentation - EchoPilot AI Documentation</title>
       
     
     
@@ -124,7 +124,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Hardware Overview
+              General Documentation
             
           </span>
         </div>
@@ -356,7 +356,7 @@
           
   
   <span class="md-ellipsis">
-    Hardware Overview
+    General Documentation
   </span>
   
 
@@ -367,7 +367,7 @@
         
   
   <span class="md-ellipsis">
-    Hardware Overview
+    General Documentation
   </span>
   
 
@@ -417,8 +417,22 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#streaming-telemetry-over-the-network" class="md-nav__link">
+    Streaming telemetry over the network
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#echopilot-ip-addressing" class="md-nav__link">
+    EchoPilot IP Addressing
+  </a>
   
 </li>
       
@@ -431,8 +445,8 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#echopilot-ai" class="md-nav__link">
-    EchoPilot AI
+  <a href="#echopilot-ai-mainboard" class="md-nav__link">
+    EchoPilot AI Mainboard
   </a>
   
 </li>
@@ -471,15 +485,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#notes-on-vibration-isolation" class="md-nav__link">
-    Notes on Vibration Isolation
+  <a href="#vibration-isolation" class="md-nav__link">
+    Vibration Isolation
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#using-the-sd-card" class="md-nav__link">
-    Using the SD Card
+  <a href="#using-an-nvme-ssd" class="md-nav__link">
+    Using an NVMe SSD
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#unique-board-identifier" class="md-nav__link">
+    Unique Board Identifier
   </a>
   
 </li>
@@ -489,11 +510,38 @@
     Configure the Network
   </a>
   
+    <nav class="md-nav" aria-label="Configure the Network">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configuring-for-dhcp" class="md-nav__link">
+    Configuring for DHCP
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuring-a-static-ip-address" class="md-nav__link">
+    Configuring a Static IP Address
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#other-networkmanager-tips-and-tricks" class="md-nav__link">
+    Other NetworkManager tips and tricks
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
-  <a href="#interfacing-the-jetson-to-the-autopilot" class="md-nav__link">
-    Interfacing the Jetson to the Autopilot
+  <a href="#streaming-telemetry-from-the-autopilot-detailed" class="md-nav__link">
+    Streaming Telemetry from the Autopilot (Detailed)
   </a>
   
 </li>
@@ -520,6 +568,42 @@
   
 
               
+            
+              
+                
+  
+  
+  
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Pinouts
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            Pinouts
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
             
               
                 
@@ -587,6 +671,70 @@
   
   
     <li class="md-nav__item">
+      <a href="../echopilot_usba_pinout/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    EchoPilot USBA Pinout
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
+        
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Building Firmware for the Autopilot
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            Building Firmware for the Autopilot
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../build_px4/" class="md-nav__link">
         
   
@@ -612,6 +760,70 @@
   
   <span class="md-ellipsis">
     Building ArduPilot
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" >
+        
+          <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Building Nvidia Linux for Tegra
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            Building Nvidia Linux for Tegra
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../compile_l4t_orin/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Building L4T (Orin NX)
   </span>
   
 
@@ -656,6 +868,14 @@
   
 
       </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -723,8 +943,22 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#streaming-telemetry-over-the-network" class="md-nav__link">
+    Streaming telemetry over the network
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#echopilot-ip-addressing" class="md-nav__link">
+    EchoPilot IP Addressing
+  </a>
   
 </li>
       
@@ -737,8 +971,8 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#echopilot-ai" class="md-nav__link">
-    EchoPilot AI
+  <a href="#echopilot-ai-mainboard" class="md-nav__link">
+    EchoPilot AI Mainboard
   </a>
   
 </li>
@@ -777,15 +1011,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#notes-on-vibration-isolation" class="md-nav__link">
-    Notes on Vibration Isolation
+  <a href="#vibration-isolation" class="md-nav__link">
+    Vibration Isolation
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#using-the-sd-card" class="md-nav__link">
-    Using the SD Card
+  <a href="#using-an-nvme-ssd" class="md-nav__link">
+    Using an NVMe SSD
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#unique-board-identifier" class="md-nav__link">
+    Unique Board Identifier
   </a>
   
 </li>
@@ -795,11 +1036,38 @@
     Configure the Network
   </a>
   
+    <nav class="md-nav" aria-label="Configure the Network">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configuring-for-dhcp" class="md-nav__link">
+    Configuring for DHCP
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuring-a-static-ip-address" class="md-nav__link">
+    Configuring a Static IP Address
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#other-networkmanager-tips-and-tricks" class="md-nav__link">
+    Other NetworkManager tips and tricks
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
-  <a href="#interfacing-the-jetson-to-the-autopilot" class="md-nav__link">
-    Interfacing the Jetson to the Autopilot
+  <a href="#streaming-telemetry-from-the-autopilot-detailed" class="md-nav__link">
+    Streaming Telemetry from the Autopilot (Detailed)
   </a>
   
 </li>
@@ -853,47 +1121,8 @@
 <h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
 <p>The EchoPilot AI is a highly integrated vehicle control and edge computing system designed to power next-generation uncrewed systems. The EchoPilot AI supports computer vision, machine learning, autonomy, artificial intelligence and other advanced edge computing needs. The EchoPilot AI implements a STM32H7-based autopilot compatible with the popular Ardupilot and PX4 projects, and uses Pixhawk <a href="https://github.com/pixhawk/Pixhawk-Standards/blob/master/DS-009%20Pixhawk%20Connector%20Standard.pdf">open-hardware connectivity standards</a>. </p>
 <p>The power of  an advanced autopilot is seamlessly combined with high-performance computing (including AI and machine learning), IP networking, cloud connectivity and flexible low-latency hardware accelerated video encoding.</p>
-<p><img alt="EchoPilot AI" src="../assets/echopilot_ai_stack.jpg" /></p>
+<p><img alt="EchoPilot AI" src="../assets/rendering_stack.png" /></p>
 <p>Autopilot Sensors</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Rev 0</label><label for="__tabbed_1_2">Rev 1</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<table>
-<thead>
-<tr>
-<th>Function</th>
-<th>Part Number</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>IMU 1</td>
-<td>ICM42688P</td>
-</tr>
-<tr>
-<td>IMU 2</td>
-<td>ICM42688P</td>
-</tr>
-<tr>
-<td>IMU 3</td>
-<td>ICM42688P</td>
-</tr>
-<tr>
-<td>Barometer 1</td>
-<td>MS5611</td>
-</tr>
-<tr>
-<td>Magentometer</td>
-<td>PNI RM3100</td>
-</tr>
-<tr>
-<td>Add-On INS</td>
-<td>VectorNAV VN-X00 (optional)</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="tabbed-block">
 <table>
 <thead>
 <tr>
@@ -923,20 +1152,17 @@
 <td>ICP-20100</td>
 </tr>
 <tr>
-<td>Magentometer</td>
+<td>Magnetometer</td>
 <td>PNI RM3100</td>
 </tr>
 <tr>
 <td>Add-On INS</td>
-<td>VectorNAV VN-X00 (optional)</td>
+<td>Standalone modules only via RS-232</td>
 </tr>
 </tbody>
 </table>
-</div>
-</div>
-</div>
-<p>The hardware is configured into a two board stack. The upper board is the EchoPilot AI board, and it contains the flight management unit, peripherals, sensors and Nvidia Jetson interface. The lower board is the Carrier Board, and it handles power regulation and connectors. Two high-density FX23L-80S-0.5SV 80-pin board-to-board connectors are used between the two boards.</p>
-<p>This design philosophy achieves multiple goals:</p>
+<p>The hardware is configured into a two board stack. The upper board is the EchoPilot AI board, and it contains the flight management unit, peripherals, sensors and Nvidia Jetson interface. The lower board is the Carrier Board, and it handles power regulation and connectors. Two high-density FX23L-80S-0.5SV 80-pin board-to-board connectors are used between the two boards. There is 10mm between boards.</p>
+<p>This design philosophy achieves multiple goals :</p>
 <ol>
 <li>For integrated vehicle solutions, it is often desired to design a custom carrier board to add additional components, minimize cables/wiring and integrate power distribution. The EchoPilot AI's design allows you to optionally design a custom carrier board (using the provided Carrier Board as a <a href="https://github.com/EchoMAV/echopilot_ai_carrier">reference design</a>).</li>
 <li>A stacked solution minimizes X-Y size in exchange for moving into the Z axis, which is an acceptable compromise for most uncrewed vehicles.</li>
@@ -945,15 +1171,15 @@
 </ol>
 <h2 id="quick-start-guide">Quick Start Guide<a class="headerlink" href="#quick-start-guide" title="Permanent link">&para;</a></h2>
 <h3 id="accessing-the-jetson-via-the-console">Accessing the Jetson via the console<a class="headerlink" href="#accessing-the-jetson-via-the-console" title="Permanent link">&para;</a></h3>
-<p>These instructions assume you have a Jetson module that is already flashed. If you have a new Jetson module that is not flashed, please see <a href="/compile_l4t">Building and Flashing a Jetson with L4T</a> instructions.</p>
+<p>If you included a Jetson SOM in your purchase, it will have been flashed and tested at the factory. If you have a new Jetson module that is not flashed, please see <a href="/compile_l4t">Building and Flashing a Jetson with L4T</a> instructions.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>Do not run the Jetson SOM without a heatsink. The module may be damaged or performance throttled. See <a href="http://connecttech.com">connecttech.com</a> for recommended active and passive heatsinks.</p>
+<p>Do not run the Jetson SOM without a heat sink. The module may be damaged or performance throttled. See <a href="http://connecttech.com">connecttech.com</a> for recommended active and passive heat sinks and heat spreaders.</p>
 </div>
 <ol>
-<li>Assemble the EchoPilot AI board with a Carrier Board, using 8mm standoffs between the two boards.</li>
+<li>Assemble the EchoPilot AI board with a Carrier Board, using 10mm standoffs between the two boards.</li>
 <li>If a Jetson Module is not already installed in the EchoPilot AI, install the module now.</li>
-<li>Attached a USB cable between your host computer and J7 (Console) on the Carrier Board
+<li>Attached a USB cable between your host computer and J15 (Console) on the EchoPilot AI Board
 <img alt="Console USB Connection" src="../assets/usb-to-echopilot-carrier.png" /></li>
 <li>In step 3, your host computer should have enumerated a virtual comm port. You will now need to find the name of the port.</li>
 </ol>
@@ -971,7 +1197,7 @@
 <p>Power the Carrier Board with 7-56VDC source capable of supplying up to <strong>4A</strong>.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>If using a bench supply with over-current protection, we recommend turning it <strong>OFF</strong>. The boot process requires short bursts of high current and over-current protection on some supplies will result in a failed boot.</p>
+<p>If using a bench supply with over-current protection, we recommend turning it <strong>OFF</strong>. The boot process requires short bursts of high current and over-current protection on some supplies will result in a failed boot. In most cases, if the Jetson fails to boot it is due to a poor power supply.</p>
 </div>
 <p>You should now see the boot messages in your console, and once boot is complete, you will see a login prompt.</p>
 <div class="admonition note">
@@ -992,16 +1218,62 @@
 <p><strong>QGroundControl:</strong> Will automatically connect.<br />
 <strong>Mission Planner:</strong> Select the appropriate COM port at the top right, 115200, then click CONNECT.</p>
 </div>
+<h3 id="streaming-telemetry-over-the-network">Streaming telemetry over the network<a class="headerlink" href="#streaming-telemetry-over-the-network" title="Permanent link">&para;</a></h3>
+<p>As of September, 2023, EchoMAV is provisioning Jetson hardware with a default software configuration which includes setting the Jetson to a static IP address and configuring <a href="https://github.com/EchoMAV/mavlink-router">mavlink-router</a> to stream telemetry from the autopilot to 10.223.1.10:14550 over UDP. If you have an earlier release, you can clone and run <code>make</code> per the instructions <a href="https://github.com/EchoMAV/mavlink-router">here</a>. The rest of the instructions below assume the Jetson module installed in your EchoPilot AI hardware has been provisioned using our standard mavlink-router setup which includes assigning the Jetson a static IP address.</p>
+<p>Default telemetry will stream to <code>10.223.1.10</code> using UDP (client mode) port 14550. This will allow automatic connection to common Ground Control Stations including QGroundControl and Mission Planner. For this to work, your host computer must be set to <code>10.223.1.10</code> and the EchoPilot AI must have a <a href="#configure-the-network">network connection</a> between one of the Ethenret ports and the host computer</p>
+<p>The UDP endpoint can be changed by first <a href="#accessing-the-jetson-via-the-console">gaining console access</a> and editing <code>\etc\mavlink-router\main.conf</code>. For example:</p>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>[UdpEndpoint alpha]
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>Mode = Normal
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>Address = 10.223.1.10  #change to target IP address
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>Port = 14550
+</code></pre></div>
+Then restart the mavlink-router service (or reboot)
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>sudo systemctl restart mavlink-router
+</code></pre></div></p>
+<h2 id="echopilot-ip-addressing">EchoPilot IP Addressing<a class="headerlink" href="#echopilot-ip-addressing" title="Permanent link">&para;</a></h2>
+<p><strong>The EchoPilot AI will be labeled from the factory with a static IP address in the 10.223.0.0/16 subnet such as 10.223.134.126 (example only)</strong>. The IP address is calculated from the Jetson's <code>eth0</code> interface MAC address. If the IP address is 10.223.x.y and the MAC address is 00:30:1A:4E:A4:3E, the x is equal to the decimal value of 0xA4, or 164, and y is equal to the decimal value of 0x3E, or 62. The full IP address is therefore 10.223.164.62/16. This IP address is printed on the label.</p>
+<p>To access the Jetson module using IP, first set up your host computer to have a static IP address in the 10.223.0.0/16 subnet with any IP address OTHER than the address of the EchoPilot AI.</p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p><strong>On Windows:</strong> Open Device Manager (Windows Key + X → Press "W" → Click on "Change adapter options" → Right click, properties of the adapter connected to the EchoPilot AI → Highlight "Internet Protocol Version 4 (TCP/IPv4) and click <strong>Properties</strong> ). Select "Use the following IP address" and configure the IP address and Subnet mask. Then click <strong>OK</strong> → <strong>Close</strong>.  </p>
+<p><img alt="Windows Network Setup" src="../assets/network_setup_windows.jpg" /></p>
+<p><strong>On Linux:</strong>
+Find the wired interface name, most typically this can be found using
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>$ ip ad
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>enp43s0: &lt;NO-CARRIER,BROADCAST,MULTICAST,UP&gt; mtu 1500 qdisc fq_codel state DOWN group default qlen 1000
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>link/ether 34:73:5a:e8:57:3f brd ff:ff:ff:ff:ff:ff
+</code></pre></div>
+In the response above, the interface name is <code>enp43s0</code>. Use <code>nmcli</code> and the interface name found above set a static IP address (e.g. 10.223.1.10/16): 
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>$ nmcli con add con-name &quot;static-eth&quot; ifname enp43s0 type ethernet ip4 10.223.1.10/16
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>$ nmcli con up &quot;static-eth&quot;
+</code></pre></div>
+Now take down the other connections, for example a connection <code>ens32</code> is shown below:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>$ nmcli con show
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>NAME         UUID                 TYPE           DEVICE
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>enp43s0      ff9804db5-........   802-3-ethernet --
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>static-eth   a4b59cb4a-........   802-3-ethernet ens32
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>$ nmcli con down enp43s0
+</code></pre></div>
+Note that your device will likely lose internet access unless you happen to have a gateway on 10.223.x.x/16 subnet. To restore your default connection, use <code>nmcli</code> to take down the static connection and restore the original. For example:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>$ nmcli con down static-eth
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>$ nmcli con up enp43s0
+</code></pre></div></p>
+</div>
+<p>If you do not know the IP address of your system, you can use the configuration IP alias of 192.168.154.0/24 to access the system.</p>
+<ol>
+<li>First change the IP address of your host system to 192.168.153.10/24 (any valid IP address in the 192.168.153.0/24 subnet <strong>not equal</strong> to 192.168.154.0 will work). The method to do so varies depending on the OS, please refer to the instructions above.</li>
+</ol>
 <h2 id="board-components-and-connectors">Board Components and Connectors<a class="headerlink" href="#board-components-and-connectors" title="Permanent link">&para;</a></h2>
-<h3 id="echopilot-ai">EchoPilot AI<a class="headerlink" href="#echopilot-ai" title="Permanent link">&para;</a></h3>
+<h3 id="echopilot-ai-mainboard">EchoPilot AI Mainboard<a class="headerlink" href="#echopilot-ai-mainboard" title="Permanent link">&para;</a></h3>
 <p><img alt="Top Side Components" src="../assets/top-side-labels.png" /></p>
 <p><img alt="Bottom Side Components" src="../assets/bottom-side-labels.png" /></p>
 <h3 id="carrier-board">Carrier Board<a class="headerlink" href="#carrier-board" title="Permanent link">&para;</a></h3>
 <p><img alt="Top Side Components" src="../assets/top-side-labels-carrier-board.png" /></p>
 <p><img alt="Bottom Side Components" src="../assets/bottom-side-labels-carrier-board.png" /></p>
 <h3 id="pinouts">Pinouts<a class="headerlink" href="#pinouts" title="Permanent link">&para;</a></h3>
-<p>For EchoPilot AI Pinouts, refer to the <a href="../echopilot_ai_pinout/">EchoPilot AI Pinout Page</a>.  </p>
-<p>For Carrier Board Pinouts, refer to the <a href="../echopilot_carrier_pinout/">Carrier Board Pinout Page</a>.</p>
+<p>For EchoPilot AI Mainboard Pinouts, refer to the <a href="../echopilot_ai_pinout/">EchoPilot AI Pinout Page</a>.  </p>
+<p>For Standard Carrier Board Pinouts, refer to the <a href="../echopilot_carrier_pinout/">Carrier Board Pinout Page</a>.</p>
 <h2 id="jetson-io-availability">Jetson IO Availability<a class="headerlink" href="#jetson-io-availability" title="Permanent link">&para;</a></h2>
 <p>The following Jetson IO pins are brought out to the B2B connector J5 and are available for customer use:</p>
 <div class="admonition note">
@@ -1016,8 +1288,8 @@
 <th>B2B (J5)</th>
 <th>Voltage</th>
 <th>Default Use</th>
-<th>Pin Description (Xavier)</th>
-<th>Pin Description (Nano)</th>
+<th>GPIO (Xavier)</th>
+<th>GPIO (Nano)</th>
 </tr>
 </thead>
 <tbody>
@@ -1031,20 +1303,20 @@
 <td>AUDIO_MCLK</td>
 </tr>
 <tr>
-<td>PIN 212</td>
+<td>PIN 124</td>
 <td>IO</td>
-<td>38</td>
+<td>37</td>
 <td>+1.8V</td>
-<td>Spare IO</td>
-<td>GPIO3_PQ.01</td>
-<td>GPIO3_PV.01</td>
+<td>GPIO O2</td>
+<td>GPIO3_PQ.03</td>
+<td>GPIO3_PH.06</td>
 </tr>
 <tr>
 <td>PIN 218</td>
 <td>IO</td>
 <td>37</td>
-<td>+1.8V</td>
-<td>Spare IO</td>
+<td>+3.3V*</td>
+<td>Iridium Ring</td>
 <td>GPIO3_PCC.04</td>
 <td>GPIO3_PY.02</td>
 </tr>
@@ -1053,7 +1325,7 @@
 <td>I</td>
 <td>74</td>
 <td>+3.3V*</td>
-<td>Iridium Ring</td>
+<td>Iridium On/Off</td>
 <td>GPIO3_PCC.00</td>
 <td>GPIO3_PI.02</td>
 </tr>
@@ -1062,7 +1334,7 @@
 <td>I</td>
 <td>73</td>
 <td>+3.3V*</td>
-<td>Iridium NA</td>
+<td>Iridium Network Available</td>
 <td>GPIO3_PR.00</td>
 <td>GPIO3_PV.00</td>
 </tr>
@@ -1070,7 +1342,7 @@
 </table>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>*Pins 126 and 206 are level-shifted from 1.8V to 3.3V prior to the B2B (J5) connector via a TXS0108ERGYR level translator.</p>
+<p>*Pins 126, 206 abd 130 are level-shifted from 1.8V to 3.3V prior to the B2B (J5) connector via a TXS0108ERGYR level translator.</p>
 </div>
 <p>The following Jetson IO is used internally by the EchoPilot AI:</p>
 <div class="admonition warning">
@@ -1091,19 +1363,11 @@
 <tbody>
 <tr>
 <td>PIN 87</td>
-<td>Pwr</td>
-<td>5V</td>
+<td>I</td>
+<td>+1.8V</td>
 <td>Vbus Detect</td>
 <td>USB_VBUS_EN0</td>
 <td>USB_VBUS_EN0</td>
-</tr>
-<tr>
-<td>PIN 128</td>
-<td>O</td>
-<td>+1.8V</td>
-<td>SD Card Enable</td>
-<td>GPIO3_PCC.02</td>
-<td>GPIO3_PH.07</td>
 </tr>
 <tr>
 <td>PIN 130</td>
@@ -1114,12 +1378,12 @@
 <td>GPIO3_PI.00</td>
 </tr>
 <tr>
-<td>PIN 208</td>
+<td>PIN 212</td>
 <td>I</td>
 <td>+1.8V</td>
-<td>SD Card Detect</td>
-<td>GPIO3_PQ.02</td>
-<td>GPIO3_PZ.02</td>
+<td>M2 Alert</td>
+<td>GPIO3_PQ.01</td>
+<td>GPIO3_PV.01</td>
 </tr>
 </tbody>
 </table>
@@ -1141,16 +1405,16 @@
 <td>O</td>
 <td>+5V</td>
 <td>Fan PWM</td>
-<td>GP_PWM6</td>
-<td>PM3_PWM3</td>
+<td>GPIO3_PH.01</td>
+<td>GPIO3_PE.07</td>
 </tr>
 <tr>
-<td>PIN 127</td>
+<td>PIN 208</td>
 <td>I</td>
 <td>+5V</td>
-<td>Fan Tach</td>
+<td>Fan Tachometer</td>
 <td>GPIO3_PQ.02</td>
-<td>GPIO3_PI.01</td>
+<td>GPIO3_PZ.02</td>
 </tr>
 </tbody>
 </table>
@@ -1166,70 +1430,183 @@
   </p>
 <figcaption>EchoPilot AI without a Carrier Board Attached</figcaption>
 </figure>
-<p><a href="https://echomav.com/mechanical/echopilot_ai_r0.step">EchoPilot AI 3D Model (STEP) File Download</a> (right click, save link as)</p>
-<p><a href="https://echomav.com/mechanical/echopilot_ai_carrier_r0.step">EchoPilot AI Universal Carrier Board 3D model (STEP) File Download</a> (right click, save link as)</p>
+<p><a href="https://echomav.com/mechanical/echopilot_ai_r1a.step">EchoPilot AI 3D Model (STEP) File Download</a> (right click, save link as)</p>
+<p><a href="https://echomav.com/mechanical/echopilot_ai_carrier_r1.step">EchoPilot AI Universal Carrier Board 3D model (STEP) File Download</a> (right click, save link as)</p>
 <p><a href="https://echomav.com/mechanical/echopilot_pwm_breakout.step">EchoPilot AI PWM Breakout Board 3D model (STEP) File Download</a> (right click, save link as)</p>
-<h2 id="notes-on-vibration-isolation">Notes on Vibration Isolation<a class="headerlink" href="#notes-on-vibration-isolation" title="Permanent link">&para;</a></h2>
+<p><a href="https://echomav.com/mechanical/echopilot-ai-usb-a-breakout.step">EchoPilot AI USB3 A Breakout Board 3D model (STEP) File Download</a> (right click, save link as)</p>
+<h2 id="vibration-isolation">Vibration Isolation<a class="headerlink" href="#vibration-isolation" title="Permanent link">&para;</a></h2>
 <p>Many commercial autopilots use foam vibration isolation on a daughterboard containing the IMUs. You'll notice the EchoPilot AI does not use this type of design and the IMUs are mounted directly to the circuit board. The reason for this is that we feel better vibration isolation can be achieved (if required) by leveraging the mass of the entire EchoPilot system (carrier board, main board and Jetson SOM) rather than the very small mass of an IMU daughterboard. For the types of vibrations encountered by large-prop multi-rotors and piston-based engines (50-90 Hz), the total mass of the EchoPilot system mounted on vibration silicone isolators or wire rope isolators are very effective. This design has the added benefits of protecting critical electronics from exposure to continuous vibrations.  </p>
+<p>An example of a typical vibration isolation mount is shown below:</p>
+<figure>
+<p><img alt="EchoMAV EchoPilot AI Vibration Mount)" src="../assets/echopilot_ai_vibration_mount.png" width="600" />
+  </p>
+<figcaption>EchoPilot AI Vibration Mount</figcaption>
+</figure>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Note that for small and medium multi-rotors and electric planes, electric quadplanes and other vehicle types, vibration isolation is very rarely needed. </p>
 </div>
-<h2 id="using-the-sd-card">Using the SD Card<a class="headerlink" href="#using-the-sd-card" title="Permanent link">&para;</a></h2>
-<p>The SD card supports hot-plugging. When connected, <code>/dev/mmcblk1p1</code> should be found by the operating system. To mount this drive to a directory (e.g., <code>/sdcard</code>) use the following command:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>mkdir /sdcard
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>sudo mount /dev/mmcblk1p1 /sdcard
+<h2 id="using-an-nvme-ssd">Using an NVMe SSD<a class="headerlink" href="#using-an-nvme-ssd" title="Permanent link">&para;</a></h2>
+<p>The EchoPilot AI includes an M.2 Key-M slot for a size 2230 NVMe SSD. We recommend a PCIe Gen. 4 NVMe SSD, such as the Western Digital SN740 (SDDPTQD-1T00), Western Digital Industrial Series (SDBPTPZ-1T00-XI) or Kingston OM3PGP41024P-A0 for applications in the 0-70°C range. Please be aware that most consumer NVMe SSDs have a commercial temperature rating (0-70°C). We recommend industrial rated devices for high-risk or high-valued use in uncrewed systems.</p>
+<p>The NVMe is power by a dedicated supply, 3A. </p>
+<p>To add an NVMe SSD to an EchoPilot system, first power off the system and install the SSD using a M2x3mm wafer head screw. </p>
+<figure>
+<p><img alt="NVMe Install)" src="../assets/nvme-install.png" width="600" />
+  </p>
+<figcaption>Install the 2230 NVMe drive and secure with an M2x3 wafer head screw</figcaption>
+</figure>
+<p>Power on the sytem and <a href="#accessing-the-jetson-via-the-console">gain console access</a>.</p>
+<p>Identify the NVMe SSD using:<br />
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>sudo fdisk -l
+</code></pre></div></p>
+<p>Create a partiaion table using:<br />
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>sudo parted /dev/nvme0n1 mklabel gpt
+</code></pre></div></p>
+<p>Create a new partition on the NVMe SSD:<br />
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>sudo parted -a optimal /dev/nvme0n1 mkpart primary ext4 0% 100%
+</code></pre></div></p>
+<p>Format the newly created partition:<br />
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>sudo mkfs.ext4 /dev/nvme0n1p
+</code></pre></div></p>
+<p>Create a mount point directory:<br />
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>sudo mkdir /mnt/nvme
+</code></pre></div></p>
+<p>Mount the NVMe SSD partition to the mount point directory:<br />
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>sudo mount /dev/nvme0n1p1 /mnt/nvme
+</code></pre></div></p>
+<p>Verify the NVMe SSD is mounted correctly by checking the file system:<br />
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>df -h
+</code></pre></div></p>
+<h2 id="unique-board-identifier">Unique Board Identifier<a class="headerlink" href="#unique-board-identifier" title="Permanent link">&para;</a></h2>
+<p>Each EchoPilot AI includes an AT24CS01-STUM unique ID EEPROM attached to the Jetson I2C 1 port at address 0x58. This can be used to obtain a unique 128-bit identifier (serial number) for your board. </p>
+<p>Below is an example python script you can use to read this serial number.</p>
+<p>First install python3 wih smbus
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>sudo apt-get install python3-smbus
 </code></pre></div>
-To unmount it:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>sudo umount /dev/mmcblk1p1 /sdcard
+Create a new file <code>serial.py</code> with these contents:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>import smbus
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>import sys
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>
+<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a># usage, pass the i2c bus as the first argument, e.g. python3 serial_number 0
+<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a>
+<a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a>i2c_ch = int(sys.argv[1]) 
+<a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a>
+<a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a># address on the I2C bus
+<a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a>i2c_address = 0x58
+<a id="__codelineno-14-10" name="__codelineno-14-10" href="#__codelineno-14-10"></a>
+<a id="__codelineno-14-11" name="__codelineno-14-11" href="#__codelineno-14-11"></a># Register address
+<a id="__codelineno-14-12" name="__codelineno-14-12" href="#__codelineno-14-12"></a>serial_num = 0x80
+<a id="__codelineno-14-13" name="__codelineno-14-13" href="#__codelineno-14-13"></a>
+<a id="__codelineno-14-14" name="__codelineno-14-14" href="#__codelineno-14-14"></a># Read serial number register
+<a id="__codelineno-14-15" name="__codelineno-14-15" href="#__codelineno-14-15"></a>def read_serial():
+<a id="__codelineno-14-16" name="__codelineno-14-16" href="#__codelineno-14-16"></a>
+<a id="__codelineno-14-17" name="__codelineno-14-17" href="#__codelineno-14-17"></a>    # Read the serial register, a 16 byte block
+<a id="__codelineno-14-18" name="__codelineno-14-18" href="#__codelineno-14-18"></a>    val = bus.read_i2c_block_data(i2c_address, serial_num, 16)    
+<a id="__codelineno-14-19" name="__codelineno-14-19" href="#__codelineno-14-19"></a>    return val
+<a id="__codelineno-14-20" name="__codelineno-14-20" href="#__codelineno-14-20"></a>
+<a id="__codelineno-14-21" name="__codelineno-14-21" href="#__codelineno-14-21"></a># Initialize I2C (SMBus)
+<a id="__codelineno-14-22" name="__codelineno-14-22" href="#__codelineno-14-22"></a>bus = smbus.SMBus(i2c_ch)
+<a id="__codelineno-14-23" name="__codelineno-14-23" href="#__codelineno-14-23"></a>
+<a id="__codelineno-14-24" name="__codelineno-14-24" href="#__codelineno-14-24"></a>try:
+<a id="__codelineno-14-25" name="__codelineno-14-25" href="#__codelineno-14-25"></a>    # Print out the serial number
+<a id="__codelineno-14-26" name="__codelineno-14-26" href="#__codelineno-14-26"></a>    print(bytes(read_serial()).hex())
+<a id="__codelineno-14-27" name="__codelineno-14-27" href="#__codelineno-14-27"></a>
+<a id="__codelineno-14-28" name="__codelineno-14-28" href="#__codelineno-14-28"></a>except:
+<a id="__codelineno-14-29" name="__codelineno-14-29" href="#__codelineno-14-29"></a>    pass
+</code></pre></div>
+You can then run the script using below, where the argument is the system's i2c bus. This may vary from different Jetson modules, but will most often by 0 or 1.
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>sudo python3 serial.py 0
 </code></pre></div></p>
 <h2 id="configure-the-network">Configure the Network<a class="headerlink" href="#configure-the-network" title="Permanent link">&para;</a></h2>
-<p>Linux for Tegra uses networkmanager (<code>nmcli</code>) for its network interfaces. Below you will find a few commands for common network tasks.</p>
+<p>The EchoPilot AI has two 100Mbps Ethernet ports (ETH1 and ETH2). Upstream, these go to a network switch, so either one can be used to access the Jetson SOM. To interface using a standard RJ45 cable, use the included Ethernet adapter board and cable assembly connected as shown below. The make your own cable assembly, refer to the <a href="../echopilot_carrier_pinout/#ethernet-1-j15">Pinout</a></p>
+<figure>
+<p><img alt="Ethernet Connection)" src="../assets/ethernet-connection.png" width="900" />
+  </p>
+<figcaption>To connect a standard RJ45 network cable, use the adapter as shown</figcaption>
+</figure>
+<p>EchoMAV's standard provisioning sets the Jetson module to a static IP address provided on the label with the device. There is also an alias ip of 192.168.253.0 which can be used if you do not know the static IP. </p>
+<h3 id="configuring-for-dhcp">Configuring for DHCP<a class="headerlink" href="#configuring-for-dhcp" title="Permanent link">&para;</a></h3>
+<p>If you wish to use <a href="https://en.wikipedia.org/wiki/Dynamic_Host_Configuration_Protocol">DHCP</a>, follow the instructions below:</p>
+<p>First <a href="#accessing-the-jetson-via-the-console">gain console access</a> via the USB connector. Once logged in via the console, modify the existing static connection (e.g. "static-eth0") to be DHCP:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>sudo nmcli con mod static-eth0 ipv4.address &quot;&quot;
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>sudo nmcli con mod static-eth0 ipv4.method auto
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>sudo nmcli con down static-eth0
+<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a>sudo nmcli con up static-eth0
+</code></pre></div>
+If the network connection is plugged into a DHCP server, the system will now get an IP address. You can confirm with: 
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>ip addr
+</code></pre></div></p>
+<h3 id="configuring-a-static-ip-address">Configuring a Static IP Address<a class="headerlink" href="#configuring-a-static-ip-address" title="Permanent link">&para;</a></h3>
+<p>If you do not have a DHCP server, or you wish to assign a static IP address to the Jetson, follow the instructions below.</p>
+<p>First <a href="#accessing-the-jetson-via-the-console">gain console access</a> via the USB connector. Once logged in via the console, delete the default connection, for example "Wired connection 1":
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>sudo nmcli c delete &quot;Wired connection 1&quot;
+</code></pre></div>
+Set up a static connection called <code>static-eth0</code> with an IP of 10.223.1.10, a netmask of 255.255.0.0 and a gateway of 10.223.1.1. The values are just examples, please adjust to the desired settings for your network.
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>sudo nmcli c add con-name static-eth0 ifname eth0 type ethernet ip4 10.223.1.10/16 gw4 10.223.1.1
+</code></pre></div>
+Bring up the new interface
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>sudo nmcli c up static-eth0
+</code></pre></div>
+To verify network connectivity, ping another device on the network, or to verify internet connectivity, ping a Google DNS server:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>ping 8.8.8.8
+</code></pre></div></p>
+<h3 id="other-networkmanager-tips-and-tricks">Other NetworkManager tips and tricks<a class="headerlink" href="#other-networkmanager-tips-and-tricks" title="Permanent link">&para;</a></h3>
+<p>Linux for Tegra uses networkmanager (<code>nmcli</code>) for its network interfaces. Below you will find a few commands for common network tasks. These examples are not intended for you to follow sequentially, these are common examples which will demonstrate most network configuration needs.</p>
 <p>Show connections:  <br />
 <code>nmcli con show</code></p>
-<p>Delete the default connection ("Wired connection 1") and set up a static connection called <code>static-eth0</code> with an IP of 172.20.1.100, a netmask of 255.255.0.0 and a gateway of 172.20.2.100:  <br />
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>sudo nmcli c delete &quot;Wired connection 1&quot;
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>sudo nmcli c add con-name static-eth0 ifname eth0 type ethernet ip4 172.20.1.20/16 gw4 172.20.2.100
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>sudo nmcli c up static-eth0
+<p>Example: Delete the default connection ("Wired connection 1") and set up a static connection called <code>static-eth0</code> with an IP of 172.20.1.100, a netmask of 255.255.0.0 and a gateway of 172.20.2.100:  <br />
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>sudo nmcli c delete &quot;Wired connection 1&quot;
+<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a>sudo nmcli c add con-name static-eth0 ifname eth0 type ethernet ip4 172.20.1.20/16 gw4 172.20.2.100
+<a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a>sudo nmcli c up static-eth0
 </code></pre></div></p>
-<p>Change IP address of <code>static-eth0</code> connection to <code>192.168.1.4/16</code>:  <br />
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>sudo nmcli con mod static-eth0 ipv4.address 192.168.1.1/16
+<p>Example: Change IP address of <code>static-eth0</code> connection to <code>192.168.1.4</code> with a 255.255.0.0 (/16) netmask:  <br />
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>sudo nmcli con mod static-eth0 ipv4.address 192.168.1.1/16
 </code></pre></div></p>
-<p>Change gateway of <code>static-eth0</code> connection to <code>192.168.1.1</code>:  <br />
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>sudo nmcli con mod static-eth0 ipv4.gateway 192.168.1.1
+<p>Example: Change the gateway of <code>static-eth0</code> connection to <code>192.168.1.1</code>:  <br />
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>sudo nmcli con mod static-eth0 ipv4.gateway 192.168.1.1
 </code></pre></div></p>
-<p>Change dns of <code>static-eth0</code> connection to <code>8.8.8.8</code>:     <br />
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>sudo nmcli con mod static-eth0 ipv4.dns &quot;8.8.8.8&quot;
+<p>Example: Change the DNS of <code>static-eth0</code> connection to <code>8.8.8.8</code>:     <br />
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>sudo nmcli con mod static-eth0 ipv4.dns &quot;8.8.8.8&quot;
 </code></pre></div></p>
-<p>Take down/up of <code>static-eth0</code>:    <br />
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>sudo nmcli con down static-eth0
-<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>sudo nmcli con up static-eth0
+<p>Example: Take down/up of <code>static-eth0</code>:    <br />
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>sudo nmcli con down static-eth0
+<a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a>sudo nmcli con up static-eth0
 </code></pre></div>
-Delete <code>static-eth0</code> connection:  <br />
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>sudo nmcli c delete &quot;static-eth0&quot;
+Example: Delete the <code>static-eth0</code> connection:  <br />
+<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>sudo nmcli c delete &quot;static-eth0&quot;
 </code></pre></div></p>
-<p>Add new connection called <code>static-eth0</code> with IP <code>172.20.2.22/16</code> and gateway <code>172.20.2.100</code>:  <br />
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>sudo nmcli c add con-name static-eth0 ifname eth0 type ethernet ip4 172.20.2.22/16 gw4 172.20.2.100
+<p>Example: Add a new connection called <code>static-eth0</code> with IP <code>172.20.2.22/16</code> and gateway <code>172.20.2.100</code> on interface <code>eth0</code>:  <br />
+<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>sudo nmcli c add con-name static-eth0 ifname eth0 type ethernet ip4 172.20.2.22/16 gw4 172.20.2.100
 </code></pre></div></p>
-<p>Add a persistent route so that multicast traffic to 224.x.x.x goes to the <code>static-eth0</code> connection:<br />
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>sudo nmcli con mod static-eth0 +ipv4.routes &quot;224.0.0.0/8&quot;
+<p>Example: Add a persistent route so that multicast traffic to 224.x.x.x goes to the <code>static-eth0</code> connection:<br />
+<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a>sudo nmcli con mod static-eth0 +ipv4.routes &quot;224.0.0.0/8&quot;
 </code></pre></div></p>
-<p>Change eth0 to enable remove static IP and enable DHCP (In this case, it would make more sense to delete the connection since it is named <code>static-eth0</code> and call it something else, but for edification:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>sudo nmcli con mod static-eth0 ipv4.address &quot;&quot;
-<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>sudo nmcli con mod static-eth0 ipv4.method auto
-<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>sudo nmcli con down static-eth0
-<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>sudo nmcli con up static-eth0
+<p>Example: Change the static-eth0 connection to remove static IP and enable DHCP (In this case, it would be clearer to delete the connection since it is named <code>static-eth0</code> and call it something else, but for edification:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>sudo nmcli con mod static-eth0 ipv4.address &quot;&quot;
+<a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a>sudo nmcli con mod static-eth0 ipv4.method auto
+<a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a>sudo nmcli con down static-eth0
+<a id="__codelineno-30-4" name="__codelineno-30-4" href="#__codelineno-30-4"></a>sudo nmcli con up static-eth0
 </code></pre></div></p>
-<h2 id="interfacing-the-jetson-to-the-autopilot">Interfacing the Jetson to the Autopilot<a class="headerlink" href="#interfacing-the-jetson-to-the-autopilot" title="Permanent link">&para;</a></h2>
-<p>The autopilot has a high-speed serial interface between the STM32H7 and the Jetson SOM. The Jetson UART1 (pins 203, 205) are connected to the autopilot's USART3 (Typically Telem2). To enable <a href="https://mavlink.io/en/">MAVLink</a> data, you will need to check and/or modify PX4/Ardupilot parameters to ensure that Telem2 is set to MAVLink and set the baud rate to the desired value. A typical baud rate is 500,000 but you can use any baud rate you wish as long as the application receiving MAVLink on the Jetson is configured to match. </p>
-<p>On the Jetson side, UART1 is typically <code>/dev/ttyTHS2</code>.</p>
-<p>There are many options available for MAVLink routing and handling. One typical application is routing the MAVLink data over a network - and <a href="https://github.com/mavlink-router/mavlink-router">MAVLink Router</a> is a popular open-source solution. To use MAVLink Router to route MAVLink packets from UART1 (/dev/ttyTHS2) to a UDP endpoint (192.168.1.10:14550) on the network, use the following command:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>$ mavlink-routerd -e 192.168.1.10:14550 /dev/ttyTHS2:5000000
+<h2 id="streaming-telemetry-from-the-autopilot-detailed">Streaming Telemetry from the Autopilot (Detailed)<a class="headerlink" href="#streaming-telemetry-from-the-autopilot-detailed" title="Permanent link">&para;</a></h2>
+<p>The autopilot has a high-speed serial interface between the FMU/STM32H7 and the Jetson SOM. The Jetson UART1 (pins 203, 205) is connected to the autopilot's USART3 (Typically Serial2). To enable <a href="https://mavlink.io/en/">MAVLink</a> data between the FMU and Jetson, you will need to check and/or modify PX4/Ardupilot parameters to ensure that Telem2 is set to <code>MAVLink2</code> and set the baud rate to the desired value. A typical baud rate is <code>500,000</code>, but you can use any baud rate you wish as long as the mavlink-router application receiving MAVLink on the Jetson is configured to match. </p>
+<p>For example, on ArduPilot set the following params and reboot:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a>SERIAL2_PROTOCOL: MAVLink2
+<a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a>SERIAL2_BAUD: 500000
 </code></pre></div>
-<p>If you have issues accessing <code>/dev/ttyTHSX</code>, please disable <code>nvgetty</code> and ensure you are a member of the <code>dialout</code> group:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>sudo systemctl stop nvgetty
-<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>sudo systemctl disable nvgetty
-<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>sudo usermod -aG dialout $USER
+For PX4, set the following params and reboot.
+<div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a>MAV_1_CONFIG 102: Telem 2  ## Reboot after this change to expose additional parameters
+<a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a>MAV_1_RATE: 0
+<a id="__codelineno-32-3" name="__codelineno-32-3" href="#__codelineno-32-3"></a>MAV_1_MODE 2: Onboard
+<a id="__codelineno-32-4" name="__codelineno-32-4" href="#__codelineno-32-4"></a>SER_TEL2_BAUD: 500000   ## Reboot after this change
+</code></pre></div></p>
+<p>On the Jetson side, UART1 is typically <code>/dev/ttyTHS0</code>, although it could vary with different Jetson modules including <code>/dev/ttyTHS1</code> and <code>/dev/ttyTHS2</code>.</p>
+<p>For using the EchoPilot AI to route MAVLink data over a network, we pre-install and recommend <a href="https://github.com/mavlink-router/mavlink-router">MAVLink Router</a>. For modules configured at the factory, we now provide mavlink-router installed by default and pushing telemetry to <code>10.223.1.10:14550</code></p>
+<p>Should you need or want to install this independently, EchoMAV has an open-source installer which makes it easy to install MAVLink Router and configure it as a service which starts at boot. Please refer to the our installer repo <a href="https://github.com/EchoMAV/mavlink-router">https://github.com/EchoMAV/mavlink-router</a> for instructions. </p>
+<p>If you use the install repo above, please refer to the instructions there for configuration of the UART and destination IP address. Specifically edit <code>etc\mavlink-router\main.conf</code> with the appropriate settings.</p>
+<p>If you have permission issues accessing <code>/dev/ttyTHSX</code>, please disable <code>nvgetty</code> and ensure you are a member of the <code>dialout</code> group, or just use our <a href="https://github.com/EchoMAV/mavlink-router">MAVLink Router Installer Repo</a> along with <code>make install</code> and a reboot which sets these things up for you.
+<div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a>sudo systemctl stop nvgetty
+<a id="__codelineno-33-2" name="__codelineno-33-2" href="#__codelineno-33-2"></a>sudo systemctl disable nvgetty
+<a id="__codelineno-33-3" name="__codelineno-33-3" href="#__codelineno-33-3"></a>sudo usermod -aG dialout $USER
 </code></pre></div></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -1248,8 +1625,8 @@ Delete <code>static-eth0</code> connection:  <br />
 <tbody>
 <tr>
 <td>FMU CAN1</td>
-<td>R19 and R156</td>
-<td>Near U4 and U45, size 0402, see important info below</td>
+<td>R19</td>
+<td>Near U4 and U45, size 0402</td>
 </tr>
 <tr>
 <td>FMU CAN2</td>
@@ -1259,21 +1636,21 @@ Delete <code>static-eth0</code> connection:  <br />
 <tr>
 <td>JETSON CAN1</td>
 <td>R95</td>
-<td>Near U32 (Rev1+ only), size 0402</td>
+<td>Near U32, size 0402</td>
 </tr>
 </tbody>
 </table>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>FMU CAN1 default configuration provides connectivity between the FMU and the RemoteID system. Therefore, two CAN transceivers with termination resistors are installed by default. If you wish to use CAN1 with the EchoPilot at the END of the chain, remove R156. If you wish to use the EchoPilot in the MIDDLE of a chain, remove both R19 and R156. </p>
-</div>
 <h2 id="remote-id-subsystem">Remote ID Subsystem<a class="headerlink" href="#remote-id-subsystem" title="Permanent link">&para;</a></h2>
 <p>The Remote ID system is based on an ESP32-C3 and is designed to work with the <a href="https://github.com/ArduPilot/ArduRemoteID">ArduRemoteID</a> project and Open Drone ID standards.</p>
 <p>ArduRemoteID is is an implementation of a MAVLink and DroneCAN OpenDroneID transmitter. It aims to provide a transmitter solution for the FAA standard RemoteID requirement, meeting the transmitter component of the ASTM F3586-22 Means of Compliance. It also aims to be compliant with the RemoteID regulation in the EU.</p>
 <p>It is the responsibility of the user to configure the ArduRemoteID firmware in a way that it is compliant with the local RemoteID regulation. For instance, in the USA it is mandatory that UAV manufacturers submit a DoC (Declaration of Conformance) to the FAA where they state that their product is compliant with the RemoteID regulation.</p>
 <p>To flash ArduRemote ID to the ESPS32-C3, you will need a TC2030-USB-NL cable from <a href="https://www.tag-connect.com">tag-connect.com</a> and follow the flashing instructions from the <a href="https://github.com/ArduPilot/ArduRemoteID#flashing">AruRemoteID</a> project.</p>
-<p>To configure the Remote ID system, parameters can be accessed from DroneCAN (via Mission Planner or DroneCAN GUI) or with MAVLink. To use DroneCAN, <a href="https://ardupilot.org/copter/docs/common-slcan-f7h7.html#common-slcan-f7h7">SLCAN will need to be enabled</a> to allow the autopilot to connect to the CANBUS through USB.  </p>
-<p>For making changes to DroneCAN devices, see the instructions <a href="https://ardupilot.org/copter/docs/common-slcan-f7h7.html#making-changes-to-dronecan-devices">here</a>. The FMU is connected to the ESP32-C3 via CAN1, with the default configuration providing termination resistors at both the FMU side and ESP32 side.</p>
+<p>The ESP32-C3 is connected to the FMU via UART6, aka Telem3 (pins PG9 (RX) and PG14 (TX) from the STM32H742). You will need to configure ArduPilot/PX4 to use this UART for RemoteID.</p>
+<p>For building ArduRemoteID for the EchoPilot AI, the following pins will need to be defined for the hardware:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a>#define PIN_UART_TX 4
+<a id="__codelineno-34-2" name="__codelineno-34-2" href="#__codelineno-34-2"></a>#define PIN_UART_RX 5
+<a id="__codelineno-34-3" name="__codelineno-34-3" href="#__codelineno-34-3"></a>WS2812_LED_PIN GPIO_NUM_8
+</code></pre></div></p>
 
 
 

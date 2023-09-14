@@ -9,10 +9,6 @@
       
       
       
-        <link rel="prev" href="../build_px4/">
-      
-      
-        <link rel="next" href="../compile_l4t_orin/">
       
       
       <link rel="icon" href="../assets/images/favicon.png">
@@ -20,7 +16,7 @@
     
     
       
-        <title>Building ArduPilot - EchoPilot AI Documentation</title>
+        <title>Ap simulator - EchoPilot AI Documentation</title>
       
     
     
@@ -73,7 +69,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#building-and-loading-ardupilot-firmware" class="md-skip">
+        <a href="#how-to-set-up-an-ardupilot-simulator" class="md-skip">
           Skip to content
         </a>
       
@@ -124,7 +120,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Building ArduPilot
+              Ap simulator
             
           </span>
         </div>
@@ -215,12 +211,10 @@
         
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
+      <li class="md-tabs__item">
         <a href="../echopilot_ai/" class="md-tabs__link">
           
   
@@ -305,19 +299,17 @@
       
   
   
-    
-  
   
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
         
           <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
             
@@ -330,7 +322,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             EchoPilot AI
@@ -485,21 +477,19 @@
                 
   
   
-    
-  
   
     
     
     
       
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
         
           <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
             
@@ -512,7 +502,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2_3">
             <span class="md-nav__icon md-icon"></span>
             Building Firmware for the Autopilot
@@ -543,27 +533,9 @@
                 
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Building ArduPilot
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../build_ardupilot/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -572,106 +544,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#building-and-loading-ardupilot-firmware" class="md-nav__link">
-    Building and Loading ArduPilot Firmware
-  </a>
-  
-    <nav class="md-nav" aria-label="Building and Loading ArduPilot Firmware">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#prerequisites" class="md-nav__link">
-    Prerequisites
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#download-ardupilot" class="md-nav__link">
-    Download ArduPilot
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#setup-the-toolchain" class="md-nav__link">
-    Setup the toolchain
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#checkout-a-release-or-tag" class="md-nav__link">
-    Checkout a release or tag
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#do-a-test-build" class="md-nav__link">
-    Do a test build
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#download-and-install-the-hardware-definition-files-for-ardupilot" class="md-nav__link">
-    Download and Install the Hardware Definition Files for ArduPilot
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#build-ardupilot-for-the-echopilot-ai" class="md-nav__link">
-    Build ArduPilot for the EchoPilot AI
-  </a>
-  
-    <nav class="md-nav" aria-label="Build ArduPilot for the EchoPilot AI">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#uploading-using-the-waf-script" class="md-nav__link">
-    Uploading using the WAF script
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#upload-using-qgroundcontrol" class="md-nav__link">
-    Upload using QGroundControl
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -821,73 +693,31 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#building-and-loading-ardupilot-firmware" class="md-nav__link">
-    Building and Loading ArduPilot Firmware
+  <a href="#how-to-set-up-an-ardupilot-simulator" class="md-nav__link">
+    How to set up an Ardupilot simulator
   </a>
   
-    <nav class="md-nav" aria-label="Building and Loading ArduPilot Firmware">
+    <nav class="md-nav" aria-label="How to set up an Ardupilot simulator">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#prerequisites" class="md-nav__link">
-    Prerequisites
+  <a href="#if-you-are-running-on-windows-you-will-first-need-to-install-wsl1-windows-subsystem-for-linux-version-1" class="md-nav__link">
+    If you are running on windows, you will first need to install WSL1 (Windows Subsystem for Linux version 1)
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#download-ardupilot" class="md-nav__link">
-    Download ArduPilot
+  <a href="#install-ardupilot-and-run-the-simulator" class="md-nav__link">
+    Install Ardupilot and run the simulator
   </a>
   
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#setup-the-toolchain" class="md-nav__link">
-    Setup the toolchain
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#checkout-a-release-or-tag" class="md-nav__link">
-    Checkout a release or tag
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#do-a-test-build" class="md-nav__link">
-    Do a test build
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#download-and-install-the-hardware-definition-files-for-ardupilot" class="md-nav__link">
-    Download and Install the Hardware Definition Files for ArduPilot
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#build-ardupilot-for-the-echopilot-ai" class="md-nav__link">
-    Build ArduPilot for the EchoPilot AI
-  </a>
-  
-    <nav class="md-nav" aria-label="Build ArduPilot for the EchoPilot AI">
+    <nav class="md-nav" aria-label="Install Ardupilot and run the simulator">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#uploading-using-the-waf-script" class="md-nav__link">
-    Uploading using the WAF script
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#upload-using-qgroundcontrol" class="md-nav__link">
-    Upload using QGroundControl
+  <a href="#be-sure-the-simulator-is-not-running-before-connecting-to-an-actual-vehicle" class="md-nav__link">
+    Be sure the simulator is not running before connecting to an actual vehicle
   </a>
   
 </li>
@@ -899,6 +729,13 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#if-you-to-start-up-the-simulator-at-a-custom-location" class="md-nav__link">
+    If you to start up the simulator at a custom location
+  </a>
   
 </li>
       
@@ -917,7 +754,7 @@
                   
 
   
-    <a href="https://github.com/EchoMAV/docs/edit/master/docs/build_ardupilot.md" title="Edit this page" class="md-content__button md-icon">
+    <a href="https://github.com/EchoMAV/docs/edit/master/docs/ap_simulator.md" title="Edit this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4v-2m10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1 2.1 2.1Z"/></svg>
     </a>
@@ -926,82 +763,76 @@
     
       
     
-    <a href="https://github.com/EchoMAV/docs/raw/master/docs/build_ardupilot.md" title="View source of this page" class="md-content__button md-icon">
+    <a href="https://github.com/EchoMAV/docs/raw/master/docs/ap_simulator.md" title="View source of this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 18c.56 0 1 .44 1 1s-.44 1-1 1-1-.44-1-1 .44-1 1-1m0-3c-2.73 0-5.06 1.66-6 4 .94 2.34 3.27 4 6 4s5.06-1.66 6-4c-.94-2.34-3.27-4-6-4m0 6.5a2.5 2.5 0 0 1-2.5-2.5 2.5 2.5 0 0 1 2.5-2.5 2.5 2.5 0 0 1 2.5 2.5 2.5 2.5 0 0 1-2.5 2.5M9.27 20H6V4h7v5h5v4.07c.7.08 1.36.25 2 .49V8l-6-6H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h4.5a8.15 8.15 0 0 1-1.23-2Z"/></svg>
     </a>
   
 
 
-  <h1>Building ArduPilot</h1>
+  <h1>Ap simulator</h1>
 
-<h2 id="building-and-loading-ardupilot-firmware">Building and Loading ArduPilot Firmware<a class="headerlink" href="#building-and-loading-ardupilot-firmware" title="Permanent link">&para;</a></h2>
-<p>As of ArduPilot 4.4, the EchoPilot AI hardware definition files are not yet pulled into the <a href="https://github.com/ArduPilot/ardupilot">ArduPilot repository</a>. Therefore, if you wish to use ArduPilot firmware on the EchoPilot AI, you will need to follow the steps below and build ArduPilot from source. Fortunately the process is straightforward:</p>
-<h3 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h3>
-<p>These instructions were tested on Ubuntu 20.04 LTS. They are not guaranteed to work on any other flavor of Linux, within a virtual machine or under WSL 1 or 2. We recommend a <strong>physical machine</strong> running Ubuntu 20.04 LTS for the most pain-free experience.</p>
-<h3 id="download-ardupilot">Download ArduPilot<a class="headerlink" href="#download-ardupilot" title="Permanent link">&para;</a></h3>
-<p>These instructions will install ArduPilot in <code>~/ardupilot</code>. If you wish to use a different location, please adjust the directory below and throughout these instructions. If you are a novice, we recommend proceeding exactly as described below.
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>cd ~
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>git clone --recurse-submodules https://github.com/ArduPilot/ardupilot
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>cd ardupilot
-</code></pre></div></p>
-<h3 id="setup-the-toolchain">Setup the toolchain<a class="headerlink" href="#setup-the-toolchain" title="Permanent link">&para;</a></h3>
-<p><div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>Tools/environment_install/install-prereqs-ubuntu.sh -y
+<h2 id="how-to-set-up-an-ardupilot-simulator">How to set up an Ardupilot simulator<a class="headerlink" href="#how-to-set-up-an-ardupilot-simulator" title="Permanent link">&para;</a></h2>
+<h3 id="if-you-are-running-on-windows-you-will-first-need-to-install-wsl1-windows-subsystem-for-linux-version-1">If you are running on windows, you will first need to install WSL1 (Windows Subsystem for Linux version 1)<a class="headerlink" href="#if-you-are-running-on-windows-you-will-first-need-to-install-wsl1-windows-subsystem-for-linux-version-1" title="Permanent link">&para;</a></h3>
+<p>Click Start, type PowerShell, and then click Windows PowerShell
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>wsl --set-default-version 1
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>wsl --install
 </code></pre></div>
-Now reload the path (log-out and log-in to make permanent)
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>. ~/.profile
-</code></pre></div></p>
-<h3 id="checkout-a-release-or-tag">Checkout a release or tag<a class="headerlink" href="#checkout-a-release-or-tag" title="Permanent link">&para;</a></h3>
-<p>You can identify a version you wish to build by looking at the ArduPilot tags <a href="https://github.com/ArduPilot/ardupilot/tags">https://github.com/ArduPilot/ardupilot/tags</a>. In the example below, we will demonstrate checking out release Copter-4.3.7 </p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>git checkout tags/Copter-4.3.7
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>git submodule update --init --recursive
+Once installation completes, you should be able to run Ubuntu, Click Start, type Ubuntu, and then click Ubuntu on Windows. The instructions below pick up at the point you have a command prompt.</p>
+<h3 id="install-ardupilot-and-run-the-simulator">Install Ardupilot and run the simulator<a class="headerlink" href="#install-ardupilot-and-run-the-simulator" title="Permanent link">&para;</a></h3>
+<p>Get prereqs:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>sudo apt-get update
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>sudo apt-get install git
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>sudo apt-get install gitk git-gui
 </code></pre></div>
-<h3 id="do-a-test-build">Do a test build<a class="headerlink" href="#do-a-test-build" title="Permanent link">&para;</a></h3>
-<p>Before we build firmware for the EchoPilot AI board, it is wise to first build a native target to verify that your toolchain and environment is setup and working. Build the sitl (software in the loop simulator) target first:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>./waf configure --board sitl
-<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>./waf copter
+Clone repo:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>git clone https://github.com/ArduPilot/ardupilot.git
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>cd ardupilot
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>git checkout Plane-4.3.1
 </code></pre></div>
-If the build completes without errors, congrats! If there are errors, you will need to resolve them before proceeding.</p>
-<h3 id="download-and-install-the-hardware-definition-files-for-ardupilot">Download and Install the Hardware Definition Files for ArduPilot<a class="headerlink" href="#download-and-install-the-hardware-definition-files-for-ardupilot" title="Permanent link">&para;</a></h3>
-<p>Obtain the hardware board files from the <a href="https://github.com/EchoMAV/echopilot_ai_bsp">EchoPilot AI BSP</a> repo and checkout the appropriate branch matching the hardware revision of your EchoPilot AI using the commands below. The Hardware revision is marked on the board silkscreen near the FAN connector:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>git clone https://github.com/EchoMAV/echopilot_ai_bsp
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>cd echopilot_ai_bsp
-<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>git checkout board_revision_1     # Select the appropriate revision
+Set up build environment:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>Tools/environment_install/install-prereqs-ubuntu.sh -y
 </code></pre></div>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>Be sure you checked out the appropriate branch matching your EchoPilot AI hardware revision!</p>
-</div>
-<p>Use the <code>install_ardupilot.sh</code> script to automatically copy the EchoPilot HW hardware definition files into the right place in the ardupilot directory structure. The first (and only) argument when using this script is the path to where you have the ardupilot repo installed on your system, e.g., <code>~/ardupilot</code>. For example:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>./install_ardupilot.sh ~/ardupilot
-</code></pre></div></p>
-<h3 id="build-ardupilot-for-the-echopilot-ai">Build ArduPilot for the EchoPilot AI<a class="headerlink" href="#build-ardupilot-for-the-echopilot-ai" title="Permanent link">&para;</a></h3>
-<p>At this point, you should have the EchoPilot AI hardware files located in <code>~/ardupilot/libraries/AP_HAL_ChibiOS/hwdef/EchoPilotAI/</code>. To build firmware targeting EchoPilot AI, use the command:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>cd ~/ardupilot
-<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>./waf configure --board EchoPilotAI
-<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>./waf copter    # or choose a different target per below
-</code></pre></div></p>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>The example above builds copter, for other vehicle targets, see below:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>./waf copter                            # All multirotor types
-<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>./waf heli                              # Helicopter types
-<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>./waf plane                             # Fixed wing airplanes including VTOL
-<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>./waf rover                             # Ground-based rovers and surface boats
-<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>./waf sub                               # ROV and other submarines
-</code></pre></div></p>
-</div>
-<p>The arducopter.apj and arducopter.bin file will be located in the <code>~/ardupilot/build/EchoPilotAI/bin/</code> folder. The firmware is now ready to be loaded on the board. This can be done by adding the upload argument as explained below, or using common ground control station software such as Mission Planner or QGroundControl to upload the <code>apj</code> file.</p>
-<div class="admonition info">
-<p class="admonition-title">Info</p>
-<p>If the EchoPilot AI's FMU USB connection is plugged in to your host computer, unplug it before proceeding. Also ensure the board is fully powered down. The board should be totally powered off before proceeding. The FMU will get power via the USB cable in the step below.</p>
-</div>
-<h4 id="uploading-using-the-waf-script">Uploading using the WAF script<a class="headerlink" href="#uploading-using-the-waf-script" title="Permanent link">&para;</a></h4>
-<p><div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>./waf copter --upload
+Reload the path:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>. ~/.profile
 </code></pre></div>
-When the build completes, the system will wait for a USB connection from the EchoPilot AI's bootloader. You should see a message indicating <code>waiting for the bootloader...</code>. At this point, plug in a USB-A to USB-C cable between the host computer and the <strong>FMU</strong> USB connection on the EchoPilot AI. The board should be recognized and the firmware will be uploaded automatically.</p>
-<h4 id="upload-using-qgroundcontrol">Upload using QGroundControl<a class="headerlink" href="#upload-using-qgroundcontrol" title="Permanent link">&para;</a></h4>
-<p>Optionally, you can use <a href="https://docs.qgroundcontrol.com/master/en/getting_started/download_and_install.html">QGroundControl</a> to upload the <code>~/ardupilot/build/EchoPilotAI/bin/arducopter.apj</code> file created previously. This is especially useful if you wish to send a firmware update to a customer as they can do it without terminal access. Follow the steps to upload <strong>Custom Firmware</strong> using QGroundControl: <a href="https://docs.qgroundcontrol.com/master/en/SetupView/Firmware.html">https://docs.qgroundcontrol.com/master/en/SetupView/Firmware.html</a></p>
+Run the simulator, which will build the code the first time:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>cd ArduPlane
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>../Tools/autotest/sim_vehicle.py -j4 -f quadplane
+</code></pre></div>
+Once the simulator is built and running (it will take several minutes the first time you do it), you will need to set 2 key parameters by typing the following:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>param set Q_MAV_TYPE 20
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>param set BRD_SERIAL_NUM 4097
+</code></pre></div>
+At this point, you have ArduPlane 4.3.1 running and it will by default open a port on localhost:14550. Run the GCS and it should automatically connect to the simulator. Windows may ask you for permission to open the port, be sure and ALLOW the connection.</p>
+<p>You may stop the simulator using <code>Ctrl-C</code>  </p>
+<h4 id="be-sure-the-simulator-is-not-running-before-connecting-to-an-actual-vehicle">Be sure the simulator is not running before connecting to an actual vehicle<a class="headerlink" href="#be-sure-the-simulator-is-not-running-before-connecting-to-an-actual-vehicle" title="Permanent link">&para;</a></h4>
+<h2 id="if-you-to-start-up-the-simulator-at-a-custom-location">If you to start up the simulator at a custom location<a class="headerlink" href="#if-you-to-start-up-the-simulator-at-a-custom-location" title="Permanent link">&para;</a></h2>
+<p>You will need to edit the /Tools/autotest/locations.txt file<br />
+If the simulator is running, stop it and exit using <code>Ctrl-C</code><br />
+Install a simple text editor called <code>nano</code> using:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>sudo apt-get install nano
+</code></pre></div>
+Edit the <code>locations.txt</code> file
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>nano ~/ardupilot/Tools/autotest/locations.txt
+</code></pre></div>
+use the arrow keys to scroll down and add a new entry:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>NAME=Lat,Lon,Altitude,0
+</code></pre></div>
+Lat and Lon are decimal degrees, altitude is meters above sea level. I'm not sure what the last 0 is for, so just leave it 0. For example, Knoxville would be:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>Knoxville=35.92310,-84.22301,900,0
+</code></pre></div>
+Save the file and exit
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>Ctrl-o &lt;enter&gt;
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>Ctrl-x
+</code></pre></div>
+You may now start the simulator specifying the name of your new location
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>cd ~/ardupilot/ArduPlane
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>../Tools/autotest/sim_vehicle.py -j4 -f quadplane -L &lt;YOUR LOCATION&gt;
+</code></pre></div>
+For example, to start the Knoxville location would be 
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>../Tools/autotest/sim_vehicle.py -j4 -f quadplane -L Knoxville
+</code></pre></div></p>
 
 
 
