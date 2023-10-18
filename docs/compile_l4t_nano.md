@@ -78,7 +78,7 @@ cd echopilot_ai_bsp
 ```
 Checkout the appropriate branch for your EchoPilot AI board revision. For example, EchoPilot AI rev1 hardware:
 ```
-git checkout board_revision_1
+git checkout board_revision_1a
 ```
 Run the install script to copy the dtb and extlinux.conf files into your Linux_for_Tegra folder. The usage is `./install_l4t_nano.sh [Path to Linux_for_Tegra]`, e.g.:
 ```

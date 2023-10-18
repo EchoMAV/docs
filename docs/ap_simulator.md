@@ -2,12 +2,19 @@
 
 ### If you are running on windows, you will first need to install WSL1 (Windows Subsystem for Linux version 1)
 
-Click Start, type PowerShell, and then click Windows PowerShell
+Click Start, type PowerShell, and then right click "PowerShell" and "Run As Administrator"
+```
+dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
+```
+Restart your system
+
+Open PowerShell again
 ```
 wsl --set-default-version 1
-wsl --install
+wsl --install -d Ubuntu-20.04
 ```
-Once installation completes, you should be able to run Ubuntu, Click Start, type Ubuntu, and then click Ubuntu on Windows. The instructions below pick up at the point you have a command prompt.
+
+Once installation completes, you should be able to run Ubuntu, Click Start, type Ubuntu, and then click Ubuntu on Windows. The first time it runs you will create a username and password to use withing Ubuntu. The instructions below pick up at the point you have a command prompt.
 
 ### Install Ardupilot and run the simulator
 
@@ -22,6 +29,7 @@ Clone repo:
 git clone https://github.com/ArduPilot/ardupilot.git
 cd ardupilot
 git checkout Plane-4.3.1
+git submodule update --init
 ```
 Set up build environment:
 ```
@@ -79,7 +87,6 @@ For example, to start the Knoxville location would be
 ```
 ../Tools/autotest/sim_vehicle.py -j4 -f quadplane -L Knoxville
 ```
-
 
 
 
