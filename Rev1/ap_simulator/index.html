@@ -12,7 +12,7 @@
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.5.2, mkdocs-material-9.3.1">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.6">
     
     
       
@@ -20,10 +20,10 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.046329b4.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.35e1ed30.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.85d0ee34.min.css">
+        <link rel="stylesheet" href="../assets/stylesheets/palette.356b1318.min.css">
       
       
 
@@ -303,15 +303,20 @@
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    
+    
       
-        
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
         
         
         
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
         
-          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
             
   
   <span class="md-ellipsis">
@@ -357,6 +362,9 @@
     
     
     
+    
+    
+      
       
     
     <li class="md-nav__item md-nav__item--section md-nav__item--nested">
@@ -364,10 +372,10 @@
         
         
         
-        
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
         
-          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="">
             
   
   <span class="md-ellipsis">
@@ -481,6 +489,9 @@
     
     
     
+    
+    
+      
       
     
     <li class="md-nav__item md-nav__item--section md-nav__item--nested">
@@ -488,10 +499,10 @@
         
         
         
-        
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
         
-          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="">
             
   
   <span class="md-ellipsis">
@@ -565,6 +576,9 @@
     
     
     
+    
+    
+      
       
     
     <li class="md-nav__item md-nav__item--section md-nav__item--nested">
@@ -572,10 +586,10 @@
         
         
         
-        
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" >
         
-          <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
+          
+          <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="">
             
   
   <span class="md-ellipsis">
@@ -774,35 +788,40 @@
 
 <h2 id="how-to-set-up-an-ardupilot-simulator">How to set up an Ardupilot simulator<a class="headerlink" href="#how-to-set-up-an-ardupilot-simulator" title="Permanent link">&para;</a></h2>
 <h3 id="if-you-are-running-on-windows-you-will-first-need-to-install-wsl1-windows-subsystem-for-linux-version-1">If you are running on windows, you will first need to install WSL1 (Windows Subsystem for Linux version 1)<a class="headerlink" href="#if-you-are-running-on-windows-you-will-first-need-to-install-wsl1-windows-subsystem-for-linux-version-1" title="Permanent link">&para;</a></h3>
-<p>Click Start, type PowerShell, and then click Windows PowerShell
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>wsl --set-default-version 1
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>wsl --install
+<p>Click Start, type PowerShell, and then right click "PowerShell" and "Run As Administrator"
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
 </code></pre></div>
-Once installation completes, you should be able to run Ubuntu, Click Start, type Ubuntu, and then click Ubuntu on Windows. The instructions below pick up at the point you have a command prompt.</p>
+Restart your system</p>
+<p>Open PowerShell again
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>wsl --set-default-version 1
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>wsl --install -d Ubuntu-20.04
+</code></pre></div></p>
+<p>Once installation completes, you should be able to run Ubuntu, Click Start, type Ubuntu, and then click Ubuntu on Windows. The first time it runs you will create a username and password to use withing Ubuntu. The instructions below pick up at the point you have a command prompt.</p>
 <h3 id="install-ardupilot-and-run-the-simulator">Install Ardupilot and run the simulator<a class="headerlink" href="#install-ardupilot-and-run-the-simulator" title="Permanent link">&para;</a></h3>
 <p>Get prereqs:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>sudo apt-get update
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>sudo apt-get install git
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>sudo apt-get install gitk git-gui
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>sudo apt-get update
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>sudo apt-get install git
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>sudo apt-get install gitk git-gui
 </code></pre></div>
 Clone repo:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>git clone https://github.com/ArduPilot/ardupilot.git
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>cd ardupilot
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>git checkout Plane-4.3.1
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>git clone https://github.com/ArduPilot/ardupilot.git
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>cd ardupilot
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>git checkout Plane-4.3.1
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>git submodule update --init
 </code></pre></div>
 Set up build environment:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>Tools/environment_install/install-prereqs-ubuntu.sh -y
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>Tools/environment_install/install-prereqs-ubuntu.sh -y
 </code></pre></div>
 Reload the path:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>. ~/.profile
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>. ~/.profile
 </code></pre></div>
 Run the simulator, which will build the code the first time:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>cd ArduPlane
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>../Tools/autotest/sim_vehicle.py -j4 -f quadplane
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>cd ArduPlane
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>../Tools/autotest/sim_vehicle.py -j4 -f quadplane
 </code></pre></div>
 Once the simulator is built and running (it will take several minutes the first time you do it), you will need to set 2 key parameters by typing the following:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>param set Q_MAV_TYPE 20
-<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>param set BRD_SERIAL_NUM 4097
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>param set Q_MAV_TYPE 20
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>param set BRD_SERIAL_NUM 4097
 </code></pre></div>
 At this point, you have ArduPlane 4.3.1 running and it will by default open a port on localhost:14550. Run the GCS and it should automatically connect to the simulator. Windows may ask you for permission to open the port, be sure and ALLOW the connection.</p>
 <p>You may stop the simulator using <code>Ctrl-C</code>  </p>
@@ -811,27 +830,27 @@ At this point, you have ArduPlane 4.3.1 running and it will by default open a po
 <p>You will need to edit the /Tools/autotest/locations.txt file<br />
 If the simulator is running, stop it and exit using <code>Ctrl-C</code><br />
 Install a simple text editor called <code>nano</code> using:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>sudo apt-get install nano
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>sudo apt-get install nano
 </code></pre></div>
 Edit the <code>locations.txt</code> file
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>nano ~/ardupilot/Tools/autotest/locations.txt
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>nano ~/ardupilot/Tools/autotest/locations.txt
 </code></pre></div>
 use the arrow keys to scroll down and add a new entry:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>NAME=Lat,Lon,Altitude,0
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>NAME=Lat,Lon,Altitude,0
 </code></pre></div>
 Lat and Lon are decimal degrees, altitude is meters above sea level. I'm not sure what the last 0 is for, so just leave it 0. For example, Knoxville would be:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>Knoxville=35.92310,-84.22301,900,0
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>Knoxville=35.92310,-84.22301,900,0
 </code></pre></div>
 Save the file and exit
-<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>Ctrl-o &lt;enter&gt;
-<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>Ctrl-x
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>Ctrl-o &lt;enter&gt;
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>Ctrl-x
 </code></pre></div>
 You may now start the simulator specifying the name of your new location
-<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>cd ~/ardupilot/ArduPlane
-<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>../Tools/autotest/sim_vehicle.py -j4 -f quadplane -L &lt;YOUR LOCATION&gt;
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>cd ~/ardupilot/ArduPlane
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>../Tools/autotest/sim_vehicle.py -j4 -f quadplane -L &lt;YOUR LOCATION&gt;
 </code></pre></div>
 For example, to start the Knoxville location would be 
-<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>../Tools/autotest/sim_vehicle.py -j4 -f quadplane -L Knoxville
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>../Tools/autotest/sim_vehicle.py -j4 -f quadplane -L Knoxville
 </code></pre></div></p>
 
 
@@ -848,10 +867,10 @@ For example, to start the Knoxville location would be
         </div>
         
           <button type="button" class="md-top md-icon" data-md-component="top" hidden>
-            
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
-            Back to top
-          </button>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Back to top
+</button>
         
       </main>
       
@@ -898,10 +917,11 @@ For example, to start the Knoxville location would be
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.tracking", "navigation.instant", "navigation.top", "search.suggest", "search.highlight", "content.tabs.link", "content.code.annotation", "content.code.copy", "toc.follow", "content.action.edit", "content.action.view", "content.code.copy"], "search": "../assets/javascripts/workers/search.dfff1995.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.tracking", "navigation.instant", "navigation.top", "search.suggest", "search.highlight", "content.tabs.link", "content.code.annotation", "content.code.copy", "toc.follow", "content.action.edit", "content.action.view", "content.code.copy"], "search": "../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.dff1b7c8.min.js"></script>
+      <script src="../assets/javascripts/bundle.aecac24b.min.js"></script>
       
     
   </body>
