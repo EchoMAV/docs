@@ -17,6 +17,7 @@ Note if you have built PX4 before, you can likely skip this step. Also remove th
 ```
 bash ./Tools/setup/ubuntu.sh --no-sim-tools
 ```
+At this point, it is recommended to log out and back in to ensure the paths are loaded.
 ### Checkout a release
 You can identify a version you wish to build by looking at the release history [https://github.com/PX4/PX4-Autopilot/releases](https://github.com/PX4/PX4-Autopilot/releases). In the example below, we will demonstrate checking out release 1.13.3  
 !!! info
@@ -27,8 +28,8 @@ You can identify a version you wish to build by looking at the release history [
     ```
 
 ```
-git fetch origin release/1.13.3
-git checkout release/1.13.3
+git fetch origin v1.13.3
+git checkout v1.13.3
 ```
 Update submodules:
 ```
@@ -46,7 +47,7 @@ First obtain the hardware board files from the [EchoPilot AI BSP](https://github
 ```
 git clone https://github.com/EchoMAV/echopilot_ai_bsp
 cd echopilot_ai_bsp
-git checkout board_revision_1   # Change per your hardware
+git checkout board_revision_1a   # Change per your hardware
 ```
 !!! warning
     Be sure you checked out the appropriate branch matching your EchoPilot AI hardware revision!

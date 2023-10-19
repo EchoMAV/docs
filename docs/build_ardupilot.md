@@ -26,7 +26,7 @@ Now reload the path (log-out and log-in to make permanent)
 You can identify a version you wish to build by looking at the ArduPilot tags [https://github.com/ArduPilot/ardupilot/tags](https://github.com/ArduPilot/ardupilot/tags). In the example below, we will demonstrate checking out release Copter-4.3.7 
 
 ```
-git checkout tags/Copter-4.3.7
+git checkout Copter-4.4.1
 git submodule update --init --recursive
 ```
 
@@ -43,7 +43,7 @@ Obtain the hardware board files from the [EchoPilot AI BSP](https://github.com/E
 ```
 git clone https://github.com/EchoMAV/echopilot_ai_bsp
 cd echopilot_ai_bsp
-git checkout board_revision_1     # Select the appropriate revision
+git checkout board_revision_1a     # Select the appropriate revision
 ```
 !!! warning
     Be sure you checked out the appropriate branch matching your EchoPilot AI hardware revision!
