@@ -908,7 +908,8 @@
 <h3 id="setup-the-toolchain">Setup the toolchain<a class="headerlink" href="#setup-the-toolchain" title="Permanent link">&para;</a></h3>
 <p>Note if you have built PX4 before, you can likely skip this step. Also remove the <code>--no-sim-tools</code> option if you wish to install the simulation toolchain.
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>bash ./Tools/setup/ubuntu.sh --no-sim-tools
-</code></pre></div></p>
+</code></pre></div>
+At this point, it is recommended to log out and back in to ensure the paths are loaded.</p>
 <h3 id="checkout-a-release">Checkout a release<a class="headerlink" href="#checkout-a-release" title="Permanent link">&para;</a></h3>
 <p>You can identify a version you wish to build by looking at the release history <a href="https://github.com/PX4/PX4-Autopilot/releases">https://github.com/PX4/PX4-Autopilot/releases</a>. In the example below, we will demonstrate checking out release 1.13.3  </p>
 <div class="admonition info">
@@ -918,8 +919,8 @@
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>make distclean
 </code></pre></div></p>
 </div>
-<p><div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>git fetch origin release/1.13.3
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>git checkout release/1.13.3
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>git fetch origin v1.13.3
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>git checkout v1.13.3
 </code></pre></div>
 Update submodules:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>make submodulesclean
@@ -933,7 +934,7 @@ If the build completes without errors, congrats! If there are errors, you will n
 <p>First obtain the hardware board files from the <a href="https://github.com/EchoMAV/echopilot_ai_bsp">EchoPilot AI BSP</a> repo and checkout the appropriate branch matching the hardware revision of you EchoPilot AI. The HW Revision is marked on the board silkscreen near the FAN connector:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>git clone https://github.com/EchoMAV/echopilot_ai_bsp
 <a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>cd echopilot_ai_bsp
-<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>git checkout board_revision_1   # Change per your hardware
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>git checkout board_revision_1a   # Change per your hardware
 </code></pre></div>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>

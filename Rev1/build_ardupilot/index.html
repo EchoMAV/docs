@@ -967,7 +967,7 @@ Now reload the path (log-out and log-in to make permanent)
 </code></pre></div></p>
 <h3 id="checkout-a-release-or-tag">Checkout a release or tag<a class="headerlink" href="#checkout-a-release-or-tag" title="Permanent link">&para;</a></h3>
 <p>You can identify a version you wish to build by looking at the ArduPilot tags <a href="https://github.com/ArduPilot/ardupilot/tags">https://github.com/ArduPilot/ardupilot/tags</a>. In the example below, we will demonstrate checking out release Copter-4.3.7 </p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>git checkout tags/Copter-4.3.7
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>git checkout Copter-4.4.1
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>git submodule update --init --recursive
 </code></pre></div>
 <h3 id="do-a-test-build">Do a test build<a class="headerlink" href="#do-a-test-build" title="Permanent link">&para;</a></h3>
@@ -980,7 +980,7 @@ If the build completes without errors, congrats! If there are errors, you will n
 <p>Obtain the hardware board files from the <a href="https://github.com/EchoMAV/echopilot_ai_bsp">EchoPilot AI BSP</a> repo and checkout the appropriate branch matching the hardware revision of your EchoPilot AI using the commands below. The Hardware revision is marked on the board silkscreen near the FAN connector:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>git clone https://github.com/EchoMAV/echopilot_ai_bsp
 <a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>cd echopilot_ai_bsp
-<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>git checkout board_revision_1     # Select the appropriate revision
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>git checkout board_revision_1a     # Select the appropriate revision
 </code></pre></div>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
