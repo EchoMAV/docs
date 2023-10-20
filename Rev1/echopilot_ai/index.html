@@ -559,6 +559,33 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#analog-input-to-the-fmu-voltagecurrent-sense" class="md-nav__link">
+    Analog Input to the FMU (Voltage/Current Sense)
+  </a>
+  
+    <nav class="md-nav" aria-label="Analog Input to the FMU (Voltage/Current Sense)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ardupilot-setup-for-voltagecurrent" class="md-nav__link">
+    ArduPilot Setup for Voltage/Current
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#px4-setup-for-voltagecurrent" class="md-nav__link">
+    PX4 Setup for Voltage/Current
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#remote-id-subsystem" class="md-nav__link">
     Remote ID Subsystem
   </a>
@@ -1090,6 +1117,33 @@
   <a href="#can-termination" class="md-nav__link">
     CAN Termination
   </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#analog-input-to-the-fmu-voltagecurrent-sense" class="md-nav__link">
+    Analog Input to the FMU (Voltage/Current Sense)
+  </a>
+  
+    <nav class="md-nav" aria-label="Analog Input to the FMU (Voltage/Current Sense)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ardupilot-setup-for-voltagecurrent" class="md-nav__link">
+    ArduPilot Setup for Voltage/Current
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#px4-setup-for-voltagecurrent" class="md-nav__link">
+    PX4 Setup for Voltage/Current
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1651,6 +1705,70 @@ For PX4, set the following params and reboot.
 <td>JETSON CAN1</td>
 <td>R95</td>
 <td>Near U32, size 0402</td>
+</tr>
+</tbody>
+</table>
+<h2 id="analog-input-to-the-fmu-voltagecurrent-sense">Analog Input to the FMU (Voltage/Current Sense)<a class="headerlink" href="#analog-input-to-the-fmu-voltagecurrent-sense" title="Permanent link">&para;</a></h2>
+<p>The EchoPilot AI FMU design provides 6 analog inputs to the STM32H743. Most often, these are used for voltage/current input for the battery systems onboard an uncrewed system. The Analog input pin mapping for each input is shown below. To use these inputs, change the parameters in ArduPilot or PX4 to the appropriate pins.</p>
+<p>Input Name  | Carrier Board Connector | STM32H743 Pin | ArduPilot/PX4 Virtual Pin        <br />
+------------ | ------------- | ------------
+Voltage Sense 1        | J13.2  | PA0  | 16     <br />
+Current Sense 1        | J13.3  | PA1  | 17   <br />
+Voltage Sense 2 | J13.4   | PA2 | 14
+Current Sense 2 | J13.5   | PA3 | 15
+Spare ADC 1  | J13.6   | PC4  |  4
+Spare ADC 2 | J13.7   | PA4  |  18</p>
+<h3 id="ardupilot-setup-for-voltagecurrent">ArduPilot Setup for Voltage/Current<a class="headerlink" href="#ardupilot-setup-for-voltagecurrent" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>BATT_VOLT_PIN</td>
+<td>16</td>
+</tr>
+<tr>
+<td>BATT_CURR_PIN</td>
+<td>17</td>
+</tr>
+<tr>
+<td>BATT2_VOLT_PIN</td>
+<td>14</td>
+</tr>
+<tr>
+<td>BATT2_CURR_PIN</td>
+<td>15</td>
+</tr>
+</tbody>
+</table>
+<h3 id="px4-setup-for-voltagecurrent">PX4 Setup for Voltage/Current<a class="headerlink" href="#px4-setup-for-voltagecurrent" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>BAT1_V_CHANNEL</td>
+<td>16</td>
+</tr>
+<tr>
+<td>BAT1_I_CHANNEL</td>
+<td>17</td>
+</tr>
+<tr>
+<td>BAT2_V_CHANNEL</td>
+<td>14</td>
+</tr>
+<tr>
+<td>BAT2_I_CHANNEL</td>
+<td>15</td>
 </tr>
 </tbody>
 </table>
