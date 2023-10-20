@@ -712,13 +712,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#extract-kernel-sources-driver-package-bsp-sources" class="md-nav__link">
-    Extract kernel sources (Driver Package (BSP) Sources)
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#extract-sample-root-file-system-sample-root-filesystem" class="md-nav__link">
     Extract sample Root File System  (Sample Root Filesystem)
   </a>
@@ -727,6 +720,13 @@
         
       </ul>
     </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-the-default-user" class="md-nav__link">
+    Create the default user
+  </a>
   
 </li>
         
@@ -843,13 +843,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#extract-kernel-sources-driver-package-bsp-sources" class="md-nav__link">
-    Extract kernel sources (Driver Package (BSP) Sources)
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#extract-sample-root-file-system-sample-root-filesystem" class="md-nav__link">
     Extract sample Root File System  (Sample Root Filesystem)
   </a>
@@ -858,6 +851,13 @@
         
       </ul>
     </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-the-default-user" class="md-nav__link">
+    Create the default user
+  </a>
   
 </li>
         
@@ -917,7 +917,7 @@
 <ol>
 <li>The EchoPilot AI does not have an I2C HDMI controller</li>
 </ol>
-<p>To minimize console errors due to (1) which would otherwise be present if , the kernel must be compiled from source and flashed to the Xavier NX using the Debug USB port and recovery mode. It is not possible to update only the dtb files because the pinmux changes require a full flash. The following instructions will walk you through the process.</p>
+<p>To minimize console errors due to (1) which would otherwise be present, the kernel must be compiled from source and flashed to the Xavier NX using the Debug USB port and recovery mode. It is not possible to update only the dtb files because the pinmux changes require a full flash. The following instructions will walk you through the process.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>These instructions were developed and tested on Ubuntu 20.04 LTS (with a Windows machine used for the Excel pinmux change). We recommend using a <em>physical</em> machine running Ubuntu 20.04 LTS.</p>
@@ -930,9 +930,6 @@
 <li>Generate the image and flash the device</li>
 </ol>
 <p>So buckle up and let's get started.</p>
-<blockquote>
-<p><em>These instructions are adapted from the the excellent document by Hao Ye availabe on <a href="https://medium.com/@haoye94/editing-device-tree-and-compiling-kernel-for-nvidia-jetson-xavier-nx-11a1df20939c">medium.com</a> along with documentation pulled from Nvidia's forums. Some minor changes are include from Hao Ye's document, most likely as it was created for an older L4T release (32.6.1).</em></p>
-</blockquote>
 <h3 id="download-and-setup-necessary-files">Download and Setup Necessary Files<a class="headerlink" href="#download-and-setup-necessary-files" title="Permanent link">&para;</a></h3>
 <p>Note that you will need to create an NVIDIA developer account and login to download, so if you do not have a developer account please <a href="https://developer.nvidia.com/login">set that up</a> before proceeding. 
 Next you will need to download three packages from Nvidia: <a href="https://developer.nvidia.com/embedded/jetson-linux">Driver Package (BSP), Sample Root Filesystem and Driver Package (BSP) Sources</a>. </p>
@@ -947,27 +944,22 @@ Next you will need to download three packages from Nvidia: <a href="https://deve
 <p>Note: the filename below will be different if you download a different version.</p>
 </blockquote>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>mkdir -p ~/XavierNX
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>tar -xf ~/Downloads/Jetson_Linux_R35.3.1_aarch64.tbz2 -C ~/XavierNX
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>tar xpf ~/Downloads/Jetson_Linux_R35.4.1_aarch64.tbz2 -C ~/XavierNX
 </code></pre></div>
-<h4 id="extract-kernel-sources-driver-package-bsp-sources">Extract kernel sources (Driver Package (BSP) Sources)<a class="headerlink" href="#extract-kernel-sources-driver-package-bsp-sources" title="Permanent link">&para;</a></h4>
-<p>In the public_sources.tbz2 (BSP sources) zip file, there will be many other zipped files inside, but we are only interested in kernel_src.tbz2. Extract this file into a folder to named <code>sources</code> within the <code>Linux_for_Tegra</code> folder. The steps are:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>mkdir ~/Downloads/temp
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>tar -xf ~/Downloads/public_sources.tbz2 -C ~/Downloads/temp
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>mkdir ~/XavierNX/Linux_for_Tegra/sources
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>sudo tar -xf ~/Downloads/temp/Linux_for_Tegra/source/public/kernel_src.tbz2 -C ~/XavierNX/Linux_for_Tegra/sources
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>cd ~/Nano/Linux_for_Tegra
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>sudo ./source_sync.sh -t tegra-l4t-r35.3.1   # Change the tag to the same version you are building
-</code></pre></div></p>
 <h4 id="extract-sample-root-file-system-sample-root-filesystem">Extract sample Root File System  (Sample Root Filesystem)<a class="headerlink" href="#extract-sample-root-file-system-sample-root-filesystem" title="Permanent link">&para;</a></h4>
 <p>Extract contents into Linux_for_Tegra/rootfs/. Note the filename below will be different if you downloaded a different version.
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>mkdir ~/XavierNX/Linux_for_Tegra/rootfs
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>sudo tar -xf ~/Downloads/Tegra_Linux_Sample-Root-Filesystem_R35.3.1_aarch64.tbz2 -C ~/XavierNX/Linux_for_Tegra/rootfs/
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>sudo ./apply_binaries.sh
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>sudo tar xpf ~/Downloads/Tegra_Linux_Sample-Root-Filesystem_R35.4.1_aarch64.tbz2 -C ~/XavierNX/Linux_for_Tegra/rootfs/
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>cd ~/XavierNX/Linux_for_Tegra
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>sudo ./apply_binaries.sh
 </code></pre></div></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Before “apply_binaries.sh” is run, the content in “Linux_for_Tegra/rootfs/” is purely Ubuntu. After “apply_binaries.sh” the “rootfs/” will contain NVIDIA content, e.g, drivers for the GPU and some firmware.</p>
 </div>
+<h3 id="create-the-default-user">Create the default user<a class="headerlink" href="#create-the-default-user" title="Permanent link">&para;</a></h3>
+<p>This step allows you to configure your username, password and hostname and also accept the license.
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>sudo tools/l4t_create_default_user.sh -u {USERNAME} -p {PASSWORD} -a -n {HOSTNAME} --accept-license
+</code></pre></div></p>
 <h3 id="get-the-echopilot-dtb-and-extlinuxconf-files">Get the EchoPilot .dtb and extlinux.conf files<a class="headerlink" href="#get-the-echopilot-dtb-and-extlinuxconf-files" title="Permanent link">&para;</a></h3>
 <p>The files you will need to replace include the device tree binary (.dtb) and extlinux.conf files. These files can be obtained from the repository <a href="https://github.com/EchoMAV/echopilot_ai_bsp">https://github.com/EchoMAV/echopilot_ai_bsp</a>. Use the steps below to clone and install these files:</p>
 <p>Clone the files:
