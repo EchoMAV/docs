@@ -1,12 +1,13 @@
-# Compiling L4T for the Jetson Orin NX on the EchoPilot AI
+# Compiling L4T for the Jetson Orin NX and Orin Nano on the EchoPilot AI
 
 ## Instructions for customizing the device tree and compiling the kernel for the Orin NX on EchoPilot AI
 
-When a Jetson Orin NX module is included with an EchoPilot AI purchase, it is flashed with a custom Linux for Tegra (L4T) image which includes support for the hardware configuration of the EchoPilot AI. If you wish to build/update the kernel for use with the EchoPilot AI, the instructions below will provide the information and files you need to ensure your custom image remains fully compatible with the EchoPilot AI hardware. When compared to a standard Nvidia development carrier board, the primary differences in the EchoPilot AI hardware are:
+When a Jetson Orin NX or Orin Nano module is included with an EchoPilot AI purchase, it is flashed with a custom Linux for Tegra (L4T) image which includes support for the hardware configuration of the EchoPilot AI. If you wish to build/update the kernel for use with the EchoPilot AI, the instructions below will provide the information and files you need to ensure your custom image remains fully compatible with the EchoPilot AI hardware. When compared to a standard Nvidia development carrier board, the primary differences in the EchoPilot AI hardware are summarized below. In the build steps below you will be applying a customized DTB file which applies these fixes:
 
-1. The EchoPilot AI is functionally similar to an Nvidia Xavier NX (P3509) development kit board, with a few exceptions. One is that the EchoPilot AI does not have the EEPROM on board which Nvidia carrier boards use for internal board id storage. (EchoPilot AI does have an AT24CS01-STUM unique ID EEPROM at I2C 0x58 on the Jetson I2C bus.)
-
-We can therefore do a small patch to the device tree source files to stop L4T from trying to read this EEPROM and otherwise use the standard device tree for the P3509 carrier.
+The EchoPilot AI is functionally similar to an Nvidia Xavier NX (P3509) development kit board, with a few exceptions. 
+- The EchoPilot AI does not have the EEPROM on board which Nvidia carrier boards use for internal board id storage. (EchoPilot AI does have an AT24CS01-STUM unique ID EEPROM at I2C 0x58 on the Jetson I2C bus.). 
+- As of L4T 35.4.1, the display(hdmi) must be disabled as the EchoPilot AI is headless, otherwise the OS will not fully boot.
+- By default, the serial port routed to the Iridium connector (J10) is disabled. Our custom dtb enables it.
 
 !!! WARNING
     
@@ -16,7 +17,7 @@ We can therefore do a small patch to the device tree source files to stop L4T fr
 What you will doing:
 
 1. Download and setup the necessary files
-2. Replace a .dts file 
+2. Replace a .dtb file 
 3. Generate the image and flash the device
 
 So buckle up and let's get started.
@@ -40,23 +41,14 @@ The files to download are highlighted in blue below:
 
 ```
 mkdir -p ~/Orin
-tar -xf ~/Downloads/jetson_linux_R35.4.1_aarch64.tbz2 -C ~/Orin
+tar xpf ~/Downloads/Jetson_linux_R35.4.1_aarch64.tbz2 -C ~/Orin
 ```
-#### Extract kernel sources (Driver Package (BSP) Sources)
-In the public_sources.tbz2 (BSP sources) zip file, there will be many other zipped files inside, but we are only interested in kernel_src.tbz2. Extract this file into a folder to named `sources` within the `Linux_for_Tegra` folder. The steps are:
-```
-mkdir ~/Downloads/temp
-tar -xf ~/Downloads/public_sources.tbz2 -C ~/Downloads/temp
-mkdir ~/Orin/Linux_for_Tegra/sources
-sudo tar -xf ~/Downloads/temp/Linux_for_Tegra/source/public/kernel_src.tbz2 -C ~/Orin/Linux_for_Tegra/sources
-cd ~/Orin/Linux_for_Tegra
-sudo ./source_sync.sh -t tegra-l4t-r35.4.1
-```
+
 #### Extract sample Root File System  (Sample Root Filesystem)
 Extract contents into Linux_for_Tegra/rootfs/. 
 ```
-mkdir ~/Orin/Linux_for_Tegra/rootfs
-sudo tar -xf ~/Downloads/tegra_linux_sample-root-filesystem_R35.4.1_aarch64.tbz2 -C ~/Orin/Linux_for_Tegra/rootfs/
+sudo tar xpf ~/Downloads/tegra_linux_sample-root-filesystem_R35.4.1_aarch64.tbz2 -C ~/Orin/Linux_for_Tegra/rootfs/
+cd ~Orin/Linux_for_Tegra
 sudo ./apply_binaries.sh
 ```
 !!! note
@@ -64,7 +56,7 @@ sudo ./apply_binaries.sh
 
 ### Get the EchoPilot .dts file
 
-The file you will need to replace is a device tree source (.dts) file. This files can be obtained from the echopilot_ai_bsp repository [https://github.com/EchoMAV/echopilot_ai_bsp](https://github.com/EchoMAV/echopilot_ai_bsp). Use the steps below to clone this repo and install this file:
+The file you will need to replace is a device tree source (.dts) file. This files can be obtained from the echopilot_ai_bsp repository [https://github.com/EchoMAV/echopilot_ai_bsp](https://github.com/EchoMAV/echopilot_ai_bsp). Use the steps below to clone this repo and install this file using the providing installation script:
 
 Clone the repo:
 ```
@@ -72,7 +64,7 @@ cd ~
 git clone https://github.com/EchoMAV/echopilot_ai_bsp
 cd echopilot_ai_bsp
 ```
-Checkout the appropriate branch for your EchoPilot AI board revision. For example, EchoPilot AI Rev1 hardware:
+Checkout the appropriate branch for your EchoPilot AI board revision. For example, EchoPilot AI Rev1A hardware:
 ```
 git checkout board_revision_1a
 ```
@@ -81,6 +73,13 @@ Run the install script to copy the dts file into your Linux_for_Tegra folder. Th
 sudo ./install_l4t_orin.sh ~/Orin/Linux_for_Tegra/
 ```
 Ensure this script completes with no errors before proceeding with flashing.
+
+### Create the default user
+
+This step allows you to configure your username, password and hostname and also accept the license.
+```
+sudo tools/l4t_create_default_user.sh -u {USERNAME} -p {PASSWORD} -a -n {HOSTNAME} --accept-license
+```
 
 ### Flash device
 !!! important

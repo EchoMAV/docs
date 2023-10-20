@@ -15,7 +15,7 @@ nav:
             - Building PX4: build_px4.md
             - Building ArduPilot: build_ardupilot.md
         - Building Nvidia Linux for Tegra:
-            - Building L4T (Orin NX): compile_l4t_orin.md
+            - Building L4T (Orin NX and Orin Nano): compile_l4t_orin.md
             - Building L4T (Xavier NX): compile_l4t.md
             - Building L4T (Nano): compile_l4t_nano.md
 theme:
