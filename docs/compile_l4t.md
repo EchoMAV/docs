@@ -6,7 +6,7 @@ When a Jetson Xavier NX module is included with an EchoPilot AI purchase, it is 
 
 1. The EchoPilot AI does not have an I2C HDMI controller
 
-To minimize console errors due to (1) which would otherwise be present if , the kernel must be compiled from source and flashed to the Xavier NX using the Debug USB port and recovery mode. It is not possible to update only the dtb files because the pinmux changes require a full flash. The following instructions will walk you through the process.
+To minimize console errors due to (1) which would otherwise be present, the kernel must be compiled from source and flashed to the Xavier NX using the Debug USB port and recovery mode. It is not possible to update only the dtb files because the pinmux changes require a full flash. The following instructions will walk you through the process.
 
 !!! WARNING
     
@@ -21,8 +21,6 @@ What you will doing:
 3. Generate the image and flash the device
 
 So buckle up and let's get started.
-
-> _These instructions are adapted from the the excellent document by Hao Ye availabe on [medium.com](https://medium.com/@haoye94/editing-device-tree-and-compiling-kernel-for-nvidia-jetson-xavier-nx-11a1df20939c) along with documentation pulled from Nvidia's forums. Some minor changes are include from Hao Ye's document, most likely as it was created for an older L4T release (32.6.1)._
 
 ### Download and Setup Necessary Files
 
@@ -41,27 +39,25 @@ The instructions below assume that the downloaded files are downloaded to the `~
 
 ```
 mkdir -p ~/XavierNX
-tar -xf ~/Downloads/Jetson_Linux_R35.3.1_aarch64.tbz2 -C ~/XavierNX
+tar xpf ~/Downloads/Jetson_Linux_R35.4.1_aarch64.tbz2 -C ~/XavierNX
 ```
-#### Extract kernel sources (Driver Package (BSP) Sources)
-In the public_sources.tbz2 (BSP sources) zip file, there will be many other zipped files inside, but we are only interested in kernel_src.tbz2. Extract this file into a folder to named `sources` within the `Linux_for_Tegra` folder. The steps are:
-```
-mkdir ~/Downloads/temp
-tar -xf ~/Downloads/public_sources.tbz2 -C ~/Downloads/temp
-mkdir ~/XavierNX/Linux_for_Tegra/sources
-sudo tar -xf ~/Downloads/temp/Linux_for_Tegra/source/public/kernel_src.tbz2 -C ~/XavierNX/Linux_for_Tegra/sources
-cd ~/Nano/Linux_for_Tegra
-sudo ./source_sync.sh -t tegra-l4t-r35.3.1   # Change the tag to the same version you are building
-```
+
 #### Extract sample Root File System  (Sample Root Filesystem)
 Extract contents into Linux_for_Tegra/rootfs/. Note the filename below will be different if you downloaded a different version.
 ```
-mkdir ~/XavierNX/Linux_for_Tegra/rootfs
-sudo tar -xf ~/Downloads/Tegra_Linux_Sample-Root-Filesystem_R35.3.1_aarch64.tbz2 -C ~/XavierNX/Linux_for_Tegra/rootfs/
+sudo tar xpf ~/Downloads/Tegra_Linux_Sample-Root-Filesystem_R35.4.1_aarch64.tbz2 -C ~/XavierNX/Linux_for_Tegra/rootfs/
+cd ~/XavierNX/Linux_for_Tegra
 sudo ./apply_binaries.sh
 ```
 !!! note
     Before “apply_binaries.sh” is run, the content in “Linux_for_Tegra/rootfs/” is purely Ubuntu. After “apply_binaries.sh” the “rootfs/” will contain NVIDIA content, e.g, drivers for the GPU and some firmware.
+
+### Create the default user
+
+This step allows you to configure your username, password and hostname and also accept the license.
+```
+sudo tools/l4t_create_default_user.sh -u {USERNAME} -p {PASSWORD} -a -n {HOSTNAME} --accept-license
+```
     
 ### Get the EchoPilot .dtb and extlinux.conf files
 
