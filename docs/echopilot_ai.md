@@ -469,6 +469,37 @@ FMU CAN1       | R19         |  Near U4 and U45, size 0402
 FMU CAN2        | R9         |  Near U3, size 0402
 JETSON CAN1 | R95         |  Near U32, size 0402  
 
+## Analog Input to the FMU (Voltage/Current Sense)
+
+The EchoPilot AI FMU design provides 6 analog inputs to the STM32H743. Most often, these are used for voltage/current input for the battery systems onboard an uncrewed system. The Analog input pin mapping for each input is shown below. To use these inputs, change the parameters in ArduPilot or PX4 to the appropriate pins.
+
+Input Name  | Carrier Board Connector | STM32H743 Pin | ArduPilot/PX4 Virtual Pin          
+------------ | ------------- | ------------
+Voltage Sense 1        | J13.2  | PA0  | 16       
+Current Sense 1        | J13.3  | PA1  | 17     
+Voltage Sense 2 | J13.4   | PA2 | 14
+Current Sense 2 | J13.5   | PA3 | 15
+Spare ADC 1  | J13.6   | PC4  |  4
+Spare ADC 2 | J13.7   | PA4  |  18
+
+### ArduPilot Setup for Voltage/Current
+
+Parameter   | Value           
+------------ | ------------- 
+BATT_VOLT_PIN       | 16         
+BATT_CURR_PIN        | 17        
+BATT2_VOLT_PIN | 14         
+BATT2_CURR_PIN | 15
+
+### PX4 Setup for Voltage/Current
+
+Parameter   | Value           
+------------ | ------------- 
+BAT1_V_CHANNEL       | 16         
+BAT1_I_CHANNEL        | 17        
+BAT2_V_CHANNEL | 14         
+BAT2_I_CHANNEL | 15
+
 ## Remote ID Subsystem
 
 The Remote ID system is based on an ESP32-C3 and is designed to work with the [ArduRemoteID](https://github.com/ArduPilot/ArduRemoteID) project and Open Drone ID standards.

@@ -11,7 +11,7 @@ The EchoPilot AI is functionally similar to an Nvidia Xavier NX (P3509) developm
 
 !!! WARNING
     
-    These instructions were developed and tested on Ubuntu 20.04 LTS (with a Windows machine used for the Excel pinmux change). We recommend using a *physical* machine running Ubuntu 20.04 LTS.
+    These instructions were developed and tested on Ubuntu 20.04 LTS. We recommend using a *physical* machine running Ubuntu 20.04 LTS.
 
     
 What you will doing:
