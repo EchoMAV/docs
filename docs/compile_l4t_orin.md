@@ -54,9 +54,9 @@ sudo ./apply_binaries.sh
 !!! note
     Before “apply_binaries.sh” is run, the content in “Linux_for_Tegra/rootfs/” is purely Ubuntu. After “apply_binaries.sh” the “rootfs/” will contain NVIDIA content, e.g, drivers for the GPU and some firmware.
 
-### Get the EchoPilot .dts file
+### Get the EchoPilot .dtb file
 
-The file you will need to replace is a device tree source (.dts) file. This files can be obtained from the echopilot_ai_bsp repository [https://github.com/EchoMAV/echopilot_ai_bsp](https://github.com/EchoMAV/echopilot_ai_bsp). Use the steps below to clone this repo and install this file using the providing installation script:
+The file you will need to replace is a device tree binary (.dtb) file. This file can be obtained from the echopilot_ai_bsp repository [https://github.com/EchoMAV/echopilot_ai_bsp](https://github.com/EchoMAV/echopilot_ai_bsp). Use the steps below to clone this repo and install this file using the providing installation script:
 
 Clone the repo:
 ```
