@@ -20,7 +20,7 @@
     
     
       
-        <title>Building L4T (Orin NX) - EchoPilot AI Documentation</title>
+        <title>Building L4T (Orin NX and Orin Nano) - EchoPilot AI Documentation</title>
       
     
     
@@ -73,7 +73,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#compiling-l4t-for-the-jetson-orin-nx-on-the-echopilot-ai" class="md-skip">
+        <a href="#compiling-l4t-for-the-jetson-orin-nx-and-orin-nano-on-the-echopilot-ai" class="md-skip">
           Skip to content
         </a>
       
@@ -124,7 +124,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Building L4T (Orin NX)
+              Building L4T (Orin NX and Orin Nano)
             
           </span>
         </div>
@@ -636,7 +636,7 @@
           
   
   <span class="md-ellipsis">
-    Building L4T (Orin NX)
+    Building L4T (Orin NX and Orin Nano)
   </span>
   
 
@@ -647,7 +647,7 @@
         
   
   <span class="md-ellipsis">
-    Building L4T (Orin NX)
+    Building L4T (Orin NX and Orin Nano)
   </span>
   
 
@@ -692,13 +692,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#extract-kernel-sources-driver-package-bsp-sources" class="md-nav__link">
-    Extract kernel sources (Driver Package (BSP) Sources)
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#extract-sample-root-file-system-sample-root-filesystem" class="md-nav__link">
     Extract sample Root File System  (Sample Root Filesystem)
   </a>
@@ -713,6 +706,13 @@
           <li class="md-nav__item">
   <a href="#get-the-echopilot-dts-file" class="md-nav__link">
     Get the EchoPilot .dts file
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-the-default-user" class="md-nav__link">
+    Create the default user
   </a>
   
 </li>
@@ -843,13 +843,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#extract-kernel-sources-driver-package-bsp-sources" class="md-nav__link">
-    Extract kernel sources (Driver Package (BSP) Sources)
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#extract-sample-root-file-system-sample-root-filesystem" class="md-nav__link">
     Extract sample Root File System  (Sample Root Filesystem)
   </a>
@@ -864,6 +857,13 @@
           <li class="md-nav__item">
   <a href="#get-the-echopilot-dts-file" class="md-nav__link">
     Get the EchoPilot .dts file
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-the-default-user" class="md-nav__link">
+    Create the default user
   </a>
   
 </li>
@@ -911,13 +911,13 @@
   
 
 
-<h1 id="compiling-l4t-for-the-jetson-orin-nx-on-the-echopilot-ai">Compiling L4T for the Jetson Orin NX on the EchoPilot AI<a class="headerlink" href="#compiling-l4t-for-the-jetson-orin-nx-on-the-echopilot-ai" title="Permanent link">&para;</a></h1>
+<h1 id="compiling-l4t-for-the-jetson-orin-nx-and-orin-nano-on-the-echopilot-ai">Compiling L4T for the Jetson Orin NX and Orin Nano on the EchoPilot AI<a class="headerlink" href="#compiling-l4t-for-the-jetson-orin-nx-and-orin-nano-on-the-echopilot-ai" title="Permanent link">&para;</a></h1>
 <h2 id="instructions-for-customizing-the-device-tree-and-compiling-the-kernel-for-the-orin-nx-on-echopilot-ai">Instructions for customizing the device tree and compiling the kernel for the Orin NX on EchoPilot AI<a class="headerlink" href="#instructions-for-customizing-the-device-tree-and-compiling-the-kernel-for-the-orin-nx-on-echopilot-ai" title="Permanent link">&para;</a></h2>
-<p>When a Jetson Orin NX module is included with an EchoPilot AI purchase, it is flashed with a custom Linux for Tegra (L4T) image which includes support for the hardware configuration of the EchoPilot AI. If you wish to build/update the kernel for use with the EchoPilot AI, the instructions below will provide the information and files you need to ensure your custom image remains fully compatible with the EchoPilot AI hardware. When compared to a standard Nvidia development carrier board, the primary differences in the EchoPilot AI hardware are:</p>
-<ol>
-<li>The EchoPilot AI is functionally similar to an Nvidia Xavier NX (P3509) development kit board, with a few exceptions. One is that the EchoPilot AI does not have the EEPROM on board which Nvidia carrier boards use for internal board id storage. (EchoPilot AI does have an AT24CS01-STUM unique ID EEPROM at I2C 0x58 on the Jetson I2C bus.)</li>
-</ol>
-<p>We can therefore do a small patch to the device tree source files to stop L4T from trying to read this EEPROM and otherwise use the standard device tree for the P3509 carrier.</p>
+<p>When a Jetson Orin NX or Orin Nano module is included with an EchoPilot AI purchase, it is flashed with a custom Linux for Tegra (L4T) image which includes support for the hardware configuration of the EchoPilot AI. If you wish to build/update the kernel for use with the EchoPilot AI, the instructions below will provide the information and files you need to ensure your custom image remains fully compatible with the EchoPilot AI hardware. When compared to a standard Nvidia development carrier board, the primary differences in the EchoPilot AI hardware are summarized below. In the build steps below you will be applying a customized DTB file which applies these fixes:</p>
+<p>The EchoPilot AI is functionally similar to an Nvidia Xavier NX (P3509) development kit board, with a few exceptions. 
+- The EchoPilot AI does not have the EEPROM on board which Nvidia carrier boards use for internal board id storage. (EchoPilot AI does have an AT24CS01-STUM unique ID EEPROM at I2C 0x58 on the Jetson I2C bus.). 
+- As of L4T 35.4.1, the display(hdmi) must be disabled as the EchoPilot AI is headless, otherwise the OS will not fully boot.
+- By default, the serial port routed to the Iridium connector (J10) is disabled. Our custom dtb enables it.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>These instructions were developed and tested on Ubuntu 20.04 LTS (with a Windows machine used for the Excel pinmux change). We recommend using a <em>physical</em> machine running Ubuntu 20.04 LTS.</p>
@@ -925,7 +925,7 @@
 <p>What you will doing:</p>
 <ol>
 <li>Download and setup the necessary files</li>
-<li>Replace a .dts file </li>
+<li>Replace a .dtb file </li>
 <li>Generate the image and flash the device</li>
 </ol>
 <p>So buckle up and let's get started.</p>
@@ -946,41 +946,36 @@ Next you will need to download three packages from Nvidia: <a href="https://deve
 <p>Note: the filename below will be different if you download a different version.</p>
 </blockquote>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>mkdir -p ~/Orin
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>tar -xf ~/Downloads/jetson_linux_R35.4.1_aarch64.tbz2 -C ~/Orin
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>tar xpf ~/Downloads/Jetson_linux_R35.4.1_aarch64.tbz2 -C ~/Orin
 </code></pre></div>
-<h4 id="extract-kernel-sources-driver-package-bsp-sources">Extract kernel sources (Driver Package (BSP) Sources)<a class="headerlink" href="#extract-kernel-sources-driver-package-bsp-sources" title="Permanent link">&para;</a></h4>
-<p>In the public_sources.tbz2 (BSP sources) zip file, there will be many other zipped files inside, but we are only interested in kernel_src.tbz2. Extract this file into a folder to named <code>sources</code> within the <code>Linux_for_Tegra</code> folder. The steps are:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>mkdir ~/Downloads/temp
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>tar -xf ~/Downloads/public_sources.tbz2 -C ~/Downloads/temp
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>mkdir ~/Orin/Linux_for_Tegra/sources
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>sudo tar -xf ~/Downloads/temp/Linux_for_Tegra/source/public/kernel_src.tbz2 -C ~/Orin/Linux_for_Tegra/sources
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>cd ~/Orin/Linux_for_Tegra
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>sudo ./source_sync.sh -t tegra-l4t-r35.4.1
-</code></pre></div></p>
 <h4 id="extract-sample-root-file-system-sample-root-filesystem">Extract sample Root File System  (Sample Root Filesystem)<a class="headerlink" href="#extract-sample-root-file-system-sample-root-filesystem" title="Permanent link">&para;</a></h4>
 <p>Extract contents into Linux_for_Tegra/rootfs/. 
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>mkdir ~/Orin/Linux_for_Tegra/rootfs
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>sudo tar -xf ~/Downloads/tegra_linux_sample-root-filesystem_R35.4.1_aarch64.tbz2 -C ~/Orin/Linux_for_Tegra/rootfs/
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>sudo ./apply_binaries.sh
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>sudo tar xpf ~/Downloads/tegra_linux_sample-root-filesystem_R35.4.1_aarch64.tbz2 -C ~/Orin/Linux_for_Tegra/rootfs/
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>cd ~Orin/Linux_for_Tegra
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>sudo ./apply_binaries.sh
 </code></pre></div></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Before “apply_binaries.sh” is run, the content in “Linux_for_Tegra/rootfs/” is purely Ubuntu. After “apply_binaries.sh” the “rootfs/” will contain NVIDIA content, e.g, drivers for the GPU and some firmware.</p>
 </div>
 <h3 id="get-the-echopilot-dts-file">Get the EchoPilot .dts file<a class="headerlink" href="#get-the-echopilot-dts-file" title="Permanent link">&para;</a></h3>
-<p>The file you will need to replace is a device tree source (.dts) file. This files can be obtained from the echopilot_ai_bsp repository <a href="https://github.com/EchoMAV/echopilot_ai_bsp">https://github.com/EchoMAV/echopilot_ai_bsp</a>. Use the steps below to clone this repo and install this file:</p>
+<p>The file you will need to replace is a device tree source (.dts) file. This files can be obtained from the echopilot_ai_bsp repository <a href="https://github.com/EchoMAV/echopilot_ai_bsp">https://github.com/EchoMAV/echopilot_ai_bsp</a>. Use the steps below to clone this repo and install this file using the providing installation script:</p>
 <p>Clone the repo:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>cd ~
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>git clone https://github.com/EchoMAV/echopilot_ai_bsp
-<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>cd echopilot_ai_bsp
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>cd ~
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>git clone https://github.com/EchoMAV/echopilot_ai_bsp
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>cd echopilot_ai_bsp
 </code></pre></div>
-Checkout the appropriate branch for your EchoPilot AI board revision. For example, EchoPilot AI Rev1 hardware:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>git checkout board_revision_1a
+Checkout the appropriate branch for your EchoPilot AI board revision. For example, EchoPilot AI Rev1A hardware:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>git checkout board_revision_1a
 </code></pre></div>
 Run the install script to copy the dts file into your Linux_for_Tegra folder. The usage is <code>./install_l4t_orin.sh [Path to Linux_for_Tegra]</code>, e.g.:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>sudo ./install_l4t_orin.sh ~/Orin/Linux_for_Tegra/
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>sudo ./install_l4t_orin.sh ~/Orin/Linux_for_Tegra/
 </code></pre></div>
 Ensure this script completes with no errors before proceeding with flashing.</p>
+<h3 id="create-the-default-user">Create the default user<a class="headerlink" href="#create-the-default-user" title="Permanent link">&para;</a></h3>
+<p>This step allows you to configure your username, password and hostname and also accept the license.
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>sudo tools/l4t_create_default_user.sh -u {USERNAME} -p {PASSWORD} -a -n {HOSTNAME} --accept-license
+</code></pre></div></p>
 <h3 id="flash-device">Flash device<a class="headerlink" href="#flash-device" title="Permanent link">&para;</a></h3>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
