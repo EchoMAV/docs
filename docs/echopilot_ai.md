@@ -89,7 +89,9 @@ sudo systemctl restart mavlink-router
 
 ## EchoPilot IP Addressing
 
-__The EchoPilot AI will be labeled from the factory with a static IP address in the 10.223.0.0/16 subnet such as 10.223.134.126 (example only)__. The IP address is calculated from the Jetson's `eth0` interface MAC address. If the IP address is 10.223.x.y and the MAC address is 00:30:1A:4E:A4:3E, the x is equal to the decimal value of 0xA4, or 164, and y is equal to the decimal value of 0x3E, or 62. The full IP address is therefore 10.223.164.62/16. This IP address is printed on the label.
+__The EchoPilot AI will be labeled from the factory with a static IP address in the 10.223.0.0/16 subnet such as 10.223.134.126 (for example). If you do not know the IP address, you may be able to access the system using the backdoor/alias IP of 192.168.154.0/24__. 
+
+Using EchoMAV's software stack, the system's static IP address is calculated using the last two octets of the Jetson's `eth0` interface MAC address with a netmask of 255.255.0.0 (/16). For example, given the MAC address of 00:30:1A:4E:A4:3E, the last two octets 0xA4 and 0x3E are onverted from hex to decimal and then assigned as the last two octets of the IP address. In this example, this MAC address would correspond to 10.223.164.62/16 because 0xA4 = 164 and 0x3E = 62. This IP address is printed on the label from the factory.
 
 To access the Jetson module using IP, first set up your host computer to have a static IP address in the 10.223.0.0/16 subnet with any IP address OTHER than the address of the EchoPilot AI.
 !!! info
@@ -125,7 +127,7 @@ To access the Jetson module using IP, first set up your host computer to have a 
     $ nmcli con up enp43s0
     ```
 !!! note
-    *If you do not know the IP address of your system, you can use the configuration IP "backdoor" alias of __192.168.154.0/24__ to access the system. Ensure your host system is in the 192.168.0.0/24 subnet (any valid IP address __not equal__ to 192.168.154.0 will work). Please refer to the instructions above for how to change your host IP address.
+    If you do not know the IP address of your system, you can use the configuration IP "backdoor" alias of __192.168.154.0/24__ to access the system. Ensure your host system is in the 192.168.0.0/24 subnet (any valid IP address __not equal__ to 192.168.154.0 will work). Please refer to the instructions above for how to change your host IP address.
 
 
 ## Board Components and Connectors
