@@ -1287,9 +1287,9 @@
 <strong>Mission Planner:</strong> Select the appropriate COM port at the top right, 115200, then click CONNECT.</p>
 </div>
 <h3 id="streaming-telemetry-over-the-network">Streaming telemetry over the network<a class="headerlink" href="#streaming-telemetry-over-the-network" title="Permanent link">&para;</a></h3>
-<p>As of September, 2023, EchoMAV is provisioning Jetson hardware with a default software configuration which includes setting the Jetson to a static IP address and configuring <a href="https://github.com/EchoMAV/mavlink-router">mavlink-router</a> to stream telemetry from the autopilot to 10.223.1.10:14550 over UDP. If you have an earlier release, you can clone and run <code>make</code> per the instructions <a href="https://github.com/EchoMAV/mavlink-router">here</a>. The rest of the instructions below assume the Jetson module installed in your EchoPilot AI hardware has been provisioned using our standard mavlink-router setup which includes assigning the Jetson a static IP address.</p>
+<p>As of September, 2023, EchoMAV is provisioning Jetson hardware with software which includes setting the Jetson to a static IP address, installing a web UI and configuring <a href="https://github.com/EchoMAV/mavlink-router">mavlink-router</a> to stream telemetry from the autopilot to 10.223.1.10:14550 over UDP. If you have an earlier release or flash your own image, you can install the default software using the instructions <a href="https://github.com/EchoMAV/echopilot_deploy">here</a>. The rest of the instructions below assume the Jetson module installed in your EchoPilot AI hardware has been provisioned using our software installation.</p>
 <p>Default telemetry will stream to <code>10.223.1.10</code> using UDP (client mode) port 14550. This will allow automatic connection to common Ground Control Stations including QGroundControl and Mission Planner. For this to work, your host computer must be set to <code>10.223.1.10</code> and the EchoPilot AI must have a <a href="#configure-the-network">network connection</a> between one of the Ethenret ports and the host computer</p>
-<p>The UDP endpoint can be changed by first <a href="#accessing-the-jetson-via-the-console">gaining console access</a> and editing <code>\etc\mavlink-router\main.conf</code>. For example:</p>
+<p>The telemetry endpoint can be easily changed by using the web UI at https://{IP_ADDRESS} (the recommendeded way), or more advanced users can use the command line by first <a href="#accessing-the-jetson-via-the-console">gaining console access</a> and then editing <code>\etc\mavlink-router\main.conf</code>. For example:</p>
 <p><div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>[UdpEndpoint alpha]
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>Mode = Normal
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>Address = 10.223.1.10  #change to target IP address
@@ -1328,10 +1328,10 @@ Note that your device will likely lose internet access unless you happen to have
 <a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>$ nmcli con up enp43s0
 </code></pre></div></p>
 </div>
-<p>If you do not know the IP address of your system, you can use the configuration IP alias of 192.168.154.0/24 to access the system.</p>
-<ol>
-<li>First change the IP address of your host system to 192.168.153.10/24 (any valid IP address in the 192.168.153.0/24 subnet <strong>not equal</strong> to 192.168.154.0 will work). The method to do so varies depending on the OS, please refer to the instructions above.</li>
-</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>*If you do not know the IP address of your system, you can use the configuration IP "backdoor" alias of <strong>192.168.154.0/24</strong> to access the system. Ensure your host system is in the 192.168.0.0/24 subnet (any valid IP address <strong>not equal</strong> to 192.168.154.0 will work). Please refer to the instructions above for how to change your host IP address.</p>
+</div>
 <h2 id="board-components-and-connectors">Board Components and Connectors<a class="headerlink" href="#board-components-and-connectors" title="Permanent link">&para;</a></h2>
 <h3 id="echopilot-ai-mainboard">EchoPilot AI Mainboard<a class="headerlink" href="#echopilot-ai-mainboard" title="Permanent link">&para;</a></h3>
 <p><img alt="Top Side Components" src="../assets/top-side-labels.png" /></p>
