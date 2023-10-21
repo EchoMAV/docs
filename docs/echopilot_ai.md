@@ -70,11 +70,11 @@ You should now see the boot messages in your console, and once boot is complete,
 
 ### Streaming telemetry over the network
 
-As of September, 2023, EchoMAV is provisioning Jetson hardware with a default software configuration which includes setting the Jetson to a static IP address and configuring [mavlink-router](https://github.com/EchoMAV/mavlink-router) to stream telemetry from the autopilot to 10.223.1.10:14550 over UDP. If you have an earlier release, you can clone and run `make` per the instructions [here](https://github.com/EchoMAV/mavlink-router). The rest of the instructions below assume the Jetson module installed in your EchoPilot AI hardware has been provisioned using our standard mavlink-router setup which includes assigning the Jetson a static IP address.
+As of September, 2023, EchoMAV is provisioning Jetson hardware with software which includes setting the Jetson to a static IP address, installing a web UI and configuring [mavlink-router](https://github.com/EchoMAV/mavlink-router) to stream telemetry from the autopilot to 10.223.1.10:14550 over UDP. If you have an earlier release or flash your own image, you can install the default software using the instructions [here](https://github.com/EchoMAV/echopilot_deploy). The rest of the instructions below assume the Jetson module installed in your EchoPilot AI hardware has been provisioned using our software installation.
 
 Default telemetry will stream to `10.223.1.10` using UDP (client mode) port 14550. This will allow automatic connection to common Ground Control Stations including QGroundControl and Mission Planner. For this to work, your host computer must be set to `10.223.1.10` and the EchoPilot AI must have a [network connection](#configure-the-network) between one of the Ethenret ports and the host computer
 
-The UDP endpoint can be changed by first [gaining console access](#accessing-the-jetson-via-the-console) and editing `\etc\mavlink-router\main.conf`. For example:
+The telemetry endpoint can be easily changed by using the web UI at https://{IP_ADDRESS} (the recommendeded way), or more advanced users can use the command line by first [gaining console access](#accessing-the-jetson-via-the-console) and then editing `\etc\mavlink-router\main.conf`. For example:
 
 ```
 [UdpEndpoint alpha]
@@ -124,10 +124,8 @@ To access the Jetson module using IP, first set up your host computer to have a 
     $ nmcli con down static-eth
     $ nmcli con up enp43s0
     ```
-
-If you do not know the IP address of your system, you can use the configuration IP alias of 192.168.154.0/24 to access the system.
-
-1. First change the IP address of your host system to 192.168.153.10/24 (any valid IP address in the 192.168.153.0/24 subnet __not equal__ to 192.168.154.0 will work). The method to do so varies depending on the OS, please refer to the instructions above.
+!!! note
+    *If you do not know the IP address of your system, you can use the configuration IP "backdoor" alias of __192.168.154.0/24__ to access the system. Ensure your host system is in the 192.168.0.0/24 subnet (any valid IP address __not equal__ to 192.168.154.0 will work). Please refer to the instructions above for how to change your host IP address.
 
 
 ## Board Components and Connectors
