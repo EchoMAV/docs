@@ -52,7 +52,7 @@ cd ~/Orin/Linux_for_Tegra
 sudo ./apply_binaries.sh
 ```
 !!! note
-    Before “apply_binaries.sh” is run, the content in “Linux_for_Tegra/rootfs/” is purely Ubuntu. After “apply_binaries.sh” the “rootfs/” will contain NVIDIA content, e.g, drivers for the GPU and some firmware.
+    If `apply_binaries.sh` failes, you host computer may be missing some dependencies. Please make note of the missing packages and install them using `sudo apt-get install XXXXX`. Before `apply_binaries.sh`` is run, the content in “Linux_for_Tegra/rootfs/” is purely Ubuntu. After `apply_binaries.sh`,` the “rootfs/” will contain NVIDIA content, e.g, drivers for the GPU and some firmware.
 
 ### Get the EchoPilot .dtb file
 
