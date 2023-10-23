@@ -54,6 +54,13 @@ sudo ./apply_binaries.sh
 !!! note
     If `apply_binaries.sh` failes, you host computer may be missing some dependencies. Please make note of the missing packages and install them using `sudo apt-get install XXXXX`. Before `apply_binaries.sh`` is run, the content in “Linux_for_Tegra/rootfs/” is purely Ubuntu. After `apply_binaries.sh`,` the “rootfs/” will contain NVIDIA content, e.g, drivers for the GPU and some firmware.
 
+### Create the default user
+
+This step allows you to configure your username, password and hostname and also accept the license.
+```
+sudo tools/l4t_create_default_user.sh -u {USERNAME} -p {PASSWORD} -a -n {HOSTNAME} --accept-license
+```
+
 ### Get the EchoPilot .dtb file
 
 The file you will need to replace is a device tree binary (.dtb) file. This file can be obtained from the echopilot_ai_bsp repository [https://github.com/EchoMAV/echopilot_ai_bsp](https://github.com/EchoMAV/echopilot_ai_bsp). Use the steps below to clone this repo and install this file using the providing installation script:
@@ -73,13 +80,6 @@ Run the install script to copy the dts file into your Linux_for_Tegra folder. Th
 sudo ./install_l4t_orin.sh ~/Orin/Linux_for_Tegra/
 ```
 Ensure this script completes with no errors before proceeding with flashing.
-
-### Create the default user
-
-This step allows you to configure your username, password and hostname and also accept the license.
-```
-sudo tools/l4t_create_default_user.sh -u {USERNAME} -p {PASSWORD} -a -n {HOSTNAME} --accept-license
-```
 
 ### Flash device
 !!! important
