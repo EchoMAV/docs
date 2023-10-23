@@ -704,15 +704,15 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#get-the-echopilot-dtb-file" class="md-nav__link">
-    Get the EchoPilot .dtb file
+  <a href="#create-the-default-user" class="md-nav__link">
+    Create the default user
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#create-the-default-user" class="md-nav__link">
-    Create the default user
+  <a href="#get-the-echopilot-dtb-file" class="md-nav__link">
+    Get the EchoPilot .dtb file
   </a>
   
 </li>
@@ -855,15 +855,15 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#get-the-echopilot-dtb-file" class="md-nav__link">
-    Get the EchoPilot .dtb file
+  <a href="#create-the-default-user" class="md-nav__link">
+    Create the default user
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#create-the-default-user" class="md-nav__link">
-    Create the default user
+  <a href="#get-the-echopilot-dtb-file" class="md-nav__link">
+    Get the EchoPilot .dtb file
   </a>
   
 </li>
@@ -958,24 +958,24 @@ Next you will need to download three packages from Nvidia: <a href="https://deve
 <p class="admonition-title">Note</p>
 <p>If <code>apply_binaries.sh</code> failes, you host computer may be missing some dependencies. Please make note of the missing packages and install them using <code>sudo apt-get install XXXXX</code>. Before <code>apply_binaries.sh`` is run, the content in “Linux_for_Tegra/rootfs/” is purely Ubuntu. After</code>apply_binaries.sh<code>,</code> the “rootfs/” will contain NVIDIA content, e.g, drivers for the GPU and some firmware.</p>
 </div>
+<h3 id="create-the-default-user">Create the default user<a class="headerlink" href="#create-the-default-user" title="Permanent link">&para;</a></h3>
+<p>This step allows you to configure your username, password and hostname and also accept the license.
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>sudo tools/l4t_create_default_user.sh -u {USERNAME} -p {PASSWORD} -a -n {HOSTNAME} --accept-license
+</code></pre></div></p>
 <h3 id="get-the-echopilot-dtb-file">Get the EchoPilot .dtb file<a class="headerlink" href="#get-the-echopilot-dtb-file" title="Permanent link">&para;</a></h3>
 <p>The file you will need to replace is a device tree binary (.dtb) file. This file can be obtained from the echopilot_ai_bsp repository <a href="https://github.com/EchoMAV/echopilot_ai_bsp">https://github.com/EchoMAV/echopilot_ai_bsp</a>. Use the steps below to clone this repo and install this file using the providing installation script:</p>
 <p>Clone the repo:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>cd ~
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>git clone https://github.com/EchoMAV/echopilot_ai_bsp
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>cd echopilot_ai_bsp
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>cd ~
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>git clone https://github.com/EchoMAV/echopilot_ai_bsp
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>cd echopilot_ai_bsp
 </code></pre></div>
 Checkout the appropriate branch for your EchoPilot AI board revision. For example, EchoPilot AI Rev1A hardware:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>git checkout board_revision_1a
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>git checkout board_revision_1a
 </code></pre></div>
 Run the install script to copy the dts file into your Linux_for_Tegra folder. The usage is <code>./install_l4t_orin.sh [Path to Linux_for_Tegra]</code>, e.g.:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>sudo ./install_l4t_orin.sh ~/Orin/Linux_for_Tegra/
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>sudo ./install_l4t_orin.sh ~/Orin/Linux_for_Tegra/
 </code></pre></div>
 Ensure this script completes with no errors before proceeding with flashing.</p>
-<h3 id="create-the-default-user">Create the default user<a class="headerlink" href="#create-the-default-user" title="Permanent link">&para;</a></h3>
-<p>This step allows you to configure your username, password and hostname and also accept the license.
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>sudo tools/l4t_create_default_user.sh -u {USERNAME} -p {PASSWORD} -a -n {HOSTNAME} --accept-license
-</code></pre></div></p>
 <h3 id="flash-device">Flash device<a class="headerlink" href="#flash-device" title="Permanent link">&para;</a></h3>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
