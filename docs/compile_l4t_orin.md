@@ -41,14 +41,14 @@ The files to download are highlighted in blue below:
 
 ```
 mkdir -p ~/Orin
-tar xpf ~/Downloads/Jetson_linux_R35.4.1_aarch64.tbz2 -C ~/Orin
+tar xpf ~/Downloads/Jetson_Linux_R35.4.1_aarch64.tbz2 -C ~/Orin
 ```
 
 #### Extract sample Root File System  (Sample Root Filesystem)
 Extract contents into Linux_for_Tegra/rootfs/. 
 ```
-sudo tar xpf ~/Downloads/tegra_linux_sample-root-filesystem_R35.4.1_aarch64.tbz2 -C ~/Orin/Linux_for_Tegra/rootfs/
-cd ~Orin/Linux_for_Tegra
+sudo tar xpf ~/Downloads/Tegra_Linux_Sample-Root-Filesystem_R35.4.1_aarch64.tbz2 -C ~/Orin/Linux_for_Tegra/rootfs/
+cd ~/Orin/Linux_for_Tegra
 sudo ./apply_binaries.sh
 ```
 !!! note
