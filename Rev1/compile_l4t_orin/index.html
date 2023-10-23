@@ -956,7 +956,7 @@ Next you will need to download three packages from Nvidia: <a href="https://deve
 </code></pre></div></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Before “apply_binaries.sh” is run, the content in “Linux_for_Tegra/rootfs/” is purely Ubuntu. After “apply_binaries.sh” the “rootfs/” will contain NVIDIA content, e.g, drivers for the GPU and some firmware.</p>
+<p>If <code>apply_binaries.sh</code> failes, you host computer may be missing some dependencies. Please make note of the missing packages and install them using <code>sudo apt-get install XXXXX</code>. Before <code>apply_binaries.sh`` is run, the content in “Linux_for_Tegra/rootfs/” is purely Ubuntu. After</code>apply_binaries.sh<code>,</code> the “rootfs/” will contain NVIDIA content, e.g, drivers for the GPU and some firmware.</p>
 </div>
 <h3 id="get-the-echopilot-dtb-file">Get the EchoPilot .dtb file<a class="headerlink" href="#get-the-echopilot-dtb-file" title="Permanent link">&para;</a></h3>
 <p>The file you will need to replace is a device tree binary (.dtb) file. This file can be obtained from the echopilot_ai_bsp repository <a href="https://github.com/EchoMAV/echopilot_ai_bsp">https://github.com/EchoMAV/echopilot_ai_bsp</a>. Use the steps below to clone this repo and install this file using the providing installation script:</p>
