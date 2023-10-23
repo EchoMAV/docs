@@ -58,7 +58,7 @@ sudo ./apply_binaries.sh
 
 This step allows you to configure your username, password and hostname and also accept the license.
 ```
-sudo tools/l4t_create_default_user.sh -u {USERNAME} -p {PASSWORD} -a -n {HOSTNAME} --accept-license
+sudo tools/l4t_create_default_user.sh -u {USERNAME} -p {PASSWORD} -n {HOSTNAME} --accept-license
 ```
 
 ### Get the EchoPilot .dtb file
