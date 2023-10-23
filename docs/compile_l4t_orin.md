@@ -102,7 +102,9 @@ Ensure this script completes with no errors before proceeding with flashing.
 cd ~/Orin/Linux_for_Tegra/
 sudo ./tools/kernel_flash/l4t_initrd_flash.sh --external-device nvme0n1p1 -c tools/kernel_flash/flash_l4t_external.xml -p "-c bootloader/t186ref/cfg/flash_t234_qspi.xml" --showlogs --network usb0 p3509-a02+p3767-0000 internal
 ```
-
+!!! note
+    The first time you run this script, your system may be missing dependencies. The script will tell you what is missing, please install them using `sudo apt-get install XXXXXX`.
+    ```
 !!! note
     On our own host Linux systems, we have observed that the Nvidia script above may sometimes timeout due to a USB write error. This problem appears to be related to USB autosuspend. If you encounter similar errors, please try this command to disable autosuspend and then attempt flashing again.
     ```
