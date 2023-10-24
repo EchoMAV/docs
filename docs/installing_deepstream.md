@@ -4,7 +4,7 @@ NVIDIA® DeepStream Software Development Kit (SDK) is an accelerated AI framewor
 
 The CUDA Toolkit provides a development environment for creating high-performance GPU-accelerated applications.
 
-The instructions below show how to install both. 
+The instructions below show how to install both. These instructions were developed using a Jetson Orin NX with a 256 GB SSD, running L4T 35.4.1. In most cases, you will not be able to install this software without significant available storage space. E.g., an Xavier NX with only a 16 GB eMMC will not have enough storage space. We recommend adding a NVMe SSD before proceeding. 
 !!! note
     The instructions below assume that the EchoPilot AI has internet access and you are logged in to the console. Since EchoPilotAI Jetson hardware is provided with a static IP address, it is often simpler to enable DHCP and let the Jetson get internet through your LAN's router. To do this, you can use the nmcli commands to change the static-eth0 connection profile to auto/hdcp.
     ```
