@@ -810,7 +810,7 @@
       
         <li class="md-nav__item">
   <a href="#install-cuda-driver" class="md-nav__link">
-    Install Cuda driver
+    Install CUDA driver
   </a>
   
 </li>
@@ -923,7 +923,7 @@
       
         <li class="md-nav__item">
   <a href="#install-cuda-driver" class="md-nav__link">
-    Install Cuda driver
+    Install CUDA driver
   </a>
   
 </li>
@@ -1043,14 +1043,14 @@ When you are done and would like to return the IP config to static, use:
 <a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>sudo apt-get update
 <a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>sudo apt-get -y install cuda-toolkit-12-3
 </code></pre></div>
-<h3 id="install-cuda-driver">Install Cuda driver<a class="headerlink" href="#install-cuda-driver" title="Permanent link">&para;</a></h3>
+<h3 id="install-cuda-driver">Install CUDA driver<a class="headerlink" href="#install-cuda-driver" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>sudo apt-get install -y cuda-drivers
 </code></pre></div>
 <h3 id="boost-the-clocks">Boost the clocks<a class="headerlink" href="#boost-the-clocks" title="Permanent link">&para;</a></h3>
 <p><div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>sudo nvpmodel -m 8
-<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>$ sudo jetson_clocks
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>sudo jetson_clocks
 </code></pre></div>
-Now <em>Reboot</em> the system.</p>
+Now <strong>Reboot</strong> the system.</p>
 <h3 id="verify-functionality">Verify functionality<a class="headerlink" href="#verify-functionality" title="Permanent link">&para;</a></h3>
 <p>At this point, deepstream-app should run without errors:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>deepstream-app --help
