@@ -9,10 +9,8 @@
       
       
       
-        <link rel="prev" href="../echopilot_usba_pinout/">
+        <link rel="prev" href="../compile_l4t_nano/">
       
-      
-        <link rel="next" href="../build_ardupilot/">
       
       
       <link rel="icon" href="../assets/images/favicon.png">
@@ -20,7 +18,7 @@
     
     
       
-        <title>Building PX4 - EchoPilot AI Documentation</title>
+        <title>Installing DeepStream and CUDO - EchoPilot AI Documentation</title>
       
     
     
@@ -73,7 +71,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#building-and-loading-px4-firmware" class="md-skip">
+        <a href="#installing-deepstream-and-cuda-for-the-jetson" class="md-skip">
           Skip to content
         </a>
       
@@ -124,7 +122,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Building PX4
+              Installing DeepStream and CUDO
             
           </span>
         </div>
@@ -493,8 +491,6 @@
                 
   
   
-    
-  
   
     
     
@@ -504,12 +500,12 @@
       
       
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
         
           
           <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="">
@@ -523,7 +519,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2_3">
             <span class="md-nav__icon md-icon"></span>
             Building Firmware for the Autopilot
@@ -534,27 +530,9 @@
                 
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Building PX4
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../build_px4/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -563,79 +541,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#building-and-loading-px4-firmware" class="md-nav__link">
-    Building and Loading PX4 Firmware
-  </a>
-  
-    <nav class="md-nav" aria-label="Building and Loading PX4 Firmware">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#prerequisites" class="md-nav__link">
-    Prerequisites
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#download-px4" class="md-nav__link">
-    Download PX4
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#setup-the-toolchain" class="md-nav__link">
-    Setup the toolchain
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#checkout-a-release" class="md-nav__link">
-    Checkout a release
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#do-a-test-build" class="md-nav__link">
-    Do a test build
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#build-px4-for-the-echopilot-ai" class="md-nav__link">
-    Build PX4 for the EchoPilot AI
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -780,6 +685,8 @@
                 
   
   
+    
+  
   
     
     
@@ -789,12 +696,12 @@
       
       
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" checked>
         
           
           <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="">
@@ -808,7 +715,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2_5">
             <span class="md-nav__icon md-icon"></span>
             Installing Common Nvidia Apps and SDKs
@@ -819,9 +726,29 @@
                 
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../installing_deepstream/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Installing DeepStream and CUDO
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -830,6 +757,82 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#install-deepstream" class="md-nav__link">
+    Install Deepstream
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#install-dependencies" class="md-nav__link">
+    Install dependencies
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#install-librdkafka" class="md-nav__link">
+    Install librdkafka
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#get-and-install-the-deepstream-sdk" class="md-nav__link">
+    Get and install the Deepstream SDK
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#install-cuda" class="md-nav__link">
+    Install CUDA
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#install-cuda-driver" class="md-nav__link">
+    Install Cuda driver
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#boost-the-clocks" class="md-nav__link">
+    Boost the clocks
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reboot" class="md-nav__link">
+    Reboot
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -867,6 +870,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -875,57 +880,58 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#building-and-loading-px4-firmware" class="md-nav__link">
-    Building and Loading PX4 Firmware
-  </a>
-  
-    <nav class="md-nav" aria-label="Building and Loading PX4 Firmware">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#prerequisites" class="md-nav__link">
-    Prerequisites
+  <a href="#install-deepstream" class="md-nav__link">
+    Install Deepstream
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#download-px4" class="md-nav__link">
-    Download PX4
+      
+        <li class="md-nav__item">
+  <a href="#install-dependencies" class="md-nav__link">
+    Install dependencies
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#setup-the-toolchain" class="md-nav__link">
-    Setup the toolchain
+      
+        <li class="md-nav__item">
+  <a href="#install-librdkafka" class="md-nav__link">
+    Install librdkafka
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#checkout-a-release" class="md-nav__link">
-    Checkout a release
+      
+        <li class="md-nav__item">
+  <a href="#get-and-install-the-deepstream-sdk" class="md-nav__link">
+    Get and install the Deepstream SDK
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#do-a-test-build" class="md-nav__link">
-    Do a test build
+      
+        <li class="md-nav__item">
+  <a href="#install-cuda" class="md-nav__link">
+    Install CUDA
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#build-px4-for-the-echopilot-ai" class="md-nav__link">
-    Build PX4 for the EchoPilot AI
+      
+        <li class="md-nav__item">
+  <a href="#install-cuda-driver" class="md-nav__link">
+    Install Cuda driver
   </a>
   
 </li>
-        
-      </ul>
-    </nav>
+      
+        <li class="md-nav__item">
+  <a href="#boost-the-clocks" class="md-nav__link">
+    Boost the clocks
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reboot" class="md-nav__link">
+    Reboot
+  </a>
   
 </li>
       
@@ -944,7 +950,7 @@
                   
 
   
-    <a href="https://github.com/EchoMAV/docs/edit/master/docs/build_px4.md" title="Edit this page" class="md-content__button md-icon">
+    <a href="https://github.com/EchoMAV/docs/edit/master/docs/installing_deepstream.md" title="Edit this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4v-2m10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1 2.1 2.1Z"/></svg>
     </a>
@@ -953,77 +959,89 @@
     
       
     
-    <a href="https://github.com/EchoMAV/docs/raw/master/docs/build_px4.md" title="View source of this page" class="md-content__button md-icon">
+    <a href="https://github.com/EchoMAV/docs/raw/master/docs/installing_deepstream.md" title="View source of this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 18c.56 0 1 .44 1 1s-.44 1-1 1-1-.44-1-1 .44-1 1-1m0-3c-2.73 0-5.06 1.66-6 4 .94 2.34 3.27 4 6 4s5.06-1.66 6-4c-.94-2.34-3.27-4-6-4m0 6.5a2.5 2.5 0 0 1-2.5-2.5 2.5 2.5 0 0 1 2.5-2.5 2.5 2.5 0 0 1 2.5 2.5 2.5 2.5 0 0 1-2.5 2.5M9.27 20H6V4h7v5h5v4.07c.7.08 1.36.25 2 .49V8l-6-6H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h4.5a8.15 8.15 0 0 1-1.23-2Z"/></svg>
     </a>
   
 
 
-  <h1>Building PX4</h1>
-
-<h2 id="building-and-loading-px4-firmware">Building and Loading PX4 Firmware<a class="headerlink" href="#building-and-loading-px4-firmware" title="Permanent link">&para;</a></h2>
-<p>As of PX4 1.13.3, the EchoPilot AI hardware definition files are not yet pulled into the <a href="https://github.com/PX4/PX4-Autopilot">PX4 repository</a>. Therefore, if you wish to use PX4 firmware on the EchoPilot AI, you will need to follow the steps below and build PX4 from source. Fortunately the process is straightforward:</p>
-<h3 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h3>
-<p>These instructions were tested on Ubuntu 20.04 LTS. They are not guaranteed to work on any other flavor of Linux, within a virtual machine or under WSL 1 or 2. We recommend a <strong>physical machine</strong> running Ubuntu 20.04 LTS for the most pain-free experience.</p>
-<h3 id="download-px4">Download PX4<a class="headerlink" href="#download-px4" title="Permanent link">&para;</a></h3>
-<p>These instructions will install PX4 in <code>~/PX4-Autopilot</code>. If you wish to use a different location, please adjust the directory below and throughout these instructions. If you are a novice, we recommend proceeding exactly as described below.
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>cd ~
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>git clone https://github.com/PX4/PX4-Autopilot.git --recursive
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>cd PX4-Autopilot
-</code></pre></div></p>
-<h3 id="setup-the-toolchain">Setup the toolchain<a class="headerlink" href="#setup-the-toolchain" title="Permanent link">&para;</a></h3>
-<p>Note if you have built PX4 before, you can likely skip this step. Also remove the <code>--no-sim-tools</code> option if you wish to install the simulation toolchain.
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>bash ./Tools/setup/ubuntu.sh --no-sim-tools
+<h1 id="installing-deepstream-and-cuda-for-the-jetson">Installing Deepstream and CUDA for the Jetson<a class="headerlink" href="#installing-deepstream-and-cuda-for-the-jetson" title="Permanent link">&para;</a></h1>
+<p>NVIDIA® DeepStream Software Development Kit (SDK) is an accelerated AI framework to build intelligent video analytics (IVA) pipelines. DeepStream runs on NVIDIA® Jetson NX™, NVIDIA® Jetson Orin™ NX, NVIDIA® Jetson Orin™ Nano in conjunction with the EchoPilot AI. </p>
+<p>The CUDA Toolkit provides a development environment for creating high-performance GPU-accelerated applications.</p>
+<p>The instructions below show how to install both. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The instructions below assume that the EchoPilot AI has internet access and you are logged in to the console. Since EchoPilotAI Jetson hardware is provided with a static IP address, it is often simpler to enable DHCP and let the Jetson get internet through your LAN's router. To do this, you can use the nmcli commands to change the static-eth0 connection profile to auto/hdcp.
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>sudo nmcli con mod static-eth0 ipv4.method auto
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>sudo nmcli con down static-eth0
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>sudo nmcli con up static-eth0
 </code></pre></div>
-At this point, it is recommended to log out and back in to ensure the paths are loaded.</p>
-<h3 id="checkout-a-release">Checkout a release<a class="headerlink" href="#checkout-a-release" title="Permanent link">&para;</a></h3>
-<p>You can identify a version you wish to build by looking at the release history <a href="https://github.com/PX4/PX4-Autopilot/releases">https://github.com/PX4/PX4-Autopilot/releases</a>. In the example below, we will demonstrate checking out release 1.13.3  </p>
-<div class="admonition info">
-<p class="admonition-title">Info</p>
-<p>You can reuse an existing repo rather than cloning a new one if this isn't your first PX4 rodeo. In this case, clean the build environment before proceeding:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>make clean
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>make distclean
+When you are done and would like to return the IP config to static, use:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>sudo nmcli con mod static-eth0 ipv4.addresses &quot;10.223.44.55/16&quot;   # For example
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>sudo nmcli con down static-eth0
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>sudo nmcli con up static-eth0
 </code></pre></div></p>
 </div>
-<p><div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>git fetch origin v1.13.3
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>git checkout v1.13.3
-</code></pre></div>
-Update submodules:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>make submodulesclean
+<h3 id="install-deepstream">Install Deepstream<a class="headerlink" href="#install-deepstream" title="Permanent link">&para;</a></h3>
+<p>Start by doing an apt update
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>sudo apt-get update
 </code></pre></div></p>
-<h3 id="do-a-test-build">Do a test build<a class="headerlink" href="#do-a-test-build" title="Permanent link">&para;</a></h3>
-<p>Before we build firmware for the EchoPilot AI board, it is wise to first build a native target to verify that your toolchain and environment is setup and working. Build the px4_sitl (software in the loop simulator) first:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>make px4_sitl
+<h3 id="install-dependencies">Install dependencies<a class="headerlink" href="#install-dependencies" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>sudo apt install \
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>build_essential \
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>libssl1.1 \
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>libgstreamer1.0-0 \
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>gstreamer1.0-tools \
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>gstreamer1.0-plugins-good \
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>gstreamer1.0-plugins-bad \
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>gstreamer1.0-plugins-ugly \
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>gstreamer1.0-libav \
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>libgstreamer-plugins-base1.0-dev \
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>libgstrtspserver-1.0-0 \
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>libjansson4 \
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>libyaml-cpp-dev
 </code></pre></div>
-If the build completes without errors, congrats! If there are errors, you will need to resolve them before proceeding.</p>
-<h3 id="build-px4-for-the-echopilot-ai">Build PX4 for the EchoPilot AI<a class="headerlink" href="#build-px4-for-the-echopilot-ai" title="Permanent link">&para;</a></h3>
-<p>First obtain the hardware board files from the <a href="https://github.com/EchoMAV/echopilot_ai_bsp">EchoPilot AI BSP</a> repo and checkout the appropriate branch matching the hardware revision of you EchoPilot AI. The HW Revision is marked on the board silkscreen near the FAN connector:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>git clone https://github.com/EchoMAV/echopilot_ai_bsp
-<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>cd echopilot_ai_bsp
-<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>git checkout board_revision_1a   # Change per your hardware
+<h3 id="install-librdkafka">Install librdkafka<a class="headerlink" href="#install-librdkafka" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Clone the repo
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>git clone https://github.com/edenhill/librdkafka.git
+</code></pre></div></li>
+<li>Configure, build and install
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>cd librdkafka
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>git reset --hard 7101c2310341ab3f4675fc565f64f0967e135a6a
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>./configure
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>make
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>sudo make install
+</code></pre></div></li>
+<li>Copy the generated files to the deepstream directory.
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>sudo mkdir -p /opt/nvidia/deepstream/deepstream-6.3/lib
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>sudo cp /usr/local/lib/librdkafka* /opt/nvidia/deepstream/deepstream-6.3/lib
+</code></pre></div></li>
+</ol>
+<h3 id="get-and-install-the-deepstream-sdk">Get and install the Deepstream SDK<a class="headerlink" href="#get-and-install-the-deepstream-sdk" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>wget --content-disposition &#39;https://api.ngc.nvidia.com/v2/resources/org/nvidia/deepstream/6.3/files?redirect=true&amp;path=deepstream-6.3_6.3.0-1_arm64.deb&#39; -O deepstream-6.3_6.3.0-1_arm64.deb
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>sudo apt-get install ./deepstream-6.3_6.3.0-1_arm64.deb
 </code></pre></div>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>Be sure you checked out the appropriate branch matching your EchoPilot AI hardware revision!</p>
-</div>
-<p>Use the provided install script <code>install_px4.sh</code> to place the PX4 board definition files into the correct folder. The first argument is the path to where you have the ardupilot repo on your system, e.g. <code>~/PX4-Autopilot</code>:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>./install_px4.sh ~/PX4-Autopilot
+<h3 id="install-cuda">Install CUDA<a class="headerlink" href="#install-cuda" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/sbsa/cuda-keyring_1.1-1_all.deb
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>sudo dpkg -i cuda-keyring_1.1-1_all.deb
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>sudo apt-get update
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>sudo apt-get -y install cuda-toolkit-12-3
 </code></pre></div>
-At this point, you should have the hardware files located in <code>~/PX4-Autopilot/boards/echomav/echopilot-ai/</code>. To build firmware targeting this board, use the command:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>make echomav_echopilot-ai
+<h3 id="install-cuda-driver">Install Cuda driver<a class="headerlink" href="#install-cuda-driver" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>sudo apt-get install -y cuda-drivers
 </code></pre></div>
-The .px4 file will be located in the <code>~/PX4-Autopilot/build/echomav_echopilot-ai_default/</code> folder. The firmware is now ready to be loaded on the board.  </p>
-<div class="admonition info">
-<p class="admonition-title">Info</p>
-<p>If the EchoPilot AI is plugged in to your host computer, unplug it before proceeding. Also ensure there is <strong>no power</strong> to the EchoPilot AI. The board should be totally powered off before proceeding. The FMU will get power via the USB cable in the step below.</p>
-</div>
-<p><div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>make echomav_echopilot-ai upload
+<h3 id="boost-the-clocks">Boost the clocks<a class="headerlink" href="#boost-the-clocks" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>sudo nvpmodel -m 8
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>$ sudo jetson_clocks
 </code></pre></div>
-When the build completes, the system will wait for a USB connection from the EchoPilot AI's bootloader. You should see a message indicating <code>waiting for the bootloader...</code>. At this point, plug in a USB-A to USB-C cable between the host computer and the <strong>FMU</strong> USB connection on the EchoPilot AI. The board should be recognized and the firmware will be uploaded automatically.</p>
-<blockquote>
-<p>Optionally, you can use <a href="https://docs.qgroundcontrol.com/master/en/getting_started/download_and_install.html">QGroundControl</a> to upload the <code>~/PX4-Autopilot/build/echomav_echopilot-ai_default/echomav_echopilot-ai_default.px4</code> file created previously. This is especially useful if you wish to send a firmware update to a customer as they can do it without terminal access. Follow the steps here to upload <strong>Custom Firmware</strong> using QGroundControl: <a href="https://docs.px4.io/main/en/config/firmware.html">https://docs.px4.io/main/en/config/firmware.html</a></p>
-</blockquote>
+<h3 id="reboot">Reboot<a class="headerlink" href="#reboot" title="Permanent link">&para;</a></h3>
+<p>Verify functionality, the deepstream-app should run without errors:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>deepstream-app --help
+</code></pre></div>
+Browse and Run precompiled sample applications in <code>sources/apps/sample_apps</code>
+Follow the directory’s README file to run the application.</p>
 
 
 
