@@ -21,7 +21,7 @@ The instructions below show how to install both. These instructions were develop
 
 ### Install DeepStream
 
-Start by doing an apt update
+Start by doing an apt update.
 ```
 sudo apt-get update
 ```
@@ -86,11 +86,11 @@ Now __Reboot__ the system.
 
 ### Verify functionality
 
-At this point, deepstream-app should run without errors:
+At this point, the `deepstream-app` should run without errors:
 ```
 deepstream-app --help
 ```
 ### Explore Sample Code
 
-Browse and Run precompiled sample applications in `sources/apps/sample_apps`.  
+Browse and run precompiled sample applications in `sources/apps/sample_apps`.  
 Follow the directory’s README file to run the application.
