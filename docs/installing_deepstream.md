@@ -82,11 +82,15 @@ sudo apt-get install -y cuda-drivers
 sudo nvpmodel -m 8
 $ sudo jetson_clocks
 ```
-### Reboot
+Now *Reboot* the system.
 
-Verify functionality, the deepstream-app should run without errors:
+### Verify functionality
+
+At this point, deepstream-app should run without errors:
 ```
 deepstream-app --help
 ```
+### Explore Sample Code
+
 Browse and Run precompiled sample applications in `sources/apps/sample_apps`
 Follow the directory’s README file to run the application.
