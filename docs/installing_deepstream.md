@@ -18,6 +18,7 @@ The instructions below show how to install both. These instructions were develop
     sudo nmcli con down static-eth0
     sudo nmcli con up static-eth0
     ```
+    Remember if you change the network during a ssh session, you will lose connection. It is recommendced to make network system changes when on a [USB Console](echopilot_ai.md/#accessing-the-jetson-via-the-console) connection. 
 
 ### Install DeepStream
 
