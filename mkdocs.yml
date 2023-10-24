@@ -19,7 +19,7 @@ nav:
             - Building L4T (Xavier NX): compile_l4t.md
             - Building L4T (Nano): compile_l4t_nano.md
         - Installing Common Nvidia Apps and SDKs:
-            - Installing DeepStream and CUDO: installing_deepstream.md
+            - Installing DeepStream and CUDA: installing_deepstream.md
 theme:
   name: material
   custom_dir: overrides
