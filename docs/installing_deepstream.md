@@ -1,4 +1,4 @@
-# Installing Deepstream and CUDA for the Jetson
+# Installing DeepStream and CUDA for the Jetson
 
 NVIDIA® DeepStream Software Development Kit (SDK) is an accelerated AI framework to build intelligent video analytics (IVA) pipelines. DeepStream runs on NVIDIA® Jetson NX™, NVIDIA® Jetson Orin™ NX, NVIDIA® Jetson Orin™ Nano in conjunction with the EchoPilot AI. 
 
@@ -19,7 +19,7 @@ The instructions below show how to install both.
     sudo nmcli con up static-eth0
     ```
 
-### Install Deepstream
+### Install DeepStream
 
 Start by doing an apt update
 ```
