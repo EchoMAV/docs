@@ -92,5 +92,5 @@ deepstream-app --help
 ```
 ### Explore Sample Code
 
-Browse and Run precompiled sample applications in `sources/apps/sample_apps`
+Browse and Run precompiled sample applications in `sources/apps/sample_apps`.  
 Follow the directory’s README file to run the application.
