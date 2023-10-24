@@ -72,7 +72,7 @@ sudo dpkg -i cuda-keyring_1.1-1_all.deb
 sudo apt-get update
 sudo apt-get -y install cuda-toolkit-12-3
 ```
-### Install Cuda driver
+### Install CUDA driver
 ```
 sudo apt-get install -y cuda-drivers
 ```
@@ -80,9 +80,9 @@ sudo apt-get install -y cuda-drivers
 ### Boost the clocks
 ```
 sudo nvpmodel -m 8
-$ sudo jetson_clocks
+sudo jetson_clocks
 ```
-Now *Reboot* the system.
+Now __Reboot__ the system.
 
 ### Verify functionality
 
