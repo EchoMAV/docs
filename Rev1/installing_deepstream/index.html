@@ -823,8 +823,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#reboot" class="md-nav__link">
-    Reboot
+  <a href="#verify-functionality" class="md-nav__link">
+    Verify functionality
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#explore-sample-code" class="md-nav__link">
+    Explore Sample Code
   </a>
   
 </li>
@@ -929,8 +936,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#reboot" class="md-nav__link">
-    Reboot
+  <a href="#verify-functionality" class="md-nav__link">
+    Verify functionality
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#explore-sample-code" class="md-nav__link">
+    Explore Sample Code
   </a>
   
 </li>
@@ -1033,14 +1047,16 @@ When you are done and would like to return the IP config to static, use:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>sudo apt-get install -y cuda-drivers
 </code></pre></div>
 <h3 id="boost-the-clocks">Boost the clocks<a class="headerlink" href="#boost-the-clocks" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>sudo nvpmodel -m 8
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>sudo nvpmodel -m 8
 <a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>$ sudo jetson_clocks
 </code></pre></div>
-<h3 id="reboot">Reboot<a class="headerlink" href="#reboot" title="Permanent link">&para;</a></h3>
-<p>Verify functionality, the deepstream-app should run without errors:
+Now <em>Reboot</em> the system.</p>
+<h3 id="verify-functionality">Verify functionality<a class="headerlink" href="#verify-functionality" title="Permanent link">&para;</a></h3>
+<p>At this point, deepstream-app should run without errors:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>deepstream-app --help
-</code></pre></div>
-Browse and Run precompiled sample applications in <code>sources/apps/sample_apps</code>
+</code></pre></div></p>
+<h3 id="explore-sample-code">Explore Sample Code<a class="headerlink" href="#explore-sample-code" title="Permanent link">&para;</a></h3>
+<p>Browse and Run precompiled sample applications in <code>sources/apps/sample_apps</code>
 Follow the directory’s README file to run the application.</p>
 
 
