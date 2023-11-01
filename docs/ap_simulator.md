@@ -29,7 +29,7 @@ Clone repo:
 git clone https://github.com/ArduPilot/ardupilot.git
 cd ardupilot
 git checkout Plane-4.3.1
-git submodule update --init
+git submodule update --init --recursive
 ```
 Set up build environment:
 ```
