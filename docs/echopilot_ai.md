@@ -421,8 +421,7 @@ Example: Change the static-eth0 connection to remove static IP and enable DHCP (
 sudo nmcli con mod static-eth0 ipv4.address ""
 sudo nmcli con mod static-eth0 ipv4.gateway ""
 sudo nmcli con mod static-eth0 ipv4.method auto
-sudo nmcli con down static-eth0
-sudo nmcli con up static-eth0
+sudo nmcli con reload static-eth0
 ```
 
 ## Streaming Telemetry from the Autopilot (Detailed)
