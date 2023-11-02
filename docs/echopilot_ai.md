@@ -419,6 +419,7 @@ sudo nmcli con mod static-eth0 +ipv4.routes "224.0.0.0/8"
 Example: Change the static-eth0 connection to remove static IP and enable DHCP (In this case, it would be clearer to delete the connection since it is named `static-eth0` and call it something else, but for edification:
 ```
 sudo nmcli con mod static-eth0 ipv4.address ""
+sudo nmcli con mod static-eth0 ipv4.gateway ""
 sudo nmcli con mod static-eth0 ipv4.method auto
 sudo nmcli con down static-eth0
 sudo nmcli con up static-eth0
