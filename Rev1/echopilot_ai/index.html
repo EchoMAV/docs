@@ -1719,9 +1719,10 @@ Example: Delete the <code>static-eth0</code> connection:  <br />
 </code></pre></div></p>
 <p>Example: Change the static-eth0 connection to remove static IP and enable DHCP (In this case, it would be clearer to delete the connection since it is named <code>static-eth0</code> and call it something else, but for edification:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>sudo nmcli con mod static-eth0 ipv4.address &quot;&quot;
-<a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a>sudo nmcli con mod static-eth0 ipv4.method auto
-<a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a>sudo nmcli con down static-eth0
-<a id="__codelineno-30-4" name="__codelineno-30-4" href="#__codelineno-30-4"></a>sudo nmcli con up static-eth0
+<a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a>sudo nmcli con mod static-eth0 ipv4.gateway &quot;&quot;
+<a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a>sudo nmcli con mod static-eth0 ipv4.method auto
+<a id="__codelineno-30-4" name="__codelineno-30-4" href="#__codelineno-30-4"></a>sudo nmcli con down static-eth0
+<a id="__codelineno-30-5" name="__codelineno-30-5" href="#__codelineno-30-5"></a>sudo nmcli con up static-eth0
 </code></pre></div></p>
 <h2 id="streaming-telemetry-from-the-autopilot-detailed">Streaming Telemetry from the Autopilot (Detailed)<a class="headerlink" href="#streaming-telemetry-from-the-autopilot-detailed" title="Permanent link">&para;</a></h2>
 <p>The autopilot has a high-speed serial interface between the FMU/STM32H7 and the Jetson SOM. The Jetson UART1 (pins 203, 205) is connected to the autopilot's USART3 (Typically Serial2). To enable <a href="https://mavlink.io/en/">MAVLink</a> data between the FMU and Jetson, you will need to check and/or modify PX4/Ardupilot parameters to ensure that Telem2 is set to <code>MAVLink2</code> and set the baud rate to the desired value. A typical baud rate is <code>500,000</code>, but you can use any baud rate you wish as long as the mavlink-router application receiving MAVLink on the Jetson is configured to match. </p>
