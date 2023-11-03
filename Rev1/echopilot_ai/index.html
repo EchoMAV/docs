@@ -1778,14 +1778,54 @@ For PX4, set the following params and reboot.
 </table>
 <h2 id="analog-input-to-the-fmu-voltagecurrent-sense">Analog Input to the FMU (Voltage/Current Sense)<a class="headerlink" href="#analog-input-to-the-fmu-voltagecurrent-sense" title="Permanent link">&para;</a></h2>
 <p>The EchoPilot AI FMU design provides 6 analog inputs to the STM32H743. Most often, these are used for voltage/current input for the battery systems onboard an uncrewed system. The Analog input pin mapping for each input is shown below. To use these inputs, change the parameters in ArduPilot or PX4 to the appropriate pins.</p>
-<p>Input Name  | Carrier Board Connector | STM32H743 Pin | ArduPilot/PX4 Virtual Pin        <br />
------------- | ------------- | ------------
-Voltage Sense 1        | J13.2  | PA0  | 16     <br />
-Current Sense 1        | J13.3  | PA1  | 17   <br />
-Voltage Sense 2 | J13.4   | PA2 | 14
-Current Sense 2 | J13.5   | PA3 | 15
-Spare ADC 1  | J13.6   | PC4  |  4
-Spare ADC 2 | J13.7   | PA4  |  18</p>
+<table>
+<thead>
+<tr>
+<th>Input Name</th>
+<th>Carrier Board Connector</th>
+<th>STM32H743 Pin</th>
+<th>ArduPilot/PX4 Virtual Pin</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Voltage Sense 1</td>
+<td>J13.2</td>
+<td>PA0</td>
+<td>16</td>
+</tr>
+<tr>
+<td>Current Sense 1</td>
+<td>J13.3</td>
+<td>PA1</td>
+<td>17</td>
+</tr>
+<tr>
+<td>Voltage Sense 2</td>
+<td>J13.4</td>
+<td>PA2</td>
+<td>14</td>
+</tr>
+<tr>
+<td>Current Sense 2</td>
+<td>J13.5</td>
+<td>PA3</td>
+<td>15</td>
+</tr>
+<tr>
+<td>Spare ADC 1</td>
+<td>J13.6</td>
+<td>PC4</td>
+<td>4</td>
+</tr>
+<tr>
+<td>Spare ADC 2</td>
+<td>J13.7</td>
+<td>PA4</td>
+<td>18</td>
+</tr>
+</tbody>
+</table>
 <h3 id="ardupilot-setup-for-voltagecurrent">ArduPilot Setup for Voltage/Current<a class="headerlink" href="#ardupilot-setup-for-voltagecurrent" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
