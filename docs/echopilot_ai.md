@@ -474,7 +474,7 @@ JETSON CAN1 | R95         |  Near U32, size 0402
 The EchoPilot AI FMU design provides 6 analog inputs to the STM32H743. Most often, these are used for voltage/current input for the battery systems onboard an uncrewed system. The Analog input pin mapping for each input is shown below. To use these inputs, change the parameters in ArduPilot or PX4 to the appropriate pins.
 
 Input Name  | Carrier Board Connector | STM32H743 Pin | ArduPilot/PX4 Virtual Pin          
------------- | ------------- | ------------
+------------ | ------------- | ------------ | ------------
 Voltage Sense 1        | J13.2  | PA0  | 16       
 Current Sense 1        | J13.3  | PA1  | 17     
 Voltage Sense 2 | J13.4   | PA2 | 14
