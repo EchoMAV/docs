@@ -90,7 +90,7 @@ Ensure this script completes with no errors before proceeding with flashing.
 4. From your host PC, flash the Xavier NX device:
 
 ```
-cd ~/Nano/Linux_for_Tegra/
+cd ~/XavierNX/Linux_for_Tegra/
 sudo ./flash.sh jetson-xavier-nx-devkit-emmc mmcblk0p1
 ```
 
