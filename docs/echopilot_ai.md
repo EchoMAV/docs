@@ -432,7 +432,7 @@ The autopilot has a high-speed serial interface between the FMU/STM32H7 and the 
 For example, on ArduPilot set the following params and reboot:
 ```
 SERIAL2_PROTOCOL: MAVLink2
-SERIAL2_BAUD: 500000
+SERIAL2_BAUD: 500   ## 500,000 kbps
 ```
 For PX4, set the following params and reboot.
 ```
