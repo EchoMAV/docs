@@ -1781,10 +1781,11 @@ You can then run the script using below, where the argument is the system's i2c 
 <h3 id="configuring-for-dhcp">Configuring for DHCP<a class="headerlink" href="#configuring-for-dhcp" title="Permanent link">&para;</a></h3>
 <p>If you wish to use <a href="https://en.wikipedia.org/wiki/Dynamic_Host_Configuration_Protocol">DHCP</a>, follow the instructions below:</p>
 <p>First <a href="#accessing-the-jetson-via-the-console">gain console access</a> via the USB connector. Once logged in via the console, modify the existing static connection (e.g. "static-eth0") to be DHCP:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>sudo nmcli con mod static-eth0 ipv4.address &quot;&quot;
-<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>sudo nmcli con mod static-eth0 ipv4.method auto
-<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>sudo nmcli con down static-eth0
-<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a>sudo nmcli con up static-eth0
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>sudo nmcli con mod static-eth0 ipv4.method auto
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>sudo nmcli con mod static-eth0 ipv4.gateway &quot;&quot;
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>sudo nmcli con mod static-eth0 ipv4.address &quot;&quot;
+<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a>sudo nmcli con down static-eth0
+<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a>sudo nmcli con up static-eth0
 </code></pre></div>
 If the network connection is plugged into a DHCP server, the system will now get an IP address. You can confirm with: 
 <div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>ip addr
