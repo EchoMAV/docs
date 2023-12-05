@@ -337,8 +337,9 @@ If you wish to use [DHCP](https://en.wikipedia.org/wiki/Dynamic_Host_Configurati
 
 First [gain console access](#accessing-the-jetson-via-the-console) via the USB connector. Once logged in via the console, modify the existing static connection (e.g. "static-eth0") to be DHCP:
 ```
-sudo nmcli con mod static-eth0 ipv4.address ""
 sudo nmcli con mod static-eth0 ipv4.method auto
+sudo nmcli con mod static-eth0 ipv4.gateway ""
+sudo nmcli con mod static-eth0 ipv4.address ""
 sudo nmcli con down static-eth0
 sudo nmcli con up static-eth0
 ```
