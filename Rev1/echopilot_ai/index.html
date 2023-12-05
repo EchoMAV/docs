@@ -1845,7 +1845,7 @@ Example: Delete the <code>static-eth0</code> connection:  <br />
 <p>The autopilot has a high-speed serial interface between the FMU/STM32H7 and the Jetson SOM. The Jetson UART1 (pins 203, 205) is connected to the autopilot's USART3 (Typically Serial2). To enable <a href="https://mavlink.io/en/">MAVLink</a> data between the FMU and Jetson, you will need to check and/or modify PX4/Ardupilot parameters to ensure that Telem2 is set to <code>MAVLink2</code> and set the baud rate to the desired value. A typical baud rate is <code>500,000</code>, but you can use any baud rate you wish as long as the mavlink-router application receiving MAVLink on the Jetson is configured to match. </p>
 <p>For example, on ArduPilot set the following params and reboot:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a>SERIAL2_PROTOCOL: MAVLink2
-<a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a>SERIAL2_BAUD: 500000
+<a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a>SERIAL2_BAUD: 500   ## 500,000 kbps
 </code></pre></div>
 For PX4, set the following params and reboot.
 <div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a>MAV_1_CONFIG 102: Telem 2  ## Reboot after this change to expose additional parameters
