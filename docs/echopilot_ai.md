@@ -460,6 +460,31 @@ sudo usermod -aG dialout $USER
 !!! note
     Reboot to apply changes.
 
+## FMU Ports
+
+The Flight Manamgenent Unit (FMU) is based on the FMUv5 design, and uses I2C, SPI and UARTs as defined in the table below:
+
+Port | Use | Connector Assignement
+------------ | ------------- | ------------ 
+UART1 | GPS | Carrier Board J20
+UART2 | Telemetry to Jetson (Telem2) | NA (internal)
+UART3 | External/User (Telem1) | Carrier Board J18
+UART4 | External/User (shifted to RS-232) | Carrier Board J32
+UART5 | Not Used | NA 
+UART6 | Remote ID | NA (internal)
+UART7 | External/User (Debug) | EchoPilot J12
+UART6 | IO MCU | NA (internal)
+SPI1 | ICM42688P #1 and #2
+SPI2 | RM3100 and FRAM | NA (internal)
+SPI3 | Not Used | NA
+SPI4 | ICM42688P #3 and MS5611 #1 NA (internal)
+SPI5 | External/User | NA
+SPI6 | MS5611 #2
+I2C1 | GPS/Compass | Carrier Board J20
+I2C2 | External/User | Carrier Board J25
+I2C3 | Not Used | NA
+I2C4 | Not Used | NA
+
 ## CAN Termination
 
 The 2 CAN connections from the FMU (CAN1 and CAN2) and the 1 from the Jetson are driven by LTC2875 transceivers and contain termination resistors at the drivers. Should you desire to remove these termination resistors (e.g., you want to place the EchoPilot AI in the middle of a CAN chain rather than at the end), refer to the following:  
