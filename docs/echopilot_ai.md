@@ -474,12 +474,12 @@ UART5 | Not Used | NA
 UART6 | Remote ID | NA (internal)
 UART7 | External/User (Debug) | EchoPilot J12
 UART6 | IO MCU | NA (internal)
-SPI1 | ICM42688P #1 and #2
+SPI1 | ICM42688P #1 and #2 | NA (internal)
 SPI2 | RM3100 and FRAM | NA (internal)
 SPI3 | Not Used | NA
 SPI4 | ICM42688P #3 and MS5611 #1 NA (internal)
 SPI5 | External/User | NA
-SPI6 | MS5611 #2
+SPI6 | MS5611 #2 | NA (internal)
 I2C1 | GPS/Compass | Carrier Board J20
 I2C2 | External/User | Carrier Board J25
 I2C3 | Not Used | NA
