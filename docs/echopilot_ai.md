@@ -427,7 +427,7 @@ sudo nmcli con reload static-eth0
 
 ## Streaming Telemetry from the Autopilot (Detailed)
 
-The autopilot has a high-speed serial interface between the FMU/STM32H7 and the Jetson SOM. The Jetson UART1 (pins 203, 205) is connected to the autopilot's USART3 (Typically Serial2). To enable [MAVLink](https://mavlink.io/en/) data between the FMU and Jetson, you will need to check and/or modify PX4/Ardupilot parameters to ensure that Telem2 is set to `MAVLink2` and set the baud rate to the desired value. A typical baud rate is `500,000`, but you can use any baud rate you wish as long as the mavlink-router application receiving MAVLink on the Jetson is configured to match. 
+The autopilot has a high-speed serial interface between the FMU/STM32H7 and the Jetson SOM. The Jetson UART1 (pins 203, 205) is connected to the autopilot's UART2. If EchoMAV has provisioned your board, or if you are using our [Board Support Package](https://github.com/EchoMAV/echopilot_ai_bsp), then the default parameters will be set automatically if you build the PX4 or Ardupilot firmware. However, to understand what parameters are used to enable [MAVLink](https://mavlink.io/en/) data flow between the FMU and Jetson, note the parameters used below. In both cases, you are enabling the autopilot serial port to receive MAVLink2 data and setting the baud rate to the appropriate value. A typical baud rate is `500000` kpbs, but you can use any baud rate you wish as long as the mavlink-router application sending/receiving MAVLink on the Jetson is configured to match. For factory provisioned devices, we set it to 500000.
 
 For example, on ArduPilot set the following params and reboot:
 ```
@@ -443,15 +443,15 @@ SER_TEL2_BAUD: 500000   ## Reboot after this change
 
 ```
 
-On the Jetson side, UART1 is typically ```/dev/ttyTHS0```, although it could vary with different Jetson modules including ```/dev/ttyTHS1``` and ```/dev/ttyTHS2```.
+On the Jetson side, UART1 is typically enumerated ```/dev/ttyTHS0```, although it could vary with different Jetson modules including ```/dev/ttyTHS1``` and ```/dev/ttyTHS2```.
 
-For using the EchoPilot AI to route MAVLink data over a network, we pre-install and recommend [MAVLink Router](https://github.com/mavlink-router/mavlink-router). For modules configured at the factory, we now provide mavlink-router installed by default and pushing telemetry to `10.223.1.10:14550`
+For using the EchoPilot AI to route MAVLink data over a network, we pre-install and recommend [MAVLink Router](https://github.com/mavlink-router/mavlink-router). For modules configured at the factory, we now provide mavlink-router installed by default and is configured to push telemetry via UDP to `10.223.1.10:14550`
 
 Should you need or want to install this independently, EchoMAV has an open-source installer which makes it easy to install MAVLink Router and configure it as a service which starts at boot. Please refer to the our installer repo [https://github.com/EchoMAV/mavlink-router](https://github.com/EchoMAV/mavlink-router) for instructions. 
 
 If you use the install repo above, please refer to the instructions there for configuration of the UART and destination IP address. Specifically edit `etc\mavlink-router\main.conf` with the appropriate settings.
 
-If you have permission issues accessing `/dev/ttyTHSX`, please disable `nvgetty` and ensure you are a member of the `dialout` group, or just use our [MAVLink Router Installer Repo](https://github.com/EchoMAV/mavlink-router) along with `make install` and a reboot which sets these things up for you.
+If you have permission issues accessing `/dev/ttyTHSX`, please disable `nvgetty` and ensure you are a member of the `dialout` group, or just use our [MAVLink Router Installer Repo](https://github.com/EchoMAV/mavlink-router) along with `make install` and a reboot which sets these things up for you. Thes steps to disable `nvgetty` and add your account to the `dialout` group are shown below.
 ```
 sudo systemctl stop nvgetty
 sudo systemctl disable nvgetty
