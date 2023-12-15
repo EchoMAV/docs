@@ -462,7 +462,7 @@ sudo usermod -aG dialout $USER
 
 ## FMU Ports
 
-The Flight Manamgenent Unit (FMU) is based on the FMUv5 design, and uses I2C, SPI and UARTs as defined in the table below:
+The Flight Manamgenent Unit (FMU) is based on the FMUv5 design, and uses I2C, SPI and UART ports as defined in the table below.
 
 Port | Use | Connector Assignement
 ------------ | ------------- | ------------ 
