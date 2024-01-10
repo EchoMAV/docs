@@ -16,7 +16,7 @@
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.2">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.3">
     
     
       
@@ -582,6 +582,15 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuring-can-on-the-jetson" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuring CAN on the Jetson
+    </span>
+  </a>
   
 </li>
       
@@ -1288,6 +1297,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#configuring-can-on-the-jetson" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuring CAN on the Jetson
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#streaming-telemetry-from-the-autopilot-detailed" class="md-nav__link">
     <span class="md-ellipsis">
       Streaming Telemetry from the Autopilot (Detailed)
@@ -1859,6 +1877,9 @@ Example: Delete the <code>static-eth0</code> connection:  <br />
 <a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a>sudo nmcli con mod static-eth0 ipv4.method auto
 <a id="__codelineno-30-4" name="__codelineno-30-4" href="#__codelineno-30-4"></a>sudo nmcli con reload static-eth0
 </code></pre></div></p>
+<h2 id="configuring-can-on-the-jetson">Configuring CAN on the Jetson<a class="headerlink" href="#configuring-can-on-the-jetson" title="Permanent link">&para;</a></h2>
+<p>These instructions are a work in progress and may not be fully correct.  </p>
+<p>Modify <code>/etc/modprobe.d/denylist-mttcan.conf</code> and ensure the line <code>blacklist mttcan</code> is commented out. Reboot, then log in again and run <code>sudo modprobe mttcan</code>.</p>
 <h2 id="streaming-telemetry-from-the-autopilot-detailed">Streaming Telemetry from the Autopilot (Detailed)<a class="headerlink" href="#streaming-telemetry-from-the-autopilot-detailed" title="Permanent link">&para;</a></h2>
 <p>The autopilot has a high-speed serial interface between the FMU/STM32H7 and the Jetson SOM. The Jetson UART1 (pins 203, 205) is connected to the autopilot's UART2. If EchoMAV has provisioned your board, or if you are using our <a href="https://github.com/EchoMAV/echopilot_ai_bsp">Board Support Package</a>, then the default parameters will be set automatically if you build the PX4 or Ardupilot firmware. However, to understand what parameters are used to enable <a href="https://mavlink.io/en/">MAVLink</a> data flow between the FMU and Jetson, note the parameters used below. In both cases, you are enabling the autopilot serial port to receive MAVLink2 data and setting the baud rate to the appropriate value. A typical baud rate is <code>500000</code> kpbs, but you can use any baud rate you wish as long as the mavlink-router application sending/receiving MAVLink on the Jetson is configured to match. For factory provisioned devices, we set it to 500000.</p>
 <p>For example, on ArduPilot set the following params and reboot:
