@@ -424,6 +424,11 @@ sudo nmcli con mod static-eth0 ipv4.gateway ""
 sudo nmcli con mod static-eth0 ipv4.method auto
 sudo nmcli con reload static-eth0
 ```
+## Configuring CAN on the Jetson
+
+These instructions are a work in progress and may not be fully correct.  
+
+Modify `/etc/modprobe.d/denylist-mttcan.conf` and ensure the line `blacklist mttcan` is commented out. Reboot, then log in again and run `sudo modprobe mttcan`.
 
 ## Streaming Telemetry from the Autopilot (Detailed)
 
