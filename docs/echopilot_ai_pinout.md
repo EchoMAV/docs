@@ -121,8 +121,8 @@ Mating Connector: FX23L-80P-0.5SV10 (10mm standoff, also available in 8 and 12mm
 | 29         |  IO         |  Diff Signal       | CAM1_D0+                  |
 | 30         |  IO         |  Diff Signal       | CAM1_D0-                  |
 | 31         |  Pwr         |   GND      | GND                  |
-| 32         |  IO         |  Diff Signal       | CAM2_D2+                  |
-| 33         |  IO         |  Diff Signal       | CAM2_D2-                  |
+| 32         |  IO         |  Diff Signal       | CAM0_D2+                  |
+| 33         |  IO         |  Diff Signal       | CAM0_D2-                  |
 | 34         |  Pwr         |   GND      | GND                  |
 | 35         |  IO         |  Diff Signal       | CAM0_D3+                  |
 | 36         |  IO         |  Diff Signal       | CAM0_D3-                  |
