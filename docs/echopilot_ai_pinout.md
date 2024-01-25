@@ -84,7 +84,7 @@ Mating Connector: MicroSD Card
 This connector handles the Jetson-related board to board signals between the EchoPilot AI and a carrier board.
 
 Connector: J5, Part Number: FX23L-80S-0.5SV  
-Mating Connector: FX23L-80P-0.5SV10 (10mm standoff, also available in 10 and 12mm)  
+Mating Connector: FX23L-80P-0.5SV10 (10mm standoff, also available in 8 and 12mm variants, which may be applicable if using a custom carrier board)  
 
 ![Pin Locations](assets/jetson_b2b.png)
 
@@ -121,36 +121,36 @@ Mating Connector: FX23L-80P-0.5SV10 (10mm standoff, also available in 10 and 12m
 | 29         |  IO         |  Diff Signal       | CAM1_D0+                  |
 | 30         |  IO         |  Diff Signal       | CAM1_D0-                  |
 | 31         |  Pwr         |   GND      | GND                  |
-| 32         |  IO         |  1.8V       | I2S0_DOUT                |
-| 33         |  IO         |  1.8V       | I2SO_DIN                  |
-| 34         |  IO         |  1.8V       | I2SO_FS                  |
-| 35         |  IO         |  1.8V       | I2SO_SCLK                  |
-| 36         |  IO         |  1.8V       | AUDIO_MCLK                 |
-| 37         |  IO         |  1.8V       | GPIO12                  |
-| 38         | IO          |  1.8V       | GPIO10                  |
-| 39         |   Pwr        |  GND       | GND                  |
-| 40         |   O        |   3.3V      | IRIDIUM RX UART                  |
-| 41         |   IO        |  Diff Signal       |  ETH1 TX-                 |
-| 42         |   IO        |   Diff Signal      |  ETH1 TX+                 |
-| 43         |   IO        |   Diff Signal      |  ETH1 RX-                 |
-| 44         |   IO        |   Diff Signal      |  ETH1 RX+                 |
+| 32         |  IO         |  Diff Signal       | CAM2_D2+                  |
+| 33         |  IO         |  Diff Signal       | CAM2_D2-                  |
+| 34         |  Pwr         |   GND      | GND                  |
+| 35         |  IO         |  Diff Signal       | CAM0_D3+                  |
+| 36         |  IO         |  Diff Signal       | CAM0_D3-                  |
+| 37         |  IO         |  1.8V       | I2SO_DIN                  |
+| 38         |  IO         |  1.8V       | nMOD_SLEEP                  |
+| 39         |  IO         |  1.8V       | SLEEP/WAKE                  |
+| 40         |  IO         |  1.8V       | I2SO_FS                 |
+| 41         |   IO        |  Diff Signal       |  ETH0 TX-                 |
+| 42         |   IO        |   Diff Signal      |  ETH0 TX+                 |
+| 43         |   IO        |   Diff Signal      |  ETH0 RX-                 |
+| 44         |   IO        |   Diff Signal      |  ETH0 RX+                 |
 | 45         |   Pwr        |   GND      |  GND                 |
 | 46         |   IO        |   Diff Signal      |  ETH2 RX+                 |
 | 47         |   IO        |   Diff Signal      |  ETH2 RX-                 |
 | 48         |   IO        |   Diff Signal      |  ETH2 TX+                 |
 | 49         |   IO        |   Diff Signal      |  ETH2 TX-                 |
 | 50         |    Pwr       |    GND     |  GND                 |
-| 51         |    IO       |    Diff Signal     |  USB3SS RX+                |
-| 52         |    IO       |    Diff Signal     |  USB3SS RX-                 |
-| 53         |    Pwr        |   GND      |  GND                |
-| 54         |   IO        |   Diff Signal      |  USB3SS TX+                 |
-| 55         |   IO        |   Diff Signal      |  USB3SS TX-                 |
+| 51         |    IO       |    Diff Signal     |  JETSON USB3SS RX+                 |
+| 52         |    IO       |    Diff Signal     |  JETSON USB3SS RX-                 |
+| 53         |   Pwr        |   GND      |  GND                |
+| 54         |   IO        |   Diff Signal      |  JETSON USB3SS TX+                 |
+| 55         |   IO        |   Diff Signal      |  JETSON USB3SS TX-                 |
 | 56         |   Pwr        |   GND      |  GND                 |
-| 57         |   Pwr        |   5V      |  USB2.0_3 VBUS                 |
-| 58         |    IO       |  Diff Signal       |  USB3SS D+                 |
-| 59         |   IO        |  Diff Signal       |  USB3SS D-                 |
+| 57         |   Pwr OUT        |   5V      |  USB3SS VBUS                 |
+| 58         |    IO       |  Diff Signal       |  JETSON USB3SS D+                 |
+| 59         |   IO        |  Diff Signal       |  JETSON USB3SS D-                 |
 | 60         |   Pwr        |   GND      |  GND                 |
-| 61         |   Pwr        |    5V     |  VBUS3                 |
+| 61         |   Pwr OUT       |    5V     |  VBUS3                 |
 | 62         |    IO       |   Diff Signal      |  USB_3 D+                 |
 | 63         |    IO       |   Diff Signal      |  USB_3 D-                 |
 | 64         |    Pwr       |    GND     |  GND                 |
@@ -162,18 +162,19 @@ Mating Connector: FX23L-80P-0.5SV10 (10mm standoff, also available in 10 and 12m
 | 70         |    IO      |   Diff Signal      |  USB_1 D+            |
 | 71         |    IO       |  Diff Signal       |  USB_1 D-                 |
 | 72         |    Pwr       |   GND      |  GND                 |
-| 73         |    I       |   3.3V      |  IRIDIUM NA                 |
-| 74         |    I       |   3.3V      |  IRIDIUM RING                 |
+| 73         |    I       |   3.3V      |  IRIDIUM RING                 |
+| 74         |    I       |   3.3V      |  IRIDIUM RX UART                 |
 | 75         |    I       |   3.3V      |  IRIDIUM TX UART                 |
-| 76         |    O       |   3.3V      |   IRIDIUM ON/OFF                |
-| 77         |   IO        |   1.8      |   JETSON I2C SDA               |
-| 78         |   O        |   1.8      |   JETSON I2C SCL                |
-| 79         |   IO        |   1.8      |   JETSON GPIO 02                |
+| 76         |    O       |   3.3V      |   I2S0_SCLK                |
+| 77         |   IO        |   1.8      |   JETSON I2C1_SDA               |
+| 78         |   O        |   1.8      |   JETSON I2C1_SCL                |
+| 79         |   Pwr OUT        |   3.3      |   JETSON GPIO 02                |
 | 80         |   Pwr OUT        |   3.3      |   +3.3V OUT                |
 | 81         |   Pwr IN        |   5.2      |   +5.2V                |
 | 82         |    Pwr IN       |   5.2      |   +5.2V                |
 | 83         |  Pwr         |   GND      |    GND               |
 | 84         |  Pwr         |   GND      |    GND               |
+
 
 #### Board to Board FMU (J6)
 This connector handles the FMU-related board to board signals between the EchoPilot AI and a carrier board.
