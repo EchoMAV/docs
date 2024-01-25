@@ -24,8 +24,8 @@ So buckle up and let's get started.
 
 ### Download and Setup Necessary Files
 
-Note that you will need to create an NVIDIA developer account and login to download, so if you do not have a developer account please [set that up](https://developer.nvidia.com/login) before proceeding. 
-Next you will need to download three packages from Nvidia: [Driver Package (BSP), Sample Root Filesystem and Driver Package (BSP) Sources](https://developer.nvidia.com/embedded/jetson-linux). 
+Note that you may need to create an NVIDIA developer account and login to download, so if you do not have a developer account please [set that up](https://developer.nvidia.com/login) before proceeding. 
+Next you will need to download three packages from Nvidia: [Driver Package (BSP), Sample Root Filesystem and Driver Package (BSP) Sources 35.4.1](https://developer.nvidia.com/embedded/jetson-linux-r3541). 
 
 > These instructions were developed using Jetson Linux 35.3.1. These instructions _may_ continue to work for future releases,   but proceed with caution.
 
@@ -56,7 +56,7 @@ sudo ./apply_binaries.sh
 
 This step allows you to configure your username, password and hostname and also accept the license.
 ```
-sudo tools/l4t_create_default_user.sh -u {USERNAME} -p {PASSWORD} -a -n {HOSTNAME} --accept-license
+sudo tools/l4t_create_default_user.sh -u {USERNAME} -p {PASSWORD} -n {HOSTNAME} --accept-license
 ```
     
 ### Get the EchoPilot .dtb and extlinux.conf files
@@ -69,9 +69,9 @@ cd ~
 git clone https://github.com/EchoMAV/echopilot_ai_bsp
 cd echopilot_ai_bsp
 ```
-Checkout the appropriate branch for your EchoPilot AI board revision. For example, EchoPilot AI rev1 hardware:
+Checkout the appropriate branch for your EchoPilot AI board revision. For example, EchoPilot AI REV1B hardware:
 ```
-git checkout board_revision_1a
+git checkout board_revision_1b
 ```
 Run the install script to copy the dtb and extlinux.conf files into your Linux_for_Tegra folder. The usage is `./install_l4t_xavier_nx.sh [Path to Linux_for_Tegra]`, e.g.:
 ```
