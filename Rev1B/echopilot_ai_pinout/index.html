@@ -1367,7 +1367,7 @@ Mating Connector: MicroSD Card</p>
 <h4 id="board-to-board-jetson-j5">Board to Board Jetson (J5)<a class="headerlink" href="#board-to-board-jetson-j5" title="Permanent link">&para;</a></h4>
 <p>This connector handles the Jetson-related board to board signals between the EchoPilot AI and a carrier board.</p>
 <p>Connector: J5, Part Number: FX23L-80S-0.5SV<br />
-Mating Connector: FX23L-80P-0.5SV10 (10mm standoff, also available in 10 and 12mm)  </p>
+Mating Connector: FX23L-80P-0.5SV10 (10mm standoff, also available in 8 and 12mm variants, which may be applicable if using a custom carrier board)  </p>
 <p><img alt="Pin Locations" src="../assets/jetson_b2b.png" /></p>
 <table>
 <thead>
@@ -1568,80 +1568,80 @@ Mating Connector: FX23L-80P-0.5SV10 (10mm standoff, also available in 10 and 12m
 <tr>
 <td>32</td>
 <td>IO</td>
-<td>1.8V</td>
-<td>I2S0_DOUT</td>
+<td>Diff Signal</td>
+<td>CAM2_D2+</td>
 </tr>
 <tr>
 <td>33</td>
 <td>IO</td>
-<td>1.8V</td>
-<td>I2SO_DIN</td>
+<td>Diff Signal</td>
+<td>CAM2_D2-</td>
 </tr>
 <tr>
 <td>34</td>
-<td>IO</td>
-<td>1.8V</td>
-<td>I2SO_FS</td>
-</tr>
-<tr>
-<td>35</td>
-<td>IO</td>
-<td>1.8V</td>
-<td>I2SO_SCLK</td>
-</tr>
-<tr>
-<td>36</td>
-<td>IO</td>
-<td>1.8V</td>
-<td>AUDIO_MCLK</td>
-</tr>
-<tr>
-<td>37</td>
-<td>IO</td>
-<td>1.8V</td>
-<td>GPIO12</td>
-</tr>
-<tr>
-<td>38</td>
-<td>IO</td>
-<td>1.8V</td>
-<td>GPIO10</td>
-</tr>
-<tr>
-<td>39</td>
 <td>Pwr</td>
 <td>GND</td>
 <td>GND</td>
 </tr>
 <tr>
+<td>35</td>
+<td>IO</td>
+<td>Diff Signal</td>
+<td>CAM0_D3+</td>
+</tr>
+<tr>
+<td>36</td>
+<td>IO</td>
+<td>Diff Signal</td>
+<td>CAM0_D3-</td>
+</tr>
+<tr>
+<td>37</td>
+<td>IO</td>
+<td>1.8V</td>
+<td>I2SO_DIN</td>
+</tr>
+<tr>
+<td>38</td>
+<td>IO</td>
+<td>1.8V</td>
+<td>nMOD_SLEEP</td>
+</tr>
+<tr>
+<td>39</td>
+<td>IO</td>
+<td>1.8V</td>
+<td>SLEEP/WAKE</td>
+</tr>
+<tr>
 <td>40</td>
-<td>O</td>
-<td>3.3V</td>
-<td>IRIDIUM RX UART</td>
+<td>IO</td>
+<td>1.8V</td>
+<td>I2SO_FS</td>
 </tr>
 <tr>
 <td>41</td>
 <td>IO</td>
 <td>Diff Signal</td>
-<td>ETH1 TX-</td>
+<td>ETH0 TX-</td>
 </tr>
 <tr>
 <td>42</td>
 <td>IO</td>
 <td>Diff Signal</td>
-<td>ETH1 TX+</td>
+<td>ETH0 TX+</td>
 </tr>
 <tr>
 <td>43</td>
 <td>IO</td>
 <td>Diff Signal</td>
-<td>ETH1 RX-</td>
+<td>ETH0 RX-</td>
 </tr>
 <tr>
 <td>44</td>
 <td>IO</td>
 <td>Diff Signal</td>
-<td>ETH1 RX+</td>
+<td>ETH0 RX+</td>
 </tr>
 <tr>
 <td>45</td>
@@ -1683,13 +1683,13 @@ Mating Connector: FX23L-80P-0.5SV10 (10mm standoff, also available in 10 and 12m
 <td>51</td>
 <td>IO</td>
 <td>Diff Signal</td>
-<td>USB3SS RX+</td>
+<td>JETSON USB3SS RX+</td>
 </tr>
 <tr>
 <td>52</td>
 <td>IO</td>
 <td>Diff Signal</td>
-<td>USB3SS RX-</td>
+<td>JETSON USB3SS RX-</td>
 </tr>
 <tr>
 <td>53</td>
@@ -1701,13 +1701,13 @@ Mating Connector: FX23L-80P-0.5SV10 (10mm standoff, also available in 10 and 12m
 <td>54</td>
 <td>IO</td>
 <td>Diff Signal</td>
-<td>USB3SS TX+</td>
+<td>JETSON USB3SS TX+</td>
 </tr>
 <tr>
 <td>55</td>
 <td>IO</td>
 <td>Diff Signal</td>
-<td>USB3SS TX-</td>
+<td>JETSON USB3SS TX-</td>
 </tr>
 <tr>
 <td>56</td>
@@ -1717,21 +1717,21 @@ Mating Connector: FX23L-80P-0.5SV10 (10mm standoff, also available in 10 and 12m
 </tr>
 <tr>
 <td>57</td>
-<td>Pwr</td>
+<td>Pwr OUT</td>
 <td>5V</td>
-<td>USB2.0_3 VBUS</td>
+<td>USB3SS VBUS</td>
 </tr>
 <tr>
 <td>58</td>
 <td>IO</td>
 <td>Diff Signal</td>
-<td>USB3SS D+</td>
+<td>JETSON USB3SS D+</td>
 </tr>
 <tr>
 <td>59</td>
 <td>IO</td>
 <td>Diff Signal</td>
-<td>USB3SS D-</td>
+<td>JETSON USB3SS D-</td>
 </tr>
 <tr>
 <td>60</td>
@@ -1741,7 +1741,7 @@ Mating Connector: FX23L-80P-0.5SV10 (10mm standoff, also available in 10 and 12m
 </tr>
 <tr>
 <td>61</td>
-<td>Pwr</td>
+<td>Pwr OUT</td>
 <td>5V</td>
 <td>VBUS3</td>
 </tr>
@@ -1815,13 +1815,13 @@ Mating Connector: FX23L-80P-0.5SV10 (10mm standoff, also available in 10 and 12m
 <td>73</td>
 <td>I</td>
 <td>3.3V</td>
-<td>IRIDIUM NA</td>
+<td>IRIDIUM RING</td>
 </tr>
 <tr>
 <td>74</td>
 <td>I</td>
 <td>3.3V</td>
-<td>IRIDIUM RING</td>
+<td>IRIDIUM RX UART</td>
 </tr>
 <tr>
 <td>75</td>
@@ -1833,24 +1833,24 @@ Mating Connector: FX23L-80P-0.5SV10 (10mm standoff, also available in 10 and 12m
 <td>76</td>
 <td>O</td>
 <td>3.3V</td>
-<td>IRIDIUM ON/OFF</td>
+<td>I2S0_SCLK</td>
 </tr>
 <tr>
 <td>77</td>
 <td>IO</td>
 <td>1.8</td>
-<td>JETSON I2C SDA</td>
+<td>JETSON I2C1_SDA</td>
 </tr>
 <tr>
 <td>78</td>
 <td>O</td>
 <td>1.8</td>
-<td>JETSON I2C SCL</td>
+<td>JETSON I2C1_SCL</td>
 </tr>
 <tr>
 <td>79</td>
-<td>IO</td>
-<td>1.8</td>
+<td>Pwr OUT</td>
+<td>3.3</td>
 <td>JETSON GPIO 02</td>
 </tr>
 <tr>
