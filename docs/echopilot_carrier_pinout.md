@@ -100,15 +100,15 @@ Mating Connector: FX23L-80S-0.5SV
 | 29         |  IO         |  Diff Signal       | CAM1_D0+                  |
 | 30         |  IO         |  Diff Signal       | CAM1_D0-                  |
 | 31         |  Pwr         |   GND      | GND                  |
-| 32         |  IO         |  1.8V       | I2S0_DOUT                |
-| 33         |  IO         |  1.8V       | I2SO_DIN                  |
-| 34         |  IO         |  1.8V       | I2SO_FS                  |
-| 35         |  IO         |  1.8V       | I2SO_SCLK                  |
-| 36         |  IO         |  1.8V       | AUDIO_MCLK                 |
-| 37         |  IO         |  1.8V       | GPIO12                  |
-| 38         | IO          |  1.8V       | GPIO10                  |
-| 39         |   Pwr        |  GND       | GND                  |
-| 40         |   O        |   3.3V      | IRIDIUM RX UART                  |
+| 32         |  IO         |  Diff Signal       | CAM2_D2+                  |
+| 33         |  IO         |  Diff Signal       | CAM2_D2-                  |
+| 34         |  Pwr         |   GND      | GND                  |
+| 35         |  IO         |  Diff Signal       | CAM0_D3+                  |
+| 36         |  IO         |  Diff Signal       | CAM0_D3-                  |
+| 37         |  IO         |  1.8V       | I2SO_DIN                  |
+| 38         |  IO         |  1.8V       | nMOD_SLEEP                  |
+| 39         |  IO         |  1.8V       | SLEEP/WAKE                  |
+| 40         |  IO         |  1.8V       | I2SO_FS                 |
 | 41         |   IO        |  Diff Signal       |  ETH0 TX-                 |
 | 42         |   IO        |   Diff Signal      |  ETH0 TX+                 |
 | 43         |   IO        |   Diff Signal      |  ETH0 RX-                 |
@@ -141,10 +141,10 @@ Mating Connector: FX23L-80S-0.5SV
 | 70         |    IO      |   Diff Signal      |  USB_1 D+            |
 | 71         |    IO       |  Diff Signal       |  USB_1 D-                 |
 | 72         |    Pwr       |   GND      |  GND                 |
-| 73         |    I       |   3.3V      |  IRIDIUM NA                 |
-| 74         |    I       |   3.3V      |  IRIDIUM RING                 |
+| 73         |    I       |   3.3V      |  IRIDIUM RING                 |
+| 74         |    I       |   3.3V      |  IRIDIUM RX UART                 |
 | 75         |    I       |   3.3V      |  IRIDIUM TX UART                 |
-| 76         |    O       |   3.3V      |   IRIDIUM ON/OFF                |
+| 76         |    O       |   3.3V      |   I2S0_SCLK                |
 | 77         |   IO        |   1.8      |   JETSON I2C1_SDA               |
 | 78         |   O        |   1.8      |   JETSON I2C1_SCL                |
 | 79         |   Pwr OUT        |   3.3      |   JETSON GPIO 02                |
@@ -376,6 +376,9 @@ Pin Number   | Direction     | Voltage       | Pin Description
 
 ![Bottom Side Components](assets/bottom-side-labels-carrier-board.png)
 
+!!! note
+    The MIPI CAM1 connector shown above does NOT match the Rev1B board, which features a smaller 22 pin 0.5mm FFC connector.
+
 #### Nano SIM Card (J31)
 A Nano SIM card holder. Used only if a M.2 3052 Key B Cellular modem is attached to J30.
 
@@ -405,10 +408,10 @@ Pin Number   | Direction     | Voltage       | Pin Description
 
 
 #### MIPI Cam 1 (J8)
-This connector provides a CSI/MIPI Camera connection, following the Raspberry Pi 15-pin 1mm spacing FFC standard.
+This connector provides a 4 Lane CSI/MIPI Camera connection, following the Raspberry Pi 22 0.5mm spacing FFC standard.
 
-Connector: J8, Part Number: 1-84952-5
-Mating Connector: FFC Cable, 15 pos, 1mm pin spacing   
+Connector: J8, Part Number: 2-1734592-2
+Mating Connector: FFC Cable, 22 pos, 0.5mm pin spacing   
 
 Pin Number   | Direction     | Voltage       | Pin Description
 ------------ | ------------- | ------------  | ------------
@@ -421,12 +424,19 @@ Pin Number   | Direction     | Voltage       | Pin Description
 7        | Pwr            | GND          | GND
 8        | O            | Diff Signal         | CAM0_CLK-
 9        | O            | Diff Signal          | CAM0_CLK+
-10        | Pwr            | GND         | GND
-11        | IO            | +3.3V          | CAM0_GPIO
-12       | O            | +3.3V         | CAM0_MCLK
-13        | O            | +3.3V          | CAM0_SCL0
-14        | IO            | +3.3V         | CAM0_SDAO
-15        | Pwr OUT            | +3.3V          | +3.3V
+10       | Pwr            | GND          | GND
+11       | IO            | Diff Signal          | CAM0_D2-
+12       | IO            | Diff Signal         | CAM0_D2+
+13       | Pwr            | GND          | GND
+14       | O            | Diff Signal         | CAM0_D3-
+15       | O            | Diff Signal          | CAM0_D3+
+16       | Pwr            | GND         | GND
+17       | IO            | +3.3V          | CAM0_GPIO
+18       | O            | +3.3V         | CAM0_MCLK
+19       | Pwr            | GND         | GND
+20       | O            | +3.3V          | CAM0_SCL0
+21       | IO            | +3.3V         | CAM0_SDAO
+22       | Pwr OUT            | +3.3V          | +3.3V
 
 #### Radio In (J16)
 This connector provides a optional radio input in to the autopilot. A wide range of radio protocols are supported. Please see [here](https://ardupilot.org/copter/docs/common-rc-systems.html) for example.

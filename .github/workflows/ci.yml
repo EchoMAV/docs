@@ -6,6 +6,7 @@ on:
       - main
       - Rev0
       - Rev1
+      - Rev1B
 permissions:
   contents: write
 jobs:
@@ -28,5 +29,5 @@ jobs:
       - run: git config user.name ci-bot
       - run: git config user.email ci-bot@example.com
       - run: git fetch origin gh-pages --depth=1
-      - run: mike deploy --push --update-aliases Rev1 latest
+      - run: mike deploy --push --update-aliases Rev1B latest
       - run: mike set-default --push latest
