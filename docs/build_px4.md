@@ -47,7 +47,7 @@ First obtain the hardware board files from the [EchoPilot AI BSP](https://github
 ```
 git clone https://github.com/EchoMAV/echopilot_ai_bsp
 cd echopilot_ai_bsp
-git checkout board_revision_1a   # Change per your hardware
+git checkout board_revision_1b   # Change per your hardware
 ```
 !!! warning
     Be sure you checked out the appropriate branch matching your EchoPilot AI hardware revision!

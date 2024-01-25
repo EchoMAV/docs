@@ -23,10 +23,10 @@ Now reload the path (log-out and log-in to make permanent)
 ```
 
 ### Checkout a release or tag
-You can identify a version you wish to build by looking at the ArduPilot tags [https://github.com/ArduPilot/ardupilot/tags](https://github.com/ArduPilot/ardupilot/tags). In the example below, we will demonstrate checking out release Copter-4.3.7 
+You can identify a version you wish to build by looking at the ArduPilot tags [https://github.com/ArduPilot/ardupilot/tags](https://github.com/ArduPilot/ardupilot/tags). In the example below, we will demonstrate checking out release Copter-4.4.4 
 
 ```
-git checkout Copter-4.4.1
+git checkout Copter-4.4.4
 git submodule update --init --recursive
 ```
 
