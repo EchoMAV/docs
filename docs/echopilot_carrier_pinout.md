@@ -377,7 +377,7 @@ Pin Number   | Direction     | Voltage       | Pin Description
 ![Bottom Side Components](assets/bottom-side-labels-carrier-board.png)
 
 !!! note
-    The MIPI CAM1 connector shown above does NOT match the Rev1B board, which features a smaller 22 pin 0.5mm FFC connector.
+    The MIPI CAM1 connector shown in the image abovee does NOT match the Rev1B board, which features a smaller 22 pin 0.5mm FFC connector. The documentation and pinout in this document is correct.
 
 #### Nano SIM Card (J31)
 A Nano SIM card holder. Used only if a M.2 3052 Key B Cellular modem is attached to J30.
@@ -408,7 +408,10 @@ Pin Number   | Direction     | Voltage       | Pin Description
 
 
 #### MIPI Cam 1 (J8)
-This connector provides a 4 Lane CSI/MIPI Camera connection, following the Raspberry Pi 22 0.5mm spacing FFC standard.
+This connector provides a 4 Lane CSI/MIPI Camera connection, via a 22 pin 0.5mm spacing FFC connector. 
+
+!!! note
+    On Rev1B boards, this pinout is reversed from the FFC cables/cameras commonly used with RPi and Nvidia-compatible cameras. If using such a camera, we recommend using an FFC cable with a top/bottom pin arrangement such as Amphenol FF3025-CO102-022 to correct the pinout. This will be corrected in future revisions.
 
 Connector: J8, Part Number: 2-1734592-2
 Mating Connector: FFC Cable, 22 pos, 0.5mm pin spacing   
