@@ -16,7 +16,7 @@
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.5">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.8">
     
     
       
@@ -24,7 +24,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.50c56a3b.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.f2e4d321.min.css">
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
@@ -3094,7 +3094,7 @@ Mating Connector: XT30U-F  </p>
 <p><img alt="Bottom Side Components" src="../assets/bottom-side-labels-carrier-board.png" /></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The MIPI CAM1 connector shown above does NOT match the Rev1B board, which features a smaller 22 pin 0.5mm FFC connector.</p>
+<p>The MIPI CAM1 connector shown in the image abovee does NOT match the Rev1B board, which features a smaller 22 pin 0.5mm FFC connector. The documentation and pinout in this document is correct.</p>
 </div>
 <h4 id="nano-sim-card-j31">Nano SIM Card (J31)<a class="headerlink" href="#nano-sim-card-j31" title="Permanent link">&para;</a></h4>
 <p>A Nano SIM card holder. Used only if a M.2 3052 Key B Cellular modem is attached to J30.</p>
@@ -3205,7 +3205,11 @@ Mating Connector: FFC Cable, 15 pos, 1mm pin spacing   </p>
 </tbody>
 </table>
 <h4 id="mipi-cam-1-j8">MIPI Cam 1 (J8)<a class="headerlink" href="#mipi-cam-1-j8" title="Permanent link">&para;</a></h4>
-<p>This connector provides a 4 Lane CSI/MIPI Camera connection, following the Raspberry Pi 22 0.5mm spacing FFC standard.</p>
+<p>This connector provides a 4 Lane CSI/MIPI Camera connection, via a 22 pin 0.5mm spacing FFC connector. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>On Rev1B boards, this pinout is reversed from the FFC cables/cameras commonly used with RPi and Nvidia-compatible cameras. If using such a camera, we recommend using an FFC cable with a top/bottom pin arrangement such as Amphenol FF3025-CO102-022 to correct the pinout. This will be corrected in future revisions.</p>
+</div>
 <p>Connector: J8, Part Number: 2-1734592-2
 Mating Connector: FFC Cable, 22 pos, 0.5mm pin spacing   </p>
 <table>
@@ -4087,7 +4091,7 @@ Mating Connector: M.2 Key B Modem, size 3052</p>
     <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.tracking", "navigation.instant", "navigation.top", "search.suggest", "search.highlight", "content.tabs.link", "content.code.annotation", "content.code.copy", "toc.follow", "content.action.edit", "content.action.view", "content.code.copy"], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.c18c5fb9.min.js"></script>
+      <script src="../assets/javascripts/bundle.8fd75fb4.min.js"></script>
       
     
   </body>
