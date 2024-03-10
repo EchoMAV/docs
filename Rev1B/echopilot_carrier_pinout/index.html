@@ -3409,12 +3409,57 @@ Mating Connector: GHR-03V-S   </p>
 <p>Spare GPIO from the Jetson module.</p>
 <p>Connector: J33, Part Number: SM04B-GHS-TB(LF)(SN) <br />
 Mating Connector: GHR-04V-S   </p>
-<p>Pin Number   | Direction     | Voltage       | Pin Description | GPIO (Xavier) | GPIO (Orin NX and Orin Nano) | Jetson Pin
------------- | ------------- | ------------  | ------------ | ------------ | ------------
-1        | IO            | +1.8V          | GPIO 02 | GPIO3_PQ.03 | GPIO3_PP.06 | 124
-2        | IO            | +1.8V         | nMOD_SLEEP | NA | NA | 178
-3        | IO            | +1.8V         | SLEEP/WAKE | GPIO3_PEE.04 | GPIO3_PEE.04 | 240
-3        | Pwr            | GND         | GND | NA | NA | NA</p>
+<table>
+<thead>
+<tr>
+<th>Pin Number</th>
+<th>Direction</th>
+<th>Voltage</th>
+<th>Pin Description</th>
+<th>GPIO (Xavier)</th>
+<th>GPIO (Orin NX and Orin Nano)</th>
+<th>Jetson Pin</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>IO</td>
+<td>+1.8V</td>
+<td>GPIO 02</td>
+<td>GPIO3_PQ.03</td>
+<td>GPIO3_PP.06</td>
+<td>124</td>
+</tr>
+<tr>
+<td>2</td>
+<td>IO</td>
+<td>+1.8V</td>
+<td>nMOD_SLEEP</td>
+<td>NA</td>
+<td>NA</td>
+<td>178</td>
+</tr>
+<tr>
+<td>3</td>
+<td>IO</td>
+<td>+1.8V</td>
+<td>SLEEP/WAKE</td>
+<td>GPIO3_PEE.04</td>
+<td>GPIO3_PEE.04</td>
+<td>240</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Pwr</td>
+<td>GND</td>
+<td>GND</td>
+<td>NA</td>
+<td>NA</td>
+<td>NA</td>
+</tr>
+</tbody>
+</table>
 <h4 id="vi-sense-and-analog-in-j13">V/I Sense and Analog In (J13)<a class="headerlink" href="#vi-sense-and-analog-in-j13" title="Permanent link">&para;</a></h4>
 <p>This connector provides dual voltage and current sense input, for use with off-board current sensor monitor(s). These signals should be scaled to 0-3.3V or damage may occur. Your autopilot firmware will allow you to enter scaling factors for proper display of voltage/current when ground control software. This connector also provides two spare analog inputs to the FMU.</p>
 <p>Connector: J13, Part Number: SM08B-GHS-TB(LF)(SN)<br />
