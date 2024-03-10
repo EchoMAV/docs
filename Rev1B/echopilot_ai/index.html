@@ -16,7 +16,7 @@
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.8">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.13">
     
     
       
@@ -24,7 +24,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.f2e4d321.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.7e359304.min.css">
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
@@ -313,14 +313,17 @@
     
     
     
-    
-    
+      
+        
+        
       
       
+        
+      
+    
     
     <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
-        
         
         
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
@@ -681,14 +684,17 @@
     
     
     
-    
-    
       
       
+        
+          
+          
+        
+      
+    
     
     <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
-        
         
         
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
@@ -813,14 +819,17 @@
     
     
     
-    
-    
       
       
+        
+          
+          
+        
+      
+    
     
     <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
-        
         
         
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
@@ -903,14 +912,17 @@
     
     
     
-    
-    
       
       
+        
+          
+          
+        
+      
+    
     
     <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
-        
         
         
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" >
@@ -1014,14 +1026,17 @@
     
     
     
-    
-    
       
       
+        
+          
+          
+        
+      
+    
     
     <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
-        
         
         
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" >
@@ -1578,60 +1593,78 @@ Note that your device will likely lose internet access unless you happen to have
 <th>Voltage</th>
 <th>Default Use</th>
 <th>GPIO (Xavier)</th>
-<th>GPIO (Nano)</th>
+<th>GPIO (Orin NX Orin Nano)</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>PIN 211</td>
-<td>O</td>
-<td>36</td>
+<td>PIN 218</td>
+<td>IO</td>
+<td>73</td>
+<td>+3.3V*</td>
+<td>Iridium Ring</td>
+<td>GPIO3_PCC.04</td>
+<td>GPIO3_PN.01</td>
+</tr>
+<tr>
+<td>PIN 240</td>
+<td>IO</td>
+<td>39</td>
 <td>+1.8V</td>
-<td>Audio MCLK</td>
-<td>AUDIO_MCLK</td>
-<td>AUDIO_MCLK</td>
+<td>SLEEP/WAKE</td>
+<td>GPIO3_PEE.04</td>
+<td>GPIO3_PEE.04</td>
+</tr>
+<tr>
+<td>PIN 178</td>
+<td>IO</td>
+<td>38</td>
+<td>+1.8V</td>
+<td>nMOD_SLEEP</td>
+<td>NA</td>
+<td>NA</td>
+</tr>
+<tr>
+<td>PIN 197</td>
+<td>IO</td>
+<td>40</td>
+<td>+1.8V</td>
+<td>I2S0_FS</td>
+<td>GPIO3_PU.00</td>
+<td>GPIO3_PI.02</td>
 </tr>
 <tr>
 <td>PIN 124</td>
 <td>IO</td>
-<td>37</td>
+<td>79</td>
 <td>+1.8V</td>
 <td>GPIO O2</td>
 <td>GPIO3_PQ.03</td>
-<td>GPIO3_PH.06</td>
+<td>GPIO3_PP.06</td>
 </tr>
 <tr>
-<td>PIN 218</td>
+<td>PIN 195</td>
 <td>IO</td>
 <td>37</td>
-<td>+3.3V*</td>
-<td>Iridium Ring</td>
-<td>GPIO3_PCC.04</td>
-<td>GPIO3_PY.02</td>
+<td>+1.8V</td>
+<td>IS20_DIN</td>
+<td>GPIO3_PT.07</td>
+<td>GPIO3_PI.01</td>
 </tr>
 <tr>
-<td>PIN 126</td>
-<td>I</td>
-<td>74</td>
-<td>+3.3V*</td>
-<td>Iridium On/Off</td>
-<td>GPIO3_PCC.00</td>
-<td>GPIO3_PI.02</td>
-</tr>
-<tr>
-<td>PIN 206</td>
-<td>I</td>
-<td>73</td>
-<td>+3.3V*</td>
-<td>Iridium Network Available</td>
-<td>GPIO3_PR.00</td>
-<td>GPIO3_PV.00</td>
+<td>PIN 199</td>
+<td>IO</td>
+<td>76</td>
+<td>+1.8V</td>
+<td>IS20_SCLK</td>
+<td>GPIO3_PT.05</td>
+<td>GPIO3_PH.07</td>
 </tr>
 </tbody>
 </table>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>*Pins 126, 206 abd 130 are level-shifted from 1.8V to 3.3V prior to the B2B (J5) connector via a TXS0108ERGYR level translator.</p>
+<p>*Pin 218 (Iridium Ring) is level-shifted from 1.8V to 3.3V prior to the B2B (J5) connector via a TXS0108ERGYR level translator.</p>
 </div>
 <p>The following Jetson IO is used internally by the EchoPilot AI:</p>
 <div class="admonition warning">
@@ -2228,7 +2261,7 @@ For PX4, set the following params and reboot.
     <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.tracking", "navigation.instant", "navigation.top", "search.suggest", "search.highlight", "content.tabs.link", "content.code.annotation", "content.code.copy", "toc.follow", "content.action.edit", "content.action.view", "content.code.copy"], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.8fd75fb4.min.js"></script>
+      <script src="../assets/javascripts/bundle.c8d2eff1.min.js"></script>
       
     
   </body>
