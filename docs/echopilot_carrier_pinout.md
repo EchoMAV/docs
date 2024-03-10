@@ -459,12 +459,12 @@ Spare GPIO from the Jetson module.
 Connector: J33, Part Number: SM04B-GHS-TB(LF)(SN)   
 Mating Connector: GHR-04V-S   
 
-Pin Number   | Direction     | Voltage       | Pin Description | GPIO (Xavier) | GPIO (Orin NX and Orin Nano) Jetson Pin
+Pin Number   | Direction     | Voltage       | Pin Description | GPIO (Xavier) | GPIO (Orin NX and Orin Nano) | Jetson Pin
 ------------ | ------------- | ------------  | ------------ | ------------ | ------------
 1        | IO            | +1.8V          | GPIO 02 | GPIO3_PQ.03 | GPIO3_PP.06 | 124
-2        | IO            | +1.8V         | nMOD_SLEEP | NA | 178
+2        | IO            | +1.8V         | nMOD_SLEEP | NA | NA | 178
 3        | IO            | +1.8V         | SLEEP/WAKE | GPIO3_PEE.04 | GPIO3_PEE.04 | 240
-3        | Pwr            | GND         | GND | NA | NA
+3        | Pwr            | GND         | GND | NA | NA | NA
 
 
 #### V/I Sense and Analog In (J13)
