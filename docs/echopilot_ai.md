@@ -156,16 +156,18 @@ The following Jetson IO pins are brought out to the B2B connector J5 and are ava
 !!! note
     *Changes to the direction and functionality of these pins may be possible based on the Jetson pinmux configuration.
 
-Jetson Pin   | Direction     | B2B (J5)      | Voltage   | Default Use  |  GPIO (Xavier) | GPIO (Nano)
+Jetson Pin   | Direction     | B2B (J5)      | Voltage   | Default Use  |  GPIO (Xavier) | GPIO (Orin NX Orin Nano)
 ------------ | ------------- | ------------  | ------------ | ------------ | ------------ | ------------
-PIN 211        | O     |  36     | +1.8V     | Audio MCLK      | AUDIO_MCLK    | AUDIO_MCLK
-PIN 124        | IO     |  37     | +1.8V     | GPIO O2        | GPIO3_PQ.03  | GPIO3_PH.06
-PIN 218        | IO     |  37     | +3.3V*     | Iridium Ring         | GPIO3_PCC.04  | GPIO3_PY.02 
-PIN 126        | I     |  74     | +3.3V*     | Iridium On/Off     | GPIO3_PCC.00       | GPIO3_PI.02  
-PIN 206        | I     |  73     | +3.3V*     | Iridium Network Available   | GPIO3_PR.00      | GPIO3_PV.00
+PIN 218        | IO     |  73     | +3.3V*     | Iridium Ring         | GPIO3_PCC.04  | GPIO3_PN.01
+PIN 240         | IO    |  39     | +1.8V       | SLEEP/WAKE        |   GPIO3_PEE.04 | GPIO3_PEE.04          
+PIN 178         | IO    |  38     | +1.8V       | nMOD_SLEEP        |   NA | NA
+PIN 197         | IO    |  40       | +1.8V       | I2S0_FS           | GPIO3_PU.00 | GPIO3_PI.02
+PIN 124        | IO     |  79     | +1.8V     | GPIO O2        | GPIO3_PQ.03  | GPIO3_PP.06
+PIN 195        | IO     |  37     | +1.8V     | IS20_DIN        | GPIO3_PT.07  | GPIO3_PI.01
+PIN 199        | IO     |  76     | +1.8V     | IS20_SCLK        | GPIO3_PT.05  | GPIO3_PH.07
 
 !!! note
-    *Pins 126, 206 abd 130 are level-shifted from 1.8V to 3.3V prior to the B2B (J5) connector via a TXS0108ERGYR level translator.
+    *Pin 218 (Iridium Ring) is level-shifted from 1.8V to 3.3V prior to the B2B (J5) connector via a TXS0108ERGYR level translator.
 
 The following Jetson IO is used internally by the EchoPilot AI:
 !!! warning
