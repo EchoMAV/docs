@@ -147,7 +147,7 @@ Mating Connector: FX23L-80S-0.5SV
 | 76         |    O       |   3.3V      |   I2S0_SCLK                |
 | 77         |   IO        |   1.8      |   JETSON I2C1_SDA               |
 | 78         |   O        |   1.8      |   JETSON I2C1_SCL                |
-| 79         |   Pwr OUT        |   3.3      |   JETSON GPIO 02                |
+| 79         |   IO        |   3.3      |   JETSON GPIO 02                |
 | 80         |   Pwr OUT        |   3.3      |   +3.3V OUT                |
 | 81         |   Pwr IN        |   5.2      |   +5.2V                |
 | 82         |    Pwr IN       |   5.2      |   +5.2V                |
