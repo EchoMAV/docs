@@ -33,7 +33,7 @@ This design philosophy achieves multiple goals :
 
 ### Accessing the Jetson via the console
 
-If you included a Jetson SOM in your purchase, it will have been flashed and tested at the factory. If you have a new Jetson module that is not flashed, please see [Building and Flashing a Jetson with L4T](/compile_l4t) instructions.
+If you included a Jetson SOM in your purchase, it will have been flashed and tested at the factory. If you have a new Jetson module that is not flashed, please see [XavierNX](compile_l4t.md),  [Orinx NX and Orin Nano](compile_l4t_orin.md), and  [Nano](compile_l4t_nano.md) instructions.
 
 !!! WARNING
 
@@ -324,7 +324,7 @@ sudo python3 serial.py 0
 
 ## Configure the Network
 
-The EchoPilot AI has two 100Mbps Ethernet ports (ETH1 and ETH2). Upstream, these go to a network switch, so either one can be used to access the Jetson SOM. To interface using a standard RJ45 cable, use the included Ethernet adapter board and cable assembly connected as shown below. The make your own cable assembly, refer to the [Pinout](../echopilot_carrier_pinout/#ethernet-1-j15)
+The EchoPilot AI has two 100Mbps Ethernet ports (ETH1 and ETH2). Upstream, these go to a network switch, so either one can be used to access the Jetson SOM. To interface using a standard RJ45 cable, use the included Ethernet adapter board and cable assembly connected as shown below. The make your own cable assembly, refer to the [Pinout](echopilot_carrier_pinout.md#ethernet-1-j15)
 
 <figure markdown>
   ![Ethernet Connection)](assets/ethernet-connection.png){ width="900" }
@@ -426,6 +426,76 @@ sudo nmcli con mod static-eth0 ipv4.gateway ""
 sudo nmcli con mod static-eth0 ipv4.method auto
 sudo nmcli con reload static-eth0
 ```
+
+## Adding WiFi to the EchoPilotAI
+
+The instructions below provide details on how to get WiFi working using a [TP-Link AC1300 (Archer T3U)](https://a.co/d/bUNSOTD) wireless network adapter. These instructions were developed using Jetpack 35.4.1, running Linux Kernel 5.10. If you are usinng a newer version, you will need a different branch for the driver install. Please refer to the driver's [readme](https://github.com/fastoe/RTL8812BU/blob/master/README.md).
+
+Connect the AC1300 to one of the USB3 connectors (J24 or J29 on the carrier board) using the provided cable and USB-A breakout board. 
+
+### Clone and install the RTL8812BU driver
+
+```
+cd /tmp
+sudo apt update
+sudo apt update
+sudo apt install -y build-essential dkms git bc
+git clone -b v5.6.1 https://github.com/fastoe/RTL8812BU.git
+cd RTL8812BU
+make
+sudo make install
+sudo reboot
+```
+### Verify you have a wlan0 device present
+```
+iwconfig
+```
+The output of this command should include wlan0, for example:
+```
+lo        no wireless extensions.
+dummy0    no wireless extensions.
+eth0      no wireless extensions.
+l4tbr0    no wireless extensions.
+rndis0    no wireless extensions.
+usb0      no wireless extensions.
+wlan0     IEEE 802.11AC  ESSID:"EchoMAV"  Nickname:"<WIFI@REALTEK>"
+          Mode:Managed  Frequency:5.24 GHz  Access Point: C8:9E:43:D5:C0:9C
+          Bit Rate:867 Mb/s   Sensitivity:0/0
+          Retry:off   RTS thr:off   Fragment thr:off
+          Power Management:off
+          Link Quality=72/100  Signal level=65/100  Noise level=0/100
+          Rx invalid nwid:0  Rx invalid crypt:0  Rx invalid frag:0
+          Tx excessive retries:0  Invalid misc:0   Missed beacon:0
+```
+### Use nmcli to set up your wireless connection
+
+Replace _SSID_ and _PASSWORD_ below with your network information.
+```
+sudo nmcli dev wifi connect <SSID> password <PASSWORD>
+```
+### Verify the connection
+
+Using networkmanager, you should now see a connection NAME matching your WiFi SSID and it should be green indicating the connection is established.
+```
+nmcli c s
+```
+At this point, you have a WiFi connection. If your system still has a static network configuration, you may need to deactivate that connection or update your routing to ensure packets are routed over the new WiFi interface. For example, if you have an active static-eth0 interface, it can be deactivated using:
+```
+sudo nmcli c d static-eth0
+```
+You should now be routing internet packets via your WiFi connection. To check your connection speed, install and run Ookla's Speedtest tool:
+```
+sudo apt-get install curl
+curl -s https://packagecloud.io/install/repositories/ookla/speedtest-cli/script.deb.sh | sudo bash
+sudo apt-get install speedtest
+```
+Check your download and upload speed:
+```
+speedtest
+```
+
+
+
 ## Configuring CAN on the Jetson
 
 These instructions are a work in progress and may not be fully correct.  
