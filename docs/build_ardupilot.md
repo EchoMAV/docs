@@ -1,6 +1,6 @@
 ## Building and Loading ArduPilot Firmware
 
-As of ArduPilot 4.4, the EchoPilot AI hardware definition files are not yet pulled into the [ArduPilot repository](https://github.com/ArduPilot/ardupilot). Therefore, if you wish to use ArduPilot firmware on the EchoPilot AI, you will need to follow the steps below and build ArduPilot from source. Fortunately the process is straightforward:
+As of ArduPilot 4.5, the EchoPilot AI hardware definition files are not yet pulled into the [ArduPilot repository](https://github.com/ArduPilot/ardupilot). Therefore, if you wish to use ArduPilot firmware on the EchoPilot AI, you will need to follow the steps below and build ArduPilot from source. Fortunately the process is straightforward:
 
 ### Prerequisites
 These instructions were tested on Ubuntu 20.04 LTS. They are not guaranteed to work on any other flavor of Linux, within a virtual machine or under WSL 1 or 2. We recommend a **physical machine** running Ubuntu 20.04 LTS for the most pain-free experience.
@@ -23,10 +23,10 @@ Now reload the path (log-out and log-in to make permanent)
 ```
 
 ### Checkout a release or tag
-You can identify a version you wish to build by looking at the ArduPilot tags [https://github.com/ArduPilot/ardupilot/tags](https://github.com/ArduPilot/ardupilot/tags). In the example below, we will demonstrate checking out release Copter-4.4.4 
+You can identify a version you wish to build by looking at the ArduPilot tags [https://github.com/ArduPilot/ardupilot/tags](https://github.com/ArduPilot/ardupilot/tags). In the example below, we will demonstrate checking out release Copter-4.5.1 
 
 ```
-git checkout Copter-4.4.4
+git checkout Copter-4.5.1
 git submodule update --init --recursive
 ```
 
@@ -37,6 +37,12 @@ Before we build firmware for the EchoPilot AI board, it is wise to first build a
 ./waf copter
 ```
 If the build completes without errors, congrats! If there are errors, you will need to resolve them before proceeding.
+!!! tip
+
+    If the build fails due to a dronecan related module, your system may have too new a version of the `empy` python module. You can downgrade `empy` to 3.3.4 using:
+    ```
+    pip3 install empy==3.3.4 --user
+    ```
 ### Download and Install the Hardware Definition Files for ArduPilot
 Obtain the hardware board files from the [EchoPilot AI BSP](https://github.com/EchoMAV/echopilot_ai_bsp) repo and checkout the appropriate branch matching the hardware revision of your EchoPilot AI using the commands below. The Hardware revision is marked on the board silkscreen near the FAN connector:
 
