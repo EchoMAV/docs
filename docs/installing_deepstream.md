@@ -20,6 +20,17 @@ The instructions below show how to install both. These instructions were develop
     ```
     Remember if you change the network during a ssh session, you will lose connection. It is recommendced to make network system changes when on a [USB Console](echopilot_ai.md/#accessing-the-jetson-via-the-console) connection. 
 
+### Set system time
+Assuming you have an internet connection at this point, you will want to ensure your system time is set correctly or package updates may fail. 
+```
+sudo timedatectl set-ntp true
+sudo systemctl restart systemd-timesyncd.service
+```
+now verify your system time is correct
+```
+sudo timedatectl
+```
+
 ### Install DeepStream
 
 Start by doing an apt update.
