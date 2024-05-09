@@ -1142,8 +1142,9 @@ now verify your system time is correct
 <div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>sudo apt-get install -y cuda-drivers
 </code></pre></div>
 <h3 id="boost-the-clocks">Boost the clocks<a class="headerlink" href="#boost-the-clocks" title="Permanent link">&para;</a></h3>
-<p><div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>sudo nvpmodel -m 8
-<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>sudo jetson_clocks
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>sudo nvpmodel -m 0 
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a># for Xavier NX, use nvpmodel -m 8
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>sudo jetson_clocks
 </code></pre></div>
 Now <strong>Reboot</strong> the system.</p>
 <h3 id="verify-functionality">Verify functionality<a class="headerlink" href="#verify-functionality" title="Permanent link">&para;</a></h3>
