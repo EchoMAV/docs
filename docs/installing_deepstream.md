@@ -40,7 +40,7 @@ sudo apt-get update
 ### Install dependencies
 ```
 sudo apt install \
-build_essential \
+build-essential \
 libssl1.1 \
 libgstreamer1.0-0 \
 gstreamer1.0-tools \
