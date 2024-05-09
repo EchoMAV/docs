@@ -91,7 +91,8 @@ sudo apt-get install -y cuda-drivers
 
 ### Boost the clocks
 ```
-sudo nvpmodel -m 8
+sudo nvpmodel -m 0 
+# for Xavier NX, use nvpmodel -m 8
 sudo jetson_clocks
 ```
 Now __Reboot__ the system.
