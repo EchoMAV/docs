@@ -75,7 +75,7 @@ sudo cp /usr/local/lib/librdkafka* /opt/nvidia/deepstream/deepstream-6.3/lib
 ### Get and install the Deepstream SDK
 ```
 wget --content-disposition 'https://api.ngc.nvidia.com/v2/resources/org/nvidia/deepstream/6.3/files?redirect=true&path=deepstream-6.3_6.3.0-1_arm64.deb' -O deepstream-6.3_6.3.0-1_arm64.deb
-sudo apt-get install ./deepstream-6.3_6.3.0-1_arm64.deb
+sudo apt-get -y install ./deepstream-6.3_6.3.0-1_arm64.deb
 ```
 ### Install CUDA
 ```
