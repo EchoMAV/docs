@@ -20,7 +20,7 @@ Barometer 2        | ICP-20100
 Magnetometer        | PNI RM3100    
 Add-On INS      | Standalone modules only via RS-232        
 
-The hardware is configured into a two board stack. The upper board is the EchoPilot AI board, and it contains the flight management unit, peripherals, sensors and Nvidia Jetson interface. The lower board is the Carrier Board, and it handles power regulation and connectors. Two high-density FX23L-80S-0.5SV 80-pin board-to-board connectors are used between the two boards. There is 10mm between boards.
+The hardware is configured into a two board stack. The upper board is the EchoPilot AI board, and it contains the flight management unit, peripherals, sensors and Nvidia Jetson interface. The lower board is the Carrier Board, and it handles power regulation and provides connector breakouts and additional peripheral connectivity (e.g. support for a Cellular modem). Two high-density FX23L-80S-0.5SV 80-pin board-to-board connectors are used between the two boards. There is 10mm between boards.
 
 This design philosophy achieves multiple goals :
 
@@ -33,14 +33,14 @@ This design philosophy achieves multiple goals :
 
 ### Accessing the Jetson via the console
 
-If you included a Jetson SOM in your purchase, it will have been flashed and tested at the factory. If you have a new Jetson module that is not flashed, please see [XavierNX](compile_l4t.md),  [Orinx NX and Orin Nano](compile_l4t_orin.md), and  [Nano](compile_l4t_nano.md) instructions.
+If you included a Jetson SOM in your purchase, it will have been flashed and tested at the factory. If you have a new Jetson module that is not flashed, please see [XavierNX](compile_l4t.md),  [Orinx NX and Orin Nano](compile_l4t_orin.md), and [Nano](compile_l4t_nano.md) instructions.
 
 !!! WARNING
 
-    Do not run the Jetson SOM without a heat sink. The module may be damaged or performance throttled. See [connecttech.com](http://connecttech.com) for recommended active and passive heat sinks and heat spreaders.
+    Do not run the Jetson SOM without a heat sink. The module may be damaged or the performance throttled. EchoMAV offers a variety of heat sink solutions for the Jetson modules, See [EchoPilot AI Accessories](https://echomav.com/product-category/echopilot-ai-accessories/heatsinks/) for recommended active and passive heat sinks. Other solutions are available from a variety of third party manufacturers. 
 
 1. Assemble the EchoPilot AI board with a Carrier Board, using 10mm standoffs between the two boards.
-2. If a Jetson Module is not already installed in the EchoPilot AI, install the module now.
+2. If a Jetson Module is not already installed in the EchoPilot AI, install the module now by sliding the Jetson in at a 45 degree angle, then pressing down until in snaps in place. Use Qty 2 M.2 x 6mm screws to secure the Jetson module.
 3. Attached a USB cable between your host computer and J15 (Console) on the EchoPilot AI Board
 ![Console USB Connection](assets/usb-to-echopilot-carrier.png)
 4. In step 3, your host computer should have enumerated a virtual comm port. You will now need to find the name of the port.
@@ -70,9 +70,9 @@ You should now see the boot messages in your console, and once boot is complete,
 
 ### Streaming telemetry over the network
 
-As of September, 2023, EchoMAV is provisioning Jetson hardware with software which includes setting the Jetson to a static IP address, installing a web UI and configuring [mavlink-router](https://github.com/EchoMAV/mavlink-router) to stream telemetry from the autopilot to 10.223.1.10:14550 over UDP. If you have an earlier release or flash your own image, you can install the default software using the instructions [here](https://github.com/EchoMAV/echopilot_deploy). The rest of the instructions below assume the Jetson module installed in your EchoPilot AI hardware has been provisioned using our software installation.
+EchoMAV provisions Jetson modules at the factory to be set to a static IP address, and a few default software applications are installed including [mavlink-router](https://github.com/EchoMAV/mavlink-router) and a web-based user interface. [mavlink-router](https://github.com/EchoMAV/mavlink-router) is an open source tool used to receive telemetry from the autopilot via a serial port and stream it to an IP endpoint (10.223.1.10:14550 over UDP by default). This software installation is open source and you are free to review the installation scripts or reinstall the  software using the instructions [here](https://github.com/EchoMAV/echopilot_deploy). The instructions below assume the Jetson module installed in your EchoPilot AI hardware has been provisioned using our software installation and static IP configuration.
 
-Default telemetry will stream to `10.223.1.10` using UDP (client mode) port 14550. This will allow automatic connection to common Ground Control Stations including QGroundControl and Mission Planner. For this to work, your host computer must be set to `10.223.1.10` and the EchoPilot AI must have a [network connection](#configure-the-network) between one of the Ethenret ports and the host computer
+Default telemetry will stream to `10.223.1.10:14550` using UDP (client mode). This will allow automatic connection to common Ground Control Stations including QGroundControl and Mission Planner. For this to work, your host computer must be set to `10.223.1.10` and the EchoPilot AI must have a [network connection](#configure-the-network) between one of the Ethenret ports and the host computer
 
 The telemetry endpoint can be easily changed by using the web UI at https://{IP_ADDRESS} (the recommendeded way), or more advanced users can use the command line by first [gaining console access](#accessing-the-jetson-via-the-console) and then editing `\etc\mavlink-router\main.conf`. For example:
 
@@ -565,6 +565,7 @@ I2C4 | Not Used | NA
 ### The Default UART Order is defined below:
 
 Port Name | Function | Port | Connector
+------------ | ------------- | ------------ | ------------
 SERIAL0 | Console | USB | EchoPilot J7
 SERIAL1 | Telem1 | USART2 | Carrier Board J18
 SERIAL2 | Telem2 | USART3 | None (internally routed)
@@ -573,7 +574,7 @@ SERIAL4 | External INS (RS-232 shifted) | UART4 | Carrier Board J32
 SERIAL5 | Onboard Remote ID | USART6 | NA
 SERIAL6 | Debug | UART7 | EchoPilot J12
 
-Please reference the [EchoPilot AI's BSP](https://github.com/EchoMAV/echopilot_ai_bsp) firmware specific board definition files for additional details related to board setup.
+Please reference the [EchoPilot AI's BSP](https://github.com/EchoMAV/echopilot_ai_bsp) firmware-specific board definition files for additional details related to board setup.
 
 ## CAN Termination
 
