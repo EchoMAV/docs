@@ -562,7 +562,9 @@ I2C2 | External/User | Carrier Board J25
 I2C3 | Not Used | NA
 I2C4 | Not Used | NA
 
-### The Default UART Order is defined below:
+### UART Order
+
+The default UART order for use for autopilot firmware is provided below. For example, SERIAL3 on Ardupilot is mapped to the GPS connector, SERIAL1 to the Telemetry connector, etc. 
 
 Port Name | Function | Port | Connector
 ------------ | ------------- | ------------ | ------------
