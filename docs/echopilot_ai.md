@@ -543,24 +543,37 @@ The Flight Manamgenent Unit (FMU) is based on the FMUv5 design, and uses I2C, SP
 
 Port | Use | Connector Assignement
 ------------ | ------------- | ------------ 
-UART1 | GPS | Carrier Board J20
-UART2 | Telemetry to Jetson (Telem2) | NA (internal)
-UART3 | External/User (Telem1) | Carrier Board J18
+USART1 | External (GPS) | Carrier Board J20
+USART2 | External/User (Telem1) | Carrier Board J18
+USART3 | Telemetry to Jetson (Telem2) | NA (internally routed)
 UART4 | External/User (shifted to RS-232) | Carrier Board J32
-UART5 | Not Used | NA 
-UART6 | Remote ID | NA (internal)
+USART5 | Not Used | NA 
+USART6 | Remote ID | NA (internal)
 UART7 | External/User (Debug) | EchoPilot J12
-UART6 | IO MCU | NA (internal)
+UART8 | IO MCU | NA (internal)
 SPI1 | ICM42688P #1 and #2 | NA (internal)
 SPI2 | RM3100 and FRAM | NA (internal)
 SPI3 | Not Used | NA
 SPI4 | ICM42688P #3 and MS5611 #1 NA (internal)
-SPI5 | External/User | NA
+SPI5 | Not Used | NA
 SPI6 | MS5611 #2 | NA (internal)
 I2C1 | GPS/Compass | Carrier Board J20
 I2C2 | External/User | Carrier Board J25
 I2C3 | Not Used | NA
 I2C4 | Not Used | NA
+
+### The Default UART Order is defined below:
+
+Port Name | Function | Port | Connector
+SERIAL0 | Console | USB | EchoPilot J7
+SERIAL1 | Telem1 | USART2 | Carrier Board J18
+SERIAL2 | Telem2 | USART3 | None (internally routed)
+SERIAL3 | GPS1 | USART1 | Carrier Board J20
+SERIAL4 | External INS (RS-232 shifted) | UART4 | Carrier Board J32
+SERIAL5 | Onboard Remote ID | USART6 | NA
+SERIAL6 | Debug | UART7 | EchoPilot J12
+
+Please reference the [EchoPilot AI's BSP](https://github.com/EchoMAV/echopilot_ai_bsp) firmware specific board definition files for additional details related to board setup.
 
 ## CAN Termination
 
