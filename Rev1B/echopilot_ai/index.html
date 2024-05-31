@@ -16,7 +16,7 @@
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.21">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.25">
     
     
       
@@ -24,7 +24,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.66ac8b77.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.6543a935.min.css">
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
@@ -663,6 +663,21 @@
       FMU Ports
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="FMU Ports">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-default-uart-order-is-defined-below" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Default UART Order is defined below:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1438,6 +1453,21 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="FMU Ports">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-default-uart-order-is-defined-below" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Default UART Order is defined below:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -2104,19 +2134,19 @@ For PX4, set the following params and reboot.
 </thead>
 <tbody>
 <tr>
-<td>UART1</td>
-<td>GPS</td>
+<td>USART1</td>
+<td>External (GPS)</td>
 <td>Carrier Board J20</td>
 </tr>
 <tr>
-<td>UART2</td>
-<td>Telemetry to Jetson (Telem2)</td>
-<td>NA (internal)</td>
-</tr>
-<tr>
-<td>UART3</td>
+<td>USART2</td>
 <td>External/User (Telem1)</td>
 <td>Carrier Board J18</td>
+</tr>
+<tr>
+<td>USART3</td>
+<td>Telemetry to Jetson (Telem2)</td>
+<td>NA (internally routed)</td>
 </tr>
 <tr>
 <td>UART4</td>
@@ -2124,12 +2154,12 @@ For PX4, set the following params and reboot.
 <td>Carrier Board J32</td>
 </tr>
 <tr>
-<td>UART5</td>
+<td>USART5</td>
 <td>Not Used</td>
 <td>NA</td>
 </tr>
 <tr>
-<td>UART6</td>
+<td>USART6</td>
 <td>Remote ID</td>
 <td>NA (internal)</td>
 </tr>
@@ -2139,7 +2169,7 @@ For PX4, set the following params and reboot.
 <td>EchoPilot J12</td>
 </tr>
 <tr>
-<td>UART6</td>
+<td>UART8</td>
 <td>IO MCU</td>
 <td>NA (internal)</td>
 </tr>
@@ -2165,7 +2195,7 @@ For PX4, set the following params and reboot.
 </tr>
 <tr>
 <td>SPI5</td>
-<td>External/User</td>
+<td>Not Used</td>
 <td>NA</td>
 </tr>
 <tr>
@@ -2195,6 +2225,16 @@ For PX4, set the following params and reboot.
 </tr>
 </tbody>
 </table>
+<h3 id="the-default-uart-order-is-defined-below">The Default UART Order is defined below:<a class="headerlink" href="#the-default-uart-order-is-defined-below" title="Permanent link">&para;</a></h3>
+<p>Port Name | Function | Port | Connector
+SERIAL0 | Console | USB | EchoPilot J7
+SERIAL1 | Telem1 | USART2 | Carrier Board J18
+SERIAL2 | Telem2 | USART3 | None (internally routed)
+SERIAL3 | GPS1 | USART1 | Carrier Board J20
+SERIAL4 | External INS (RS-232 shifted) | UART4 | Carrier Board J32
+SERIAL5 | Onboard Remote ID | USART6 | NA
+SERIAL6 | Debug | UART7 | EchoPilot J12</p>
+<p>Please reference the <a href="https://github.com/EchoMAV/echopilot_ai_bsp">EchoPilot AI's BSP</a> firmware specific board definition files for additional details related to board setup.</p>
 <h2 id="can-termination">CAN Termination<a class="headerlink" href="#can-termination" title="Permanent link">&para;</a></h2>
 <p>The 2 CAN connections from the FMU (CAN1 and CAN2) and the 1 from the Jetson are driven by LTC2875 transceivers and contain termination resistors at the drivers. Should you desire to remove these termination resistors (e.g., you want to place the EchoPilot AI in the middle of a CAN chain rather than at the end), refer to the following:  </p>
 <table>
@@ -2415,7 +2455,7 @@ For PX4, set the following params and reboot.
     <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.tracking", "navigation.instant", "navigation.top", "search.suggest", "search.highlight", "content.tabs.link", "content.code.annotation", "content.code.copy", "toc.follow", "content.action.edit", "content.action.view", "content.code.copy"], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.a7c05c9e.min.js"></script>
+      <script src="../assets/javascripts/bundle.081f42fc.min.js"></script>
       
     
   </body>
