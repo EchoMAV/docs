@@ -570,7 +570,7 @@ Port Name | Function | Port | Connector
 ------------ | ------------- | ------------ | ------------
 SERIAL0 | Console | USB | EchoPilot J7
 SERIAL1 | Telem1 | USART2 | Carrier Board J18
-SERIAL2 | Telem2 | USART3 | None (internally routed)
+SERIAL2 | Telem2 | USART3 | None (internally routed to Jetson)
 SERIAL3 | GPS1 | USART1 | Carrier Board J20
 SERIAL4 | External INS (RS-232 shifted) | UART4 | Carrier Board J32
 SERIAL5 | Onboard Remote ID | USART6 | NA
