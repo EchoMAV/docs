@@ -666,4 +666,10 @@ For building ArduRemoteID for the EchoPilot AI, the following pins will need to 
 #define PIN_UART_RX 5
 WS2812_LED_PIN GPIO_NUM_8
 ```
+### Firmware for OpenDroneID
 
+Special firmware is required for full integration of a Remote ID transmitter to add a layer of tamper-resistance as required by various countries initiatives. This is achieved by
+- Using a special board ID for ODID (OpenDroneID) firmware that will reject normal attempts of loading firmware without the necessary functions and parameters required for compliance. Any bootloader created with OpenDroneID capabilities also has firmware checking enabled such that it will not boot main firmware unless the board ids match.
+- Special READONLY parameters which can be set in the firmware during the compilation
+
+As such, if you wish to utilize Remote ID for your application, you will need to commpile firmware yourself or contact support@echomav.com for assistance. Please see the instructions [here](https://ardupilot.org/dev/docs/opendroneid.html#building-firmware-for-bench-testing-and-experimentation) for additional information.
