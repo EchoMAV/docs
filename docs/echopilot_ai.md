@@ -588,9 +588,22 @@ FMU CAN1       | R19         |  Near U4 and U45, size 0402
 FMU CAN2        | R9         |  Near U3, size 0402
 JETSON CAN1 | R95         |  Near U32, size 0402  
 
-## Analog Input to the FMU (Voltage/Current Sense)
+## Battery Voltage/Current Monitoring
 
-The EchoPilot AI FMU design provides 6 analog inputs to the STM32H743. Most often, these are used for voltage/current input for the battery systems onboard an uncrewed system. The Analog input pin mapping for each input is shown below. To use these inputs, change the parameters in ArduPilot or PX4 to the appropriate pins.
+There are a wide variety of commercial voltage/current monitors which are compatiable with the EchoPilot. Examples of how to configure a few of them are provided below. Note that the EchoPilot AI carrier board does NOT include a current sensor because such a sensor needs to be placed directly after the system battery such that it can capture the both the total current output consumed by the motors/ESCs, radios, and other perpiherals in addition to the EchoPilot AI.
+
+### Digital Ouput 
+
+Voltage/Current sensors which provide a digital output internface are commercially available. For example, the [MATEKSYS CAN-L4-B](Mhttps://www.mateksys.com/?portfolio=can-l4-bm) provides voltage sensing up to 85V and current sensing from 0-204.8A and uses the CAN bus. To set up this device use the following parameters:
+
+Parameter   | Value           
+------------ | ------------- 
+CAN_P1_DRIVER | 1 (if attached to CAN bus1 port or CAN_P2_DRIVER = 1 if attached to CAN bus2 port)
+BATTx_MONITOR    | 8
+
+### Analog Input to the FMU (Voltage/Current Sense)
+
+The EchoPilot AI FMU design provides 6 analog inputs to the STM32H743. Often, these are used for voltage/current input for the battery systems onboard an uncrewed system. The Analog input pin mapping for each input is shown below. To use these inputs, change the parameters in ArduPilot or PX4 to the appropriate pins.
 
 Input Name  | Carrier Board Connector | STM32H743 Pin | ArduPilot/PX4 Virtual Pin          
 ------------ | ------------- | ------------ | ------------
@@ -601,16 +614,27 @@ Current Sense 2 | J13.5   | PA3 | 15
 Spare ADC 1  | J13.6   | PC4  |  4
 Spare ADC 2 | J13.7   | PA4  |  18
 
-### ArduPilot Setup for Voltage/Current
+#### ArduPilot Setup for Analog Voltage/Current Sense
+
+For example, the [Common Power Module](https://ardupilot.org/copter/docs/common-powermodule-landingpage.html)
 
 Parameter   | Value           
 ------------ | ------------- 
+BATT_MONITOR    | 4
 BATT_VOLT_PIN       | 16         
 BATT_CURR_PIN        | 17        
 BATT2_VOLT_PIN | 14         
 BATT2_CURR_PIN | 15
 
-### PX4 Setup for Voltage/Current
+The following parameters will need to be adjusted based on the specific Analog Voltage/Current Sensor used:
+
+Parameter   | Value | Notes           
+------------ | ------------- | -------------
+BATT_AMP_PERVLT    | Dependent on Hardware | The amps per volt scaling factor
+BATT_AMP_OFFSET     | Dependent on hardware | The output voltage at zero amps
+BATT_VOL_MULT       | Dependent on hardware | The scaling factor between the output voltage of the sensor and the true system voltage
+
+#### PX4 Setup for Analog Voltage/Current
 
 Parameter   | Value           
 ------------ | ------------- 
