@@ -623,6 +623,11 @@ Parameter   | Value
 BATT_MONITOR    | 4
 BATT_VOLT_PIN       | 16         
 BATT_CURR_PIN        | 17        
+
+If you wish to monitor two battiers, the additional analog inputs (J13.4 and J13.5) can be used with the parameters below: 
+
+Parameter   | Value           
+------------ | ------------- 
 BATT2_VOLT_PIN | 14         
 BATT2_CURR_PIN | 15
 
