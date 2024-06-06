@@ -754,6 +754,21 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Remote ID Subsystem">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#firmware-for-opendroneid" class="md-nav__link">
+    <span class="md-ellipsis">
+      Firmware for OpenDroneID
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -1566,6 +1581,21 @@
       Remote ID Subsystem
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Remote ID Subsystem">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#firmware-for-opendroneid" class="md-nav__link">
+    <span class="md-ellipsis">
+      Firmware for OpenDroneID
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -2538,6 +2568,11 @@ For PX4, set the following params and reboot.
 <a id="__codelineno-42-2" name="__codelineno-42-2" href="#__codelineno-42-2"></a>#define PIN_UART_RX 5
 <a id="__codelineno-42-3" name="__codelineno-42-3" href="#__codelineno-42-3"></a>WS2812_LED_PIN GPIO_NUM_8
 </code></pre></div></p>
+<h3 id="firmware-for-opendroneid">Firmware for OpenDroneID<a class="headerlink" href="#firmware-for-opendroneid" title="Permanent link">&para;</a></h3>
+<p>Special firmware is required for full integration of a Remote ID transmitter to add a layer of tamper-resistance as required by various countries initiatives. This is achieved by
+- Using a special board ID for ODID (OpenDroneID) firmware that will reject normal attempts of loading firmware without the necessary functions and parameters required for compliance. Any bootloader created with OpenDroneID capabilities also has firmware checking enabled such that it will not boot main firmware unless the board ids match.
+- Special READONLY parameters which can be set in the firmware during the compilation</p>
+<p>As such, if you wish to utilize Remote ID for your application, you will need to commpile firmware yourself or contact support@echomav.com for assistance. Please see the instructions <a href="https://ardupilot.org/dev/docs/opendroneid.html#building-firmware-for-bench-testing-and-experimentation">here</a> for additional information.</p>
 
 
 
