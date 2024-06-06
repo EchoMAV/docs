@@ -16,7 +16,7 @@
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.25">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.26">
     
     
       
@@ -162,7 +162,7 @@
       
     </form>
     <div class="md-search__output">
-      <div class="md-search__scrollwrap" data-md-scrollfix>
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
         <div class="md-search-result" data-md-component="search-result">
           <div class="md-search-result__meta">
             Initializing search
@@ -691,6 +691,25 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#battery-voltagecurrent-monitoring" class="md-nav__link">
+    <span class="md-ellipsis">
+      Battery Voltage/Current Monitoring
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Battery Voltage/Current Monitoring">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#digital-ouput" class="md-nav__link">
+    <span class="md-ellipsis">
+      Digital Ouput
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#analog-input-to-the-fmu-voltagecurrent-sense" class="md-nav__link">
     <span class="md-ellipsis">
       Analog Input to the FMU (Voltage/Current Sense)
@@ -701,20 +720,25 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#ardupilot-setup-for-voltagecurrent" class="md-nav__link">
+  <a href="#ardupilot-setup-for-analog-voltagecurrent-sense" class="md-nav__link">
     <span class="md-ellipsis">
-      ArduPilot Setup for Voltage/Current
+      ArduPilot Setup for Analog Voltage/Current Sense
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#px4-setup-for-voltagecurrent" class="md-nav__link">
+  <a href="#px4-setup-for-analog-voltagecurrent" class="md-nav__link">
     <span class="md-ellipsis">
-      PX4 Setup for Voltage/Current
+      PX4 Setup for Analog Voltage/Current
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -1480,6 +1504,25 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#battery-voltagecurrent-monitoring" class="md-nav__link">
+    <span class="md-ellipsis">
+      Battery Voltage/Current Monitoring
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Battery Voltage/Current Monitoring">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#digital-ouput" class="md-nav__link">
+    <span class="md-ellipsis">
+      Digital Ouput
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#analog-input-to-the-fmu-voltagecurrent-sense" class="md-nav__link">
     <span class="md-ellipsis">
       Analog Input to the FMU (Voltage/Current Sense)
@@ -1490,20 +1533,25 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#ardupilot-setup-for-voltagecurrent" class="md-nav__link">
+  <a href="#ardupilot-setup-for-analog-voltagecurrent-sense" class="md-nav__link">
     <span class="md-ellipsis">
-      ArduPilot Setup for Voltage/Current
+      ArduPilot Setup for Analog Voltage/Current Sense
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#px4-setup-for-voltagecurrent" class="md-nav__link">
+  <a href="#px4-setup-for-analog-voltagecurrent" class="md-nav__link">
     <span class="md-ellipsis">
-      PX4 Setup for Voltage/Current
+      PX4 Setup for Analog Voltage/Current
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -2310,8 +2358,30 @@ For PX4, set the following params and reboot.
 </tr>
 </tbody>
 </table>
-<h2 id="analog-input-to-the-fmu-voltagecurrent-sense">Analog Input to the FMU (Voltage/Current Sense)<a class="headerlink" href="#analog-input-to-the-fmu-voltagecurrent-sense" title="Permanent link">&para;</a></h2>
-<p>The EchoPilot AI FMU design provides 6 analog inputs to the STM32H743. Most often, these are used for voltage/current input for the battery systems onboard an uncrewed system. The Analog input pin mapping for each input is shown below. To use these inputs, change the parameters in ArduPilot or PX4 to the appropriate pins.</p>
+<h2 id="battery-voltagecurrent-monitoring">Battery Voltage/Current Monitoring<a class="headerlink" href="#battery-voltagecurrent-monitoring" title="Permanent link">&para;</a></h2>
+<p>There are a wide variety of commercial voltage/current monitors which are compatiable with the EchoPilot. Examples of how to configure a few of them are provided below. Note that the EchoPilot AI carrier board does NOT include a current sensor because such a sensor needs to be placed directly after the system battery such that it can capture the both the total current output consumed by the motors/ESCs, radios, and other perpiherals in addition to the EchoPilot AI.</p>
+<h3 id="digital-ouput">Digital Ouput<a class="headerlink" href="#digital-ouput" title="Permanent link">&para;</a></h3>
+<p>Voltage/Current sensors which provide a digital output internface are commercially available. For example, the <a href="Mhttps://www.mateksys.com/?portfolio=can-l4-bm">MATEKSYS CAN-L4-B</a> provides voltage sensing up to 85V and current sensing from 0-204.8A and uses the CAN bus. To set up this device use the following parameters:</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CAN_P1_DRIVER</td>
+<td>1 (if attached to CAN bus1 port or CAN_P2_DRIVER = 1 if attached to CAN bus2 port)</td>
+</tr>
+<tr>
+<td>BATTx_MONITOR</td>
+<td>8</td>
+</tr>
+</tbody>
+</table>
+<h3 id="analog-input-to-the-fmu-voltagecurrent-sense">Analog Input to the FMU (Voltage/Current Sense)<a class="headerlink" href="#analog-input-to-the-fmu-voltagecurrent-sense" title="Permanent link">&para;</a></h3>
+<p>The EchoPilot AI FMU design provides 6 analog inputs to the STM32H743. Often, these are used for voltage/current input for the battery systems onboard an uncrewed system. The Analog input pin mapping for each input is shown below. To use these inputs, change the parameters in ArduPilot or PX4 to the appropriate pins.</p>
 <table>
 <thead>
 <tr>
@@ -2360,7 +2430,8 @@ For PX4, set the following params and reboot.
 </tr>
 </tbody>
 </table>
-<h3 id="ardupilot-setup-for-voltagecurrent">ArduPilot Setup for Voltage/Current<a class="headerlink" href="#ardupilot-setup-for-voltagecurrent" title="Permanent link">&para;</a></h3>
+<h4 id="ardupilot-setup-for-analog-voltagecurrent-sense">ArduPilot Setup for Analog Voltage/Current Sense<a class="headerlink" href="#ardupilot-setup-for-analog-voltagecurrent-sense" title="Permanent link">&para;</a></h4>
+<p>For example, the <a href="https://ardupilot.org/copter/docs/common-powermodule-landingpage.html">Common Power Module</a></p>
 <table>
 <thead>
 <tr>
@@ -2369,6 +2440,10 @@ For PX4, set the following params and reboot.
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>BATT_MONITOR</td>
+<td>4</td>
+</tr>
 <tr>
 <td>BATT_VOLT_PIN</td>
 <td>16</td>
@@ -2387,7 +2462,34 @@ For PX4, set the following params and reboot.
 </tr>
 </tbody>
 </table>
-<h3 id="px4-setup-for-voltagecurrent">PX4 Setup for Voltage/Current<a class="headerlink" href="#px4-setup-for-voltagecurrent" title="Permanent link">&para;</a></h3>
+<p>The following parameters will need to be adjusted based on the specific Analog Voltage/Current Sensor used:</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>BATT_AMP_PERVLT</td>
+<td>Dependent on Hardware</td>
+<td>The amps per volt scaling factor</td>
+</tr>
+<tr>
+<td>BATT_AMP_OFFSET</td>
+<td>Dependent on hardware</td>
+<td>The output voltage at zero amps</td>
+</tr>
+<tr>
+<td>BATT_VOL_MULT</td>
+<td>Dependent on hardware</td>
+<td>The scaling factor between the output voltage of the sensor and the true system voltage</td>
+</tr>
+</tbody>
+</table>
+<h4 id="px4-setup-for-analog-voltagecurrent">PX4 Setup for Analog Voltage/Current<a class="headerlink" href="#px4-setup-for-analog-voltagecurrent" title="Permanent link">&para;</a></h4>
 <table>
 <thead>
 <tr>
@@ -2502,7 +2604,7 @@ For PX4, set the following params and reboot.
     <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.tracking", "navigation.instant", "navigation.top", "search.suggest", "search.highlight", "content.tabs.link", "content.code.annotation", "content.code.copy", "toc.follow", "content.action.edit", "content.action.view", "content.code.copy"], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.081f42fc.min.js"></script>
+      <script src="../assets/javascripts/bundle.ad660dcc.min.js"></script>
       
     
   </body>
