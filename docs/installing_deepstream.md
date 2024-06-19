@@ -6,7 +6,7 @@ The CUDA Toolkit provides a development environment for creating high-performanc
 
 The instructions below show how to install both. These instructions were developed using a Jetson Orin NX with a 256 GB SSD, running L4T 35.4.1. In most cases, you will not be able to install this software without significant available storage space. E.g., an Xavier NX with only a 16 GB eMMC will not have enough storage space. We recommend [adding a NVMe SSD](echopilot_ai.md/#using-an-nvme-ssd) before proceeding. 
 !!! note
-    The instructions below assume that the EchoPilot AI has internet access and you are logged in to the console. Since EchoPilotAI Jetson hardware is provided with a static IP address, it is often simpler to enable DHCP and let the Jetson get internet through your LAN's router. To do this, you can use the nmcli commands to change the static-eth0 connection profile to auto/hdcp.
+    The instructions below assume that the EchoPilot AI has internet access. Since EchoPilotAI Jetson hardware is provided with a static IP address, it is often simpler to enable DHCP and let the Jetson get internet through your LAN's router. To do this, you can use the nmcli commands to change the static-eth0 connection profile to auto/hdcp.
     ```
     sudo nmcli con mod static-eth0 ipv4.method auto
     sudo nmcli con down static-eth0
@@ -20,90 +20,42 @@ The instructions below show how to install both. These instructions were develop
     ```
     Remember if you change the network during a ssh session, you will lose connection. It is recommendced to make network system changes when on a [USB Console](echopilot_ai.md/#accessing-the-jetson-via-the-console) connection. 
 
-### Set system time
-Assuming you have an internet connection at this point, you will want to ensure your system time is set correctly or package updates may fail. 
-```
-sudo timedatectl set-ntp true
-sudo systemctl restart systemd-timesyncd.service
-```
-now verify your system time is correct
-```
-sudo timedatectl
-```
+## Install NVidia's SDK Manager UI 
 
-### Install DeepStream
+Install Nvidia's [SDK Manager](https://developer.nvidia.com/sdk-manager) software.
 
-Start by doing an apt update.
-```
-sudo apt-get update
-```
-### Install dependencies
-```
-sudo apt install \
-build-essential \
-libssl1.1 \
-libgstreamer1.0-0 \
-gstreamer1.0-tools \
-gstreamer1.0-plugins-good \
-gstreamer1.0-plugins-bad \
-gstreamer1.0-plugins-ugly \
-gstreamer1.0-libav \
-libgstreamer-plugins-base1.0-dev \
-libgstrtspserver-1.0-0 \
-libjansson4 \
-libyaml-cpp-dev
-```
-### Install librdkafka 
+## Prepare the EchoPilot AI
 
-1. Clone the repo
-```
-git clone https://github.com/edenhill/librdkafka.git
-```
-2. Configure, build and install
-```
-cd librdkafka
-git reset --hard 7101c2310341ab3f4675fc565f64f0967e135a6a
-./configure
-make
-sudo make install
-```
-3. Copy the generated files to the deepstream directory.
-```
-sudo mkdir -p /opt/nvidia/deepstream/deepstream-6.3/lib
-sudo cp /usr/local/lib/librdkafka* /opt/nvidia/deepstream/deepstream-6.3/lib
-```
-### Get and install the Deepstream SDK
-```
-wget --content-disposition 'https://api.ngc.nvidia.com/v2/resources/org/nvidia/deepstream/6.3/files?redirect=true&path=deepstream-6.3_6.3.0-1_arm64.deb' -O deepstream-6.3_6.3.0-1_arm64.deb
-sudo apt-get -y install ./deepstream-6.3_6.3.0-1_arm64.deb
-```
-### Install CUDA
-```
-wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/sbsa/cuda-keyring_1.1-1_all.deb
-sudo dpkg -i cuda-keyring_1.1-1_all.deb
-sudo apt-get update
-sudo apt-get -y install cuda-toolkit-12-3
-```
-### Install CUDA driver
-```
-sudo apt-get install -y cuda-drivers
-```
+1. Ensure the EchoPilot AI has internet access, by using the included JST to RJ45 adapter to plug into a network with a router/gateway which provides internet. Refer to the instructions above if you need to configure the Jetson to obtain an IP address via DHCP.
+2. Connect a USBA to USB Micro-B connector between the EchoPilotAI (J25) and your host computer.
 
-### Boost the clocks
-```
-sudo nvpmodel -m 0 
-# for Xavier NX, use nvpmodel -m 8
-sudo jetson_clocks
-```
-Now __Reboot__ the system.
+## Install Software
 
-### Verify functionality
+Using Nvidia's SDK Manager, ensure that you have the appropriate SDK Version selected, and check the box for "Deepstream" for Additional SDKs, then click __Continue__.
 
-At this point, the `deepstream-app` should run without errors:
+![SDK Manager Step 1](assets/sdk_manager3.png)
+
+1. Select the SDK Components you wish to install.  
+2. __Deselect__ "Jetson Linux", as that is already installed. If you reinstall Jetson Linux during this step your EchoPilot AI may no longer work because the custom device tree files will be overwritten.  
+3. Click Continue  
+
+!!! WARNING
+    __Deselect__ "Jetson Linux" as shown in the screenshot below!
+
+ ![SDK Manager Step 2](assets/sdk_manager2.png)   
+
+1. Select USB as the connection, and enter the username and password (default is echopilot/echopilot). Then click __Install__.
+2. This process may take 20-30 minutes depending on which packages are selected.
+
+![SDK Manager1= Step 3](assets/sdk_manager1.png)   
+
+## Verify functionality
+
+At this point, log into the Jetson using either USB Console or SSH and test that the `deepstream-app` runs without errors:
 ```
 deepstream-app --help
 ```
-### Explore Sample Code
+## Explore Sample Code
 
 Browse and run precompiled sample applications in `sources/apps/sample_apps`.  
 Follow the directory’s README file to run the application.

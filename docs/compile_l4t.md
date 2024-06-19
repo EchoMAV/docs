@@ -2,11 +2,7 @@
 
 ## Instructions for customizing the device tree and compiling the kernel for the Xavier NX on EchoPilot AI
 
-When a Jetson Xavier NX module is included with an EchoPilot AI purchase, it is flashed with a custom Linux for Tegra (L4T) image which includes support for the hardware configuration of the EchoPilot AI. The EchoPilot AI hardware provides provides nearly identical features of the Nvidia development kit board. If you wish to build/update the kernel for use with the EchoPilot AI, the instructions below will provide the information and files you need to ensure your custom image remains fully compatible with the EchoPilot AI hardware. When compared to a standard Nvidia development carrier board, the primary difference in the EchoPilot AI hardware are:
-
-1. The EchoPilot AI does not have an I2C HDMI controller
-
-To minimize console errors due to (1) which would otherwise be present, the kernel must be compiled from source and flashed to the Xavier NX using the Debug USB port and recovery mode. It is not possible to update only the dtb files because the pinmux changes require a full flash. The following instructions will walk you through the process.
+When a Jetson Xavier NX module is included with an EchoPilot AI purchase, it is flashed with a custom Linux for Tegra (L4T) image which includes support for the hardware configuration of the EchoPilot AI. The EchoPilot AI hardware provides provides nearly identical features of the Nvidia development kit board. If you wish to build/update the kernel for use with the EchoPilot AI, the instructions below will provide the information and files you need to ensure your custom image remains fully compatible with the EchoPilot AI hardware. 
 
 !!! WARNING
     
@@ -17,7 +13,7 @@ To minimize console errors due to (1) which would otherwise be present, the kern
 What you will doing:
 
 1. Download and setup the necessary files
-2. Replace .dtb and create a extlinux.conf file
+2. Replace device tree files with those compatible with the EchoPilotAI
 3. Generate the image and flash the device
 
 So buckle up and let's get started.
@@ -25,9 +21,9 @@ So buckle up and let's get started.
 ### Download and Setup Necessary Files
 
 Note that you may need to create an NVIDIA developer account and login to download, so if you do not have a developer account please [set that up](https://developer.nvidia.com/login) before proceeding. 
-Next you will need to download three packages from Nvidia: [Driver Package (BSP), Sample Root Filesystem and Driver Package (BSP) Sources 35.4.1](https://developer.nvidia.com/embedded/jetson-linux-r3541). 
+Next you will need to download three packages from Nvidia: [Driver Package (BSP), Sample Root Filesystem and Driver Package (BSP) Sources 35.5.0](https://developer.nvidia.com/embedded/jetson-linux-r3550). 
 
-> These instructions were developed using Jetson Linux 35.3.1. These instructions _may_ continue to work for future releases,   but proceed with caution.
+> These instructions were developed using Jetson Linux 35.5.0. These instructions _may_ continue to work for future releases, but proceed with caution.
 
 The files to download are highlighted in blue below:
 ![l4t_downloads](assets/l4t_downloads.png)
@@ -39,13 +35,14 @@ The instructions below assume that the downloaded files are downloaded to the `~
 
 ```
 mkdir -p ~/XavierNX
-tar xpf ~/Downloads/Jetson_Linux_R35.4.1_aarch64.tbz2 -C ~/XavierNX
+tar xpf ~/Downloads/Jetson_Linux_R35.5.0_aarch64.tbz2 -C ~/XavierNX
 ```
 
 #### Extract sample Root File System  (Sample Root Filesystem)
-Extract contents into Linux_for_Tegra/rootfs/. Note the filename below will be different if you downloaded a different version.
+Extract contents into Linux_for_Tegra/rootfs/. 
+> Note the filename below will be different if you downloaded a different version.
 ```
-sudo tar xpf ~/Downloads/Tegra_Linux_Sample-Root-Filesystem_R35.4.1_aarch64.tbz2 -C ~/XavierNX/Linux_for_Tegra/rootfs/
+sudo tar xpf ~/Downloads/Tegra_Linux_Sample-Root-Filesystem_R35.5.0_aarch64.tbz2 -C ~/XavierNX/Linux_for_Tegra/rootfs/
 cd ~/XavierNX/Linux_for_Tegra
 sudo ./apply_binaries.sh
 ```
@@ -59,9 +56,9 @@ This step allows you to configure your username, password and hostname and also 
 sudo tools/l4t_create_default_user.sh -u {USERNAME} -p {PASSWORD} -n {HOSTNAME} --accept-license
 ```
     
-### Get the EchoPilot .dtb and extlinux.conf files
+### Get the EchoPilot board support files
 
-The files you will need to replace include the device tree binary (.dtb) and extlinux.conf files. These files can be obtained from the repository [https://github.com/EchoMAV/echopilot_ai_bsp](https://github.com/EchoMAV/echopilot_ai_bsp). Use the steps below to clone and install these files:
+The files you will need to replace include the device tree binary (.dtb) files. These files can be obtained from the repository [https://github.com/EchoMAV/echopilot_ai_bsp](https://github.com/EchoMAV/echopilot_ai_bsp). Use the steps below to clone and install these files:
 
 Clone the files:
 ```
@@ -73,7 +70,7 @@ Checkout the appropriate branch for your EchoPilot AI board revision. For exampl
 ```
 git checkout board_revision_1b
 ```
-Run the install script to copy the dtb and extlinux.conf files into your Linux_for_Tegra folder. The usage is `./install_l4t_xavier_nx.sh [Path to Linux_for_Tegra]`, e.g.:
+Run the install script to copy the files into your Linux_for_Tegra folder. The usage is `./install_l4t_xavier_nx.sh [Path to Linux_for_Tegra]`, e.g.:
 ```
 ./install_l4t_xavier_nx.sh ~/XavierNX/Linux_for_Tegra/
 ```
