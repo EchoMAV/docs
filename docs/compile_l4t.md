@@ -91,5 +91,12 @@ cd ~/XavierNX/Linux_for_Tegra/
 sudo ./flash.sh jetson-xavier-nx-devkit-emmc mmcblk0p1
 ```
 
+### Flashing an M.2 Drive
 
+OPTIONAL: It is possible to flash a M.2 SSD drive on your host computer and then move it to the EchoPilot AI.
 
+Assuming the NVMe drive is mounted as /dev/sda on your host computer:
+
+```
+sudo ./tools/kernel_flash/l4t_initrd_flash.sh -c tools/kernel_flash/flash_l4t_external.xml --external-device nvme0n1p1 --direct sda jetson-xavier-nx-devkit-emmc nvme0n1p1
+```
