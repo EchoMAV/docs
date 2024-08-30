@@ -676,13 +676,13 @@ As such, if you wish to utilize Remote ID for your application, you will need to
 
 ## Thermal Considerations
 
-When using the EchoPiot AI, thermal consideration must be given to heat management of the Jetson module and (if applicable) the SSD.
+When using the EchoPiot AI, the user must consider thermal management of the Jetson and SSD drives (if used). If adequate thermal dissipation is not available, the Jetson modules will throttle and eventually shutdown. When properly managed, the Jetson modules should run at no more than 65°C. See the tools below to monitor the real time temperature of the Jetson. Note that CPU/GPU load (especially video processing/encoding) can cause substantial increases in the temperature of the Jetson modules.
 
 ### Jetson Module
 
-The Jetson modules always require heatsinking. Either passive or active heatsink solutions are available.
+The Jetson modules always require heatsinking. Both passive and active heatsink solutions are available.
 
-The FAN output on the EchoPilot AI can be used to power active heatsinks [available here](https://echomav.com/product-category/echopilot-ai-accessories/heatsinks/) or can be used to power an external system fan. Fans powered by J38 should draw less than 150mA, be powered by 5VDC and provide a PWM control signal and Tachometer output signal. An example of an external ducted fan cooling solution using the FAN ouput of J38 is shown below.
+The fan output on the EchoPilot AI can be used to power active heatsinks [available here](https://echomav.com/product-category/echopilot-ai-accessories/heatsinks/) or can be used to power an external system fan. Fans powered by J38 should draw less than 150mA, be powered by 5VDC and provide a PWM control signal and Tachometer output signal. An example of an external ducted fan cooling solution using the fan ouput of J38 is shown below. See the [EchoPilot AI Pinout](echopilot_ai_pinout.md#fan-j38) for more information about the fan connector.
 
 ![MK1 Fan](assets/mk1fan.jpg) 
 
@@ -712,4 +712,10 @@ sudo smartctl -A /dev/nvme0n1 | grep -i temperature
 ```
 ### EchoPilot AI Board
 
-No components on the EchoPilot AI main board or carrier board requires cooling. Note the the IMU/Baro sensors are actively heated (typically to 45° C, per the autopilot firmware) so it is normal for this "copper island" to be warm to the touch a few minutes after power on. Also note that the board design will naturally distribute heat from the Jetson module and SSD to the internal ground planes. It is normal for the total board temperature to slowly rise to match the Jetson's steady state temperature. You may also use the aluminum standoffs to couple heat 
+No components on the EchoPilot AI main board or carrier board requires cooling. Note the the IMU/Baro sensors are actively heated (typically to 45° C, per the autopilot firmware) so it is normal for this "copper island" to be warm to the touch a few minutes after power on. Also note that the board design will naturally distribute heat from the Jetson module and SSD to the internal ground planes. It is normal for the total board temperature to slowly rise to match the Jetson's steady state temperature. You may also use the aluminum standoffs to couple heat from the EchoPilot AI system into a metal chassis.
+
+Thermal images of the EchoPilot AI are shown below. These images were captured < 30s after shutdown with a Jetson Orin + Active Heatsink + 256 GB Industrial SSD Mounted. The Jetson Orin was removed shortly before the image was captured in order to show the full components of the EchoPilot AI hardware.
+
+![EchoPilot AI Thermal Top](assets/thermaltopjpg) 
+
+![EchoPilot AI Thermal Bottom](assets/thermalbottom.jpg) 
