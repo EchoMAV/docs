@@ -1,5 +1,7 @@
 # Compiling L4T for the Jetson Orin NX and Orin Nano on the EchoPilot AI
 
+# Updated for L4T 36.3
+
 ## Instructions for customizing the device tree and compiling the kernel for the Orin NX on EchoPilot AI
 
 When a Jetson Orin NX or Orin Nano module is included with an EchoPilot AI purchase, it is flashed with a custom Linux for Tegra (L4T) image which includes support for the hardware configuration of the EchoPilot AI. If you wish to build/update the kernel for use with the EchoPilot AI, the instructions below will provide the information and files you need to ensure your custom image remains fully compatible with the EchoPilot AI hardware. When compared to a standard Nvidia development carrier board, the primary differences in the EchoPilot AI hardware are summarized below. In the build steps below you will be applying a customized DTB file which applies these fixes:
@@ -22,13 +24,12 @@ What you will doing:
 
 So buckle up and let's get started.
 
-
 ### Download and Setup Necessary Files
 
 Note that you will need to create an NVIDIA developer account and login to download, so if you do not have a developer account please [set that up](https://developer.nvidia.com/login) before proceeding. 
-Next you will need to download three packages from Nvidia: [Driver Package (BSP), Sample Root Filesystem and Driver Package (BSP) Sources](https://developer.nvidia.com/embedded/jetson-linux-r3541). 
+Next you will need to download three packages from Nvidia: [Driver Package (BSP), Sample Root Filesystem and Driver Package (BSP) Sources](https://developer.nvidia.com/embedded/jetson-linux-r363). 
 
-> These instructions were developed using Jetson Linux 35.4.1, but generally we recommend you download the latest available.
+> These instructions were developed using Jetson Linux 36.3.
 
 The files to download are highlighted in blue below:
 ![l4t_downloads_orin](assets/l4t_downloads_orin.png)
@@ -41,18 +42,18 @@ The files to download are highlighted in blue below:
 
 ```
 mkdir -p ~/Orin
-tar xpf ~/Downloads/Jetson_Linux_R35.4.1_aarch64.tbz2 -C ~/Orin
+tar xpf ~/Downloads/Jetson_Linux_R36.3.0_aarch64.tbz2 -C ~/Orin
 ```
 
 #### Extract sample Root File System  (Sample Root Filesystem)
 Extract contents into Linux_for_Tegra/rootfs/. 
 ```
-sudo tar xpf ~/Downloads/Tegra_Linux_Sample-Root-Filesystem_R35.4.1_aarch64.tbz2 -C ~/Orin/Linux_for_Tegra/rootfs/
+sudo tar xpf ~/Downloads/Tegra_Linux_Sample-Root-Filesystem_R36.3.0_aarch64.tbz2 -C ~/Orin/Linux_for_Tegra/rootfs/
 cd ~/Orin/Linux_for_Tegra
 sudo ./apply_binaries.sh
 ```
 !!! note
-    If `apply_binaries.sh` failes, you host computer may be missing some dependencies. Please make note of the missing packages and install them using `sudo apt-get install XXXXX`. Before `apply_binaries.sh`` is run, the content in “Linux_for_Tegra/rootfs/” is purely Ubuntu. After `apply_binaries.sh`,` the “rootfs/” will contain NVIDIA content, e.g, drivers for the GPU and some firmware.
+    If `apply_binaries.sh` fails, you host computer may be missing some dependencies. Please make note of the missing packages and install them using `sudo apt-get install XXXXX`. Before `apply_binaries.sh`` is run, the content in “Linux_for_Tegra/rootfs/” is purely Ubuntu. After `apply_binaries.sh`,` the “rootfs/” will contain NVIDIA content, e.g, drivers for the GPU and some firmware.
 
 ### Create the default user
 
@@ -100,7 +101,7 @@ Ensure this script completes with no errors before proceeding with flashing.
 
 ```
 cd ~/Orin/Linux_for_Tegra/
-sudo ./tools/kernel_flash/l4t_initrd_flash.sh --external-device nvme0n1p1 -c tools/kernel_flash/flash_l4t_external.xml -p "-c bootloader/t186ref/cfg/flash_t234_qspi.xml" --showlogs --network usb0 p3509-a02+p3767-0000 internal
+sudo ./tools/kernel_flash/l4t_initrd_flash.sh -c ./tools/kernel_flash/flash_l4t_external.xml --external-device nvme0n1p1 -p "-c bootloader/generic/cfg/flash_t234_qspi.xml" p3509-a02-p3767-0000 internal
 ```
 !!! note
     The first time you run this script, your system may be missing dependencies. The script will tell you what is missing, please install them using `sudo apt-get install XXXXXX`.
