@@ -716,10 +716,12 @@ No components on the EchoPilot AI main board or carrier board requires cooling. 
 
 Thermal images of the EchoPilot AI are shown below. These images were captured < 30s after shutdown with a Jetson Orin + Active Heatsink + 256 GB Industrial SSD Mounted. The Jetson Orin was removed shortly before the image was captured in order to show the full components of the EchoPilot AI hardware.
 
-![EchoPilot AI Thermal Top](assets/thermaltop.jpg) 
+![EchoPilot AI Thermal Top](assets/thermaltop.jpg)  
+Top View of the EchoPilot AI
 
-![EchoPilot AI Thermal Bottom](assets/thermalbottom.jpg) 
+![EchoPilot AI Thermal Bottom](assets/thermalbottom.jpg)  
+Bottom View of the EchoPilot AI (with WD 256 SSD)
 
-![EchoPilot AI Carrier Thermal Top](assets/carrierthermaltop.jpg) 
+![EchoPilot AI Carrier Thermal Top](assets/carrierthermaltop.jpg)  
+Top View of the EchoPilot AI Carrier
 
-![EchoPilot AI Carrier Thermal Bottom](assets/carrierthermalbottom.jpg) 
