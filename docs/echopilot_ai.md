@@ -674,7 +674,7 @@ Special firmware is required for full integration of a Remote ID transmitter to 
 
 As such, if you wish to utilize Remote ID for your application, you will need to commpile firmware yourself or contact support@echomav.com for assistance. Please see the instructions [here](https://ardupilot.org/dev/docs/opendroneid.html#building-firmware-for-bench-testing-and-experimentation) for additional information.
 
-## Themral Considerations
+## Thermal Considerations
 
 When using the EchoPiot AI, thermal consideration must be given to heat management of the Jetson module and (if applicable) the SSD.
 
@@ -686,7 +686,7 @@ The FAN output on the EchoPilot AI can be used to power active heatsinks [availa
 
 ![MK1 Fan](assets/mk1fan.jpg) 
 
-Thermal design guides for the Jetson modules are available from Nvidia, for example see the [Orin Nx/Nano guide](/assets/Jetson_Orin_NX_Series_Orin_Nano_Series_Thermal_Design_Guide_TDG-11127-001_v1.1.pdf).
+Thermal design guides for the Jetson modules are available from Nvidia, for example see the [Orin Nx/Nano guide](assets/Jetson_Orin_NX_Series_Orin_Nano_Series_Thermal_Design_Guide_TDG-11127-001_v1.1.pdf).
 
 To monitor the Jetson temperature and fan status, first stop the service nvfancontrol:
 ```
@@ -696,7 +696,7 @@ Then run nvfancontrol in verbose mode:
 ```
 sudo nvfancontrol --verbose
 ```
-To edit the fan speed relative to the temperature, and/or create new cooling profiles, edit `etc\nvfancontrol.conf`.  Note that on the EchoPilot Boards, PWM 0 = full speed, PWM 255 = fan off.
+To edit the fan speed relative to the temperature, and/or create new cooling profiles, edit `etc\nvfancontrol.conf`. Note that on the EchoPilot Boards, PWM 0 = full speed, PWM 255 = fan off.
 
 ### Solid State Drive 
 
@@ -712,4 +712,4 @@ sudo smartctl -A /dev/nvme0n1 | grep -i temperature
 ```
 ### EchoPilot AI Board
 
-No components on the EchoPilot AI main board or carrier board requires cooling. Note the the IMU/Baro sensors are actively heated (typically to 45° C, per the autopilot firmware) so it is normal for this "copper island" to be warm to the touch a few minutes after power on. Also note that the board design will naturally distribute heat from the Jetson module and SSD to the internal ground planes. It is normal for the total board temperature to slowly rise to match the Jetson's steady state temperature.
+No components on the EchoPilot AI main board or carrier board requires cooling. Note the the IMU/Baro sensors are actively heated (typically to 45° C, per the autopilot firmware) so it is normal for this "copper island" to be warm to the touch a few minutes after power on. Also note that the board design will naturally distribute heat from the Jetson module and SSD to the internal ground planes. It is normal for the total board temperature to slowly rise to match the Jetson's steady state temperature. You may also use the aluminum standoffs to couple heat 
