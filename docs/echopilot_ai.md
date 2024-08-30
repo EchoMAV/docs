@@ -720,6 +720,6 @@ Thermal images of the EchoPilot AI are shown below. These images were captured <
 
 ![EchoPilot AI Thermal Bottom](assets/thermalbottom.jpg) 
 
-![EchoPilot AI Carrier Thermal Top](assets/carrierthermaltopjpg) 
+![EchoPilot AI Carrier Thermal Top](assets/carrierthermaltop.jpg) 
 
 ![EchoPilot AI Carrier Thermal Bottom](assets/carrierthermalbottom.jpg) 
