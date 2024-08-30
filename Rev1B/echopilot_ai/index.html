@@ -772,13 +772,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#themral-considerations" class="md-nav__link">
+  <a href="#thermal-considerations" class="md-nav__link">
     <span class="md-ellipsis">
-      Themral Considerations
+      Thermal Considerations
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Themral Considerations">
+    <nav class="md-nav" aria-label="Thermal Considerations">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1642,13 +1642,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#themral-considerations" class="md-nav__link">
+  <a href="#thermal-considerations" class="md-nav__link">
     <span class="md-ellipsis">
-      Themral Considerations
+      Thermal Considerations
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Themral Considerations">
+    <nav class="md-nav" aria-label="Thermal Considerations">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -2657,20 +2657,20 @@ For PX4, set the following params and reboot.
 - Using a special board ID for ODID (OpenDroneID) firmware that will reject normal attempts of loading firmware without the necessary functions and parameters required for compliance. Any bootloader created with OpenDroneID capabilities also has firmware checking enabled such that it will not boot main firmware unless the board ids match.
 - Special READONLY parameters which can be set in the firmware during the compilation</p>
 <p>As such, if you wish to utilize Remote ID for your application, you will need to commpile firmware yourself or contact support@echomav.com for assistance. Please see the instructions <a href="https://ardupilot.org/dev/docs/opendroneid.html#building-firmware-for-bench-testing-and-experimentation">here</a> for additional information.</p>
-<h2 id="themral-considerations">Themral Considerations<a class="headerlink" href="#themral-considerations" title="Permanent link">&para;</a></h2>
+<h2 id="thermal-considerations">Thermal Considerations<a class="headerlink" href="#thermal-considerations" title="Permanent link">&para;</a></h2>
 <p>When using the EchoPiot AI, thermal consideration must be given to heat management of the Jetson module and (if applicable) the SSD.</p>
 <h3 id="jetson-module">Jetson Module<a class="headerlink" href="#jetson-module" title="Permanent link">&para;</a></h3>
 <p>The Jetson modules always require heatsinking. Either passive or active heatsink solutions are available.</p>
 <p>The FAN output on the EchoPilot AI can be used to power active heatsinks <a href="https://echomav.com/product-category/echopilot-ai-accessories/heatsinks/">available here</a> or can be used to power an external system fan. Fans powered by J38 should draw less than 150mA, be powered by 5VDC and provide a PWM control signal and Tachometer output signal. An example of an external ducted fan cooling solution using the FAN ouput of J38 is shown below.</p>
 <p><img alt="MK1 Fan" src="../assets/mk1fan.jpg" /> </p>
-<p>Thermal design guides for the Jetson modules are available from Nvidia, for example see the <a href="/assets/Jetson_Orin_NX_Series_Orin_Nano_Series_Thermal_Design_Guide_TDG-11127-001_v1.1.pdf">Orin Nx/Nano guide</a>.</p>
+<p>Thermal design guides for the Jetson modules are available from Nvidia, for example see the <a href="../assets/Jetson_Orin_NX_Series_Orin_Nano_Series_Thermal_Design_Guide_TDG-11127-001_v1.1.pdf">Orin Nx/Nano guide</a>.</p>
 <p>To monitor the Jetson temperature and fan status, first stop the service nvfancontrol:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-43-1" name="__codelineno-43-1" href="#__codelineno-43-1"></a>sudo systemclt stop nvfancontrol
 </code></pre></div>
 Then run nvfancontrol in verbose mode:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-44-1" name="__codelineno-44-1" href="#__codelineno-44-1"></a>sudo nvfancontrol --verbose
 </code></pre></div>
-To edit the fan speed relative to the temperature, and/or create new cooling profiles, edit <code>etc\nvfancontrol.conf</code>.  Note that on the EchoPilot Boards, PWM 0 = full speed, PWM 255 = fan off.</p>
+To edit the fan speed relative to the temperature, and/or create new cooling profiles, edit <code>etc\nvfancontrol.conf</code>. Note that on the EchoPilot Boards, PWM 0 = full speed, PWM 255 = fan off.</p>
 <h3 id="solid-state-drive">Solid State Drive<a class="headerlink" href="#solid-state-drive" title="Permanent link">&para;</a></h3>
 <p>If an SSD is used in your design, it may overheat if not properly cooled. Many commercial NVMe SSDs have temperature ratings from 0 to 70° C, and are not appropriate for use outside of laboratory/office environments. For field use, we recommend industrial rated SSDs which have much operating ranges from -40 to 85°C. If your appliation requires heavy writing to the SSD, additional cooling may be required. </p>
 <p>To monitor your SSD temperature, first install smartmontools
@@ -2680,7 +2680,7 @@ Then monitor the SSD temperature using
 <div class="highlight"><pre><span></span><code><a id="__codelineno-46-1" name="__codelineno-46-1" href="#__codelineno-46-1"></a>sudo smartctl -A /dev/nvme0n1 | grep -i temperature
 </code></pre></div></p>
 <h3 id="echopilot-ai-board">EchoPilot AI Board<a class="headerlink" href="#echopilot-ai-board" title="Permanent link">&para;</a></h3>
-<p>No components on the EchoPilot AI main board or carrier board requires cooling. Note the the IMU/Baro sensors are actively heated (typically to 45° C, per the autopilot firmware) so it is normal for this "copper island" to be warm to the touch a few minutes after power on. Also note that the board design will naturally distribute heat from the Jetson module and SSD to the internal ground planes. It is normal for the total board temperature to slowly rise to match the Jetson's steady state temperature.</p>
+<p>No components on the EchoPilot AI main board or carrier board requires cooling. Note the the IMU/Baro sensors are actively heated (typically to 45° C, per the autopilot firmware) so it is normal for this "copper island" to be warm to the touch a few minutes after power on. Also note that the board design will naturally distribute heat from the Jetson module and SSD to the internal ground planes. It is normal for the total board temperature to slowly rise to match the Jetson's steady state temperature. You may also use the aluminum standoffs to couple heat </p>
 
 
 
