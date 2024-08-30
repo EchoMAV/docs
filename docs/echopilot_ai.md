@@ -712,9 +712,9 @@ sudo smartctl -A /dev/nvme0n1 | grep -i temperature
 ```
 ### EchoPilot AI Board
 
-No components on the EchoPilot AI main board or carrier board requires cooling. Note the the IMU/Baro sensors are actively heated (typically to 45° C, per the autopilot firmware) so it is normal for this "copper island" to be warm to the touch a few minutes after power on. Also note that the board design will naturally distribute heat from the Jetson module and SSD to the internal ground planes. It is normal for the total board temperature to slowly rise to match the Jetson's steady state temperature. You may also use the aluminum standoffs to couple heat from the EchoPilot AI system into a metal chassis.
+No components on the EchoPilot AI main board or carrier board require cooling. Note the the IMU/Baro sensors are actively heated (typically to 45° C, per the autopilot firmware) so it is normal for this "copper island" to be warm to the touch a few minutes after power on (see this are on the images below). Also note that the board design will naturally distribute heat from the Jetson module and SSD to the internal ground planes. It is normal for the total board temperature to slowly rise to match the Jetson's steady state temperature. You may also use the aluminum standoffs to couple heat from the EchoPilot AI system into a metal chassis.
 
-Thermal images of the EchoPilot AI are shown below. These images were captured < 30s after shutdown with a Jetson Orin + Active Heatsink + 256 GB Industrial SSD Mounted. The Jetson Orin was removed shortly before the image was captured in order to show the full components of the EchoPilot AI hardware.
+Thermal images of the EchoPilot AI are shown below. These images were captured <30s after shutdown with an active Jetson Orin + Active Heatsink + 256 GB Industrial SSD mounted. The Jetson Orin was removed shortly before the image was captured in order to show the temperature distribution of the EchoPilot AI hardware which would have otherwise been shielded by the Jetson module.
 
 ![EchoPilot AI Thermal Top](assets/thermaltop.jpg)  
 Top View of the EchoPilot AI
