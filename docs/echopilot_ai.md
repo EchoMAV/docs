@@ -673,3 +673,43 @@ Special firmware is required for full integration of a Remote ID transmitter to 
 - Special READONLY parameters which can be set in the firmware during the compilation
 
 As such, if you wish to utilize Remote ID for your application, you will need to commpile firmware yourself or contact support@echomav.com for assistance. Please see the instructions [here](https://ardupilot.org/dev/docs/opendroneid.html#building-firmware-for-bench-testing-and-experimentation) for additional information.
+
+## Themral Considerations
+
+When using the EchoPiot AI, thermal consideration must be given to heat management of the Jetson module and (if applicable) the SSD.
+
+### Jetson Module
+
+The Jetson modules always require heatsinking. Either passive or active heatsink solutions are available.
+
+The FAN output on the EchoPilot AI can be used to power active heatsinks [available here](https://echomav.com/product-category/echopilot-ai-accessories/heatsinks/) or can be used to power an external system fan. Fans powered by J38 should draw less than 150mA, be powered by 5VDC and provide a PWM control signal and Tachometer output signal. An example of an external ducted fan cooling solution using the FAN ouput of J38 is shown below.
+
+![MK1 Fan](assets/mk1fan.jpg) 
+
+Thermal design guides for the Jetson modules are available from Nvidia, for example see the [Orin Nx/Nano guide](/assets/Jetson_Orin_NX_Series_Orin_Nano_Series_Thermal_Design_Guide_TDG-11127-001_v1.1.pdf).
+
+To monitor the Jetson temperature and fan status, first stop the service nvfancontrol:
+```
+sudo systemclt stop nvfancontrol
+```
+Then run nvfancontrol in verbose mode:
+```
+sudo nvfancontrol --verbose
+```
+To edit the fan speed relative to the temperature, and/or create new cooling profiles, edit `etc\nvfancontrol.conf`.  Note that on the EchoPilot Boards, PWM 0 = full speed, PWM 255 = fan off.
+
+### Solid State Drive 
+
+If an SSD is used in your design, it may overheat if not properly cooled. Many commercial NVMe SSDs have temperature ratings from 0 to 70° C, and are not appropriate for use outside of laboratory/office environments. For field use, we recommend industrial rated SSDs which have much operating ranges from -40 to 85°C. If your appliation requires heavy writing to the SSD, additional cooling may be required. 
+
+To monitor your SSD temperature, first install smartmontools
+```
+sudo apt-get install smartmontools
+```
+Then monitor the SSD temperature using
+```
+sudo smartctl -A /dev/nvme0n1 | grep -i temperature
+```
+### EchoPilot AI Board
+
+No components on the EchoPilot AI main board or carrier board requires cooling. Note the the IMU/Baro sensors are actively heated (typically to 45° C, per the autopilot firmware) so it is normal for this "copper island" to be warm to the touch a few minutes after power on. Also note that the board design will naturally distribute heat from the Jetson module and SSD to the internal ground planes. It is normal for the total board temperature to slowly rise to match the Jetson's steady state temperature.

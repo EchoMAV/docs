@@ -46,7 +46,7 @@ PIN 5        | Pwr            | GND         | Gnd
 PIN 6        | NA            | NA         | NC
 
 #### FAN (J38)
-This connector is used to connect the fan from active heatsinks from [ConnectTech.com](https://ConnectTech.com)
+This connector is used to connect the fan from active heatsinks from [EchoMAV](https://echomav.com/product-category/echopilot-ai-accessories/heatsinks/) or [ConnectTech.com](https://ConnectTech.com)
 
 Connector: J38, Part Number: 0530470410  
 Mating Connector: 0510210400
