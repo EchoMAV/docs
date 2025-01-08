@@ -2,7 +2,7 @@ The Carrier Board is open-source, please visit the [echopilot_ai_carrier](https:
 
 ### Carrier Board Schematic
 
-A full schematic of the carrier board is available: [PDF schematic](https://github.com/EchoMAV/echopilot_ai_carrier/blob/master/echopilot_ai_carrier_schematic.pdf) 
+A full schematic of the carrier board is available: [PDF schematic](assets/echopilot_ai_carrier_rev1d.pdf)
 
 ### Top Side Carrier Board
 
@@ -404,7 +404,7 @@ Pin Number   | Direction     | Voltage       | Pin Description
 15        | Pwr OUT           | +3.3V          | +3.3V
 
 
-#### IPEX Connector 1 (J24)
+#### IPEX Connector (J24)
 This connector provides a 4 Lane CSI/MIPI Camera connection, as well as USB3 and I2C. Specifically designed to be used with EchoMAV cameras, but can be adapter for other use cases where a fully shielded/flexible microcoax assembly is required.
 
 Connector: J24, Part Number: 20682-030E-02
@@ -530,7 +530,7 @@ Mating Connector: GHR-04V-S
 
 Pin Number   | Direction     | Voltage       | Pin Description
 ------------ | ------------- | ------------  | ------------
-1        | Pwr OUT            | +5V          | +5V_OUT4 [^4]  
+1        | Pwr OUT            | +5V          | +5V_OUT4 [^4]  g
 2        | IO            | Diff Signal        | RS232 TX, UART4 (FMU)
 3        | IO            | Diff Signal          | RS232 RX, UART4 (FMU)
 4        | Pwr            | GND         | GND
