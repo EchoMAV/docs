@@ -6,7 +6,7 @@ on:
       - main
       - Rev0
       - Rev1
-      - Rev1B
+      - Rev1B      
 permissions:
   contents: write
 jobs:

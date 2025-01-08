@@ -376,9 +376,6 @@ Pin Number   | Direction     | Voltage       | Pin Description
 
 ![Bottom Side Components](assets/bottom-side-labels-carrier-board.png)
 
-!!! note
-    The MIPI CAM1 connector shown in the image abovee does NOT match the Rev1B board, which features a smaller 22 pin 0.5mm FFC connector. The documentation and pinout in this document is correct.
-
 #### Nano SIM Card (J31)
 A Nano SIM card holder. Used only if a M.2 3052 Key B Cellular modem is attached to J30.
 
@@ -407,39 +404,45 @@ Pin Number   | Direction     | Voltage       | Pin Description
 15        | Pwr OUT           | +3.3V          | +3.3V
 
 
-#### MIPI Cam 1 (J8)
-This connector provides a 4 Lane CSI/MIPI Camera connection, via a 22 pin 0.5mm spacing FFC connector. 
+#### IPEX Connector 1 (J24)
+This connector provides a 4 Lane CSI/MIPI Camera connection, as well as USB3 and I2C. Specifically designed to be used with EchoMAV cameras, but can be adapter for other use cases where a fully shielded/flexible microcoax assembly is required.
 
-!!! note
-    On Rev1B boards, this pinout is reversed from the FFC cables/cameras commonly used with RPi and Nvidia-compatible cameras. If using such a camera, we recommend using an FFC cable with a top/bottom pin arrangement such as Amphenol FF3025-CO102-022 to correct the pinout. This will be corrected in future revisions.
-
-Connector: J8, Part Number: 2-1734592-2
-Mating Connector: FFC Cable, 22 pos, 0.5mm pin spacing   
+Connector: J24, Part Number: 20682-030E-02
+Mating Connector: EchoMAV IPEX Cable Assembly
 
 Pin Number   | Direction     | Voltage       | Pin Description
 ------------ | ------------- | ------------  | ------------
-1        | Pwr            | GND          | GND
-2        | IO            | Diff Signal        | CAM0_D0-
-3        | IO            | Diff Signal          | CAM0_D0+
+1        | Pwr            | +5V          | PWR OUT
+2        | Pwr            | +5V        | PWR OUT
+3        | Pwr           | GND          | GND
 4        | Pwr            | GND         | GND
-5        | IO            | Diff Signal          | CAM0_D1-
-6        | IO            | Diff Signal         | CAM0_D1+
-7        | Pwr            | GND          | GND
-8        | O            | Diff Signal         | CAM0_CLK-
-9        | O            | Diff Signal          | CAM0_CLK+
-10       | Pwr            | GND          | GND
-11       | IO            | Diff Signal          | CAM0_D2-
-12       | IO            | Diff Signal         | CAM0_D2+
-13       | Pwr            | GND          | GND
-14       | O            | Diff Signal         | CAM0_D3-
-15       | O            | Diff Signal          | CAM0_D3+
-16       | Pwr            | GND         | GND
-17       | IO            | +3.3V          | CAM0_GPIO
-18       | O            | +3.3V         | CAM0_MCLK
-19       | Pwr            | GND         | GND
-20       | O            | +3.3V          | CAM0_SCL0
-21       | IO            | +3.3V         | CAM0_SDAO
-22       | Pwr OUT            | +3.3V          | +3.3V
+5        | NA            | NA          | NC
+6        | IO            | +5V          | USB VBus
+7        | IO            | Diff Signal         | USB D+
+8        | IO            | Diff Signal          | USB D-
+9        | IO            | Diff Signal         | USB Rx+
+10        | IO            | Diff Signal          | USB Rx-
+11       | IO            | Diff Signal         | USB Tx+
+12       | IO            | Diff Signal          | USB Tx-
+13       | IO            | +1.8v         | I2C SCL
+14       | IO            | +1.8V          | I2C SDL
+15       | IO           | Diff Signal         | CAM0_D0-
+16       | IO            | Diff Signal          | CAM0_D0+
+17       | IO            | Diff Signal          | CAM0_D1-
+18       | IO            | Diff Signal            | CAM0_D1+
+19       | IO           | Diff Signal          | CAM0_CLK-
+20       | Pwr            | Diff Signal           | CAM0_CLK+
+21       | Pwr            | +3.3V         | CAM0_GPIO
+22       | Pwr            | +3.3V         | CAM0_MCLK
+23       | Pwr            | Diff Signal           | CAM0_D2-
+24       | Pwr            | Diff Signal           | CAM0_D2+
+25       | Pwr            | Diff Signal           | CAM0_D3-
+26       | Pwr            | Diff Signal           | CAM0_D3+
+27       | IO            | +1.8V          | CAM0_SCL0
+28       | IO            | +1.8V         | CAM0_SDAO
+30       | NA       | NA         | NC
+30       | NA            | MA         | NC
+
 
 #### Radio In (J16)
 This connector provides a optional radio input in to the autopilot. A wide range of radio protocols are supported. Please see [here](https://ardupilot.org/copter/docs/common-rc-systems.html) for example.
@@ -512,43 +515,12 @@ Pin Number   | Direction     | Voltage       | Pin Description
 5        | I            | +3.3V          | Telem1 RTS
 6        | Pwr            | GND         | GND
 
-#### USB3_2 (J24)
+#### USB3_2 (J36)
 This connector provides a USB3 SuperSpeed connection to the Jetson, via a TUSB8042 hub. Note that 1uF capacitors are placed near the connector on the Tx+ and TX- lines.
 
-Connector: J24, Part Number: SM10B-GHS-TB(LF)(SN)  
-Mating Connector: GHR-10V-S     
+Connector: J36, Part Number: Molex 105450-0101
+Mating Connector: USB-C Cables/Devices
 
-Pin Number   | Direction     | Voltage       | Pin Description
------------- | ------------- | ------------  | ------------
-1        | Pwr OUT           | +5V          | VBus 
-2        | IO            | Diff Signal        | USB D-
-3        | IO            | Diff Signal          | USB D+
-4        | Pwr            | GND        | GND
-5        | IO            | Diff Signal         | USBSS Rx-
-6        | IO            | Diff Signal         | USBSS Rx+
-7        | Pwr            | GND         | GND
-8        | IO            | Diff Signal         | USBSS Tx-
-9        | IO            | Diff Signal         | USBSS Tx+
-10        | Pwr            | GND         | GND
-
-#### USB3_1 (J29)
-This connector provides a USB3 SuperSpeed connection to the Jetson, via a TUSB8042 hub. Note that 1uF capacitors are placed near the connector on the Tx+ and TX- lines.
-
-Connector: J29, Part Number: SM10B-GHS-TB(LF)(SN)  
-Mating Connector: GHR-10V-S     
-
-Pin Number   | Direction     | Voltage       | Pin Description
------------- | ------------- | ------------  | ------------
-1        | Pwr OUT           | +5V          | VBus 
-2        | IO            | Diff Signal        | USB D-
-3        | IO            | Diff Signal          | USB D+
-4        | Pwr            | GND        | GND
-5        | IO            | Diff Signal         | USBSS Rx-
-6        | IO            | Diff Signal         | USBSS Rx+
-7        | Pwr            | GND         | GND
-8        | IO            | Diff Signal         | USBSS Tx-
-9        | IO            | Diff Signal         | USBSS Tx+
-10        | Pwr            | GND         | GND
 
 #### INS/RS-232 FMU UART (J32)
 This connector provides an RS-232 level shifted UART from the FMU for connection to an external device, such as an Inertial Navigation System (INS).
