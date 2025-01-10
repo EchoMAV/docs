@@ -101,7 +101,7 @@ Ensure this script completes with no errors before proceeding with flashing.
 
 ```
 cd ~/Orin/Linux_for_Tegra/
-sudo ./tools/kernel_flash/l4t_initrd_flash.sh -c ./tools/kernel_flash/flash_l4t_external.xml --external-device nvme0n1p1 -p "-c bootloader/generic/cfg/flash_t234_qspi.xml" p3509-a02-p3767-0000 internal
+sudo ./tools/kernel_flash/l4t_initrd_flash.sh --external-device nvme0n1p1 -c tools/kernel_flash/flash_l4t_external.xml -p "-c bootloader/generic/cfg/flash_t234_qspi.xml --no-systemimg" --network usb0 echopilot-ai external
 ```
 !!! note
     The first time you run this script, your system may be missing dependencies. The script will tell you what is missing, please install them using `sudo apt-get install XXXXXX`.
