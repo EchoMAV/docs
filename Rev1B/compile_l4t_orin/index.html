@@ -851,29 +851,29 @@
 
 
 <h1 id="compiling-l4t-for-the-jetson-orin-nx-and-orin-nano-on-the-echopilot-ai">Compiling L4T for the Jetson Orin NX and Orin Nano on the EchoPilot AI<a class="headerlink" href="#compiling-l4t-for-the-jetson-orin-nx-and-orin-nano-on-the-echopilot-ai" title="Permanent link">&para;</a></h1>
-<h1 id="updated-for-l4t-363">Updated for L4T 36.3<a class="headerlink" href="#updated-for-l4t-363" title="Permanent link">&para;</a></h1>
+<h1 id="updated-for-l4t-364">Updated for L4T 36.4<a class="headerlink" href="#updated-for-l4t-364" title="Permanent link">&para;</a></h1>
 <h2 id="instructions-for-customizing-the-device-tree-and-compiling-the-kernel-for-the-orin-nx-on-echopilot-ai">Instructions for customizing the device tree and compiling the kernel for the Orin NX on EchoPilot AI<a class="headerlink" href="#instructions-for-customizing-the-device-tree-and-compiling-the-kernel-for-the-orin-nx-on-echopilot-ai" title="Permanent link">&para;</a></h2>
 <p>When a Jetson Orin NX or Orin Nano module is included with an EchoPilot AI purchase, it is flashed with a custom Linux for Tegra (L4T) image which includes support for the hardware configuration of the EchoPilot AI. If you wish to build/update the kernel for use with the EchoPilot AI, the instructions below will provide the information and files you need to ensure your custom image remains fully compatible with the EchoPilot AI hardware. When compared to a standard Nvidia development carrier board, the primary differences in the EchoPilot AI hardware are summarized below. In the build steps below you will be applying a customized DTB file which applies these fixes:</p>
 <p>The EchoPilot AI is functionally similar to an Nvidia Xavier NX (P3509) development kit board, with a few exceptions. 
 - The EchoPilot AI does not have the EEPROM on board which Nvidia carrier boards use for internal board id storage. (EchoPilot AI does have an AT24CS01-STUM unique ID EEPROM at I2C 0x58 on the Jetson I2C bus.). 
 - As of L4T 35.4.1, the display(hdmi) must be disabled as the EchoPilot AI is headless, otherwise the OS will not fully boot.
-- By default, the serial port routed to the Iridium connector (J10) is disabled. Our custom dtb enables it.</p>
+- By default, the serial port routed to the Iridium connector (J10) is disabled. Our custom device tree overlay enables it.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>These instructions were developed and tested on Ubuntu 20.04 LTS. We recommend using a <em>physical</em> machine running Ubuntu 20.04 LTS.</p>
+<p>These instructions were developed and tested on Ubuntu 22.04 LTS. We recommend using a <em>physical</em> machine running Ubuntu 22.04 LTS.</p>
 </div>
 <p>What you will doing:</p>
 <ol>
 <li>Download and setup the necessary files</li>
-<li>Replace a .dtb file </li>
+<li>Add device tree overlays and rootfs configuration.</li>
 <li>Generate the image and flash the device</li>
 </ol>
 <p>So buckle up and let's get started.</p>
 <h3 id="download-and-setup-necessary-files">Download and Setup Necessary Files<a class="headerlink" href="#download-and-setup-necessary-files" title="Permanent link">&para;</a></h3>
 <p>Note that you will need to create an NVIDIA developer account and login to download, so if you do not have a developer account please <a href="https://developer.nvidia.com/login">set that up</a> before proceeding. 
-Next you will need to download three packages from Nvidia: <a href="https://developer.nvidia.com/embedded/jetson-linux-r363">Driver Package (BSP), Sample Root Filesystem and Driver Package (BSP) Sources</a>. </p>
+Next you will need to download three packages from Nvidia: <a href="https://developer.nvidia.com/embedded/jetson-linux-r3640">Driver Package (BSP), Sample Root Filesystem and Driver Package (BSP) Sources</a>. </p>
 <blockquote>
-<p>These instructions were developed using Jetson Linux 36.3.</p>
+<p>These instructions were developed using Jetson Linux 36.4.</p>
 </blockquote>
 <p>The files to download are highlighted in blue below:
 <img alt="l4t_downloads_orin" src="../assets/l4t_downloads_orin.png" /></p>
@@ -886,11 +886,11 @@ Next you will need to download three packages from Nvidia: <a href="https://deve
 <p>Note: the filename below will be different if you download a different version.</p>
 </blockquote>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>mkdir -p ~/Orin
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>tar xpf ~/Downloads/Jetson_Linux_R36.3.0_aarch64.tbz2 -C ~/Orin
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>tar xpf ~/Downloads/Jetson_Linux_R36.4.0_aarch64.tbz2 -C ~/Orin
 </code></pre></div>
 <h4 id="extract-sample-root-file-system-sample-root-filesystem">Extract sample Root File System  (Sample Root Filesystem)<a class="headerlink" href="#extract-sample-root-file-system-sample-root-filesystem" title="Permanent link">&para;</a></h4>
 <p>Extract contents into Linux_for_Tegra/rootfs/. 
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>sudo tar xpf ~/Downloads/Tegra_Linux_Sample-Root-Filesystem_R36.3.0_aarch64.tbz2 -C ~/Orin/Linux_for_Tegra/rootfs/
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>sudo tar xpf ~/Downloads/Tegra_Linux_Sample-Root-Filesystem_R36.4.0_aarch64.tbz2 -C ~/Orin/Linux_for_Tegra/rootfs/
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>cd ~/Orin/Linux_for_Tegra
 <a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>sudo ./apply_binaries.sh
 </code></pre></div></p>
@@ -902,8 +902,8 @@ Next you will need to download three packages from Nvidia: <a href="https://deve
 <p>This step allows you to configure your username, password and hostname and also accept the license.
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>sudo tools/l4t_create_default_user.sh -u {USERNAME} -p {PASSWORD} -n {HOSTNAME} --accept-license
 </code></pre></div></p>
-<h3 id="get-the-echopilot-dtb-file">Get the EchoPilot .dtb file<a class="headerlink" href="#get-the-echopilot-dtb-file" title="Permanent link">&para;</a></h3>
-<p>The file you will need to replace is a device tree binary (.dtb) file. This file can be obtained from the echopilot_ai_bsp repository <a href="https://github.com/EchoMAV/echopilot_ai_bsp">https://github.com/EchoMAV/echopilot_ai_bsp</a>. Use the steps below to clone this repo and install this file using the providing installation script:</p>
+<h3 id="add-the-echopilot-device-tree-overlay-files">Add the EchoPilot device tree overlay files<a class="headerlink" href="#add-the-echopilot-device-tree-overlay-files" title="Permanent link">&para;</a></h3>
+<p>The echopilot_ai_bsp repository <a href="https://github.com/EchoMAV/echopilot_ai_bsp">https://github.com/EchoMAV/echopilot_ai_bsp</a> provides a script that configures the rootfs and adds necessary device tree overlays. Use the steps below to clone this repo and run the script:</p>
 <p>Clone the repo:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>cd ~
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>git clone https://github.com/EchoMAV/echopilot_ai_bsp
