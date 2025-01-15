@@ -1,6 +1,6 @@
 # Compiling L4T for the Jetson Orin NX and Orin Nano on the EchoPilot AI
 
-# Updated for L4T 36.3
+# Updated for L4T 36.4
 
 ## Instructions for customizing the device tree and compiling the kernel for the Orin NX on EchoPilot AI
 
@@ -9,17 +9,17 @@ When a Jetson Orin NX or Orin Nano module is included with an EchoPilot AI purch
 The EchoPilot AI is functionally similar to an Nvidia Xavier NX (P3509) development kit board, with a few exceptions. 
 - The EchoPilot AI does not have the EEPROM on board which Nvidia carrier boards use for internal board id storage. (EchoPilot AI does have an AT24CS01-STUM unique ID EEPROM at I2C 0x58 on the Jetson I2C bus.). 
 - As of L4T 35.4.1, the display(hdmi) must be disabled as the EchoPilot AI is headless, otherwise the OS will not fully boot.
-- By default, the serial port routed to the Iridium connector (J10) is disabled. Our custom dtb enables it.
+- By default, the serial port routed to the Iridium connector (J10) is disabled. Our custom device tree overlay enables it.
 
 !!! WARNING
     
-    These instructions were developed and tested on Ubuntu 20.04 LTS. We recommend using a *physical* machine running Ubuntu 20.04 LTS.
+    These instructions were developed and tested on Ubuntu 22.04 LTS. We recommend using a *physical* machine running Ubuntu 22.04 LTS.
 
     
 What you will doing:
 
 1. Download and setup the necessary files
-2. Replace a .dtb file 
+2. Add device tree overlays and rootfs configuration.
 3. Generate the image and flash the device
 
 So buckle up and let's get started.
@@ -27,9 +27,9 @@ So buckle up and let's get started.
 ### Download and Setup Necessary Files
 
 Note that you will need to create an NVIDIA developer account and login to download, so if you do not have a developer account please [set that up](https://developer.nvidia.com/login) before proceeding. 
-Next you will need to download three packages from Nvidia: [Driver Package (BSP), Sample Root Filesystem and Driver Package (BSP) Sources](https://developer.nvidia.com/embedded/jetson-linux-r363). 
+Next you will need to download three packages from Nvidia: [Driver Package (BSP), Sample Root Filesystem and Driver Package (BSP) Sources](https://developer.nvidia.com/embedded/jetson-linux-r3640). 
 
-> These instructions were developed using Jetson Linux 36.3.
+> These instructions were developed using Jetson Linux 36.4.
 
 The files to download are highlighted in blue below:
 ![l4t_downloads_orin](assets/l4t_downloads_orin.png)
@@ -42,13 +42,13 @@ The files to download are highlighted in blue below:
 
 ```
 mkdir -p ~/Orin
-tar xpf ~/Downloads/Jetson_Linux_R36.3.0_aarch64.tbz2 -C ~/Orin
+tar xpf ~/Downloads/Jetson_Linux_R36.4.0_aarch64.tbz2 -C ~/Orin
 ```
 
 #### Extract sample Root File System  (Sample Root Filesystem)
 Extract contents into Linux_for_Tegra/rootfs/. 
 ```
-sudo tar xpf ~/Downloads/Tegra_Linux_Sample-Root-Filesystem_R36.3.0_aarch64.tbz2 -C ~/Orin/Linux_for_Tegra/rootfs/
+sudo tar xpf ~/Downloads/Tegra_Linux_Sample-Root-Filesystem_R36.4.0_aarch64.tbz2 -C ~/Orin/Linux_for_Tegra/rootfs/
 cd ~/Orin/Linux_for_Tegra
 sudo ./apply_binaries.sh
 ```
@@ -62,9 +62,9 @@ This step allows you to configure your username, password and hostname and also 
 sudo tools/l4t_create_default_user.sh -u {USERNAME} -p {PASSWORD} -n {HOSTNAME} --accept-license
 ```
 
-### Get the EchoPilot .dtb file
+### Add the EchoPilot device tree overlay files
 
-The file you will need to replace is a device tree binary (.dtb) file. This file can be obtained from the echopilot_ai_bsp repository [https://github.com/EchoMAV/echopilot_ai_bsp](https://github.com/EchoMAV/echopilot_ai_bsp). Use the steps below to clone this repo and install this file using the providing installation script:
+The echopilot_ai_bsp repository [https://github.com/EchoMAV/echopilot_ai_bsp](https://github.com/EchoMAV/echopilot_ai_bsp) provides a script that configures the rootfs and adds necessary device tree overlays. Use the steps below to clone this repo and run the script:
 
 Clone the repo:
 ```
