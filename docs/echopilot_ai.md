@@ -205,11 +205,10 @@ PIN 208        | I         |  +5V  | Fan Tachometer  |   GPIO3_PQ.02     | GPIO3
 
 [EchoPilot AI 3D Model (STEP) File Download](https://echomav.com/mechanical/echopilot_ai_r1a.step) (right click, save link as)
 
-[EchoPilot AI Universal Carrier Board 3D model (STEP) File Download](https://echomav.com/mechanical/echopilot_ai_carrier_r1.step) (right click, save link as)
+[EchoPilot AI Universal Carrier Board 3D model (STEP) File Download](https://echomav.com/mechanical/echopilot_ai_carrier_r1d.step) (right click, save link as)
 
 [EchoPilot AI PWM Breakout Board 3D model (STEP) File Download](https://echomav.com/mechanical/echopilot_pwm_breakout.step) (right click, save link as)
 
-[EchoPilot AI USB3 A Breakout Board 3D model (STEP) File Download](https://echomav.com/mechanical/echopilot-ai-usb-a-breakout.step) (right click, save link as)
 
 ## Vibration Isolation
 
