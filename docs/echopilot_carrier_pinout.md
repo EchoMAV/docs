@@ -405,7 +405,7 @@ Pin Number   | Direction     | Voltage       | Pin Description
 
 
 #### IPEX Connector (J24)
-This connector provides a 4 Lane CSI/MIPI Camera connection, as well as USB3 and I2C. Specifically designed to be used with EchoMAV cameras, but can be adapter for other use cases where a fully shielded/flexible microcoax assembly is required.
+This connector provides a 4 Lane CSI/MIPI Camera connection, as well as USB3_2 and I2C. Specifically designed to be used with EchoMAV cameras, but can be adapter for other use cases where a fully shielded/flexible microcoax assembly is required.
 
 Connector: J24, Part Number: 20682-030E-02
 Mating Connector: EchoMAV IPEX Cable Assembly
@@ -515,7 +515,7 @@ Pin Number   | Direction     | Voltage       | Pin Description
 5        | I            | +3.3V          | Telem1 RTS
 6        | Pwr            | GND         | GND
 
-#### USB3_2 (J36)
+#### USB3_1 (J36)
 This connector provides a USB3 SuperSpeed connection to the Jetson, via a TUSB8042 hub. Note that 1uF capacitors are placed near the connector on the Tx+ and TX- lines.
 
 Connector: J36, Part Number: Molex 105450-0101
