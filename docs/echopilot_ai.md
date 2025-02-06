@@ -428,24 +428,41 @@ sudo nmcli con reload static-eth0
 
 ## Adding WiFi to the EchoPilotAI
 
-The instructions below provide details on how to get WiFi working using a [TP-Link AC1300 (Archer T3U)](https://a.co/d/bUNSOTD) wireless network adapter. These instructions were developed using Jetpack 35.4.1, running Linux Kernel 5.10. If you are usinng a newer version, you will need a different branch for the driver install. Please refer to the driver's [readme](https://github.com/fastoe/RTL8812BU/blob/master/README.md).
+The instructions below provide details on how to get WiFi working using a [TP-Link AC1300 (Archer T3U)](https://a.co/d/bUNSOTD) wireless network adapter, an [ALFA AWUS036ACS](https://a.co/d/b09Jb4b) or an [APFA AWUS036AC](https://a.co/d/3uc8Rfd). Other's may work but are untested. These instructions were developed using Jetpack 36.4.
 
-Connect the AC1300 to one of the USB3 connectors (J24 or J29 on the carrier board) using the provided cable and USB-A breakout board. 
+Connect the adapter to the USB3 connector on the bottom carrier board.
 
-### Clone and install the RTL8812BU driver
+### Clone and install the RTW88 driver
 
+Refer to [https://github.com/lwfinger/rtw88](https://github.com/lwfinger/rtw88) for additional documentation.
+#### Prerequisites
 ```
-cd /tmp
-sudo apt update
-sudo apt update
-sudo apt install -y build-essential dkms git bc
-git clone -b v5.6.1 https://github.com/fastoe/RTL8812BU.git
-cd RTL8812BU
+sudo apt update && sudo apt upgrade
+sudo apt install linux-headers-$(uname -r) build-essential git
+```
+#### Clone build install drivers
+```
+git clone https://github.com/lwfinger/rtw88
+cd rtw88
 make
 sudo make install
-sudo reboot
+sudo make install_fw
+# reboot board or unplug and re-plug the adapter to load drivers
 ```
-### Verify you have a wlan0 device present
+
+#### Loading and Unloading RTW88 driver
+```
+# loading and unloading drivers
+sudo modprobe -r rtw_8723de # This unloads the module
+sudo modprobe -r rtw_core   # need to do this second step when unloading, due to some peculiarities in the modprobe utility
+sudo modprobe rtw_8723de    # This loads the module
+# updates
+git pull
+make
+sudo make install
+```
+
+### Verify WiFi adapter is present
 ```
 iwconfig
 ```
@@ -492,8 +509,6 @@ Check your download and upload speed:
 ```
 speedtest
 ```
-
-
 
 ## Configuring CAN on the Jetson
 
