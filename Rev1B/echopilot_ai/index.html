@@ -608,18 +608,51 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#clone-and-install-the-rtl8812bu-driver" class="md-nav__link">
+  <a href="#clone-and-install-the-rtw88-driver" class="md-nav__link">
     <span class="md-ellipsis">
-      Clone and install the RTL8812BU driver
+      Clone and install the RTW88 driver
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Clone and install the RTW88 driver">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#verify-you-have-a-wlan0-device-present" class="md-nav__link">
+  <a href="#clone-build-install-drivers" class="md-nav__link">
     <span class="md-ellipsis">
-      Verify you have a wlan0 device present
+      Clone build install drivers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#loading-and-unloading-rtw88-driver" class="md-nav__link">
+    <span class="md-ellipsis">
+      Loading and Unloading RTW88 driver
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verify-wifi-adapter-is-present" class="md-nav__link">
+    <span class="md-ellipsis">
+      Verify WiFi adapter is present
     </span>
   </a>
   
@@ -1472,18 +1505,51 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#clone-and-install-the-rtl8812bu-driver" class="md-nav__link">
+  <a href="#clone-and-install-the-rtw88-driver" class="md-nav__link">
     <span class="md-ellipsis">
-      Clone and install the RTL8812BU driver
+      Clone and install the RTW88 driver
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Clone and install the RTW88 driver">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#verify-you-have-a-wlan0-device-present" class="md-nav__link">
+  <a href="#clone-build-install-drivers" class="md-nav__link">
     <span class="md-ellipsis">
-      Verify you have a wlan0 device present
+      Clone build install drivers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#loading-and-unloading-rtw88-driver" class="md-nav__link">
+    <span class="md-ellipsis">
+      Loading and Unloading RTW88 driver
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verify-wifi-adapter-is-present" class="md-nav__link">
+    <span class="md-ellipsis">
+      Verify WiFi adapter is present
     </span>
   </a>
   
@@ -2195,56 +2261,69 @@ Example: Delete the <code>static-eth0</code> connection:  <br />
 <a id="__codelineno-30-4" name="__codelineno-30-4" href="#__codelineno-30-4"></a>sudo nmcli con reload static-eth0
 </code></pre></div></p>
 <h2 id="adding-wifi-to-the-echopilotai">Adding WiFi to the EchoPilotAI<a class="headerlink" href="#adding-wifi-to-the-echopilotai" title="Permanent link">&para;</a></h2>
-<p>The instructions below provide details on how to get WiFi working using a <a href="https://a.co/d/bUNSOTD">TP-Link AC1300 (Archer T3U)</a> wireless network adapter. These instructions were developed using Jetpack 35.4.1, running Linux Kernel 5.10. If you are usinng a newer version, you will need a different branch for the driver install. Please refer to the driver's <a href="https://github.com/fastoe/RTL8812BU/blob/master/README.md">readme</a>.</p>
-<p>Connect the AC1300 to one of the USB3 connectors (J24 or J29 on the carrier board) using the provided cable and USB-A breakout board. </p>
-<h3 id="clone-and-install-the-rtl8812bu-driver">Clone and install the RTL8812BU driver<a class="headerlink" href="#clone-and-install-the-rtl8812bu-driver" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a>cd /tmp
-<a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a>sudo apt update
-<a id="__codelineno-31-3" name="__codelineno-31-3" href="#__codelineno-31-3"></a>sudo apt update
-<a id="__codelineno-31-4" name="__codelineno-31-4" href="#__codelineno-31-4"></a>sudo apt install -y build-essential dkms git bc
-<a id="__codelineno-31-5" name="__codelineno-31-5" href="#__codelineno-31-5"></a>git clone -b v5.6.1 https://github.com/fastoe/RTL8812BU.git
-<a id="__codelineno-31-6" name="__codelineno-31-6" href="#__codelineno-31-6"></a>cd RTL8812BU
-<a id="__codelineno-31-7" name="__codelineno-31-7" href="#__codelineno-31-7"></a>make
-<a id="__codelineno-31-8" name="__codelineno-31-8" href="#__codelineno-31-8"></a>sudo make install
-<a id="__codelineno-31-9" name="__codelineno-31-9" href="#__codelineno-31-9"></a>sudo reboot
+<p>The instructions below provide details on how to get WiFi working using a <a href="https://a.co/d/bUNSOTD">TP-Link AC1300 (Archer T3U)</a> wireless network adapter, an <a href="https://a.co/d/b09Jb4b">ALFA AWUS036ACS</a> or an <a href="https://a.co/d/3uc8Rfd">APFA AWUS036AC</a>. Other's may work but are untested. These instructions were developed using Jetpack 36.4.</p>
+<p>Connect the adapter to the USB3 connector on the bottom carrier board.</p>
+<h3 id="clone-and-install-the-rtw88-driver">Clone and install the RTW88 driver<a class="headerlink" href="#clone-and-install-the-rtw88-driver" title="Permanent link">&para;</a></h3>
+<p>Refer to <a href="https://github.com/lwfinger/rtw88">https://github.com/lwfinger/rtw88</a> for additional documentation.</p>
+<h4 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a>sudo apt update &amp;&amp; sudo apt upgrade
+<a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a>sudo apt install linux-headers-$(uname -r) build-essential git
 </code></pre></div>
-<h3 id="verify-you-have-a-wlan0-device-present">Verify you have a wlan0 device present<a class="headerlink" href="#verify-you-have-a-wlan0-device-present" title="Permanent link">&para;</a></h3>
-<p><div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a>iwconfig
+<h4 id="clone-build-install-drivers">Clone build install drivers<a class="headerlink" href="#clone-build-install-drivers" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a>git clone https://github.com/lwfinger/rtw88
+<a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a>cd rtw88
+<a id="__codelineno-32-3" name="__codelineno-32-3" href="#__codelineno-32-3"></a>make
+<a id="__codelineno-32-4" name="__codelineno-32-4" href="#__codelineno-32-4"></a>sudo make install
+<a id="__codelineno-32-5" name="__codelineno-32-5" href="#__codelineno-32-5"></a>sudo make install_fw
+<a id="__codelineno-32-6" name="__codelineno-32-6" href="#__codelineno-32-6"></a># reboot board or unplug and re-plug the adapter to load drivers
+</code></pre></div>
+<h4 id="loading-and-unloading-rtw88-driver">Loading and Unloading RTW88 driver<a class="headerlink" href="#loading-and-unloading-rtw88-driver" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a># loading and unloading drivers
+<a id="__codelineno-33-2" name="__codelineno-33-2" href="#__codelineno-33-2"></a>sudo modprobe -r rtw_8723de # This unloads the module
+<a id="__codelineno-33-3" name="__codelineno-33-3" href="#__codelineno-33-3"></a>sudo modprobe -r rtw_core   # need to do this second step when unloading, due to some peculiarities in the modprobe utility
+<a id="__codelineno-33-4" name="__codelineno-33-4" href="#__codelineno-33-4"></a>sudo modprobe rtw_8723de    # This loads the module
+<a id="__codelineno-33-5" name="__codelineno-33-5" href="#__codelineno-33-5"></a># updates
+<a id="__codelineno-33-6" name="__codelineno-33-6" href="#__codelineno-33-6"></a>git pull
+<a id="__codelineno-33-7" name="__codelineno-33-7" href="#__codelineno-33-7"></a>make
+<a id="__codelineno-33-8" name="__codelineno-33-8" href="#__codelineno-33-8"></a>sudo make install
+</code></pre></div>
+<h3 id="verify-wifi-adapter-is-present">Verify WiFi adapter is present<a class="headerlink" href="#verify-wifi-adapter-is-present" title="Permanent link">&para;</a></h3>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a>iwconfig
 </code></pre></div>
 The output of this command should include wlan0, for example:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a>lo        no wireless extensions.
-<a id="__codelineno-33-2" name="__codelineno-33-2" href="#__codelineno-33-2"></a>dummy0    no wireless extensions.
-<a id="__codelineno-33-3" name="__codelineno-33-3" href="#__codelineno-33-3"></a>eth0      no wireless extensions.
-<a id="__codelineno-33-4" name="__codelineno-33-4" href="#__codelineno-33-4"></a>l4tbr0    no wireless extensions.
-<a id="__codelineno-33-5" name="__codelineno-33-5" href="#__codelineno-33-5"></a>rndis0    no wireless extensions.
-<a id="__codelineno-33-6" name="__codelineno-33-6" href="#__codelineno-33-6"></a>usb0      no wireless extensions.
-<a id="__codelineno-33-7" name="__codelineno-33-7" href="#__codelineno-33-7"></a>wlan0     IEEE 802.11AC  ESSID:&quot;EchoMAV&quot;  Nickname:&quot;&lt;WIFI@REALTEK&gt;&quot;
-<a id="__codelineno-33-8" name="__codelineno-33-8" href="#__codelineno-33-8"></a>          Mode:Managed  Frequency:5.24 GHz  Access Point: C8:9E:43:D5:C0:9C
-<a id="__codelineno-33-9" name="__codelineno-33-9" href="#__codelineno-33-9"></a>          Bit Rate:867 Mb/s   Sensitivity:0/0
-<a id="__codelineno-33-10" name="__codelineno-33-10" href="#__codelineno-33-10"></a>          Retry:off   RTS thr:off   Fragment thr:off
-<a id="__codelineno-33-11" name="__codelineno-33-11" href="#__codelineno-33-11"></a>          Power Management:off
-<a id="__codelineno-33-12" name="__codelineno-33-12" href="#__codelineno-33-12"></a>          Link Quality=72/100  Signal level=65/100  Noise level=0/100
-<a id="__codelineno-33-13" name="__codelineno-33-13" href="#__codelineno-33-13"></a>          Rx invalid nwid:0  Rx invalid crypt:0  Rx invalid frag:0
-<a id="__codelineno-33-14" name="__codelineno-33-14" href="#__codelineno-33-14"></a>          Tx excessive retries:0  Invalid misc:0   Missed beacon:0
+<div class="highlight"><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a>lo        no wireless extensions.
+<a id="__codelineno-35-2" name="__codelineno-35-2" href="#__codelineno-35-2"></a>dummy0    no wireless extensions.
+<a id="__codelineno-35-3" name="__codelineno-35-3" href="#__codelineno-35-3"></a>eth0      no wireless extensions.
+<a id="__codelineno-35-4" name="__codelineno-35-4" href="#__codelineno-35-4"></a>l4tbr0    no wireless extensions.
+<a id="__codelineno-35-5" name="__codelineno-35-5" href="#__codelineno-35-5"></a>rndis0    no wireless extensions.
+<a id="__codelineno-35-6" name="__codelineno-35-6" href="#__codelineno-35-6"></a>usb0      no wireless extensions.
+<a id="__codelineno-35-7" name="__codelineno-35-7" href="#__codelineno-35-7"></a>wlan0     IEEE 802.11AC  ESSID:&quot;EchoMAV&quot;  Nickname:&quot;&lt;WIFI@REALTEK&gt;&quot;
+<a id="__codelineno-35-8" name="__codelineno-35-8" href="#__codelineno-35-8"></a>          Mode:Managed  Frequency:5.24 GHz  Access Point: C8:9E:43:D5:C0:9C
+<a id="__codelineno-35-9" name="__codelineno-35-9" href="#__codelineno-35-9"></a>          Bit Rate:867 Mb/s   Sensitivity:0/0
+<a id="__codelineno-35-10" name="__codelineno-35-10" href="#__codelineno-35-10"></a>          Retry:off   RTS thr:off   Fragment thr:off
+<a id="__codelineno-35-11" name="__codelineno-35-11" href="#__codelineno-35-11"></a>          Power Management:off
+<a id="__codelineno-35-12" name="__codelineno-35-12" href="#__codelineno-35-12"></a>          Link Quality=72/100  Signal level=65/100  Noise level=0/100
+<a id="__codelineno-35-13" name="__codelineno-35-13" href="#__codelineno-35-13"></a>          Rx invalid nwid:0  Rx invalid crypt:0  Rx invalid frag:0
+<a id="__codelineno-35-14" name="__codelineno-35-14" href="#__codelineno-35-14"></a>          Tx excessive retries:0  Invalid misc:0   Missed beacon:0
 </code></pre></div></p>
 <h3 id="use-nmcli-to-set-up-your-wireless-connection">Use nmcli to set up your wireless connection<a class="headerlink" href="#use-nmcli-to-set-up-your-wireless-connection" title="Permanent link">&para;</a></h3>
 <p>Replace <em>SSID</em> and <em>PASSWORD</em> below with your network information.
-<div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a>sudo nmcli dev wifi connect &lt;SSID&gt; password &lt;PASSWORD&gt;
+<div class="highlight"><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a>sudo nmcli dev wifi connect &lt;SSID&gt; password &lt;PASSWORD&gt;
 </code></pre></div></p>
 <h3 id="verify-the-connection">Verify the connection<a class="headerlink" href="#verify-the-connection" title="Permanent link">&para;</a></h3>
 <p>Using networkmanager, you should now see a connection NAME matching your WiFi SSID and it should be green indicating the connection is established.
-<div class="highlight"><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a>nmcli c s
+<div class="highlight"><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a>nmcli c s
 </code></pre></div>
 At this point, you have a WiFi connection. If your system still has a static network configuration, you may need to deactivate that connection or update your routing to ensure packets are routed over the new WiFi interface. For example, if you have an active static-eth0 interface, it can be deactivated using:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a>sudo nmcli c d static-eth0
+<div class="highlight"><pre><span></span><code><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a>sudo nmcli c d static-eth0
 </code></pre></div>
 You should now be routing internet packets via your WiFi connection. To check your connection speed, install and run Ookla's Speedtest tool:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a>sudo apt-get install curl
-<a id="__codelineno-37-2" name="__codelineno-37-2" href="#__codelineno-37-2"></a>curl -s https://packagecloud.io/install/repositories/ookla/speedtest-cli/script.deb.sh | sudo bash
-<a id="__codelineno-37-3" name="__codelineno-37-3" href="#__codelineno-37-3"></a>sudo apt-get install speedtest
+<div class="highlight"><pre><span></span><code><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a>sudo apt-get install curl
+<a id="__codelineno-39-2" name="__codelineno-39-2" href="#__codelineno-39-2"></a>curl -s https://packagecloud.io/install/repositories/ookla/speedtest-cli/script.deb.sh | sudo bash
+<a id="__codelineno-39-3" name="__codelineno-39-3" href="#__codelineno-39-3"></a>sudo apt-get install speedtest
 </code></pre></div>
 Check your download and upload speed:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a>speedtest
+<div class="highlight"><pre><span></span><code><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a>speedtest
 </code></pre></div></p>
 <h2 id="configuring-can-on-the-jetson">Configuring CAN on the Jetson<a class="headerlink" href="#configuring-can-on-the-jetson" title="Permanent link">&para;</a></h2>
 <p>These instructions are a work in progress and may not be fully correct.  </p>
@@ -2252,23 +2331,23 @@ Check your download and upload speed:
 <h2 id="streaming-telemetry-from-the-autopilot-detailed">Streaming Telemetry from the Autopilot (Detailed)<a class="headerlink" href="#streaming-telemetry-from-the-autopilot-detailed" title="Permanent link">&para;</a></h2>
 <p>The autopilot has a high-speed serial interface between the FMU/STM32H7 and the Jetson SOM. The Jetson UART1 (pins 203, 205) is connected to the autopilot's UART2. If EchoMAV has provisioned your board, or if you are using our <a href="https://github.com/EchoMAV/echopilot_ai_bsp">Board Support Package</a>, then the default parameters will be set automatically if you build the PX4 or Ardupilot firmware. However, to understand what parameters are used to enable <a href="https://mavlink.io/en/">MAVLink</a> data flow between the FMU and Jetson, note the parameters used below. In both cases, you are enabling the autopilot serial port to receive MAVLink2 data and setting the baud rate to the appropriate value. A typical baud rate is <code>500000</code> kpbs, but you can use any baud rate you wish as long as the mavlink-router application sending/receiving MAVLink on the Jetson is configured to match. For factory provisioned devices, we set it to 500000.</p>
 <p>For example, on ArduPilot set the following params and reboot:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a>SERIAL2_PROTOCOL: MAVLink2
-<a id="__codelineno-39-2" name="__codelineno-39-2" href="#__codelineno-39-2"></a>SERIAL2_BAUD: 500   ## 500,000 kbps
+<div class="highlight"><pre><span></span><code><a id="__codelineno-41-1" name="__codelineno-41-1" href="#__codelineno-41-1"></a>SERIAL2_PROTOCOL: MAVLink2
+<a id="__codelineno-41-2" name="__codelineno-41-2" href="#__codelineno-41-2"></a>SERIAL2_BAUD: 500   ## 500,000 kbps
 </code></pre></div>
 For PX4, set the following params and reboot.
-<div class="highlight"><pre><span></span><code><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a>MAV_1_CONFIG 102: Telem 2  ## Reboot after this change to expose additional parameters
-<a id="__codelineno-40-2" name="__codelineno-40-2" href="#__codelineno-40-2"></a>MAV_1_RATE: 0
-<a id="__codelineno-40-3" name="__codelineno-40-3" href="#__codelineno-40-3"></a>MAV_1_MODE 2: Onboard
-<a id="__codelineno-40-4" name="__codelineno-40-4" href="#__codelineno-40-4"></a>SER_TEL2_BAUD: 500000   ## Reboot after this change
+<div class="highlight"><pre><span></span><code><a id="__codelineno-42-1" name="__codelineno-42-1" href="#__codelineno-42-1"></a>MAV_1_CONFIG 102: Telem 2  ## Reboot after this change to expose additional parameters
+<a id="__codelineno-42-2" name="__codelineno-42-2" href="#__codelineno-42-2"></a>MAV_1_RATE: 0
+<a id="__codelineno-42-3" name="__codelineno-42-3" href="#__codelineno-42-3"></a>MAV_1_MODE 2: Onboard
+<a id="__codelineno-42-4" name="__codelineno-42-4" href="#__codelineno-42-4"></a>SER_TEL2_BAUD: 500000   ## Reboot after this change
 </code></pre></div></p>
 <p>On the Jetson side, UART1 is typically enumerated <code>/dev/ttyTHS0</code>, although it could vary with different Jetson modules including <code>/dev/ttyTHS1</code> and <code>/dev/ttyTHS2</code>.</p>
 <p>For using the EchoPilot AI to route MAVLink data over a network, we pre-install and recommend <a href="https://github.com/mavlink-router/mavlink-router">MAVLink Router</a>. For modules configured at the factory, we now provide mavlink-router installed by default and is configured to push telemetry via UDP to <code>10.223.1.10:14550</code></p>
 <p>Should you need or want to install this independently, EchoMAV has an open-source installer which makes it easy to install MAVLink Router and configure it as a service which starts at boot. Please refer to the our installer repo <a href="https://github.com/EchoMAV/mavlink-router">https://github.com/EchoMAV/mavlink-router</a> for instructions. </p>
 <p>If you use the install repo above, please refer to the instructions there for configuration of the UART and destination IP address. Specifically edit <code>etc\mavlink-router\main.conf</code> with the appropriate settings.</p>
 <p>If you have permission issues accessing <code>/dev/ttyTHSX</code>, please disable <code>nvgetty</code> and ensure you are a member of the <code>dialout</code> group, or just use our <a href="https://github.com/EchoMAV/mavlink-router">MAVLink Router Installer Repo</a> along with <code>make install</code> and a reboot which sets these things up for you. Thes steps to disable <code>nvgetty</code> and add your account to the <code>dialout</code> group are shown below.
-<div class="highlight"><pre><span></span><code><a id="__codelineno-41-1" name="__codelineno-41-1" href="#__codelineno-41-1"></a>sudo systemctl stop nvgetty
-<a id="__codelineno-41-2" name="__codelineno-41-2" href="#__codelineno-41-2"></a>sudo systemctl disable nvgetty
-<a id="__codelineno-41-3" name="__codelineno-41-3" href="#__codelineno-41-3"></a>sudo usermod -aG dialout $USER
+<div class="highlight"><pre><span></span><code><a id="__codelineno-43-1" name="__codelineno-43-1" href="#__codelineno-43-1"></a>sudo systemctl stop nvgetty
+<a id="__codelineno-43-2" name="__codelineno-43-2" href="#__codelineno-43-2"></a>sudo systemctl disable nvgetty
+<a id="__codelineno-43-3" name="__codelineno-43-3" href="#__codelineno-43-3"></a>sudo usermod -aG dialout $USER
 </code></pre></div></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -2638,9 +2717,9 @@ For PX4, set the following params and reboot.
 <p>To flash ArduRemote ID to the ESPS32-C3, you will need a TC2030-USB-NL cable from <a href="https://www.tag-connect.com">tag-connect.com</a> and follow the flashing instructions from the <a href="https://github.com/ArduPilot/ArduRemoteID#flashing">AruRemoteID</a> project.</p>
 <p>The ESP32-C3 is connected to the FMU via UART6, aka Telem3 (pins PG9 (RX) and PG14 (TX) from the STM32H742). You will need to configure ArduPilot/PX4 to use this UART for RemoteID.</p>
 <p>For building ArduRemoteID for the EchoPilot AI, the following pins will need to be defined for the hardware:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-42-1" name="__codelineno-42-1" href="#__codelineno-42-1"></a>#define PIN_UART_TX 4
-<a id="__codelineno-42-2" name="__codelineno-42-2" href="#__codelineno-42-2"></a>#define PIN_UART_RX 5
-<a id="__codelineno-42-3" name="__codelineno-42-3" href="#__codelineno-42-3"></a>WS2812_LED_PIN GPIO_NUM_8
+<div class="highlight"><pre><span></span><code><a id="__codelineno-44-1" name="__codelineno-44-1" href="#__codelineno-44-1"></a>#define PIN_UART_TX 4
+<a id="__codelineno-44-2" name="__codelineno-44-2" href="#__codelineno-44-2"></a>#define PIN_UART_RX 5
+<a id="__codelineno-44-3" name="__codelineno-44-3" href="#__codelineno-44-3"></a>WS2812_LED_PIN GPIO_NUM_8
 </code></pre></div></p>
 <h3 id="firmware-for-opendroneid">Firmware for OpenDroneID<a class="headerlink" href="#firmware-for-opendroneid" title="Permanent link">&para;</a></h3>
 <p>Special firmware is required for full integration of a Remote ID transmitter to add a layer of tamper-resistance as required by various countries initiatives. This is achieved by
@@ -2655,19 +2734,19 @@ For PX4, set the following params and reboot.
 <p><a class="glightbox" href="../assets/mk1fan.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="MK1 Fan" src="../assets/mk1fan.jpg" /></a> </p>
 <p>Thermal design guides for the Jetson modules are available from Nvidia, for example see the <a href="../assets/Jetson_Orin_NX_Series_Orin_Nano_Series_Thermal_Design_Guide_TDG-11127-001_v1.1.pdf">Orin Nx/Nano guide</a>.</p>
 <p>To monitor the Jetson temperature and fan status, first stop the service nvfancontrol:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-43-1" name="__codelineno-43-1" href="#__codelineno-43-1"></a>sudo systemclt stop nvfancontrol
+<div class="highlight"><pre><span></span><code><a id="__codelineno-45-1" name="__codelineno-45-1" href="#__codelineno-45-1"></a>sudo systemclt stop nvfancontrol
 </code></pre></div>
 Then run nvfancontrol in verbose mode:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-44-1" name="__codelineno-44-1" href="#__codelineno-44-1"></a>sudo nvfancontrol --verbose
+<div class="highlight"><pre><span></span><code><a id="__codelineno-46-1" name="__codelineno-46-1" href="#__codelineno-46-1"></a>sudo nvfancontrol --verbose
 </code></pre></div>
 To edit the fan speed relative to the temperature, and/or create new cooling profiles, edit <code>etc\nvfancontrol.conf</code>. Note that on the EchoPilot Boards, PWM 0 = full speed, PWM 255 = fan off.</p>
 <h3 id="solid-state-drive">Solid State Drive<a class="headerlink" href="#solid-state-drive" title="Permanent link">&para;</a></h3>
 <p>If an SSD is used in your design, it may overheat if not properly cooled. Many commercial NVMe SSDs have temperature ratings from 0 to 70° C, and are not appropriate for use outside of laboratory/office environments. For field use, we recommend industrial rated SSDs which have much operating ranges from -40 to 85°C. If your appliation requires heavy writing to the SSD, additional cooling may be required. </p>
 <p>To monitor your SSD temperature, first install smartmontools
-<div class="highlight"><pre><span></span><code><a id="__codelineno-45-1" name="__codelineno-45-1" href="#__codelineno-45-1"></a>sudo apt-get install smartmontools
+<div class="highlight"><pre><span></span><code><a id="__codelineno-47-1" name="__codelineno-47-1" href="#__codelineno-47-1"></a>sudo apt-get install smartmontools
 </code></pre></div>
 Then monitor the SSD temperature using
-<div class="highlight"><pre><span></span><code><a id="__codelineno-46-1" name="__codelineno-46-1" href="#__codelineno-46-1"></a>sudo smartctl -A /dev/nvme0n1 | grep -i temperature
+<div class="highlight"><pre><span></span><code><a id="__codelineno-48-1" name="__codelineno-48-1" href="#__codelineno-48-1"></a>sudo smartctl -A /dev/nvme0n1 | grep -i temperature
 </code></pre></div></p>
 <h3 id="echopilot-ai-board">EchoPilot AI Board<a class="headerlink" href="#echopilot-ai-board" title="Permanent link">&para;</a></h3>
 <p>No components on the EchoPilot AI main board or carrier board require cooling. Note that the IMU/Baro sensors are actively heated (typically to 45° C, per the autopilot firmware) so it is normal for this "copper island" to be warm to the touch a few minutes after power on (see this are on the images below). Also note that the board design will naturally distribute heat from the Jetson module and SSD to the internal ground planes. It is normal for the total board temperature to slowly rise to match the Jetson's steady state temperature. You may also use the aluminum standoffs to couple heat from the EchoPilot AI system into a metal chassis.</p>
