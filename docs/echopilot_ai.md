@@ -456,10 +456,6 @@ sudo make install_fw
 sudo modprobe -r rtw_8723de # This unloads the module
 sudo modprobe -r rtw_core   # need to do this second step when unloading, due to some peculiarities in the modprobe utility
 sudo modprobe rtw_8723de    # This loads the module
-# updates
-git pull
-make
-sudo make install
 ```
 
 ### Verify WiFi adapter is present
