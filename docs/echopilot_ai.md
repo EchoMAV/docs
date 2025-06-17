@@ -668,6 +668,26 @@ It is the responsibility of the user to configure the ArduRemoteID firmware in a
 
 To flash ArduRemote ID to the ESPS32-C3, you will need a TC2030-USB-NL cable from [tag-connect.com](https://www.tag-connect.com) and follow the flashing instructions from the [AruRemoteID](https://github.com/ArduPilot/ArduRemoteID#flashing) project.
 
+The stock ArduRemoteID-ESPS32-C3_DEV.bin release file will not work. You will need to rebuild the bin file with a modified board_config.h
+
+Modified Code:
+```
+#elif defined(BOARD_ESP32C3_DEV)
+#define BOARD_ID 2
+//#define PIN_CAN_TX GPIO_NUM_5
+//#define PIN_CAN_RX GPIO_NUM_4
+
+//#define PIN_UART_TX 3
+//#define PIN_UART_RX 2
+
+#define PIN_UART_TX 4
+#define PIN_UART_RX 5
+
+#define WS2812_LED_PIN GPIO_NUM_8
+```
+
+Check the [Build.MD](https://github.com/ArduPilot/ArduRemoteID/blob/master/BUILDING.md) instructions.
+
 The ESP32-C3 is connected to the FMU via UART6, aka Telem3 (pins PG9 (RX) and PG14 (TX) from the STM32H742). You will need to configure ArduPilot/PX4 to use this UART for RemoteID.
 
 For building ArduRemoteID for the EchoPilot AI, the following pins will need to be defined for the hardware:
@@ -676,6 +696,13 @@ For building ArduRemoteID for the EchoPilot AI, the following pins will need to 
 #define PIN_UART_RX 5
 WS2812_LED_PIN GPIO_NUM_8
 ```
+
+You must also set ```define AP_OPENDRONEID_ENABLED 1``` in the hwdef.bat and hwdef-bl.dat
+
+IE these ardupilot parameters:
+Set UART 6 baud rate to 57600 and protocol to MavLink2
+DID_ENABLE 1
+DID_MAVPORT 5 
 ### Firmware for OpenDroneID
 
 Special firmware is required for full integration of a Remote ID transmitter to add a layer of tamper-resistance as required by various countries initiatives. This is achieved by
