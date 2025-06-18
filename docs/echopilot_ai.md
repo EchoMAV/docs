@@ -668,12 +668,14 @@ It is the responsibility of the user to configure the ArduRemoteID firmware in a
 The following instructions are not RemoteID compliant.
 
 There are two components.
-    - Ardupilot with added RemoteID functionality 
+    - Ardupilot with added RemoteID functionality
+
     - ESP32 acting as the transmitting module on behalf of Ardupilot
+
 
 The Remote ID system is based on an ESP32-C3 and is designed to work with the [ArduRemoteID](https://github.com/ArduPilot/ArduRemoteID) project.
 
-Part 1
+#Part 1#
 
 Follow the [Building and Loading ArduPilot Firmware](https://echomav.github.io/docs/latest/build_ardupilot/) guide on how to build firmware for the EchoPilotAI
 
