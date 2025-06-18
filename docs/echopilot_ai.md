@@ -659,13 +659,13 @@ BAT2_V_CHANNEL | 14
 BAT2_I_CHANNEL | 15
 
 ## Remote ID Subsystem
-*Disclaimer*  
+*Disclaimer*
 
-This method aims to provide a solution for the FAA standard RemoteID requirement, meeting the transmitter component of the ASTM F3586-22 Means of Compliance. It also aims to be compliant with the RemoteID regulation in the EU.
+*This method aims to provide a solution for the FAA standard RemoteID requirement, meeting the transmitter component of the ASTM F3586-22 Means of Compliance. It also aims to be compliant with the RemoteID regulation in the EU.*
 
-It is the responsibility of the user to configure the ArduRemoteID firmware in a way that it is compliant with the local RemoteID regulation. For instance, in the USA it is mandatory that UAV manufacturers submit a DoC (Declaration of Conformance) to the FAA where they state that their product is compliant with the RemoteID regulation.
+*It is the responsibility of the user to configure the ArduRemoteID firmware in a way that it is compliant with the local RemoteID regulation. For instance, in the USA it is mandatory that UAV manufacturers submit a DoC (Declaration of Conformance) to the FAA where they state that their product is compliant with the RemoteID regulation.*
 
-The following instructions are not RemoteID compliant.
+*The following instructions are not RemoteID compliant.*
 
 There are two components.
     - Ardupilot with added RemoteID functionality
@@ -675,7 +675,7 @@ There are two components.
 
 The Remote ID system is based on an ESP32-C3 and is designed to work with the [ArduRemoteID](https://github.com/ArduPilot/ArduRemoteID) project.
 
-#Part 1#
+**Part 1**
 
 Follow the [Building and Loading ArduPilot Firmware](https://echomav.github.io/docs/latest/build_ardupilot/) guide on how to build firmware for the EchoPilotAI
 
@@ -710,11 +710,15 @@ Configure the board and upload the firmware again.
 Setup UART6 (serial 5) which is designated for RemoteID in your GCS software.
 
 Parameters to setup UART6:
+
 Set UART 6 baud rate to 57600 and protocol to MavLink2
+
 DID_ENABLE 1
+
 DID_MAVPORT 5 
 
-Part 2
+**Part 2**
+
 ESP32-C3 and is designed to work with the [ArduRemoteID](https://github.com/ArduPilot/ArduRemoteID) project.
 
 To flash ArduRemote ID to the ESPS32-C3, you will need a TC2030-USB-NL cable from [tag-connect.com](https://www.tag-connect.com) and follow the flashing instructions from the [AruRemoteID](https://github.com/ArduPilot/ArduRemoteID#flashing) project.
