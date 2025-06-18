@@ -659,7 +659,7 @@ BAT2_V_CHANNEL | 14
 BAT2_I_CHANNEL | 15
 
 ## Remote ID Subsystem
-Disclaimer
+*Disclaimer*  
 This method aims to provide a solution for the FAA standard RemoteID requirement, meeting the transmitter component of the ASTM F3586-22 Means of Compliance. It also aims to be compliant with the RemoteID regulation in the EU.
 
 It is the responsibility of the user to configure the ArduRemoteID firmware in a way that it is compliant with the local RemoteID regulation. For instance, in the USA it is mandatory that UAV manufacturers submit a DoC (Declaration of Conformance) to the FAA where they state that their product is compliant with the RemoteID regulation.
