@@ -674,7 +674,6 @@ There are two components.
 - ESP32 acting as the transmitting module on behalf of Ardupilot
 
 
-The Remote ID system is based on an ESP32-C3 and is designed to work with the [ArduRemoteID](https://github.com/ArduPilot/ArduRemoteID) project.
 
 **Part 1**
 
