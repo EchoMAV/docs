@@ -659,18 +659,66 @@ BAT2_V_CHANNEL | 14
 BAT2_I_CHANNEL | 15
 
 ## Remote ID Subsystem
-
-The Remote ID system is based on an ESP32-C3 and is designed to work with the [ArduRemoteID](https://github.com/ArduPilot/ArduRemoteID) project and Open Drone ID standards.
-
-ArduRemoteID is is an implementation of a MAVLink and DroneCAN OpenDroneID transmitter. It aims to provide a transmitter solution for the FAA standard RemoteID requirement, meeting the transmitter component of the ASTM F3586-22 Means of Compliance. It also aims to be compliant with the RemoteID regulation in the EU.
+Disclaimer
+This method aims to provide a solution for the FAA standard RemoteID requirement, meeting the transmitter component of the ASTM F3586-22 Means of Compliance. It also aims to be compliant with the RemoteID regulation in the EU.
 
 It is the responsibility of the user to configure the ArduRemoteID firmware in a way that it is compliant with the local RemoteID regulation. For instance, in the USA it is mandatory that UAV manufacturers submit a DoC (Declaration of Conformance) to the FAA where they state that their product is compliant with the RemoteID regulation.
+
+The following instructions are not RemoteID compliant.
+
+There are two components.
+    - Ardupilot with added RemoteID functionality 
+    - ESP32 acting as the transmitting module on behalf of Ardupilot
+
+The Remote ID system is based on an ESP32-C3 and is designed to work with the [ArduRemoteID](https://github.com/ArduPilot/ArduRemoteID) project.
+
+Part 1
+
+Follow the [Building and Loading ArduPilot Firmware](https://echomav.github.io/docs/latest/build_ardupilot/) guide on how to build firmware for the EchoPilotAI
+
+Modify the hwdef.dat and hwdef-bl.dat files in this directory.
+```
+ardupilot/libraries/AP_HAL_ChibiOS/hwdef/EchoPilotAI
+```
+
+Set ```define AP_OPENDRONEID_ENABLED 1``` in the hwdef.bat and hwdef-bl.dat
+
+The following pins will need to be defined for the hwdef.bat:
+```
+#define PIN_UART_TX 4
+#define PIN_UART_RX 5
+WS2812_LED_PIN GPIO_NUM_8
+```
+
+Clean the build process.
+
+```
+./waf distclean
+./waf clean
+```
+
+Configure the board and upload the firmware again.
+```
+/waf configure --board EchoPilotAI
+./waf copter --upload    # or choose a different target
+
+```
+
+Setup UART6 (serial 5) which is designated for RemoteID in your GCS software.
+
+Parameters to setup UART6:
+Set UART 6 baud rate to 57600 and protocol to MavLink2
+DID_ENABLE 1
+DID_MAVPORT 5 
+
+Part 2
+ESP32-C3 and is designed to work with the [ArduRemoteID](https://github.com/ArduPilot/ArduRemoteID) project.
 
 To flash ArduRemote ID to the ESPS32-C3, you will need a TC2030-USB-NL cable from [tag-connect.com](https://www.tag-connect.com) and follow the flashing instructions from the [AruRemoteID](https://github.com/ArduPilot/ArduRemoteID#flashing) project.
 
 The stock ArduRemoteID-ESPS32-C3_DEV.bin release file will not work. You will need to rebuild the bin file with a modified board_config.h
 
-Modified Code:
+Modify the board_config.h to look like this:
 ```
 #elif defined(BOARD_ESP32C3_DEV)
 #define BOARD_ID 2
@@ -686,23 +734,8 @@ Modified Code:
 #define WS2812_LED_PIN GPIO_NUM_8
 ```
 
-Check the [Build.MD](https://github.com/ArduPilot/ArduRemoteID/blob/master/BUILDING.md) instructions.
+Check the [Build.MD](https://github.com/ArduPilot/ArduRemoteID/blob/master/BUILDING.md) instructions for how to make a new bin file with the modified board_config.h.
 
-The ESP32-C3 is connected to the FMU via UART6, aka Telem3 (pins PG9 (RX) and PG14 (TX) from the STM32H742). You will need to configure ArduPilot/PX4 to use this UART for RemoteID.
-
-For building ArduRemoteID for the EchoPilot AI, the following pins will need to be defined for the hardware:
-```
-#define PIN_UART_TX 4
-#define PIN_UART_RX 5
-WS2812_LED_PIN GPIO_NUM_8
-```
-
-You must also set ```define AP_OPENDRONEID_ENABLED 1``` in the hwdef.bat and hwdef-bl.dat
-
-IE these ardupilot parameters:
-Set UART 6 baud rate to 57600 and protocol to MavLink2
-DID_ENABLE 1
-DID_MAVPORT 5 
 ### Firmware for OpenDroneID
 
 Special firmware is required for full integration of a Remote ID transmitter to add a layer of tamper-resistance as required by various countries initiatives. This is achieved by
