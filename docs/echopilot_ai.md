@@ -711,7 +711,9 @@ Setup UART6 (serial 5) which is designated for RemoteID in your GCS software.
 
 Parameters to setup UART6:
 
-Set UART 6 baud rate to 57600 and protocol to MavLink2
+SERIAL5_BAUD 57
+
+SERIAL5_PROTOCOL 2
 
 DID_ENABLE 1
 
