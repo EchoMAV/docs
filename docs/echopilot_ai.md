@@ -668,9 +668,10 @@ BAT2_I_CHANNEL | 15
 *The following instructions are not RemoteID compliant.*
 
 There are two components.
-    - Ardupilot with added RemoteID functionality
 
-    - ESP32 acting as the transmitting module on behalf of Ardupilot
+- Ardupilot with added RemoteID functionality
+
+- ESP32 acting as the transmitting module on behalf of Ardupilot
 
 
 The Remote ID system is based on an ESP32-C3 and is designed to work with the [ArduRemoteID](https://github.com/ArduPilot/ArduRemoteID) project.
