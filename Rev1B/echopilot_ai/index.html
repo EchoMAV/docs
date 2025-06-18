@@ -808,63 +808,6 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Remote ID Subsystem">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#firmware-for-opendroneid" class="md-nav__link">
-    <span class="md-ellipsis">
-      Firmware for OpenDroneID
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#thermal-considerations" class="md-nav__link">
-    <span class="md-ellipsis">
-      Thermal Considerations
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Thermal Considerations">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#jetson-module" class="md-nav__link">
-    <span class="md-ellipsis">
-      Jetson Module
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#solid-state-drive" class="md-nav__link">
-    <span class="md-ellipsis">
-      Solid State Drive
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#echopilot-ai-board" class="md-nav__link">
-    <span class="md-ellipsis">
-      EchoPilot AI Board
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
       
     </ul>
@@ -1722,63 +1665,6 @@
       Remote ID Subsystem
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="Remote ID Subsystem">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#firmware-for-opendroneid" class="md-nav__link">
-    <span class="md-ellipsis">
-      Firmware for OpenDroneID
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#thermal-considerations" class="md-nav__link">
-    <span class="md-ellipsis">
-      Thermal Considerations
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Thermal Considerations">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#jetson-module" class="md-nav__link">
-    <span class="md-ellipsis">
-      Jetson Module
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#solid-state-drive" class="md-nav__link">
-    <span class="md-ellipsis">
-      Solid State Drive
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#echopilot-ai-board" class="md-nav__link">
-    <span class="md-ellipsis">
-      EchoPilot AI Board
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -2742,10 +2628,11 @@ For PX4, set the following params and reboot.
 <p>It is the responsibility of the user to configure the ArduRemoteID firmware in a way that it is compliant with the local RemoteID regulation. For instance, in the USA it is mandatory that UAV manufacturers submit a DoC (Declaration of Conformance) to the FAA where they state that their product is compliant with the RemoteID regulation.</p>
 <p>The following instructions are not RemoteID compliant.</p>
 <p>There are two components.
-    - Ardupilot with added RemoteID functionality 
-    - ESP32 acting as the transmitting module on behalf of Ardupilot</p>
+    - Ardupilot with added RemoteID functionality</p>
+<div class="highlight"><pre><span></span><code>- ESP32 acting as the transmitting module on behalf of Ardupilot
+</code></pre></div>
 <p>The Remote ID system is based on an ESP32-C3 and is designed to work with the <a href="https://github.com/ArduPilot/ArduRemoteID">ArduRemoteID</a> project.</p>
-<p>Part 1</p>
+<h1 id="part-1">Part 1<a class="headerlink" href="#part-1" title="Permanent link">&para;</a></h1>
 <p>Follow the <a href="https://echomav.github.io/docs/latest/build_ardupilot/">Building and Loading ArduPilot Firmware</a> guide on how to build firmware for the EchoPilotAI</p>
 <p>Modify the hwdef.dat and hwdef-bl.dat files in this directory.
 <div class="highlight"><pre><span></span><code><a id="__codelineno-44-1" name="__codelineno-44-1" href="#__codelineno-44-1"></a>ardupilot/libraries/AP_HAL_ChibiOS/hwdef/EchoPilotAI
