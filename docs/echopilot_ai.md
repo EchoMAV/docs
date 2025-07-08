@@ -667,7 +667,7 @@ BAT2_I_CHANNEL | 15
 
 *The following instructions are not RemoteID compliant.*
 
-There are two components.
+**There are two components.**
 
 - Ardupilot with added RemoteID functionality
 
@@ -702,7 +702,7 @@ Clean the build process.
 
 Configure the board and upload the firmware again.
 ```
-/waf configure --board EchoPilotAI
+./waf configure --board EchoPilotAI
 ./waf copter --upload    # or choose a different target
 
 ```
