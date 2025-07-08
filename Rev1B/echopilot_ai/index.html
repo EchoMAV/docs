@@ -16,7 +16,7 @@
       
       
       <link rel="icon" href="../base_docs/assets/echomav_fav.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.15">
     
     
       
@@ -2741,7 +2741,7 @@ For PX4, set the following params and reboot.
 <p><em>This method aims to provide a solution for the FAA standard RemoteID requirement, meeting the transmitter component of the ASTM F3586-22 Means of Compliance. It also aims to be compliant with the RemoteID regulation in the EU.</em></p>
 <p><em>It is the responsibility of the user to configure the ArduRemoteID firmware in a way that it is compliant with the local RemoteID regulation. For instance, in the USA it is mandatory that UAV manufacturers submit a DoC (Declaration of Conformance) to the FAA where they state that their product is compliant with the RemoteID regulation.</em></p>
 <p><em>The following instructions are not RemoteID compliant.</em></p>
-<p>There are two components.</p>
+<p><strong>There are two components.</strong></p>
 <ul>
 <li>
 <p>Ardupilot with added RemoteID functionality</p>
@@ -2766,7 +2766,7 @@ For PX4, set the following params and reboot.
 <a id="__codelineno-46-2" name="__codelineno-46-2" href="#__codelineno-46-2"></a>./waf clean
 </code></pre></div>
 <p>Configure the board and upload the firmware again.
-<div class="highlight"><pre><span></span><code><a id="__codelineno-47-1" name="__codelineno-47-1" href="#__codelineno-47-1"></a>/waf configure --board EchoPilotAI
+<div class="highlight"><pre><span></span><code><a id="__codelineno-47-1" name="__codelineno-47-1" href="#__codelineno-47-1"></a>./waf configure --board EchoPilotAI
 <a id="__codelineno-47-2" name="__codelineno-47-2" href="#__codelineno-47-2"></a>./waf copter --upload    # or choose a different target
 </code></pre></div></p>
 <p>Setup UART6 (serial 5) which is designated for RemoteID in your GCS software.</p>
@@ -2901,7 +2901,7 @@ Top View of the EchoPilot AI Carrier</p>
       <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.tabs.sticky"], "search": "../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.13a4f30d.min.js"></script>
+      <script src="../assets/javascripts/bundle.56ea9cef.min.js"></script>
       
         <script src="../js/open_in_new_tab.js"></script>
       
