@@ -203,13 +203,13 @@ PIN 208        | I         |  +5V  | Fan Tachometer  |   GPIO3_PQ.02     | GPIO3
   <figcaption>EchoPilot AI without a Carrier Board Attached</figcaption>
 </figure>
 
-[EchoPilot AI 3D Model (stl) File Download](https://github.com/EchoMAV/docs/blob/837f47ecfc725d44b8480308583adc572fe7878b/docs/assets/echopilot_ai.stl) (right click, save link as)
+[EchoPilot AI 3D Model (stl) File Download](https://github.com/EchoMAV/docs/raw/Rev1B/docs/assets/echopilot_ai.stl) (right click, save link as)
 
-[EchoPilot AI Universal Carrier Board 3D model (stl) File Download](https://github.com/EchoMAV/docs/blob/bbe17a94f5d80c668f4587432445795e06afcbc4/docs/assets/echopilot_carrier_1c.stl) (right click, save link as)
+[EchoPilot AI Universal Carrier Board 3D model (stl) File Download](https://github.com/EchoMAV/docs/raw/Rev1B/docs/assets/echopilot_carrier_1c.stl) (right click, save link as)
 
-[EchoPilot AI & Carrier Full Stack (stl) File Download](https://github.com/EchoMAV/docs/blob/bbe17a94f5d80c668f4587432445795e06afcbc4/docs/assets/echopilot_full_stack.stl) (right click, save link as)
+[EchoPilot AI & Carrier Full Stack (stl) File Download](https://github.com/EchoMAV/docs/raw/Rev1B/docs/assets/echopilot_full_stack.stl) (right click, save link as)
 
-[EchoPilot AI PWM Breakout Board 3D model (STEP) File Download](https://github.com/EchoMAV/docs/blob/bbe17a94f5d80c668f4587432445795e06afcbc4/docs/assets/echopilot_pwm_breakout.step) (right click, save link as)
+[EchoPilot AI PWM Breakout Board 3D model (STEP) File Download](https://github.com/EchoMAV/docs/raw/Rev1B/docs/assets/echopilot_pwm_breakout.step) (right click, save link as)
 
 
 ## Vibration Isolation
