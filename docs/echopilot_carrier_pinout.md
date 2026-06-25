@@ -1,9 +1,3 @@
-The Carrier Board is open-source, please visit the [echopilot_ai_carrier](https://github.com/EchoMAV/echopilot_ai_carrier) repository. While you may refer to the pinout information below, also feel free to examine the [pdf schematic](https://github.com/EchoMAV/echopilot_ai_carrier/blob/master/echopilot_ai_carrier_schematic.pdf) or the [full design](https://github.com/EchoMAV/echopilot_ai_carrier) in [Kicad 6.0+](https://www.kicad.org/).  
-
-### Carrier Board Schematic
-
-A full schematic of the carrier board is available: [PDF schematic](https://github.com/EchoMAV/echopilot_ai_carrier/blob/master/echopilot_ai_carrier_schematic.pdf) 
-
 ### Top Side Carrier Board
 
 ![Top Side Components](assets/top-side-labels-carrier-board.png)
