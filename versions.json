@@ -2,14 +2,14 @@
   {
     "version": "Rev1",
     "title": "Rev1",
-    "aliases": []
+    "aliases": [
+      "latest"
+    ]
   },
   {
     "version": "Rev1B",
     "title": "Rev1B",
-    "aliases": [
-      "latest"
-    ]
+    "aliases": []
   },
   {
     "version": "Rev0",
