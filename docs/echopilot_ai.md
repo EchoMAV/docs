@@ -203,13 +203,9 @@ PIN 208        | I         |  +5V  | Fan Tachometer  |   GPIO3_PQ.02     | GPIO3
   <figcaption>EchoPilot AI without a Carrier Board Attached</figcaption>
 </figure>
 
-[EchoPilot AI 3D Model (stl) File Download](https://github.com/EchoMAV/docs/raw/Rev1B/docs/assets/echopilot_ai.stl) (right click, save link as)
+[EchoPilot AI & Carrier Full Stack (stl) File Download](assets/ECHOPILOT_FULL_STACK.step) (right click, save link as)
 
-[EchoPilot AI Universal Carrier Board 3D model (stl) File Download](https://github.com/EchoMAV/docs/raw/Rev1B/docs/assets/echopilot_carrier_1c.stl) (right click, save link as)
-
-[EchoPilot AI & Carrier Full Stack (stl) File Download](https://github.com/EchoMAV/docs/raw/Rev1B/docs/assets/echopilot_full_stack.stl) (right click, save link as)
-
-[EchoPilot AI PWM Breakout Board 3D model (STEP) File Download](https://github.com/EchoMAV/docs/raw/Rev1B/docs/assets/echopilot_pwm_breakout.step) (right click, save link as)
+[EchoPilot AI PWM Breakout Board 3D model (STEP) File Download](assets/PWM_BREAKOUT.step) (right click, save link as)
 
 
 ## Vibration Isolation
