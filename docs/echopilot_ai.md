@@ -321,7 +321,7 @@ sudo python3 serial.py 0
 
 ## Configure the Network
 
-The EchoPilot AI has two 100Mbps Ethernet ports (ETH1 and ETH2). Upstream, these go to a network switch, so either one can be used to access the Jetson SOM. To interface using a standard RJ45 cable, use the included Ethernet adapter board and cable assembly connected as shown below. The make your own cable assembly, refer to the [Pinout](echopilot_carrier_pinout.md#ethernet-1-j15)
+The EchoPilot AI has two 100Mbps Ethernet ports (ETH1 and ETH2). Upstream, these go to a network switch, so either one can be used to access the Jetson SOM. To interface using a standard RJ45 cable, use the included Ethernet adapter board and cable assembly connected as shown below. The make your own cable assembly, refer to the [pinout.](echopilot_carrier_pinout.md#ethernet-1-j15)
 
 <figure markdown>
   ![Ethernet Connection)](assets/ethernet-connection.png){ width="900" }
